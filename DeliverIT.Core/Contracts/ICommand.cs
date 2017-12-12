@@ -8,5 +8,8 @@ namespace DeliverIT.Core.Contracts
 {
     public interface ICommand
     {
+        string CommandName { get; }
+
+        void ExecuteCommand();
     }
 }

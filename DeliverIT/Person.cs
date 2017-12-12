@@ -1,17 +1,27 @@
 ﻿namespace DeliverIT
 {
     using DeliverIT.Common;
-    using System;
-
+    /// <todo>
+    /// 1. Implement Person behaviour
+    /// 
+    /// </todo>
     public abstract class Person
     {
         private string name;
-        private Country country;
-        private int years;
-        private GenderType gender;
         private string email;
         private int phoneNumber;
+        private int years;
+        private Country country;
+        private GenderType gender;
 
+        void ShowCurrentAddress()
+        {
+            //method showing curr address
+        }
 
+        void ShowInfo()
+        {
+            //method for showing information about curr person
+        }
     }
 }

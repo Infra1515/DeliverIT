@@ -11,10 +11,16 @@
     /// Client Fields: Adress, ZIP Code, Country, City, Phone, Email, All Orders List, 
     /// 
     /// </summary>
+    
     public class Client : Person
     {
         private List<Order> ordersList;
         private static int id;
 
+
+        void DisplayOrderList()
+        {
+            //method for displaying order list
+        }
     }
 }

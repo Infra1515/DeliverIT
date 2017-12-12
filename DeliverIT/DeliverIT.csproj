@@ -42,17 +42,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="City.cs" />
     <Compile Include="Client.cs" />
-    <Compile Include="Common\City.cs" />
     <Compile Include="Common\DeliveryType.cs" />
     <Compile Include="Common\GenderType.cs" />
     <Compile Include="Common\PaymentMethod.cs" />
-    <Compile Include="Contracts\IReceiver.cs" />
-    <Compile Include="Contracts\ISender.cs" />
+    <Compile Include="Contracts\IOrder.cs" />
     <Compile Include="Country.cs" />
     <Compile Include="Courier.cs" />
-    <Compile Include="IndividualEntity.cs" />
-    <Compile Include="LegalEntity.cs" />
     <Compile Include="Location.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="Payment.cs" />

@@ -1,12 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DeliverIT.Core.Engine
+﻿namespace DeliverIT.Core.Engine
 {
-    class DeliverITCommand
+    using System;
+    using DeliverIT.Core.Contracts;
+
+    /// <summary>
+    /// Class for implementation of different commands
+    /// </summary>
+
+    public class DeliverITCommand : ICommand
     {
+        public string CommandName => throw new NotImplementedException();
+
+        public void ExecuteCommand()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
