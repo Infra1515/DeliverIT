@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{81A5FA03-CA1A-4C10-B7CA-C68C607BD5DA}</ProjectGuid>
+    <ProjectGuid>{8F5E7B0C-3994-40CF-99EC-EE9ABBB940A4}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>DeliverIT</RootNamespace>
-    <AssemblyName>DeliverIT</AssemblyName>
+    <RootNamespace>DeliverIT.Core</RootNamespace>
+    <AssemblyName>DeliverIT.Core</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -42,12 +42,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Client.cs" />
-    <Compile Include="Common\ClientType.cs" />
-    <Compile Include="Contracts\IReceiver.cs" />
-    <Compile Include="Contracts\ISender.cs" />
-    <Compile Include="IndividualEntity.cs" />
-    <Compile Include="LegalEntity.cs" />
+    <Compile Include="Contracts\ICommand.cs" />
+    <Compile Include="Contracts\IEngine.cs" />
+    <Compile Include="Engine\DeliverITCommand.cs" />
+    <Compile Include="Engine\DeliverITEngine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{81A5FA03-CA1A-4C10-B7CA-C68C607BD5DA}</ProjectGuid>
+    <ProjectGuid>{8EF456EE-4A8F-4DD4-8F34-C58748850FDF}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>DeliverIT</RootNamespace>
-    <AssemblyName>DeliverIT</AssemblyName>
+    <RootNamespace>DeliverIT.Program</RootNamespace>
+    <AssemblyName>DeliverIT.Program</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -42,17 +42,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Client.cs" />
-    <Compile Include="Common\ClientType.cs" />
-    <Compile Include="Contracts\IReceiver.cs" />
-    <Compile Include="Contracts\ISender.cs" />
-    <Compile Include="IndividualEntity.cs" />
-    <Compile Include="LegalEntity.cs" />
+    <Compile Include="DeliverITProgramMain.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -4,12 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DeliverIT
+namespace DeliverIT.Core.Contracts
 {
-    class Program
+    public interface IEngine
     {
-        static void Main(string[] args)
-        {
-        }
     }
 }
