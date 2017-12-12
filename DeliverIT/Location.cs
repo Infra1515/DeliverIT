@@ -5,8 +5,6 @@
 
     public abstract class Location
     {
-
-
-
+        
     }
 }
