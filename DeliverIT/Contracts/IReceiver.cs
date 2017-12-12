@@ -8,5 +8,6 @@ namespace DeliverIT.Contracts
 {
     public interface IReceiver
     {
+        payTotalSum();
     }
 }

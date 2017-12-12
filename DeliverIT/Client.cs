@@ -13,6 +13,5 @@ namespace DeliverIT
     /// </summary>
     public abstract class Client
     {
-
     }
 }
