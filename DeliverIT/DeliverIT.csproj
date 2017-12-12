@@ -43,11 +43,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Client.cs" />
-    <Compile Include="Common\ClientType.cs" />
+    <Compile Include="Common\City.cs" />
     <Compile Include="Contracts\IReceiver.cs" />
     <Compile Include="Contracts\ISender.cs" />
+    <Compile Include="Country.cs" />
+    <Compile Include="Courier.cs" />
     <Compile Include="IndividualEntity.cs" />
     <Compile Include="LegalEntity.cs" />
+    <Compile Include="Location.cs" />
+    <Compile Include="Order.cs" />
+    <Compile Include="Payment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
