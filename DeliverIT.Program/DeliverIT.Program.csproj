@@ -46,7 +46,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <ProjectReference Include="..\DeliverIT.Core\DeliverIT.Core.csproj">
+      <Project>{8F5E7B0C-3994-40CF-99EC-EE9ABBB940A4}</Project>
+      <Name>DeliverIT.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

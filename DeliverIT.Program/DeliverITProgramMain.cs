@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DeliverIT.Core.Engine;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,8 +9,9 @@ namespace DeliverIT.Program
 {
     public class DeliverITProgramMain
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
+            InteractiveMenu.Interactive.Start();
         }
     }
 }
