@@ -19,8 +19,6 @@ namespace DeliverIT
         private string email;
         private string phoneNumber;
         private int years;
-        private Country country;
-        private GenderType gender;
 
         protected Person(string firstName, string lastName, string email, string phoneNumber, int years, Country country, GenderType genderType)
         {
@@ -29,12 +27,14 @@ namespace DeliverIT
             this.Email = email;
             this.PhoneNumber = phoneNumber;
             this.Years = years;
+            this.CountryLocation = country;
+            this.Gender = genderType;
         }
 
         public string FirstName
         {
             get { return this.firstName; }
-            set
+            protected set
             {
                 Validator.ValidateName(value, Constants.NamePattern, Constants.InvalidName, Constants.MinNameLength, Constants.MaxNameLength);
 
@@ -45,7 +45,7 @@ namespace DeliverIT
         public string LastName
         {
             get { return this.lastName; }
-            set
+            protected set
             {
                 Validator.ValidateName(value, Constants.NamePattern, Constants.InvalidName, Constants.MinNameLength, Constants.MaxNameLength);
 
@@ -57,7 +57,7 @@ namespace DeliverIT
         {
 
             get { return this.email; }
-            private set
+            protected set
             {
                 Validator.ValidateEmail(value, Constants.InvalidEmail, Constants.EmailPattern, Constants.MinEmailLength, Constants.MaxEmailLength);
 
@@ -69,7 +69,7 @@ namespace DeliverIT
         public string PhoneNumber
         {
             get { return this.phoneNumber; }
-            private set
+            protected set
             {
                 Validator.ValidatePhoneNumber(value, Constants.PhonePattern, Constants.InvalidPhoneNumber);
 
@@ -80,13 +80,17 @@ namespace DeliverIT
         public int Years
         {
             get { return this.years; }
-            set
+            protected set
             {
                 Validator.ValidateYears(value, Constants.MinYears, Constants.MaxYears, Constants.InvalidYears);
 
                 this.years = value;
             }
         }
+
+        public Country CountryLocation { get; protected set; }
+
+        public GenderType Gender { get; protected set; }
 
         void ShowCurrentAddress()
         {
