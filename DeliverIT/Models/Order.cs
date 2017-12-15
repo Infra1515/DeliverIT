@@ -25,11 +25,11 @@
             this.Address = address;
         }
 
-        public Courier Courier { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public Sender Sender { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public Receiver Receiver { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public DateTime SendDate { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public DateTime ReceiveDate { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public Courier Courier { get; set; }
+        public Sender Sender { get; set; }
+        public Receiver Receiver { get; set; }
+        public DateTime SendDate { get; set; }
+        public DateTime ReceiveDate { get; set; }
         public Size Size { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public DeliveryType DeliveryType { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public decimal Price { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
