@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{8F5E7B0C-3994-40CF-99EC-EE9ABBB940A4}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <RootNamespace>DeliverIT.Core</RootNamespace>
     <AssemblyName>DeliverIT.Core</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
@@ -31,6 +31,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -46,7 +49,9 @@
     <Compile Include="Contracts\IEngine.cs" />
     <Compile Include="Engine\DeliverITCommand.cs" />
     <Compile Include="Engine\DeliverITEngine.cs" />
+    <Compile Include="Engine\InteractiveMenu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\Selections.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

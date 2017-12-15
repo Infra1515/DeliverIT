@@ -6,6 +6,8 @@
 
     public class Order : IOrder
     {
+        private uint price;
+
         public Courier Courier { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public Sender Sender { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public Receiver Receiver { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
@@ -20,8 +22,11 @@
         public double Weight { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public string Address { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
-        void CalculatePrice()
+        public uint CalculatePrice()
         {
+            price = 0;
+            return price;
+
             //method for calculating order price (delivery type, country tax, size, isFragile)
         }
     }
