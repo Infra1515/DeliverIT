@@ -1,17 +1,13 @@
-﻿using DeliverIT.Core.Engine;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DeliverIT.Program
+﻿namespace DeliverIT.Program
 {
+    using DeliverIT.Core.Engine;
+
+    using DeliverIT;
     public class DeliverITProgramMain
     {
         public static void Main(string[] args)
         {
-            InteractiveMenu.Interactive.Start();
+           InteractiveMenu.Interactive.Start();
         }
     }
 }
