@@ -13,7 +13,7 @@ namespace DeliverIT.Contracts
         Sender Sender { get; set; }
         Receiver Receiver { get; set; }
         DateTime SendDate { get; set; }
-        DateTime ReveiveDate { get; set; }
+        DateTime ReceiveDate { get; set; }
         Size Size { get; set; }
         DeliveryType DeliveryType { get; set; }
         decimal Price { get; set; }
