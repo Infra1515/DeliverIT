@@ -13,11 +13,11 @@ namespace DeliverIT
     /// 
     public abstract class Person
     {
+        //fields
         private string firstName;
         private string lastName;
         private string email;
         private string phoneNumber;
-
         private int years;
         private Country country;
         private GenderType gender;
@@ -28,6 +28,7 @@ namespace DeliverIT
             this.LastName = lastName;
             this.Email = email;
             this.PhoneNumber = phoneNumber;
+            this.Years = years;
         }
 
         public string FirstName
@@ -73,6 +74,17 @@ namespace DeliverIT
                 Validator.ValidatePhoneNumber(value, Constants.PhonePattern, Constants.InvalidPhoneNumber);
 
                 this.phoneNumber = value;
+            }
+        }
+
+        public int Years
+        {
+            get { return this.years; }
+            set
+            {
+                Validator.ValidateYears(value, Constants.MinYears, Constants.MaxYears, Constants.InvalidYears);
+
+                this.years = value;
             }
         }
 

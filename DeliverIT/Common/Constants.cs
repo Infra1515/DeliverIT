@@ -23,6 +23,6 @@
         public const string InvalidName = "Invalid name!";
         public const string InvalidEmail = "Invalid email!";
         public const string InvalidPhoneNumber = "Invalid phone number entered! Enter valid phone number!";
-        public const string InvalidYears = "Age must be b";
+        public const string InvalidYears = "Age must be between 18 and 100";
     }
 }

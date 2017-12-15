@@ -44,5 +44,13 @@ namespace DeliverIT.Common
                 throw new ArgumentException(message);
             }
         }
+
+        public static void ValidateYears(int years, int min, int max, string message)
+        {
+            if (years < min || years > max)
+            {
+                throw new ArgumentException(message);
+            }
+        }
     }
 }
