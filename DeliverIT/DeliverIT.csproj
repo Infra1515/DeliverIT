@@ -35,6 +35,9 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Bytes2you.Validation, Version=2.0.0.0, Culture=neutral, PublicKeyToken=a7d501dd757e0442, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bytes2you.Validation.2.0.0.0\lib\portable-win+net40+sl40+wp+Xbox40\Bytes2you.Validation.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,16 +49,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\Constants.cs" />
+    <Compile Include="Common\Enums\Continent.cs" />
     <Compile Include="Common\Validator.cs" />
-    <Compile Include="Models\City.cs" />
+    <Compile Include="Contracts\ICountry.cs" />
     <Compile Include="Models\Client.cs" />
     <Compile Include="Common\Enums\DeliveryType.cs" />
     <Compile Include="Common\Enums\GenderType.cs" />
     <Compile Include="Common\Enums\PaymentMethod.cs" />
     <Compile Include="Contracts\IOrder.cs" />
-    <Compile Include="Models\Country.cs" />
+    <Compile Include="Models\Countries\AbstractCountry.cs" />
+    <Compile Include="Models\Countries\Bulgaria.cs" />
     <Compile Include="Models\Courier.cs" />
-    <Compile Include="Models\Location.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Payment.cs" />
     <Compile Include="Models\Person.cs" />
@@ -66,6 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
