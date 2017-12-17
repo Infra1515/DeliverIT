@@ -8,14 +8,14 @@
     {
         private uint priceForDelivery;
 
-        public Order(Courier courier, Sender sender, Receiver receiver, DateTime sendDate, DateTime receiveDate, 
+        public Order(Courier courier, Sender sender, Receiver receiver, DateTime sendDate, DateTime dueDate, 
             DeliveryType deliveryType, decimal price, int id, bool isFragile, bool isDelivered, double weight, string address)
         {
             this.Courier = courier;
             this.Sender = sender;
             this.Receiver = receiver;
             this.SendDate = sendDate;
-            this.ReceiveDate = receiveDate;
+            this.DueDate = dueDate;
             this.DeliveryType = deliveryType;
             this.Price = price;
             this.Id = id;
@@ -29,7 +29,7 @@
         public Sender Sender { get; set; }
         public Receiver Receiver { get; set; }
         public DateTime SendDate { get; set; }
-        public DateTime ReceiveDate { get; set; }
+        public DateTime DueDate { get; set; }
         public Size Size { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public DeliveryType DeliveryType { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public decimal Price { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }

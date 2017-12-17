@@ -4,10 +4,11 @@
 
     public struct Size
     {
-        private double x;
-        private double y;
-        private double z;
 
-        //props needed
+        public double X { get; set; }
+        public double Y { get; set; }
+        public double Z { get; set; }
+
+
     }
 }

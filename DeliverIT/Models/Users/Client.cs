@@ -17,11 +17,10 @@
     
     public class Client : User
     {
-        private IList<IOrder> ordersList;
         private ClientType clientType; 
         private static int id;
 
-        public IList<IOrder> OrdersList { get => ordersList; set => ordersList = value; }
+        public IList<IOrder> OrdersList { get; set; }
         public ClientType ClientType { get => clientType; set => clientType = value; }
 
         public Client(string firstName, string lastName, string email, string phoneNumber,
@@ -33,7 +32,7 @@
 
         void DisplayOrderList()
         {
-            //method for displaying order list
+            //method for displaying or
         }
 
         void ShowAllOrders(IList<IOrder> allOrders)

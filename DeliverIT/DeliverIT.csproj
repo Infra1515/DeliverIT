@@ -51,8 +51,11 @@
     <Compile Include="Common\Constants.cs" />
     <Compile Include="Common\Enums\ClientType.cs" />
     <Compile Include="Common\Enums\Continent.cs" />
+    <Compile Include="Common\Enums\ProductType.cs" />
     <Compile Include="Common\Validator.cs" />
     <Compile Include="Contracts\ICountry.cs" />
+    <Compile Include="Models\Address.cs" />
+    <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Users\Client.cs" />
     <Compile Include="Common\Enums\DeliveryType.cs" />
     <Compile Include="Common\Enums\GenderType.cs" />

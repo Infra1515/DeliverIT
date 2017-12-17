@@ -1,5 +1,7 @@
 ﻿using DeliverIT.Common;
+using DeliverIT.Models;
 using System;
+using System.Collections.Generic;
 
 namespace DeliverIT.Contracts
 {
@@ -22,5 +24,6 @@ namespace DeliverIT.Contracts
         bool IsDelivered { get; set; }
         double Weight { get; set; }
         string Address { get; set; } //needed to be fixed (string or not) 
+        IList<Product> ProductsList { get; set; }
     }
 }
