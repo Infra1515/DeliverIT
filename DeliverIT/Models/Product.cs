@@ -7,12 +7,32 @@ using System.Threading.Tasks;
 
 namespace DeliverIT.Models
 {
-    class Product
+    public class Product
     {
-        private string name;
-        private bool isFragile;
-        private double weigth;
-        private double dimensions;
+        public Product(double x, double y, double z)
+        {
+            this.Dimensions.X = x;
+            this.Dimensions.Y = y;
+            this.Dimensions.Z = z;
+
+        }
+        public bool IsFragile { get; }
+
+        public double Weight { get; }
+
+        public Dimensions Dimensions  { get; set; }
+
         private ProductType productType;
+
+        public double CalculateDimensions()
+        {
+            return this.Dimensions.X * this.Dimensions.Y * this.Dimensions.Z;
+        }
+
+        //todo override tostring 
+        public override string ToString()
+        {
+            return base.ToString();
+        }
     }
 }

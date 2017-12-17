@@ -67,7 +67,7 @@
     <Compile Include="Models\Users\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\Users\Receiver.cs" />
-    <Compile Include="Models\Size.cs" />
+    <Compile Include="Models\Dimensions.cs" />
     <Compile Include="Models\Users\Sender.cs" />
   </ItemGroup>
   <ItemGroup>

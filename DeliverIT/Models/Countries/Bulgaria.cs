@@ -10,7 +10,7 @@ namespace DeliverIT.Models.Countries
     public class Bulgaria : Country
     {
         private const string name = "Bulgaria";
-        private const int tax = 5;
+        private const decimal tax = 0.15m;
         private const string telephoneCode = "+359";
         private const string postalCode = "BG";
         private const string timeZone = "UTC-2";

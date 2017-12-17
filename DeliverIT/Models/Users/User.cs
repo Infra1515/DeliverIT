@@ -28,7 +28,7 @@ namespace DeliverIT
             this.Email = email;
             this.PhoneNumber = phoneNumber;
             this.Years = years;
-            this.CountryLocation = country;
+            this.Country = country;
             this.Gender = genderType;
         }
 
@@ -89,7 +89,7 @@ namespace DeliverIT
             }
         }
 
-        public Country CountryLocation { get; protected set; }
+        public Country Country { get; protected set; }
 
         public GenderType Gender { get; protected set; }
 

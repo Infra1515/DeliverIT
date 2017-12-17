@@ -1,22 +1,19 @@
 ﻿namespace DeliverIT
 {
-    using DeliverIT.Common;
     using DeliverIT.Common.Enums;
-    using System;
     using System.Collections.Generic;
-    using Bytes2you.Validation;
 
     public abstract class Country
     {
         private string name;
-        private int tax;
+        private decimal tax;
         private string telephoneCode;
         private string postalCode;
         private string timeZone;
         private Continent continent;
         Dictionary<string, int> citysAndZips = new Dictionary<string, int>();
 
-        public Country(string name, int tax, string telephoneCode, string postsalCode, 
+        public Country(string name, decimal tax, string telephoneCode, string postalCode, 
             string timeZone, Continent continent)
         {
             this.Name = name;
@@ -29,7 +26,7 @@
         }
 
         public string Name { get => name; set => name = value; }
-        public int Tax { get => tax; set => tax = value; }
+        public decimal Tax { get => tax; set => tax = value; }
         public string TelephoneCode { get => telephoneCode; set => telephoneCode = value; }
         public string PostalCode { get => postalCode; set => postalCode = value; }
         public string TimeZone { get => timeZone; set => timeZone = value; }

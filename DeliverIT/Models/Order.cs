@@ -1,4 +1,7 @@
-﻿namespace DeliverIT
+﻿using System.Collections;
+using System.Net;
+
+namespace DeliverIT
 {
     using DeliverIT.Common;
     using DeliverIT.Contracts;
@@ -6,10 +9,10 @@
     using System;
     public class Order : IOrder
     {
-        private uint priceForDelivery;
+        private decimal priceForDelivery;
 
         public Order(Courier courier, Sender sender, Receiver receiver, DateTime sendDate, DateTime dueDate, 
-            DeliveryType deliveryType, decimal price, int id, bool isFragile, bool isDelivered, double weight, Address address)
+            DeliveryType deliveryType, decimal price, int id, bool isFragile, bool isDelivered, Address address)
         {
             this.Courier = courier;
             this.Sender = sender;
@@ -17,11 +20,8 @@
             this.SendDate = sendDate;
             this.DueDate = dueDate;
             this.DeliveryType = deliveryType;
-            this.Price = price;
             this.Id = id;
-            this.IsFragile = isFragile;
             this.IsDelivered = isDelivered;
-            this.Weight = weight;
             this.Address = address;
         }
 
@@ -30,26 +30,28 @@
         public Receiver Receiver { get; set; }
         public DateTime SendDate { get; set; }
         public DateTime DueDate { get; set; }
-        public Size Size { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public DeliveryType DeliveryType { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public decimal Price { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public decimal DeliveryPrice { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public int Id { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public bool IsFragile { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public bool IsDelivered { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public double Weight { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public Address Address { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public Product Product { get; set; }
 
-        public uint CalculatePrice()
+        public decimal CalculatePrice()
         {
-            priceForDelivery = 0;
+            priceForDelivery = Constants.PriceForKg;
+
+            if (this.Product.Weight > 1)
+            {
+                priceForDelivery += ((decimal)this.Product.Weight - 1) * Constants.PriceForKg;
+            }
+
+            priceForDelivery *= (decimal)this.DeliveryType; // multiply the price for delivery using express/standart delivery coefficient
+            priceForDelivery *= this.Receiver.Country.Tax; // multiply the price using tax of country
+
             return priceForDelivery;
 
             //method for calculating order price (delivery type, country tax, size, isFragile)
-        }
-
-        public int CalculateDimensions()
-        {
-            throw new NotImplementedException();
         }
     }
 }
