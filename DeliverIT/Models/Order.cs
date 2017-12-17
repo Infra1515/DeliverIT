@@ -9,7 +9,7 @@
         private uint priceForDelivery;
 
         public Order(Courier courier, Sender sender, Receiver receiver, DateTime sendDate, DateTime receiveDate, 
-            DeliveryType deliveryType, decimal price, int id, bool isFragile, bool isPaid, double weight, string address)
+            DeliveryType deliveryType, decimal price, int id, bool isFragile, bool isDelivered, double weight, string address)
         {
             this.Courier = courier;
             this.Sender = sender;
@@ -20,7 +20,7 @@
             this.Price = price;
             this.Id = id;
             this.IsFragile = isFragile;
-            this.IsPaid = isPaid;
+            this.IsDelivered = isDelivered;
             this.Weight = weight;
             this.Address = address;
         }
@@ -35,7 +35,7 @@
         public decimal Price { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public int Id { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public bool IsFragile { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public bool IsPaid { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public bool IsDelivered { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public double Weight { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public string Address { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
@@ -45,6 +45,11 @@
             return priceForDelivery;
 
             //method for calculating order price (delivery type, country tax, size, isFragile)
+        }
+
+        public int CalculateDimensions()
+        {
+            throw new NotImplementedException();
         }
     }
 }

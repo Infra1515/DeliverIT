@@ -19,7 +19,7 @@ namespace DeliverIT.Contracts
         decimal Price { get; set; }
         int Id { get; set; }
         bool IsFragile { get; set; }
-        bool IsPaid { get; set; }
+        bool IsDelivered { get; set; }
         double Weight { get; set; }
         string Address { get; set; } //needed to be fixed (string or not) 
     }

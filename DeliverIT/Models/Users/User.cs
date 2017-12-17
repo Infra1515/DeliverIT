@@ -12,7 +12,7 @@ namespace DeliverIT
     /// 
     /// </todo>
     /// 
-    public abstract class Person
+    public abstract class User
     {
         //fields
         private string firstName;
@@ -21,7 +21,7 @@ namespace DeliverIT
         private string phoneNumber;
         private int years;
 
-        protected Person(string firstName, string lastName, string email, string phoneNumber, int years, Country country, GenderType genderType)
+        protected User(string firstName, string lastName, string email, string phoneNumber, int years, Country country, GenderType genderType)
         {
             this.FirstName = firstName;
             this.LastName = lastName;
@@ -98,7 +98,7 @@ namespace DeliverIT
             //method showing curr address
         }
 
-        void ShowInfo()
+        public virtual void ShowInfo()
         {
             //method for showing information about curr person
         }

@@ -49,24 +49,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\Constants.cs" />
+    <Compile Include="Common\Enums\ClientType.cs" />
     <Compile Include="Common\Enums\Continent.cs" />
     <Compile Include="Common\Validator.cs" />
     <Compile Include="Contracts\ICountry.cs" />
-    <Compile Include="Models\Client.cs" />
+    <Compile Include="Models\Users\Client.cs" />
     <Compile Include="Common\Enums\DeliveryType.cs" />
     <Compile Include="Common\Enums\GenderType.cs" />
-    <Compile Include="Common\Enums\PaymentMethod.cs" />
     <Compile Include="Contracts\IOrder.cs" />
     <Compile Include="Models\Countries\AbstractCountry.cs" />
     <Compile Include="Models\Countries\Bulgaria.cs" />
-    <Compile Include="Models\Courier.cs" />
+    <Compile Include="Models\Users\Courier.cs" />
     <Compile Include="Models\Order.cs" />
-    <Compile Include="Models\Payment.cs" />
-    <Compile Include="Models\Person.cs" />
+    <Compile Include="Models\Users\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Models\Receiver.cs" />
+    <Compile Include="Models\Users\Receiver.cs" />
     <Compile Include="Models\Size.cs" />
-    <Compile Include="Models\Sender.cs" />
+    <Compile Include="Models\Users\Sender.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
