@@ -11,9 +11,8 @@ namespace DeliverIT.Models
     {
         public Product(double x, double y, double z, bool isFragile, double weight, ProductType productType)
         {
-            this.Dimensions.X = x;
-            this.Dimensions.Y = y;
-            this.Dimensions.Z = z;
+            this.Dimensions = new Dimensions(x, y, z);
+            this.Volume = this.Dimensions.CalculateVolume();
             this.IsFragile = isFragile;
             this.Weight = weight;
             this.ProductType = productType;
@@ -23,15 +22,12 @@ namespace DeliverIT.Models
 
         public double Weight { get; }
 
-        public Dimensions Dimensions  { get; set; }
+        public Dimensions Dimensions { get; set; }
 
         private ProductType ProductType { get; set; }
 
-        //method for calculating volume
-        public double CalculateDimensions()
-        {
-            return this.Dimensions.X * this.Dimensions.Y * this.Dimensions.Z;
-        }
+        public double Volume { get; set; }
+
 
         //todo override tostring 
         public override string ToString()

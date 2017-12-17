@@ -6,40 +6,14 @@ namespace DeliverIT.Common
     //TODO: simplify code!!!
     public class Validator
     {
-        public static void ValidateEmail(string email, string emailPattern, string message, int min, int max)
+        public static void ValidateUserInfo(string input, string pattern, int min, int max, string message)
         {
-            if (email == null || email.Length < min || email.Length > max)
-            {
-                throw new ArgumentException(message);
-            }
-            
-            if (!new Regex(emailPattern).IsMatch(email))
-            {
-                throw new ArgumentException(message);
-            }
-        }
-
-        public static void ValidateName(string name, string namePattern, string message, int min, int max)
-        {
-            if (name == null || name.Length < min || name.Length > max)
+            if (string.IsNullOrEmpty(input) || input.Length < min || input.Length > max)
             {
                 throw new ArgumentException(message);
             }
 
-            if (!new Regex(namePattern).IsMatch(name))
-            {
-                throw new ArgumentException(message);
-            }
-        }
-
-        public static void ValidatePhoneNumber(string phoneNumber, string phonePattern, string message)
-        {
-            if (phoneNumber == null)
-            {
-                throw new ArgumentException(message);
-            }
-
-            if (!new Regex(phonePattern).IsMatch(phoneNumber))
+            if (!new Regex(pattern).IsMatch(input))
             {
                 throw new ArgumentException(message);
             }

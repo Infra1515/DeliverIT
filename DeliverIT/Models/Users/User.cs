@@ -32,7 +32,8 @@
             get { return this.firstName; }
             protected set
             {
-                Validator.ValidateName(value, Constants.NamePattern, Constants.InvalidName, Constants.MinNameLength, Constants.MaxNameLength);
+                Validator.ValidateUserInfo(value, Constants.NamePattern, Constants.MinNameLength, 
+                    Constants.MaxNameLength, Constants.InvalidName);
 
                 this.firstName = value;
             }
@@ -43,7 +44,8 @@
             get { return this.lastName; }
             protected set
             {
-                Validator.ValidateName(value, Constants.NamePattern, Constants.InvalidName, Constants.MinNameLength, Constants.MaxNameLength);
+                Validator.ValidateUserInfo(value, Constants.NamePattern, Constants.MinNameLength, 
+                    Constants.MaxNameLength, Constants.InvalidName);
 
                 this.lastName = value;
             }
@@ -55,11 +57,11 @@
             get { return this.email; }
             protected set
             {
-                Validator.ValidateEmail(value, Constants.InvalidEmail, Constants.EmailPattern, Constants.MinEmailLength, Constants.MaxEmailLength);
+                Validator.ValidateUserInfo(value, Constants.InvalidEmail, Constants.MinEmailLength, 
+                    Constants.MaxEmailLength,  Constants.EmailPattern);
 
                 this.email = value;
             }
-
         }
 
         public string PhoneNumber
@@ -67,7 +69,8 @@
             get { return this.phoneNumber; }
             protected set
             {
-                Validator.ValidatePhoneNumber(value, Constants.PhonePattern, Constants.InvalidPhoneNumber);
+                Validator.ValidateUserInfo(value, Constants.PhonePattern, Constants.MinPhoneLength, 
+                    Constants.MaxPhoneLength, Constants.InvalidPhoneNumber);
 
                 this.phoneNumber = value;
             }
@@ -88,9 +91,10 @@
 
         public GenderType Gender { get; protected set; }
 
-        void ShowCurrentAddress()
+        public Address ShowCurrentAddress()
         {
             //method showing curr address
+            return this.Address;
         }
 
         public virtual void ShowInfo()

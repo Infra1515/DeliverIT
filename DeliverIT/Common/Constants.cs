@@ -17,6 +17,8 @@
         public const int MaxNameLength = 15;
         public const int MinEmailLength = 10;
         public const int MaxEmailLength = 30;
+        public const int MinPhoneLength = 6;
+        public const int MaxPhoneLength = 10;
         public const int MinYears = 18;
         public const int MaxYears = 100;
 

@@ -2,29 +2,29 @@
 {
     using System;
 
-    public class Dimensions
+    public struct Dimensions
     {
         private double x;
         private double y;
         private double z;
 
-        public double X {
-            get { return this.x; }
-            set { this.x = value; } 
-        }
-
-        public double Y
+        public Dimensions(double x, double y, double z)
         {
-            get { return this.y; }
-            set { this.y = value; }
+            this.x = x;
+            this.y = y;
+            this.z = z;
         }
 
-        public double Z
+        public double X { get { return this.x; } set { this.x = value; } }
+
+        public double Y { get { return this.y; } set { this.y = value; } }
+
+        public double Z { get { return this.z; } set { this.z = value; } }
+
+        //method for calculating volume
+        public double CalculateVolume()
         {
-            get { return this.z; }
-            set { this.z = value; }
+            return this.X * this.Y * this.Z;
         }
-
-        //props needed
     }
 }
