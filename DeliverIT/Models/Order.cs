@@ -3,13 +3,10 @@
     using DeliverIT.Common;
     using DeliverIT.Contracts;
     using System;
-    using DeliverIT.Models;
-    using System.Collections.Generic;
 
     public class Order : IOrder
     {
         private uint priceForDelivery;
-        
 
         public Order(Courier courier, Sender sender, Receiver receiver, DateTime sendDate, DateTime receiveDate, 
             DeliveryType deliveryType, decimal price, int id, bool isFragile, bool isDelivered, double weight, string address)
@@ -26,7 +23,6 @@
             this.IsDelivered = isDelivered;
             this.Weight = weight;
             this.Address = address;
-            this.ProductsList = new List<Product>();
         }
 
         public Courier Courier { get; set; }
@@ -42,7 +38,6 @@
         public bool IsDelivered { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public double Weight { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public string Address { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public IList<Product> ProductsList { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public uint CalculatePrice()
         {
