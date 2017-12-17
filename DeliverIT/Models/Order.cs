@@ -7,11 +7,11 @@ namespace DeliverIT
     using DeliverIT.Contracts;
     using DeliverIT.Models;
     using System;
+
     public class Order : IOrder
     {
-        //todo validation of sendDate
-        private decimal priceForDelivery;
-
+        private DateTime sendDate;
+        private DateTime dueDate;
         private static int id = 0;
 
         public Order(Courier courier, Sender sender, Receiver receiver, DateTime sendDate, DateTime dueDate, 
@@ -31,29 +31,52 @@ namespace DeliverIT
         public Courier Courier { get; set; }
         public Sender Sender { get; set; }
         public Receiver Receiver { get; set; }
-        public DateTime SendDate { get; set; }
-        public DateTime DueDate { get; set; }
-        public Address Address { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public DateTime SendDate
+        {
+            get { return this.sendDate; }
+            set
+            {
+                Validator.ValidateSendAndDueDate(value, Constants.InvalidSendDate);
+
+                this.sendDate = value;
+            }
+        }
+        public DateTime DueDate
+        {
+            get { return this.dueDate; }
+            set
+            {
+                Validator.ValidateSendAndDueDate(value, Constants.InvalidDueDate);
+
+                this.dueDate = value;
+            }
+        }
+        public Address Address { get ; set ; }
         public Product Product { get; set; }
-        public DeliveryType DeliveryType { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public decimal DeliveryPrice { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public DeliveryType DeliveryType { get; set; }
+        public decimal DeliveryPrice { get; set; }
         public static int Id { get; private set; }
-        public bool IsDelivered { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public bool IsDelivered { get ; set ; }
 
         public decimal CalculatePrice()
         {
-            priceForDelivery = Constants.PriceForKg;
+            this.DeliveryPrice = Constants.PriceForKg;
 
             if (this.Product.Weight > 1)
             {
-                priceForDelivery += ((decimal)this.Product.Weight - 1) * Constants.PriceForKg;
+                this.DeliveryPrice += ((decimal)this.Product.Weight - 1) * Constants.PriceForKg; //used for pricing if weight is over 1kg
             }
 
-            priceForDelivery *= (decimal)this.DeliveryType; // multiply the price for delivery using express/standart delivery coefficient
-            priceForDelivery *= this.Receiver.Address.Tax; // multiply the price using country tax
-            priceForDelivery /= (decimal)this.Sender.ClientType; // change delivery price using client type coeff
+            if (this.Product.IsFragile)
+            {
+                this.DeliveryPrice *= Constants.FragileCoefficient; //used for pricing if fragile
+            }
 
-            return priceForDelivery;
+            this.DeliveryPrice *= (decimal)this.DeliveryType; // multiply the price for delivery using express/standart delivery coefficient
+            this.DeliveryPrice *= this.Receiver.Address.Tax; // multiply the price using country tax
+            this.DeliveryPrice /= (decimal)this.Sender.ClientType; // change delivery price using client type coeff
+
+            return this.DeliveryPrice;
 
             //method for calculating order price (delivery type, country tax, size, isFragile)
         }

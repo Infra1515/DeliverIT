@@ -1,7 +1,5 @@
 ﻿namespace DeliverIT
 {
-    using System;
-
     public struct Dimensions
     {
         private double x;

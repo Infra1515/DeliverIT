@@ -26,5 +26,13 @@ namespace DeliverIT.Common
                 throw new ArgumentException(message);
             }
         }
+
+        public static void ValidateSendAndDueDate(DateTime date, string message)
+        {
+            if (DateTime.Now > date)
+            {
+                throw new ArgumentException(message);
+            }
+        }
     }
 }

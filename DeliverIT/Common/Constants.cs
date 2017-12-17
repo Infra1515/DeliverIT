@@ -26,8 +26,11 @@
         public const string InvalidEmail = "Invalid email!";
         public const string InvalidPhoneNumber = "Invalid phone number entered! Enter valid phone number!";
         public const string InvalidYears = "Age must be between 18 and 100";
+        public const string InvalidSendDate = "Send date must be before today.";
+        public const string InvalidDueDate = "Due date must be before send date.";
 
         public const decimal Price = 4.5m;
         public const decimal PriceForKg = 0.5m;
+        public const decimal FragileCoefficient = 2;
     }
 }
