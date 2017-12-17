@@ -3,17 +3,10 @@
     using DeliverIT.Common.Enums;
     using System.Collections.Generic;
 
+    //timezone, continent, telephonecode (?need?)
     public class Address
     {
-        //private string name;
-        //private decimal tax;
-        //private string telephoneCode;
-        //private string postalCode;
-        //private string timeZone;
-        //private Continent continent;
-        //Dictionary<string, int> citysAndZips = new Dictionary<string, int>();
-
-        protected Address(string name, decimal tax, string telephoneCode, string postalCode,
+        public Address(string name, decimal tax, string telephoneCode, string postalCode,
             string timeZone, Continent continent)
         {
             this.Name = name;

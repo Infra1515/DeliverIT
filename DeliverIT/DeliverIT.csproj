@@ -51,6 +51,7 @@
     <Compile Include="Common\Constants.cs" />
     <Compile Include="Common\Enums\ClientType.cs" />
     <Compile Include="Common\Enums\Continent.cs" />
+    <Compile Include="Common\Enums\CountryType.cs" />
     <Compile Include="Common\Enums\ProductType.cs" />
     <Compile Include="Common\Validator.cs" />
     <Compile Include="Contracts\ICountry.cs" />
@@ -60,7 +61,7 @@
     <Compile Include="Common\Enums\GenderType.cs" />
     <Compile Include="Contracts\IOrder.cs" />
     <Compile Include="Models\Countries\Address.cs" />
-    <Compile Include="Models\Countries\Bulgaria.cs" />
+    <Compile Include="Models\Countries\Country.cs" />
     <Compile Include="Models\Users\Courier.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Users\User.cs" />

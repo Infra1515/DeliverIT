@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DeliverIT.Models.Countries
 {
-    public class Bulgaria
+    public class Country : Address
     {
         private const string name = "Bulgaria";
         private const decimal tax = 0.15m;
@@ -16,7 +16,7 @@ namespace DeliverIT.Models.Countries
         private const string timeZone = "UTC-2";
         private const Continent continent = Continent.Europe;
 
-        public Bulgaria() //: base(name, tax, telephoneCode, postalCode, timeZone, continent)
+        public Country() : base(name, tax, telephoneCode, postalCode, timeZone, continent)
         {
 
         }
