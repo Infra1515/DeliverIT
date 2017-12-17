@@ -1,4 +1,5 @@
 ﻿using DeliverIT.Common;
+using DeliverIT.Models;
 using System;
 
 namespace DeliverIT.Contracts
@@ -13,7 +14,7 @@ namespace DeliverIT.Contracts
         Sender Sender { get; set; }
         Receiver Receiver { get; set; }
         DateTime SendDate { get; set; }
-        DateTime ReceiveDate { get; set; }
+        DateTime DueDate { get; set; }
         Size Size { get; set; }
         DeliveryType DeliveryType { get; set; }
         decimal Price { get; set; }
@@ -21,6 +22,6 @@ namespace DeliverIT.Contracts
         bool IsFragile { get; set; }
         bool IsDelivered { get; set; }
         double Weight { get; set; }
-        string Address { get; set; } //needed to be fixed (string or not) 
+        Address Address { get; set; } //needed to be fixed (string or not) 
     }
 }
