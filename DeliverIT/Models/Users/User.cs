@@ -1,5 +1,7 @@
 ﻿
 
+using DeliverIT.Models;
+
 namespace DeliverIT
 {
     using DeliverIT.Common;
@@ -21,14 +23,14 @@ namespace DeliverIT
         private string phoneNumber;
         private int years;
 
-        protected User(string firstName, string lastName, string email, string phoneNumber, int years, Country country, GenderType genderType)
+        protected User(string firstName, string lastName, string email, string phoneNumber, int years, Address address, GenderType genderType)
         {
             this.FirstName = firstName;
             this.LastName = lastName;
             this.Email = email;
             this.PhoneNumber = phoneNumber;
             this.Years = years;
-            this.Country = country;
+            this.Address = address;
             this.Gender = genderType;
         }
 
@@ -89,7 +91,7 @@ namespace DeliverIT
             }
         }
 
-        public Country Country { get; protected set; }
+        public Address Address { get; protected set; }
 
         public GenderType Gender { get; protected set; }
 

@@ -25,8 +25,8 @@
         public ClientType ClientType { get => clientType; set => clientType = value; }
 
         public Client(string firstName, string lastName, string email, string phoneNumber,
-                        int years, Country country, GenderType gender) 
-            : base(firstName, lastName, email, phoneNumber, years, country, gender)
+                        int years, Address address, GenderType gender) 
+            : base(firstName, lastName, email, phoneNumber, years, address, gender)
         {
             this.OrdersList = new List<IOrder>();
         }

@@ -54,13 +54,12 @@
     <Compile Include="Common\Enums\ProductType.cs" />
     <Compile Include="Common\Validator.cs" />
     <Compile Include="Contracts\ICountry.cs" />
-    <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Users\Client.cs" />
     <Compile Include="Common\Enums\DeliveryType.cs" />
     <Compile Include="Common\Enums\GenderType.cs" />
     <Compile Include="Contracts\IOrder.cs" />
-    <Compile Include="Models\Countries\AbstractCountry.cs" />
+    <Compile Include="Models\Countries\Address.cs" />
     <Compile Include="Models\Countries\Bulgaria.cs" />
     <Compile Include="Models\Users\Courier.cs" />
     <Compile Include="Models\Order.cs" />

@@ -3,7 +3,7 @@
     using DeliverIT.Common.Enums;
     using System.Collections.Generic;
 
-    public abstract class Country
+    public abstract class Address
     {
         private string name;
         private decimal tax;
@@ -13,7 +13,7 @@
         private Continent continent;
         Dictionary<string, int> citysAndZips = new Dictionary<string, int>();
 
-        public Country(string name, decimal tax, string telephoneCode, string postalCode, 
+        public Address(string name, decimal tax, string telephoneCode, string postalCode, 
             string timeZone, Continent continent)
         {
             this.Name = name;
@@ -25,6 +25,7 @@
             this.CitysAndZips = new Dictionary<string, int>();
         }
 
+        //public TYPE Type { get; set; }
         public string Name { get => name; set => name = value; }
         public decimal Tax { get => tax; set => tax = value; }
         public string TelephoneCode { get => telephoneCode; set => telephoneCode = value; }

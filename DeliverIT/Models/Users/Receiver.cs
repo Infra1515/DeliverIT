@@ -10,8 +10,8 @@
         private List<IOrder> pendingOrders;
 
         public Receiver(string firstName, string lastName, string email, string phoneNumber,
-                int years, Country country, GenderType gender) 
-            : base(firstName, lastName, email, phoneNumber, years, country, gender)
+                int years, Address address, GenderType gender) 
+            : base(firstName, lastName, email, phoneNumber, years, address, gender)
         {
             this.PendingOrders = new List<IOrder>();
         }

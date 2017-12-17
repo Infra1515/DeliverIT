@@ -8,7 +8,7 @@ namespace DeliverIT.Contracts
     {
 
         //todo: use const for calculating the price (isFragile, tax)
-
+        
 
         Courier Courier { get; set; }
         Sender Sender { get; set; }
@@ -17,7 +17,6 @@ namespace DeliverIT.Contracts
         DateTime DueDate { get; set; }
         DeliveryType DeliveryType { get; set; }
         decimal DeliveryPrice { get; set; }
-        int Id { get; set; }
         bool IsDelivered { get; set; }
         Address Address { get; set; } //needed to be fixed (string or not) 
         decimal CalculatePrice();
