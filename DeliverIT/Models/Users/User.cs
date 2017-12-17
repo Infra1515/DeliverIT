@@ -1,13 +1,6 @@
-﻿
-
-using DeliverIT.Models;
-
-namespace DeliverIT
+﻿namespace DeliverIT
 {
     using DeliverIT.Common;
-    using DeliverIT.Models.Countries;
-    using System;
-    using System.Text.RegularExpressions;
 
     /// <todo>
     /// 1. Implement Person behaviour

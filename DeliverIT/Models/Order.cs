@@ -50,7 +50,8 @@ namespace DeliverIT
             }
 
             priceForDelivery *= (decimal)this.DeliveryType; // multiply the price for delivery using express/standart delivery coefficient
-            priceForDelivery *= this.Receiver.Address.Tax; // multiply the price using tax of country
+            priceForDelivery *= this.Receiver.Address.Tax; // multiply the price using country tax
+            priceForDelivery /= (decimal)this.Sender.ClientType; // change delivery price using client type coeff
 
             return priceForDelivery;
 

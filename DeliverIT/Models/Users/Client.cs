@@ -5,21 +5,12 @@
     using DeliverIT.Contracts;
     using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-
-    /// <summary>
-    /// Client => Receiver/Sender => Individual/Legal entity;
-    /// Client Fields: Adress, ZIP Code, Country, City, Phone, Email, All Orders List, 
-    /// 
-    /// </summary>
     
     public class Client : User
     {
         private IList<IOrder> ordersList;
-        private ClientType clientType; 
-        private static int id;
+        private ClientType clientType;
+        private static int id = 0;
 
         public IList<IOrder> OrdersList { get => ordersList; set => ordersList = value; }
         public ClientType ClientType { get => clientType; set => clientType = value; }
@@ -28,6 +19,7 @@
                         int years, Address address, GenderType gender) 
             : base(firstName, lastName, email, phoneNumber, years, address, gender)
         {
+            id += 1;
             this.OrdersList = new List<IOrder>();
         }
 
