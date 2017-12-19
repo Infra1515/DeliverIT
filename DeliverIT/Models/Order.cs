@@ -24,7 +24,7 @@ namespace DeliverIT
             this.SendDate = sendDate;
             this.DueDate = dueDate;
             this.DeliveryPrice = deliveryPrice;
-            this.IsDelivered = isDelivered;
+            this.IsDelivered = isDelivered; //enum? deliveryState (delivered, not delivered, damaged, not accepted, lost.......)
             this.Address = address;
         }
 
