@@ -16,7 +16,7 @@
         private string phoneNumber;
         private int years;
 
-        protected User(string firstName, string lastName, string email, string phoneNumber, int years, Address address, GenderType genderType)
+        protected User(string firstName, string lastName, string email, string phoneNumber, int years, Country address, GenderType genderType)
         {
             this.FirstName = firstName;
             this.LastName = lastName;
@@ -87,11 +87,11 @@
             }
         }
 
-        public Address Address { get; protected set; }
+        public Country Address { get; protected set; }
 
         public GenderType Gender { get; protected set; }
 
-        public Address ShowCurrentAddress()
+        public Country ShowCurrentAddress()
         {
             //method showing curr address
             return this.Address;

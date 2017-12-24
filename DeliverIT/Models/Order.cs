@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Net;
+using System.Runtime.CompilerServices;
 
 namespace DeliverIT
 {
@@ -15,7 +16,7 @@ namespace DeliverIT
         private static int id = 0;
 
         public Order(Courier courier, Sender sender, Receiver receiver, DateTime sendDate, DateTime dueDate, 
-             decimal deliveryPrice, bool isDelivered, Address address)
+             decimal deliveryPrice, bool isDelivered, Country address)
         {
             Id += 1;
             this.Courier = courier;
@@ -51,11 +52,11 @@ namespace DeliverIT
                 this.dueDate = value;
             }
         }
-        public Address Address { get ; set ; }
+        public Country Address { get ; set ; }
         public Product Product { get; set; }
         public DeliveryType DeliveryType { get; set; }
         public decimal DeliveryPrice { get; set; }
-        public static int Id { get; private set; }
+        public static int Id { get { return id; } private set { id = value; }}
         public bool IsDelivered { get ; set ; }
 
         public decimal CalculatePrice()

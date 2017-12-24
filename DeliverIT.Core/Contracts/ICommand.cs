@@ -10,6 +10,8 @@ namespace DeliverIT.Core.Contracts
     {
         string CommandName { get; }
 
-        void ExecuteCommand();
+        List<string> Parameters { get; }
+
+        //void ExecuteCommand(string input);
     }
 }

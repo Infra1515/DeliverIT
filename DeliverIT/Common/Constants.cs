@@ -32,5 +32,7 @@
         public const decimal Price = 4.5m;
         public const decimal PriceForKg = 0.5m;
         public const decimal FragileCoefficient = 2;
+
+        public const string RegisteredClient = "Client {0} registered successfully!";
     }
 }

@@ -15,7 +15,7 @@
         public double AllowedWeight { get => allowedWeight; set => allowedWeight = value; }
 
         public Courier(string firstName, string lastName, string email, string phoneNumber,
-                        int years, Address address, GenderType gender,
+                        int years, Country address, GenderType gender,
                         double allowedWeight, double allowedVolume) 
             : base(firstName, lastName, email, phoneNumber, years, address, gender)
         {

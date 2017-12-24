@@ -18,7 +18,7 @@ namespace DeliverIT.Contracts
         DeliveryType DeliveryType { get; set; }
         decimal DeliveryPrice { get; set; }
         bool IsDelivered { get; set; }
-        Address Address { get; set; } //needed to be fixed (string or not) 
+        Country Address { get; set; } //needed to be fixed (string or not) 
         decimal CalculatePrice();
     }
 }
