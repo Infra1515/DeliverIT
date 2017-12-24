@@ -3,7 +3,7 @@
 namespace DeliverIT.Common
 { 
     using System;
-    //TODO: simplify code!!!
+
     public class Validator
     {
         public static void ValidateUserInfo(string input, string pattern, int min, int max, string message)

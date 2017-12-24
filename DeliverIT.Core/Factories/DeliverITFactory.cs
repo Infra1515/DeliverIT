@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DeliverIT.Common;
-using DeliverIT.Common.Enums;
 using DeliverIT.Contracts;
 
 namespace DeliverIT.Core.Factories
@@ -22,10 +17,9 @@ namespace DeliverIT.Core.Factories
             throw new NotImplementedException();
         }
 
-        public ICountry CreateCountry(string name, decimal tax, string telephoneCode, string postalCode,
-            string timeZone, Continent continent)
+        public ICountry CreateCountry(string name, decimal tax)
         {
-            return new Country(name,tax, telephoneCode, postalCode, timeZone, Continent.Europe);
+            return new Country(name, tax);
         }
     }
 }

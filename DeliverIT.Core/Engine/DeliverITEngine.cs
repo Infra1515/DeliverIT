@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using DeliverIT.Common;
-using DeliverIT.Common.Enums;
 using DeliverIT.Contracts;
 using DeliverIT.Core.Contracts;
 using DeliverIT.Core.Factories;
@@ -53,7 +51,7 @@ namespace DeliverIT.Core.Engine
                 switch ((Selections)userChoise)
                 {
                     case Selections.AddClient:
-                        Console.WriteLine("Implement creating of a client ...");
+                        //Console.WriteLine("Implement creating of a client ...");
 
                         Console.Write("First name: ");
                         string firstName = Console.ReadLine();
@@ -73,10 +71,16 @@ namespace DeliverIT.Core.Engine
                         Console.Write("Gender: ");
                         GenderType gender = (GenderType)Enum.Parse(typeof(GenderType), Console.ReadLine());
 
-                        //Console.Write("Address: ");
-                        //string countryName = Console.ReadLine();
-                        //var country = this.RegisterCountry(name, tax, telephoneCode, postalCode, timeZone, continent);
-                        //this.RegisterClient(firstName, lastName, email, phoneNumber, years, country, gender);
+                        Console.WriteLine("--- Address ---");
+
+                        Console.Write("Country: ");
+                        Country country = (Country)Enum.Parse(typeof(Country), Console.ReadLine());
+
+                        Console.Write("Tax: ");
+                        decimal tax = Decimal.Parse(Console.ReadLine());
+
+                        //var country = this.RegisterCountry(country, tax);
+                        this.RegisterClient(firstName, lastName, email, phoneNumber, years, country, gender);
                         break;
 
                     case Selections.PlaceOrder:
@@ -110,17 +114,16 @@ namespace DeliverIT.Core.Engine
             while (true);
         }
 
-        private ICountry RegisterCountry(string name, decimal tax, string telephoneCode, string postalCode,
-            string timeZone, Continent continent)
+        private ICountry RegisterCountry(string name, decimal tax)
         {
-            var country = this.factory.CreateCountry(name, tax, telephoneCode, postalCode, timeZone, continent);
-            return new Country(name, tax, telephoneCode, postalCode, timeZone, continent);
+            var country = this.factory.CreateCountry(name, tax);
+            return new Country(name, tax);
         }
 
         private string RegisterClient(string firstName, string lastName, string email, string phoneNumber,
             int years, Country address, GenderType gender)
         {
-           // var user = this.factory.CreateClient(firstName, lastName, email, phoneNumber, years, country, gender);
+            var user = this.factory.CreateClient(firstName, lastName, email, phoneNumber, years, address, gender);
 
             return string.Format(Constants.RegisteredClient);
         }
@@ -165,5 +168,4 @@ namespace DeliverIT.Core.Engine
             return sb.ToString();
         }
     }
-
 }

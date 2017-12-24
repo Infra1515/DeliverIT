@@ -44,27 +44,5 @@ namespace DeliverIT.Core.Engine
                 this.parameters = value;
             }
         }
-
-        //private void ExecuteCommand(string input)
-        //{
-        //    var indexOfFirstSeparator = input.IndexOf(SplitCommandSymbol);
-        //    Regex regex = new Regex("{{.+(?=}})}}");
-
-        //    if (indexOfFirstSeparator < 0)
-        //    {
-        //        this.CommandName = input;
-        //        return;
-        //    }
-
-        //    this.CommandName = input.Substring(0, indexOfFirstSeparator);
-
-        //    if (indexOfFirstSeparator >= 0)
-        //    {
-        //        this.Parameters.Add(input.Substring(indexOfFirstSeparator + CommentOpenSymbol.Length, indexOfCloseComment - CommentCloseSymbol.Length - indexOfOpenComment));
-        //        input = regex.Replace(input, string.Empty);
-        //    }
-
-        //    this.Parameters.AddRange(input.Substring(indexOfFirstSeparator + 1).Split(new[] { SplitCommandSymbol }, StringSplitOptions.RemoveEmptyEntries));
-        //}
     }
 }

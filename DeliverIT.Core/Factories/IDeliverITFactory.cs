@@ -12,7 +12,6 @@ namespace DeliverIT.Core.Factories
 
         Order PlaceOrder();
 
-        ICountry CreateCountry(string name, decimal tax, string telephoneCode, string postalCode,
-            string timeZone, Continent continent);
+        ICountry CreateCountry(string name, decimal tax);
     }
 }
