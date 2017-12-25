@@ -10,8 +10,6 @@ namespace DeliverIT.Common.Enums
     {
         Bulgaria,
         Russia,
-        Germany,
-        Turkey,
-        Greece
+        Germany
     }
 }

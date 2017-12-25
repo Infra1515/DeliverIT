@@ -1,6 +1,5 @@
 ﻿using System;
 using DeliverIT.Common;
-using DeliverIT.Contracts;
 using DeliverIT.Models;
 
 namespace DeliverIT.Core.Factories

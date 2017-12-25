@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 using DeliverIT.Common;
+using DeliverIT.Common.Enums;
 using DeliverIT.Contracts;
 using DeliverIT.Core.Contracts;
 using DeliverIT.Core.Factories;
 using DeliverIT.Core.Utilities;
 using DeliverIT.Models;
+using DeliverIT.Models.Countries;
 
 namespace DeliverIT.Core.Engine
 {
@@ -77,7 +79,31 @@ namespace DeliverIT.Core.Engine
                         // How to make string country into class Country
                         // ie user enters Bulgaria = program sets user Country to Bulgaria
                         Console.Write("Country: ");
-                        Country country = (Country)Enum.Parse(typeof(Country), Console.ReadLine());
+                        //Country country = (Country)Enum.Parse(typeof(Country), Console.ReadLine());
+
+                        string countryString = Console.ReadLine();
+
+                        Country country;
+
+                        switch ((CountryType)Enum.Parse(typeof(CountryType), countryString))
+                        {
+
+                            case CountryType.Bulgaria:
+                                country = new Bulgaria();
+                                break;
+
+                            case CountryType.Germany:
+                                country = new Germany();
+                                break;
+
+                            case CountryType.Russia:
+                                country = new Russia(); ;
+                                break;
+
+                            default:
+                                country = new Bulgaria();
+                                break;
+                        }
 
                         Console.Write("City: ");
                         string city = Console.ReadLine();
@@ -88,8 +114,8 @@ namespace DeliverIT.Core.Engine
                         Console.Write("Street number: ");
                         string streetNumber = Console.ReadLine();
 
-                        Address userAddres = new Address(country, streetName, streetNumber, city);
-                        this.RegisterClient(firstName, lastName, email, phoneNumber, years, userAddres, gender);
+                        Address userAddress = new Address(country, streetName, streetNumber, city);
+                        this.RegisterClient(firstName, lastName, email, phoneNumber, years, userAddress, gender);
                         break;
 
                     case Selections.PlaceOrder:

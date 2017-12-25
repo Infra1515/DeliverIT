@@ -11,7 +11,6 @@
 
         public Bulgaria() : base(name, tax)
         {
-
         }
     }
 }

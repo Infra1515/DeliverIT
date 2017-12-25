@@ -56,6 +56,8 @@
     <Compile Include="Common\Validator.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Contracts\ICountry.cs" />
+    <Compile Include="Models\Countries\Germany.cs" />
+    <Compile Include="Models\Countries\Russia.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Users\Client.cs" />
     <Compile Include="Common\Enums\DeliveryType.cs" />
