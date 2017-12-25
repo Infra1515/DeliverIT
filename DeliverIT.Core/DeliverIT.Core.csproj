@@ -59,7 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DeliverIT\DeliverIT.csproj">
-      <Project>{81A5FA03-CA1A-4C10-B7CA-C68C607BD5DA}</Project>
+      <Project>{81a5fa03-ca1a-4c10-b7ca-c68c607bd5da}</Project>
       <Name>DeliverIT</Name>
     </ProjectReference>
   </ItemGroup>

@@ -3,6 +3,7 @@
     using DeliverIT.Common;
     using DeliverIT.Common.Enums;
     using DeliverIT.Contracts;
+    using DeliverIT.Models;
     using System;
     using System.Collections.Generic;
     
@@ -16,7 +17,7 @@
         public ClientType ClientType { get => clientType; set => clientType = value; }
 
         public Client(string firstName, string lastName, string email, string phoneNumber,
-                        int years, Country address, GenderType gender) 
+                        int years, Address address, GenderType gender) 
             : base(firstName, lastName, email, phoneNumber, years, address, gender)
         {
             id += 1;

@@ -6,6 +6,7 @@ using DeliverIT.Contracts;
 using DeliverIT.Core.Contracts;
 using DeliverIT.Core.Factories;
 using DeliverIT.Core.Utilities;
+using DeliverIT.Models;
 
 namespace DeliverIT.Core.Engine
 {
@@ -73,14 +74,22 @@ namespace DeliverIT.Core.Engine
 
                         Console.WriteLine("--- Address ---");
 
+                        // How to make string country into class Country
+                        // ie user enters Bulgaria = program sets user Country to Bulgaria
                         Console.Write("Country: ");
                         Country country = (Country)Enum.Parse(typeof(Country), Console.ReadLine());
 
-                        Console.Write("Tax: ");
-                        decimal tax = Decimal.Parse(Console.ReadLine());
+                        Console.Write("City: ");
+                        string city = Console.ReadLine();
 
-                        //var country = this.RegisterCountry(country, tax);
-                        this.RegisterClient(firstName, lastName, email, phoneNumber, years, country, gender);
+                        Console.Write("Street name: ");
+                        string streetName = Console.ReadLine();
+
+                        Console.Write("Street number: ");
+                        string streetNumber = Console.ReadLine();
+
+                        Address userAddres = new Address(country, streetName, streetNumber, city);
+                        this.RegisterClient(firstName, lastName, email, phoneNumber, years, userAddres, gender);
                         break;
 
                     case Selections.PlaceOrder:
@@ -114,14 +123,9 @@ namespace DeliverIT.Core.Engine
             while (true);
         }
 
-        private ICountry RegisterCountry(string name, decimal tax)
-        {
-            var country = this.factory.CreateCountry(name, tax);
-            return new Country(name, tax);
-        }
 
         private string RegisterClient(string firstName, string lastName, string email, string phoneNumber,
-            int years, Country address, GenderType gender)
+            int years, Address address, GenderType gender)
         {
             var user = this.factory.CreateClient(firstName, lastName, email, phoneNumber, years, address, gender);
 

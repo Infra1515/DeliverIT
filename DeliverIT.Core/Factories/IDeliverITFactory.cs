@@ -1,17 +1,15 @@
-﻿using Microsoft.Win32;
-   using DeliverIT.Common;
+﻿using DeliverIT.Common;
 using DeliverIT.Common.Enums;
 using DeliverIT.Contracts;
+using DeliverIT.Models;
 
 namespace DeliverIT.Core.Factories
 {
     public interface IDeliverITFactory
     {
-        Client CreateClient(string firstName, string lastName, string email, string phoneNumber, int years, Country address,
-            GenderType gender);
+        Client CreateClient(string firstName, string lastName, string email, string phoneNumber, int years,
+            Address address, GenderType gender);
 
         Order PlaceOrder();
-
-        ICountry CreateCountry(string name, decimal tax);
     }
 }

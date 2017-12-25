@@ -6,7 +6,7 @@ namespace DeliverIT
     using System.Collections.Generic;
 
     //timezone, continent, telephonecode (?need?)
-    public class Country : ICountry
+    public abstract class Country : ICountry
     {
         public Country(string name, decimal tax)
         {

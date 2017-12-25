@@ -2,6 +2,7 @@
 {
     using DeliverIT.Common;
     using DeliverIT.Contracts;
+    using DeliverIT.Models;
     using System;
     using System.Collections.Generic;
 
@@ -11,7 +12,7 @@
 
 
         public Sender(string firstName, string lastName, string email, string phoneNumber,
-                        int years, Country address, GenderType gender) 
+                        int years, Address address, GenderType gender) 
             : base(firstName, lastName, email, phoneNumber, years, address, gender)
         {
             this.sendingOrders = new List<IOrder>();

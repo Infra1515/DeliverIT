@@ -1,13 +1,14 @@
 ﻿using System;
 using DeliverIT.Common;
 using DeliverIT.Contracts;
+using DeliverIT.Models;
 
 namespace DeliverIT.Core.Factories
 {
     public class DeliverITFactory : IDeliverITFactory
     {
-        public Client CreateClient(string firstName, string lastName, string email, string phoneNumber, int years, Country address,
-            GenderType gender)
+        public Client CreateClient(string firstName, string lastName, string email, string phoneNumber, int years,
+            Address address, GenderType gender)
         {
             return new Client(firstName, lastName, email, phoneNumber, years, address, gender);
         }
@@ -17,9 +18,5 @@ namespace DeliverIT.Core.Factories
             throw new NotImplementedException();
         }
 
-        public ICountry CreateCountry(string name, decimal tax)
-        {
-            return new Country(name, tax);
-        }
     }
 }

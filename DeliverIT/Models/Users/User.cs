@@ -1,6 +1,7 @@
 ﻿namespace DeliverIT
 {
     using DeliverIT.Common;
+    using DeliverIT.Models;
 
     /// <todo>
     /// 1. Implement Person behaviour
@@ -16,7 +17,8 @@
         private string phoneNumber;
         private int years;
 
-        protected User(string firstName, string lastName, string email, string phoneNumber, int years, Country address, GenderType genderType)
+        protected User(string firstName, string lastName, string email, string phoneNumber, int years, 
+            Address address, GenderType genderType)
         {
             this.FirstName = firstName;
             this.LastName = lastName;
@@ -87,11 +89,11 @@
             }
         }
 
-        public Country Address { get; protected set; }
+        public Address Address { get; protected set; }
 
         public GenderType Gender { get; protected set; }
 
-        public Country ShowCurrentAddress()
+        public Address ShowCurrentAddress()
         {
             //method showing curr address
             return this.Address;
