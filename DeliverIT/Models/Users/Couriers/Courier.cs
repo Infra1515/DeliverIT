@@ -4,7 +4,7 @@
     using DeliverIT.Models;
     using System.Collections.Generic;
 
-    public class Courier : User
+    public abstract class Courier : User
     {
         private IList<Order> deliveries;
         private static int id = 0;
@@ -27,7 +27,7 @@
         }
 
         //method used for allowed volume and weight orders
-        public bool CanCarry()
+        public virtual bool CanCarry()
         {
             bool canCarry = false;
 
