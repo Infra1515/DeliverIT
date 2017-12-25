@@ -150,12 +150,12 @@ namespace DeliverIT.Core.Engine
         }
 
 
-        private string RegisterClient(string firstName, string lastName, string email, string phoneNumber,
+        private void RegisterClient(string firstName, string lastName, string email, string phoneNumber,
             int years, Address address, GenderType gender)
         {
             var user = this.factory.CreateClient(firstName, lastName, email, phoneNumber, years, address, gender);
 
-            return string.Format(Constants.RegisteredClient);
+            Console.WriteLine(string.Format(Constants.RegisteredClient, firstName));
         }
 
         private string ShowAllClients()

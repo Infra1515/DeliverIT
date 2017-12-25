@@ -34,7 +34,7 @@
             get { return this.firstName; }
             protected set
             {
-                Validator.ValidateUserInfo(value, Constants.NamePattern, Constants.MinNameLength, 
+                Validator.ValidateUserInfo(value, Constants.MinNameLength, 
                     Constants.MaxNameLength, Constants.InvalidName);
 
                 this.firstName = value;
@@ -46,7 +46,7 @@
             get { return this.lastName; }
             protected set
             {
-                Validator.ValidateUserInfo(value, Constants.NamePattern, Constants.MinNameLength, 
+                Validator.ValidateUserInfo(value, Constants.MinNameLength, 
                     Constants.MaxNameLength, Constants.InvalidName);
 
                 this.lastName = value;
@@ -59,8 +59,7 @@
             get { return this.email; }
             protected set
             {
-                Validator.ValidateUserInfo(value, Constants.InvalidEmail, Constants.MinEmailLength, 
-                    Constants.MaxEmailLength,  Constants.EmailPattern);
+                Validator.ValidateUserInfo(value,  Constants.MinEmailLength, Constants.MaxEmailLength, Constants.InvalidEmail);
 
                 this.email = value;
             }
@@ -71,8 +70,8 @@
             get { return this.phoneNumber; }
             protected set
             {
-                Validator.ValidateUserInfo(value, Constants.PhonePattern, Constants.MinPhoneLength, 
-                    Constants.MaxPhoneLength, Constants.InvalidPhoneNumber);
+               // Validator.ValidateUserInfo(value, Constants.MinPhoneLength, 
+                   // Constants.MaxPhoneLength, Constants.InvalidPhoneNumber);
 
                 this.phoneNumber = value;
             }
