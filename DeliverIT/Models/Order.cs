@@ -32,6 +32,7 @@ namespace DeliverIT
         public Courier Courier { get; set; }
         public Sender Sender { get; set; }
         public Receiver Receiver { get; set; }
+
         public DateTime SendDate
         {
             get { return this.sendDate; }

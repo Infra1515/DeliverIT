@@ -119,7 +119,7 @@ namespace DeliverIT.Core.Engine
                         break;
 
                     case Selections.PlaceOrder:
-                        Console.WriteLine("Implement placing of an order ...");
+                        //Console.WriteLine("Implement placing of an order ...");
                         break;
 
                     case Selections.AddCourier:
@@ -155,7 +155,7 @@ namespace DeliverIT.Core.Engine
         {
             var user = this.factory.CreateClient(firstName, lastName, email, phoneNumber, years, address, gender);
 
-            Console.WriteLine(string.Format(Constants.RegisteredClient, firstName));
+            Console.WriteLine(string.Format(Constants.RegisteredClient, firstName)); //todo implement with RETURN NOT CW    
         }
 
         private string ShowAllClients()

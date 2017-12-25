@@ -65,8 +65,9 @@
     <Compile Include="Models\Contracts\IOrder.cs" />
     <Compile Include="Models\Countries\Country.cs" />
     <Compile Include="Models\Countries\Bulgaria.cs" />
-    <Compile Include="Models\Users\Couriers\Courier.cs" />
+    <Compile Include="Models\Users\Couriers\Abstract\Courier.cs" />
     <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\Users\Couriers\Gosheedy.cs" />
     <Compile Include="Models\Users\Couriers\Peshont.cs" />
     <Compile Include="Models\Users\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
