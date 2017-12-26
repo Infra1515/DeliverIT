@@ -3,6 +3,7 @@ using DeliverIT.Common;
 using DeliverIT.Contracts;
 using DeliverIT.Models.Users.Clients;
 using DeliverIT.Models.Users.Couriers.Abstract;
+using DeliverIT.Common.Enums;
 
 namespace DeliverIT.Models
 {
@@ -14,7 +15,7 @@ namespace DeliverIT.Models
         private static int id = 0;
 
         public Order(Courier courier, Sender sender, Receiver receiver, DateTime sendDate, DateTime dueDate,
-             decimal deliveryPrice, bool isDelivered, Country address, Product product)
+                 OrderState orderState, Address address, Product product)
         {
             Id += 1;
             this.Courier = courier;
@@ -22,8 +23,7 @@ namespace DeliverIT.Models
             this.Receiver = receiver;
             this.SendDate = sendDate;
             this.DueDate = dueDate;
-            this.DeliveryPrice = deliveryPrice;
-            this.IsDelivered = isDelivered; //enum? deliveryState (delivered, not delivered, damaged, not accepted, lost.......)
+            this.OrderState = orderState;
             this.Address = address;
             this.Product = product;
         }
@@ -52,12 +52,12 @@ namespace DeliverIT.Models
                 this.dueDate = value;
             }
         }
-        public Country Address { get; set; }
+        public Address Address { get; set; }
         public Product Product { get; set; }
         public DeliveryType DeliveryType { get; set; }
         public decimal DeliveryPrice { get; set; }
         public static int Id { get { return id; } private set { id = value; } }
-        public bool IsDelivered { get; set; }
+        public OrderState OrderState { get; set; }
 
 
         //method for calculating order price (delivery type, country tax, size, isFragile)
@@ -87,7 +87,7 @@ namespace DeliverIT.Models
             return $"- Courier: {this.Courier.FirstName} {this.Courier.LastName}\n- " +
                    $"Sender: {this.Sender.FirstName} {this.Sender.LastName}\n- Receiver: {this.Receiver.FirstName} {this.Receiver.LastName}" +
                    $"\n- Send date: {this.SendDate}\n- Due date: {this.DueDate}" +
-                   $"\n- Delivery price: {this.DeliveryPrice}\n- Is delivered: {this.IsDelivered}" +
+                   $"\n- Delivery price: {this.DeliveryPrice}\n- OrderState: {this.OrderState}" +
                    $"\n- Address: {this.Address.ToString()}\n- Product: {this.Product}";
         }
     }

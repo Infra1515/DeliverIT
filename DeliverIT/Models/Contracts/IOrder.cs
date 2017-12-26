@@ -3,6 +3,7 @@ using DeliverIT.Models;
 using System;
 using DeliverIT.Models.Users.Clients;
 using DeliverIT.Models.Users.Couriers.Abstract;
+using DeliverIT.Common.Enums;
 
 namespace DeliverIT.Contracts
 {
@@ -19,8 +20,8 @@ namespace DeliverIT.Contracts
         DateTime DueDate { get; set; }
         DeliveryType DeliveryType { get; set; }
         decimal DeliveryPrice { get; set; }
-        bool IsDelivered { get; set; }
-        Country Address { get; set; } //needed to be fixed (string or not) 
+        OrderState OrderState{ get; set; }
+        Address Address { get; set; } //needed to be fixed (string or not) 
         decimal CalculatePrice();
     }
 }

@@ -13,6 +13,8 @@ using DeliverIT.Models.Users.Clients;
 using DeliverIT.Models.Users.Clients.Abstract;
 using DeliverIT.Models.Users.Couriers;
 using DeliverIT.Models.Users.Couriers.Abstract;
+using DeliverIT.Models.Users.Abstract;
+using System.Linq;
 
 namespace DeliverIT.Core.Engine
 {
@@ -58,22 +60,11 @@ namespace DeliverIT.Core.Engine
                 switch ((Selections)userChoise)
                 {
                     case Selections.AddClient:
-                        PrintUserOutput();
+                        AddUser();
                         break;
 
                     case Selections.PlaceOrder:
-                        Console.WriteLine("Choose a courier: ");
-                        Console.WriteLine("8." + new Gosheedy().ToString());
-                        Console.WriteLine("9." + new Peshont().ToString());
-                        CreateCourier(int.Parse(Console.ReadLine()));
-
-                        Console.WriteLine("--- Sender information ---");
-                        PrintUserOutput();
-
-                        Console.WriteLine("--- Receiver information ---");
-                        PrintUserOutput();
-
-
+                        AddOrder();
                         break;
 
                     case Selections.AddCourier: //optional?
@@ -100,22 +91,8 @@ namespace DeliverIT.Core.Engine
             while (true);
         }
 
-        private void RegisterClient(string firstName, string lastName, string email, string phoneNumber,
-            int years, Address address, GenderType gender)
-        {
-            var user = this.factory.CreateClient(firstName, lastName, email, phoneNumber, years, address, gender);
-
-            Console.WriteLine(string.Format(Constants.RegisteredClient, firstName)); //todo implement with RETURN NOT CW    
-        }
-
-        private void PlaceOrder(Courier courier, Sender sender, Receiver receiver, DateTime sendDate, DateTime dueDate,
-            decimal deliveryPrice, bool isDelivered, Country address, Product product)
-        {
-            
-        }
-
-        private void PrintUserOutput()
-        {
+        private User AddUser()
+        { 
             Console.Write("First name: ");
             string firstName = Console.ReadLine();
 
@@ -152,7 +129,7 @@ namespace DeliverIT.Core.Engine
                     break;
 
                 case CountryType.Russia:
-                    country = new Russia(); ;
+                    country = new Russia(); 
                     break;
 
                 default:
@@ -170,9 +147,95 @@ namespace DeliverIT.Core.Engine
             string streetNumber = Console.ReadLine();
 
             Address userAddress = new Address(country, streetName, streetNumber, city);
-            this.RegisterClient(firstName, lastName, email, phoneNumber, years, userAddress, gender);
+
+            Client client = this.factory.CreateClient(firstName, lastName, email, phoneNumber,
+                years, userAddress, gender);
+
+            Console.WriteLine(string.Format(Constants.RegisteredClient, firstName));
+
+            return client;
         }
 
+        private IOrder AddOrder()
+        {
+
+            Console.WriteLine("Choose a courier: ");
+            Console.WriteLine("8." + new Gosheedy().ToString());
+            Console.WriteLine("9." + new Peshont().ToString());
+            Courier courier = CreateCourier(int.Parse(Console.ReadLine()));
+
+            Console.WriteLine("--- Sender information ---");
+            Sender sender = (Sender) AddUser();
+
+            Console.WriteLine("--- Receiver information ---");
+            Receiver receiver = (Receiver) AddUser();
+
+            Console.Write("---Product information---");
+            Product product = AddProduct();
+
+            DateTime sendDate = DateTime.Now;
+            Console.Write($"Date of sending: {sendDate}");
+
+            DateTime dueDate = sendDate.AddDays(1);
+            Console.Write($"Due date for delivery is: {dueDate}");
+
+            IOrder order = this.factory.CreateOrder(courier, sender, receiver, sendDate, dueDate,
+                OrderState.NotDelivered, receiver.Address, product);
+
+            return order;
+
+        }
+
+        private Product AddProduct()
+        {
+
+            Console.Write("Dimensions(X Y Z): ");
+            var dimensions = Console.ReadLine().Split(' ').Select(double.Parse).ToArray();
+            double x = dimensions[0];
+            double y = dimensions[1];
+            double z = dimensions[2];
+
+            Console.Write("Is the product fragile? ");
+            string isFragileStr = Console.ReadLine().ToLower().Trim();
+            bool isFragile;
+            if(isFragileStr == "yes")
+            {
+                isFragile = true;
+            }
+            else
+            {
+                isFragile = false;
+            }
+
+            Console.Write("What is the product weight?");
+            double weight = double.Parse(Console.ReadLine());
+
+            Console.Write("What is the product type?" +
+                "Available:  Clothes, Accessories, Electronics, Other");
+            string productTypeString = Console.ReadLine().ToLower().Trim();
+            ProductType productType;
+            switch (productTypeString)
+            {
+                case "clothes":
+                    productType = ProductType.Clothes;
+                    break;
+                case "accessories":
+                    productType = ProductType.Clothes;
+                    break;
+                case "electronics":
+                    productType = ProductType.Electronics;
+                    break;
+                case "other":
+                    productType = ProductType.Other;
+                    break;
+                default:
+                    productType = ProductType.Other;
+                    break;
+            }
+            Product product = this.factory.CreateProduct(x, y, z, isFragile, weight, productType);
+            return product;
+            
+        }
         private string ShowAllClients()
         {
             StringBuilder sb = new StringBuilder();
@@ -197,24 +260,21 @@ namespace DeliverIT.Core.Engine
             return sb.ToString();
         }
 
-        private void CreateCourier(int choice)
+        private Courier CreateCourier(int choice)
         {
             Courier courier = new Gosheedy();
             switch (choice)
             {
                 case 8:
-                    courier =  new Gosheedy();
-
+                    courier = new Gosheedy();
                     Console.WriteLine($"{courier.GetType().Name} chosen successfully!");
-                    break;
-                case 9: 
-                    courier =  new Peshont();
-
+                    return courier;
+                case 9:
+                    courier = new Peshont();
                     Console.WriteLine($"{courier.GetType().Name} chosen successfully!");
-                    break;
+                    return courier;
                 default:
-                    Console.WriteLine("Invalid command entered!");
-                    break;
+                    return courier;
             }
         }
 
