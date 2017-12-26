@@ -1,9 +1,4 @@
 ﻿using DeliverIT.Common.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DeliverIT.Models
 {
@@ -27,12 +22,5 @@ namespace DeliverIT.Models
         private ProductType ProductType { get; set; }
 
         public double Volume { get; set; }
-
-
-        //todo override tostring 
-        public override string ToString()
-        {
-            return base.ToString();
-        }
     }
 }

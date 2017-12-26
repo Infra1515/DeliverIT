@@ -1,5 +1,6 @@
 ﻿using DeliverIT.Common;
 using DeliverIT.Models.Countries;
+using DeliverIT.Models.Users.Couriers.Abstract;
 
 namespace DeliverIT.Models.Users.Couriers
 {
@@ -14,7 +15,6 @@ namespace DeliverIT.Models.Users.Couriers
         private const GenderType gender = GenderType.Male;
         private const double allowedWeight = 500;
         private const double allowedVolume = 40;
-
 
         public Peshont() : base(firstName, lastName, email, phoneNumber, years, address, gender, allowedWeight, allowedVolume)
         {

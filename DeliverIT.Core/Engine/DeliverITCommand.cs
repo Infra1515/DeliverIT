@@ -1,6 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Dynamic;
 using System.Text.RegularExpressions;
+using DeliverIT.Common;
+using DeliverIT.Common.Enums;
+using DeliverIT.Models;
+using DeliverIT.Models.Countries;
 
 namespace DeliverIT.Core.Engine
 {
@@ -13,36 +17,37 @@ namespace DeliverIT.Core.Engine
 
     public class DeliverITCommand : ICommand
     {
-        private const char SplitCommandSymbol = ' ';
+        //private const char SplitCommandSymbol = ' ';
 
-        private string commandName;
-        private List<string> parameters;
+        //private string commandName;
+        //private List<string> parameters;
 
 
-        public DeliverITCommand(string currLine)
-        {
+        //public DeliverITCommand(string currLine)
+        //{
             
-        }
+        //}
 
-        public string CommandName
-        {
-            get { return this.commandName; }
-            private set
-            {
-                //validation needed
-                this.commandName = value;
-            }
+        //public string CommandName
+        //{
+        //    get { return this.commandName; }
+        //    private set
+        //    {
+        //        //validation needed
+        //        this.commandName = value;
+        //    }
             
-        }
+        //}
         
-        public List<string> Parameters 
-        {
-            get { return this.parameters; }
-            private set
-            {
-                //validation
-                this.parameters = value;
-            }
-        }
+        //public List<string> Parameters 
+        //{
+        //    get { return this.parameters; }
+        //    private set
+        //    {
+        //        //validation
+        //        this.parameters = value;
+        //    }
+        //}
+        
     }
 }

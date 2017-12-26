@@ -1,13 +1,11 @@
-﻿using System.Collections;
-using System.Net;
-using System.Runtime.CompilerServices;
+﻿using System;
+using DeliverIT.Common;
+using DeliverIT.Contracts;
+using DeliverIT.Models.Users.Clients;
+using DeliverIT.Models.Users.Couriers.Abstract;
 
-namespace DeliverIT
+namespace DeliverIT.Models
 {
-    using DeliverIT.Common;
-    using DeliverIT.Contracts;
-    using DeliverIT.Models;
-    using System;
 
     public class Order : IOrder
     {
@@ -15,8 +13,8 @@ namespace DeliverIT
         private DateTime dueDate;
         private static int id = 0;
 
-        public Order(Courier courier, Sender sender, Receiver receiver, DateTime sendDate, DateTime dueDate, 
-             decimal deliveryPrice, bool isDelivered, Country address)
+        public Order(Courier courier, Sender sender, Receiver receiver, DateTime sendDate, DateTime dueDate,
+             decimal deliveryPrice, bool isDelivered, Country address, Product product)
         {
             Id += 1;
             this.Courier = courier;
@@ -27,6 +25,7 @@ namespace DeliverIT
             this.DeliveryPrice = deliveryPrice;
             this.IsDelivered = isDelivered; //enum? deliveryState (delivered, not delivered, damaged, not accepted, lost.......)
             this.Address = address;
+            this.Product = product;
         }
 
         public Courier Courier { get; set; }
@@ -53,13 +52,15 @@ namespace DeliverIT
                 this.dueDate = value;
             }
         }
-        public Country Address { get ; set ; }
+        public Country Address { get; set; }
         public Product Product { get; set; }
         public DeliveryType DeliveryType { get; set; }
         public decimal DeliveryPrice { get; set; }
-        public static int Id { get { return id; } private set { id = value; }}
-        public bool IsDelivered { get ; set ; }
+        public static int Id { get { return id; } private set { id = value; } }
+        public bool IsDelivered { get; set; }
 
+
+        //method for calculating order price (delivery type, country tax, size, isFragile)
         public decimal CalculatePrice()
         {
             this.DeliveryPrice = Constants.PriceForKg;
@@ -79,8 +80,15 @@ namespace DeliverIT
             this.DeliveryPrice /= (decimal)this.Sender.ClientType; // change delivery price using client type coeff
 
             return this.DeliveryPrice;
+        }
 
-            //method for calculating order price (delivery type, country tax, size, isFragile)
+        public override string ToString()
+        {
+            return $"- Courier: {this.Courier.FirstName} {this.Courier.LastName}\n- " +
+                   $"Sender: {this.Sender.FirstName} {this.Sender.LastName}\n- Receiver: {this.Receiver.FirstName} {this.Receiver.LastName}" +
+                   $"\n- Send date: {this.SendDate}\n- Due date: {this.DueDate}" +
+                   $"\n- Delivery price: {this.DeliveryPrice}\n- Is delivered: {this.IsDelivered}" +
+                   $"\n- Address: {this.Address.ToString()}\n- Product: {this.Product}";
         }
     }
 }

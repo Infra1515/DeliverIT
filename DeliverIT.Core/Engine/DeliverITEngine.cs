@@ -9,6 +9,10 @@ using DeliverIT.Core.Factories;
 using DeliverIT.Core.Utilities;
 using DeliverIT.Models;
 using DeliverIT.Models.Countries;
+using DeliverIT.Models.Users.Clients;
+using DeliverIT.Models.Users.Clients.Abstract;
+using DeliverIT.Models.Users.Couriers;
+using DeliverIT.Models.Users.Couriers.Abstract;
 
 namespace DeliverIT.Core.Engine
 {
@@ -54,101 +58,47 @@ namespace DeliverIT.Core.Engine
                 switch ((Selections)userChoise)
                 {
                     case Selections.AddClient:
-                        //Console.WriteLine("Implement creating of a client ...");
-
-                        Console.Write("First name: ");
-                        string firstName = Console.ReadLine();
-
-                        Console.Write("Last name: ");
-                        string lastName = Console.ReadLine();
-
-                        Console.Write("Email: ");
-                        string email = Console.ReadLine();
-
-                        Console.Write("Phone number: ");
-                        string phoneNumber = Console.ReadLine();
-
-                        Console.Write("Years: ");
-                        int years = int.Parse(Console.ReadLine());
-
-                        Console.Write("Gender: ");
-                        GenderType gender = (GenderType)Enum.Parse(typeof(GenderType), Console.ReadLine());
-
-                        Console.WriteLine("--- Address ---");
-
-                        // How to make string country into class Country
-                        // ie user enters Bulgaria = program sets user Country to Bulgaria
-                        Console.Write("Country: ");
-                        //Country country = (Country)Enum.Parse(typeof(Country), Console.ReadLine());
-
-                        string countryString = Console.ReadLine();
-
-                        Country country;
-
-                        switch ((CountryType)Enum.Parse(typeof(CountryType), countryString))
-                        {
-
-                            case CountryType.Bulgaria:
-                                country = new Bulgaria();
-                                break;
-
-                            case CountryType.Germany:
-                                country = new Germany();
-                                break;
-
-                            case CountryType.Russia:
-                                country = new Russia(); ;
-                                break;
-
-                            default:
-                                country = new Bulgaria();
-                                break;
-                        }
-
-                        Console.Write("City: ");
-                        string city = Console.ReadLine();
-
-                        Console.Write("Street name: ");
-                        string streetName = Console.ReadLine();
-
-                        Console.Write("Street number: ");
-                        string streetNumber = Console.ReadLine();
-
-                        Address userAddress = new Address(country, streetName, streetNumber, city);
-                        this.RegisterClient(firstName, lastName, email, phoneNumber, years, userAddress, gender);
+                        PrintUserOutput();
                         break;
 
                     case Selections.PlaceOrder:
-                        //Console.WriteLine("Implement placing of an order ...");
+                        Console.WriteLine("Choose a courier: ");
+                        Console.WriteLine("8." + new Gosheedy().ToString());
+                        Console.WriteLine("9." + new Peshont().ToString());
+                        CreateCourier(int.Parse(Console.ReadLine()));
+
+                        Console.WriteLine("--- Sender information ---");
+                        PrintUserOutput();
+
+                        Console.WriteLine("--- Receiver information ---");
+                        PrintUserOutput();
+
+
                         break;
 
-                    case Selections.AddCourier:
+                    case Selections.AddCourier: //optional?
                         Console.WriteLine("Implement adding a courier ...");
                         break;
 
                     case Selections.AllClients:
-                        //Console.WriteLine("Implement clients view ...");
                         Console.WriteLine(this.ShowAllClients());
                         break;
 
                     case Selections.AllOrders:
-                        //Console.WriteLine("Implement orders view ...");
                         Console.WriteLine(this.ShowAllOrders());
                         break;
 
                     case Selections.AllLocations:
-                        Console.WriteLine("Implement locations view ...");
+                        Console.WriteLine(ShowAllLocations());
                         break;
 
                     case Selections.Invalid:
                         Console.WriteLine("Invalid option selected! Please select a valid option!");
                         break;
                 }
-
             }
             while (true);
         }
-
 
         private void RegisterClient(string firstName, string lastName, string email, string phoneNumber,
             int years, Address address, GenderType gender)
@@ -156,6 +106,71 @@ namespace DeliverIT.Core.Engine
             var user = this.factory.CreateClient(firstName, lastName, email, phoneNumber, years, address, gender);
 
             Console.WriteLine(string.Format(Constants.RegisteredClient, firstName)); //todo implement with RETURN NOT CW    
+        }
+
+        private void PlaceOrder(Courier courier, Sender sender, Receiver receiver, DateTime sendDate, DateTime dueDate,
+            decimal deliveryPrice, bool isDelivered, Country address, Product product)
+        {
+            
+        }
+
+        private void PrintUserOutput()
+        {
+            Console.Write("First name: ");
+            string firstName = Console.ReadLine();
+
+            Console.Write("Last name: ");
+            string lastName = Console.ReadLine();
+
+            Console.Write("Email: ");
+            string email = Console.ReadLine();
+
+            Console.Write("Phone number: ");
+            string phoneNumber = Console.ReadLine();
+
+            Console.Write("Years: ");
+            int years = int.Parse(Console.ReadLine());
+
+            Console.Write("Gender: ");
+            GenderType gender = (GenderType)Enum.Parse(typeof(GenderType), Console.ReadLine());
+
+            Console.WriteLine("--- Address ---");
+            Console.Write("Country: ");
+            string countryString = Console.ReadLine();
+
+            Country country;
+
+            switch ((CountryType)Enum.Parse(typeof(CountryType), countryString))
+            {
+
+                case CountryType.Bulgaria:
+                    country = new Bulgaria();
+                    break;
+
+                case CountryType.Germany:
+                    country = new Germany();
+                    break;
+
+                case CountryType.Russia:
+                    country = new Russia(); ;
+                    break;
+
+                default:
+                    country = new Bulgaria();
+                    break;
+            }
+
+            Console.Write("City: ");
+            string city = Console.ReadLine();
+
+            Console.Write("Street name: ");
+            string streetName = Console.ReadLine();
+
+            Console.Write("Street number: ");
+            string streetNumber = Console.ReadLine();
+
+            Address userAddress = new Address(country, streetName, streetNumber, city);
+            this.RegisterClient(firstName, lastName, email, phoneNumber, years, userAddress, gender);
         }
 
         private string ShowAllClients()
@@ -169,7 +184,7 @@ namespace DeliverIT.Core.Engine
 
             return sb.ToString();
         }
-
+        
         private string ShowAllOrders()
         {
             StringBuilder sb = new StringBuilder();
@@ -180,6 +195,40 @@ namespace DeliverIT.Core.Engine
             }
 
             return sb.ToString();
+        }
+
+        private void CreateCourier(int choice)
+        {
+            Courier courier = new Gosheedy();
+            switch (choice)
+            {
+                case 8:
+                    courier =  new Gosheedy();
+
+                    Console.WriteLine($"{courier.GetType().Name} chosen successfully!");
+                    break;
+                case 9: 
+                    courier =  new Peshont();
+
+                    Console.WriteLine($"{courier.GetType().Name} chosen successfully!");
+                    break;
+                default:
+                    Console.WriteLine("Invalid command entered!");
+                    break;
+            }
+        }
+
+        private string ShowAllLocations()
+        {
+            var counter = 1;
+            StringBuilder strBuilder = new StringBuilder();
+            strBuilder.AppendLine("--- Delivery locations ---");
+            strBuilder.AppendLine(counter.ToString()+  ". " + CountryType.Bulgaria.ToString());
+            counter++;
+            strBuilder.AppendLine(counter.ToString() + ". " + CountryType.Russia.ToString());
+            counter++;
+            strBuilder.AppendLine(counter.ToString() + ". " + CountryType.Germany.ToString());
+            return strBuilder.ToString();
         }
 
         private string MenuText()

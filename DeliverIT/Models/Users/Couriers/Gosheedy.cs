@@ -1,5 +1,6 @@
 ﻿using DeliverIT.Common;
 using DeliverIT.Models.Countries;
+using DeliverIT.Models.Users.Couriers.Abstract;
 
 namespace DeliverIT.Models.Users.Couriers
 {

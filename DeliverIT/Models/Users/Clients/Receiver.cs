@@ -1,11 +1,10 @@
-﻿namespace DeliverIT
-{
-    using DeliverIT.Common;
-    using DeliverIT.Contracts;
-    using DeliverIT.Models;
-    using System;
-    using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using DeliverIT.Common;
+using DeliverIT.Contracts;
+using DeliverIT.Models.Users.Clients.Abstract;
 
+namespace DeliverIT.Models.Users.Clients
+{
     public class Receiver : Client
     {
         private List<IOrder> pendingOrders;

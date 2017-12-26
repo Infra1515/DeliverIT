@@ -1,9 +1,9 @@
-﻿namespace DeliverIT
-{
-    using DeliverIT.Common;
-    using DeliverIT.Models;
-    using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using DeliverIT.Common;
+using DeliverIT.Models.Users.Abstract;
 
+namespace DeliverIT.Models.Users.Couriers.Abstract
+{
     public abstract class Courier : User
     {
         private IList<Order> deliveries;
@@ -17,7 +17,7 @@
 
         public Courier(string firstName, string lastName, string email, string phoneNumber,
                         int years, Address address, GenderType gender,
-                        double allowedWeight, double allowedVolume) 
+                        double allowedWeight, double allowedVolume)
             : base(firstName, lastName, email, phoneNumber, years, address, gender)
         {
             id += 1;
@@ -43,6 +43,11 @@
             }
 
             return canCarry;
+        }
+
+        public override string ToString()
+        {
+            return $"- {this.FirstName} {this.LastName} {this.Email} {this.PhoneNumber} { this.Years} {this.Address} {this.Gender}";
         }
     }
 }

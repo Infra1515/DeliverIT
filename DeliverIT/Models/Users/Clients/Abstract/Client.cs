@@ -1,12 +1,12 @@
-﻿namespace DeliverIT
+﻿using System;
+using System.Collections.Generic;
+using DeliverIT.Common;
+using DeliverIT.Common.Enums;
+using DeliverIT.Contracts;
+using DeliverIT.Models.Users.Abstract;
+
+namespace DeliverIT.Models.Users.Clients.Abstract
 {
-    using DeliverIT.Common;
-    using DeliverIT.Common.Enums;
-    using DeliverIT.Contracts;
-    using DeliverIT.Models;
-    using System;
-    using System.Collections.Generic;
-    
     public class Client : User
     {
         private IList<IOrder> ordersList;
