@@ -1,8 +1,8 @@
-﻿namespace DeliverIT
-{
-    using DeliverIT.Common;
-    using DeliverIT.Models;
+﻿using DeliverIT.Common;
+using DeliverIT.Models;
 
+namespace DeliverIT
+{
     /// <todo>
     /// 1. Implement Person behaviour
     /// 

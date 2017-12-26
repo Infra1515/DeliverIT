@@ -1,11 +1,11 @@
-﻿namespace DeliverIT
-{
-    using DeliverIT.Common;
-    using DeliverIT.Contracts;
-    using DeliverIT.Models;
-    using System;
-    using System.Collections.Generic;
+﻿using DeliverIT.Common;
+using DeliverIT.Contracts;
+using DeliverIT.Models;
+using DeliverIT.Models.Users;
+using System.Collections.Generic;
 
+namespace DeliverIT
+{
     public class Sender : Client
     {
         private List<IOrder> sendingOrders; // orders that are not received yet

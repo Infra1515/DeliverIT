@@ -3,7 +3,7 @@ using DeliverIT.Models.Countries;
 
 namespace DeliverIT.Models.Users.Couriers
 {
-    public class Gosheedy :  Courier
+    public class Gosheedy : Courier
     {
         private const string firstName = "Gosheto";
         private const string lastName = "Goshev";

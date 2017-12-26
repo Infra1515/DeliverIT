@@ -1,5 +1,6 @@
 ﻿using System;
 using DeliverIT.Common;
+using DeliverIT.Models.Users;
 using DeliverIT.Models;
 
 namespace DeliverIT.Core.Factories

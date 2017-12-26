@@ -1,6 +1,4 @@
-﻿using System.CodeDom;
-
-namespace DeliverIT.Models.Countries
+﻿namespace DeliverIT.Models.Countries
 {
     public class Russia : Country
     {

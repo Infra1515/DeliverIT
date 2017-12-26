@@ -1,14 +1,12 @@
 ﻿using DeliverIT.Common;
-using DeliverIT.Models;
+using DeliverIT.Models.Users.Couriers;
 using System;
 
 namespace DeliverIT.Contracts
 {
     public interface IOrder
     {
-
         //todo: use const for calculating the price (isFragile, tax)
-        
 
         Courier Courier { get; set; }
         Sender Sender { get; set; }

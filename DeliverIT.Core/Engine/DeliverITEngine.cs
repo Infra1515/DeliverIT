@@ -5,10 +5,11 @@ using DeliverIT.Common;
 using DeliverIT.Common.Enums;
 using DeliverIT.Contracts;
 using DeliverIT.Core.Contracts;
-using DeliverIT.Core.Factories;
 using DeliverIT.Core.Utilities;
 using DeliverIT.Models;
 using DeliverIT.Models.Countries;
+using DeliverIT.Models.Users;
+using DeliverIT.Core.Factories;
 
 namespace DeliverIT.Core.Engine
 {

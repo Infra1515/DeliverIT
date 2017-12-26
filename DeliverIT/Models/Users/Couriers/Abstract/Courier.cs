@@ -1,9 +1,8 @@
-﻿namespace DeliverIT
-{
-    using DeliverIT.Common;
-    using DeliverIT.Models;
-    using System.Collections.Generic;
+﻿using DeliverIT.Common;
+using System.Collections.Generic;
 
+namespace DeliverIT.Models.Users.Couriers
+{
     public abstract class Courier : User
     {
         private IList<Order> deliveries;

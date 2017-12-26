@@ -1,12 +1,8 @@
 ﻿using System.Collections.Generic;
-using System.Dynamic;
-using System.Text.RegularExpressions;
+using DeliverIT.Core.Contracts;
 
 namespace DeliverIT.Core.Engine
 {
-    using System;
-    using DeliverIT.Core.Contracts;
-
     /// <summary>
     /// Class for implementation of different commands
     /// </summary>

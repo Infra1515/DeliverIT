@@ -1,14 +1,11 @@
-﻿using System.Collections;
-using System.Net;
-using System.Runtime.CompilerServices;
+﻿using DeliverIT.Common;
+using DeliverIT.Contracts;
+using DeliverIT.Models;
+using DeliverIT.Models.Users.Couriers;
+using System;
 
 namespace DeliverIT
 {
-    using DeliverIT.Common;
-    using DeliverIT.Contracts;
-    using DeliverIT.Models;
-    using System;
-
     public class Order : IOrder
     {
         private DateTime sendDate;

@@ -1,10 +1,9 @@
 ﻿using DeliverIT.Contracts;
+using DeliverIT.Common.Enums;
+using System.Collections.Generic;
 
 namespace DeliverIT
 {
-    using DeliverIT.Common.Enums;
-    using System.Collections.Generic;
-
     //timezone, continent, telephonecode (?need?)
     public abstract class Country : ICountry
     {
