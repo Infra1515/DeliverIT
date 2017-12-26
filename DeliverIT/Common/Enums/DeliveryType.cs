@@ -4,7 +4,7 @@
 
     public enum DeliveryType
     {
-        Express, 
-        Standart
+        Express = 2, 
+        Standart = 1
     }
 }

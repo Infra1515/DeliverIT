@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace DeliverIT.Core.Contracts
 {
@@ -10,6 +6,8 @@ namespace DeliverIT.Core.Contracts
     {
         string CommandName { get; }
 
-        void ExecuteCommand();
+        List<string> Parameters { get; }
+
+        //void ExecuteCommand(string input);
     }
 }
