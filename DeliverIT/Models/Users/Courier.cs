@@ -1,4 +1,5 @@
 ﻿using DeliverIT.Common;
+using DeliverIT.Common.Enums;
 using System.Collections.Generic;
 
 namespace DeliverIT.Models.Users
@@ -17,7 +18,7 @@ namespace DeliverIT.Models.Users
         public Courier(string firstName, string lastName, string password, string email, string phoneNumber,
                         int years, Address address, GenderType gender,
                         double allowedWeight, double allowedVolume) 
-            : base(firstName, lastName, password, email, phoneNumber, years, address, gender)
+            : base(firstName, lastName, password, UserRole.Normal, email, phoneNumber, years, address, gender)
         {
             id += 1;
             this.AllowedVolume = allowedVolume;

@@ -1,4 +1,5 @@
 ﻿using DeliverIT.Common;
+using DeliverIT.Common.Enums;
 
 namespace DeliverIT.Models.Contracts
 {
@@ -7,6 +8,7 @@ namespace DeliverIT.Models.Contracts
         string FirstName { get; }
         string LastName { get; }
         string Password { get; }
+        UserRole Role { get; }
         int Age { get; }
         string Email { get; }
         string PhoneNumber { get; }

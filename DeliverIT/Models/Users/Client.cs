@@ -17,7 +17,7 @@ namespace DeliverIT.Models.Users
 
         public Client(string firstName, string lastName, string password, string email, string phoneNumber,
                         int years, Address address, GenderType gender) 
-            : base(firstName, lastName, password, email, phoneNumber, years, address, gender)
+            : base(firstName, lastName, password, UserRole.Normal, email, phoneNumber, years, address, gender)
         {
             id += 1;
             this.OrdersList = new List<IOrder>();

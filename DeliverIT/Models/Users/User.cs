@@ -1,4 +1,5 @@
 ﻿using DeliverIT.Common;
+using DeliverIT.Common.Enums;
 using DeliverIT.Models.Contracts;
 
 namespace DeliverIT.Models.Users
@@ -9,15 +10,17 @@ namespace DeliverIT.Models.Users
         private string lastName;
         private string email;
         private string password;
+        private UserRole role;
         private string phoneNumber;
         private int age;
 
-        protected User(string firstName, string lastName, string password, string email, string phoneNumber, int age, 
+        protected User(string firstName, string lastName, string password, UserRole role, string email, string phoneNumber, int age, 
             Address address, GenderType genderType)
         {
             this.FirstName = firstName;
             this.LastName = lastName;
             this.Password = password;
+            this.Role = role;
             this.Email = email;
             this.PhoneNumber = phoneNumber;
             this.Age = age;
@@ -55,6 +58,15 @@ namespace DeliverIT.Models.Users
             protected set
             {
                 this.password = value;
+            }
+        }
+
+        public UserRole Role
+        {
+            get { return this.role; }
+            private set
+            {
+                this.role = value;
             }
         }
 

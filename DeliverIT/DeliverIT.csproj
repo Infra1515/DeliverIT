@@ -53,6 +53,7 @@
     <Compile Include="Common\Enums\Continent.cs" />
     <Compile Include="Common\Enums\CountryType.cs" />
     <Compile Include="Common\Enums\ProductType.cs" />
+    <Compile Include="Common\Enums\UserRole.cs" />
     <Compile Include="Common\Validator.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Contracts\ICountry.cs" />
