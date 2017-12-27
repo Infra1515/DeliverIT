@@ -43,10 +43,31 @@ namespace DeliverIT.Models
         public OrderState OrderState { get; set; }
         public int InstanceId => instanceId;
 
-        public DateTime SendDate { get => sendDate; set => sendDate = value; }
-        public DateTime DueDate { get => dueDate; set => dueDate = value; }
+        public DateTime SendDate
+        {
+            get
+            {
+                return this.sendDate;
+            }
+            set
+            {
+                Validator.ValidateSendDate(value, Constants.InvalidSendDate);
+                this.sendDate = value;
+            }
+        }
 
-
+        public DateTime DueDate
+        {
+            get
+            {
+                return this.dueDate;
+            }
+            set
+            {
+                Validator.ValidateSendDate(value, Constants.InvalidDueDate);
+                this.dueDate = value;
+            }
+        }
 
         //method for calculating order price (delivery type, country tax, size, isFragile)
         public decimal CalculatePrice()

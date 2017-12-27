@@ -241,10 +241,10 @@ namespace DeliverIT.Core.Engine
             Product product = AddProduct();
 
             //DateTime sendDate = DateTime.Today;
-            Console.Write("Enter date of sending (Day/Month/Year");
+            Console.Write("Enter date of sending (Day/Month/Year): ");
             DateTime sendDate = DateTime.ParseExact(Console.ReadLine(),
                                 "d/MM/yyyy", CultureInfo.InvariantCulture);
-
+            Console.Write("Enter due date for delivery(Day/Month/Year): ");
             DateTime dueDate = DateTime.ParseExact(Console.ReadLine(),
                            "d/M/yyyy", CultureInfo.InvariantCulture);
 

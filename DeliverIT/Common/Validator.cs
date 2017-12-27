@@ -27,9 +27,17 @@ namespace DeliverIT.Common
             }
         }
 
-        public static void ValidateSend(DateTime date, string message)
+        public static void ValidateSendDate(DateTime sendDate, string message)
         {
-            if (date < DateTime.Now)
+            if (sendDate.Date < DateTime.Today.Date)
+            {
+                throw new ArgumentException(message);
+            }
+        }
+
+        public static void ValidateDueDate(DateTime sendDate, DateTime dueDate, string message)
+        {
+            if(dueDate.Date >= sendDate.Date)
             {
                 throw new ArgumentException(message);
             }
