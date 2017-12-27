@@ -15,9 +15,9 @@ namespace DeliverIT.Models.Users
         public IList<IOrder> OrdersList { get => ordersList; set => ordersList = value; }
         public ClientType ClientType { get => clientType; set => clientType = value; }
 
-        public Client(string firstName, string lastName, string email, string phoneNumber,
+        public Client(string firstName, string lastName, string password, string email, string phoneNumber,
                         int years, Address address, GenderType gender) 
-            : base(firstName, lastName, email, phoneNumber, years, address, gender)
+            : base(firstName, lastName, password, email, phoneNumber, years, address, gender)
         {
             id += 1;
             this.OrdersList = new List<IOrder>();

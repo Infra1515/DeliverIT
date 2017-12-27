@@ -52,6 +52,7 @@
     <Compile Include="Factories\DeliverITFactory.cs" />
     <Compile Include="Factories\IDeliverITFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\MenuState.cs" />
     <Compile Include="Utilities\Selections.cs" />
   </ItemGroup>
   <ItemGroup>

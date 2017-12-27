@@ -7,10 +7,10 @@ namespace DeliverIT.Core.Factories
 {
     public class DeliverITFactory : IDeliverITFactory
     {
-        public Client CreateClient(string firstName, string lastName, string email, string phoneNumber, int years,
+        public Client CreateClient(string firstName, string lastName, string password, string email, string phoneNumber, int years,
             Address address, GenderType gender)
         {
-            return new Client(firstName, lastName, email, phoneNumber, years, address, gender);
+            return new Client(firstName, lastName, password, email, phoneNumber, years, address, gender);
         }
 
         public Order PlaceOrder()

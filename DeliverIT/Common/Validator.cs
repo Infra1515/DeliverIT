@@ -19,9 +19,9 @@ namespace DeliverIT.Common
             //}
         }
 
-        public static void ValidateYears(int years, int min, int max, string message)
+        public static void ValidateAge(int age, int min, int max, string message)
         {
-            if (years < min || years > max)
+            if (age < min || age > max)
             {
                 throw new ArgumentException(message);
             }

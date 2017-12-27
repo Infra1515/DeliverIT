@@ -55,72 +55,73 @@ namespace DeliverIT.Core.Engine
                 switch ((Selections)userChoise)
                 {
                     case Selections.AddClient:
-                        //Console.WriteLine("Implement creating of a client ...");
+                        Console.WriteLine("Implement creating of a client ...");
+                        #region Commented Out
+                        //Console.Write("First name: ");
+                        //string firstName = Console.ReadLine();
 
-                        Console.Write("First name: ");
-                        string firstName = Console.ReadLine();
+                        //Console.Write("Last name: ");
+                        //string lastName = Console.ReadLine();
 
-                        Console.Write("Last name: ");
-                        string lastName = Console.ReadLine();
+                        //Console.Write("Email: ");
+                        //string email = Console.ReadLine();
 
-                        Console.Write("Email: ");
-                        string email = Console.ReadLine();
+                        //Console.Write("Phone number: ");
+                        //string phoneNumber = Console.ReadLine();
 
-                        Console.Write("Phone number: ");
-                        string phoneNumber = Console.ReadLine();
+                        //Console.Write("Years: ");
+                        //int years = int.Parse(Console.ReadLine());
 
-                        Console.Write("Years: ");
-                        int years = int.Parse(Console.ReadLine());
+                        //Console.Write("Gender: ");
+                        //GenderType gender = (GenderType)Enum.Parse(typeof(GenderType), Console.ReadLine());
 
-                        Console.Write("Gender: ");
-                        GenderType gender = (GenderType)Enum.Parse(typeof(GenderType), Console.ReadLine());
+                        //Console.WriteLine("--- Address ---");
 
-                        Console.WriteLine("--- Address ---");
+                        //// How to make string country into class Country
+                        //// ie user enters Bulgaria = program sets user Country to Bulgaria
+                        //Console.Write("Country: ");
+                        ////Country country = (Country)Enum.Parse(typeof(Country), Console.ReadLine());
 
-                        // How to make string country into class Country
-                        // ie user enters Bulgaria = program sets user Country to Bulgaria
-                        Console.Write("Country: ");
-                        //Country country = (Country)Enum.Parse(typeof(Country), Console.ReadLine());
+                        //string countryString = Console.ReadLine();
 
-                        string countryString = Console.ReadLine();
+                        //Country country;
 
-                        Country country;
+                        //switch ((CountryType)Enum.Parse(typeof(CountryType), countryString))
+                        //{
 
-                        switch ((CountryType)Enum.Parse(typeof(CountryType), countryString))
-                        {
+                        //    case CountryType.Bulgaria:
+                        //        country = new Bulgaria();
+                        //        break;
 
-                            case CountryType.Bulgaria:
-                                country = new Bulgaria();
-                                break;
+                        //    case CountryType.Germany:
+                        //        country = new Germany();
+                        //        break;
 
-                            case CountryType.Germany:
-                                country = new Germany();
-                                break;
+                        //    case CountryType.Russia:
+                        //        country = new Russia(); ;
+                        //        break;
 
-                            case CountryType.Russia:
-                                country = new Russia(); ;
-                                break;
+                        //    default:
+                        //        country = new Bulgaria();
+                        //        break;
+                        //}
 
-                            default:
-                                country = new Bulgaria();
-                                break;
-                        }
+                        //Console.Write("City: ");
+                        //string city = Console.ReadLine();
 
-                        Console.Write("City: ");
-                        string city = Console.ReadLine();
+                        //Console.Write("Street name: ");
+                        //string streetName = Console.ReadLine();
 
-                        Console.Write("Street name: ");
-                        string streetName = Console.ReadLine();
+                        //Console.Write("Street number: ");
+                        //string streetNumber = Console.ReadLine();
 
-                        Console.Write("Street number: ");
-                        string streetNumber = Console.ReadLine();
-
-                        Address userAddress = new Address(country, streetName, streetNumber, city);
-                        this.RegisterClient(firstName, lastName, email, phoneNumber, years, userAddress, gender);
+                        //Address userAddress = new Address(country, streetName, streetNumber, city);
+                        //this.RegisterClient(firstName, lastName, email, phoneNumber, years, userAddress, gender);
+                        #endregion
                         break;
 
                     case Selections.PlaceOrder:
-                        //Console.WriteLine("Implement placing of an order ...");
+                        Console.WriteLine("Implement placing of an order ...");
                         break;
 
                     case Selections.AddCourier:
@@ -128,13 +129,13 @@ namespace DeliverIT.Core.Engine
                         break;
 
                     case Selections.AllClients:
-                        //Console.WriteLine("Implement clients view ...");
-                        Console.WriteLine(this.ShowAllClients());
+                        Console.WriteLine("Implement clients view ...");
+                        //Console.WriteLine(this.ShowAllClients());
                         break;
 
                     case Selections.AllOrders:
-                        //Console.WriteLine("Implement orders view ...");
-                        Console.WriteLine(this.ShowAllOrders());
+                        Console.WriteLine("Implement orders view ...");
+                        //Console.WriteLine(this.ShowAllOrders());
                         break;
 
                     case Selections.AllLocations:
@@ -150,11 +151,10 @@ namespace DeliverIT.Core.Engine
             while (true);
         }
 
-
-        private void RegisterClient(string firstName, string lastName, string email, string phoneNumber,
+        private void RegisterClient(string firstName, string lastName, string password,string email, string phoneNumber,
             int years, Address address, GenderType gender)
         {
-            var user = this.factory.CreateClient(firstName, lastName, email, phoneNumber, years, address, gender);
+            var user = this.factory.CreateClient(firstName, lastName, password, email, phoneNumber, years, address, gender);
 
             Console.WriteLine(string.Format(Constants.RegisteredClient, firstName)); //todo implement with RETURN NOT CW    
         }

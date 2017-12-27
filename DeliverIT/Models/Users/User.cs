@@ -1,30 +1,26 @@
 ﻿using DeliverIT.Common;
-using DeliverIT.Models;
+using DeliverIT.Models.Contracts;
 
-namespace DeliverIT
+namespace DeliverIT.Models.Users
 {
-    /// <todo>
-    /// 1. Implement Person behaviour
-    /// 
-    /// </todo>
-    /// 
-    public abstract class User
+    public abstract class User : IUser
     {
-        //fields
         private string firstName;
         private string lastName;
         private string email;
+        private string password;
         private string phoneNumber;
-        private int years;
+        private int age;
 
-        protected User(string firstName, string lastName, string email, string phoneNumber, int years, 
+        protected User(string firstName, string lastName, string password, string email, string phoneNumber, int age, 
             Address address, GenderType genderType)
         {
             this.FirstName = firstName;
             this.LastName = lastName;
+            this.Password = password;
             this.Email = email;
             this.PhoneNumber = phoneNumber;
-            this.Years = years;
+            this.Age = age;
             this.Address = address;
             this.Gender = genderType;
         }
@@ -53,6 +49,15 @@ namespace DeliverIT
             }
         }
 
+        public string Password
+        {
+            get { return this.password; }
+            protected set
+            {
+                this.password = value;
+            }
+        }
+
         public string Email
         {
 
@@ -77,14 +82,14 @@ namespace DeliverIT
             }
         }
 
-        public int Years
+        public int Age
         {
-            get { return this.years; }
+            get { return this.age; }
             protected set
             {
-                Validator.ValidateYears(value, Constants.MinYears, Constants.MaxYears, Constants.InvalidYears);
+                Validator.ValidateAge(value, Constants.MinAge, Constants.MaxAge, Constants.InvalidAge);
 
-                this.years = value;
+                this.age = value;
             }
         }
 

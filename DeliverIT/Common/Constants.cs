@@ -17,13 +17,13 @@
         public const int MaxEmailLength = 30;
         public const int MinPhoneLength = 6;
         public const int MaxPhoneLength = 10;
-        public const int MinYears = 18;
-        public const int MaxYears = 100;
+        public const int MinAge = 18;
+        public const int MaxAge = 100;
 
         public const string InvalidName = "Invalid name!";
         public const string InvalidEmail = "Invalid email!";
         public const string InvalidPhoneNumber = "Invalid phone number entered! Enter valid phone number!";
-        public const string InvalidYears = "Age must be between 18 and 100";
+        public const string InvalidAge = "Age must be between 18 and 100";
         public const string InvalidSendDate = "Send date must be before today.";
         public const string InvalidDueDate = "Due date must be before send date.";
 

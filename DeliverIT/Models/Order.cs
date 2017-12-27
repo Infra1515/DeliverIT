@@ -1,7 +1,7 @@
 ﻿using DeliverIT.Common;
 using DeliverIT.Contracts;
 using DeliverIT.Models;
-using DeliverIT.Models.Users.Couriers;
+using DeliverIT.Models.Users;
 using System;
 
 namespace DeliverIT

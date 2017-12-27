@@ -1,9 +1,9 @@
 ﻿using DeliverIT.Common;
 using System.Collections.Generic;
 
-namespace DeliverIT.Models.Users.Couriers
+namespace DeliverIT.Models.Users
 {
-    public abstract class Courier : User
+    public class Courier : User
     {
         private IList<Order> deliveries;
         private static int id = 0;
@@ -14,10 +14,10 @@ namespace DeliverIT.Models.Users.Couriers
         public double AllowedVolume { get => allowedVolume; set => allowedVolume = value; }
         public double AllowedWeight { get => allowedWeight; set => allowedWeight = value; }
 
-        public Courier(string firstName, string lastName, string email, string phoneNumber,
+        public Courier(string firstName, string lastName, string password, string email, string phoneNumber,
                         int years, Address address, GenderType gender,
                         double allowedWeight, double allowedVolume) 
-            : base(firstName, lastName, email, phoneNumber, years, address, gender)
+            : base(firstName, lastName, password, email, phoneNumber, years, address, gender)
         {
             id += 1;
             this.AllowedVolume = allowedVolume;
