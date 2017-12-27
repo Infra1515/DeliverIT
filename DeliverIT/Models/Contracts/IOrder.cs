@@ -21,8 +21,9 @@ namespace DeliverIT.Contracts
         DeliveryType DeliveryType { get; set; }
         decimal DeliveryPrice { get; set; }
         OrderState OrderState{ get; set; }
-        Address Address { get; set; } //needed to be fixed (string or not) 
+        Address Address { get; set; } 
         int InstanceId { get;}
         decimal CalculatePrice();
+        int PostalCode { get; }
     }
 }

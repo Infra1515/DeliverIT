@@ -1,15 +1,14 @@
 ﻿using DeliverIT.Common.Enums;
+using DeliverIT.Models.Contracts;
 
 namespace DeliverIT.Models
 {
-    public class Product
+    public class Product : IProduct
     {
         private static int id = 0;
-        private readonly int instanceId;
         public Product(double x, double y, double z, bool isFragile, double weight, ProductType productType)
         {
             id++;
-            instanceId = id;
             this.Dimensions = new Dimensions(x, y, z);
             this.Volume = this.Dimensions.CalculateVolume();
             this.IsFragile = isFragile;
@@ -23,15 +22,15 @@ namespace DeliverIT.Models
 
         public Dimensions Dimensions { get; set; }
 
-        private ProductType ProductType { get; set; }
+        public ProductType ProductType { get; set; }
 
         public double Volume { get; set; }
 
-        public int InstanceId => instanceId;
+        public int Id { get => id; }
 
         public override string ToString()
         {
-            return $"Product ID: {this.InstanceId} -- " +
+            return $"Product ID: {this.Id} -- " +
                 $"Product Dimensions: {this.Dimensions.X} {this.Dimensions.Y} {this.Dimensions.Z} -- " +
                 $"Is Fragile: {this.IsFragile} -- Weight: {this.Weight} -- Volume: {this.Volume}" +
                 $"Product Type: {this.ProductType}";

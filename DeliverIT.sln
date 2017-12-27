@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliverIT.Core", "DeliverIT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliverIT.Program", "DeliverIT.Program\DeliverIT.Program.csproj", "{8EF456EE-4A8F-4DD4-8F34-C58748850FDF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliverIT.Tests", "Tests\DeliverIT.Tests.csproj", "{49914667-D793-41C6-9FE1-2057109C6646}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{8EF456EE-4A8F-4DD4-8F34-C58748850FDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8EF456EE-4A8F-4DD4-8F34-C58748850FDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8EF456EE-4A8F-4DD4-8F34-C58748850FDF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49914667-D793-41C6-9FE1-2057109C6646}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49914667-D793-41C6-9FE1-2057109C6646}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49914667-D793-41C6-9FE1-2057109C6646}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49914667-D793-41C6-9FE1-2057109C6646}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -15,7 +15,7 @@ namespace DeliverIT.Core.Factories
             Address address, GenderType gender, ClientType clientType);
 
         IOrder CreateOrder(Courier courier, Client sender, Client receiver, DateTime sendDate, DateTime dueDate,
-                           OrderState orderState, Address address, Product product);
+                           OrderState orderState, Address address, Product product, int postalCode);
 
         Product CreateProduct(double x, double y, double z, bool isFragile, double weight,
             ProductType productType);

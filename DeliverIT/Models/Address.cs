@@ -1,6 +1,8 @@
-﻿namespace DeliverIT.Models
+﻿using DeliverIT.Models.Contracts;
+
+namespace DeliverIT.Models
 {
-    public class Address
+    public class Address : IAddress
     {
         private Country country;
         private string streetName;

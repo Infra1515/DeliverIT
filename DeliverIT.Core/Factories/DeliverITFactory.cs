@@ -19,9 +19,9 @@ namespace DeliverIT.Core.Factories
         }
 
         public IOrder CreateOrder(Courier courier, Client sender, Client receiver, DateTime sendDate,
-            DateTime dueDate, OrderState orderState, Address address, Product product)
+            DateTime dueDate, OrderState orderState, Address address, Product product, int postalCode)
         {
-            return new Order(courier, sender, receiver, sendDate, dueDate, orderState, address, product);
+            return new Order(courier, sender, receiver, sendDate, dueDate, orderState, address, product, postalCode);
         }
 
         //public Courier CreateCourier(string firstName, string lastName, string email, string phoneNumber, int years, Address address,

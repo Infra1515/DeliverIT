@@ -1,5 +1,6 @@
 ﻿using DeliverIT.Common;
 using DeliverIT.Common.Enums;
+using DeliverIT.Models.Contracts;
 
 namespace DeliverIT.Models.Users.Abstract
 {
@@ -8,7 +9,7 @@ namespace DeliverIT.Models.Users.Abstract
     /// 
     /// </todo>
     /// 
-    public abstract class User
+    public abstract class User : IUser
     {
         //fields
         private string firstName;
@@ -16,6 +17,8 @@ namespace DeliverIT.Models.Users.Abstract
         private string email;
         private string phoneNumber;
         private int years;
+        private Address address;
+        private GenderType gender;
 
         protected User(string firstName, string lastName, string email, string phoneNumber, int years, 
             Address address, GenderType genderType)
@@ -88,9 +91,8 @@ namespace DeliverIT.Models.Users.Abstract
             }
         }
 
-        public Address Address { get; protected set; }
-
-        public GenderType Gender { get; protected set; }
+        public GenderType Gender { get => gender; protected set => gender = value; }
+        public Address Address { get => address; protected set => address = value; }
 
         public Address ShowCurrentAddress()
         {

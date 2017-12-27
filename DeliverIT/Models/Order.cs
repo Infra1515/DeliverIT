@@ -15,9 +15,10 @@ namespace DeliverIT.Models
         private DateTime dueDate;
         private static int id = 0;
         private readonly int instanceId;
+        private readonly int postalCode;
 
         public Order(Courier courier, Client sender, Client receiver, DateTime sendDate, DateTime dueDate,
-                 OrderState orderState, Address address, Product product)
+                 OrderState orderState, Address address, Product product, int postalCode)
         {
             Id += 1;
             instanceId = Id;
@@ -29,6 +30,7 @@ namespace DeliverIT.Models
             this.OrderState = orderState;
             this.Address = address;
             this.Product = product;
+            this.postalCode = postalCode;
         }
 
         public Courier Courier { get; set; }
@@ -68,6 +70,8 @@ namespace DeliverIT.Models
                 this.dueDate = value;
             }
         }
+
+        public int PostalCode => postalCode;
 
         //method for calculating order price (delivery type, country tax, size, isFragile)
         public decimal CalculatePrice()

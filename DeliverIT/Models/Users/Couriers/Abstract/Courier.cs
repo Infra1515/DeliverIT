@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using DeliverIT.Common;
 using DeliverIT.Models.Users.Abstract;
+using DeliverIT.Models.Contracts.User;
 
 namespace DeliverIT.Models.Users.Couriers.Abstract
 {
-    public abstract class Courier : User
+    public abstract class Courier : User, ICourier
     {
         private IList<Order> deliveries;
         private static int id = 0;
@@ -14,13 +15,14 @@ namespace DeliverIT.Models.Users.Couriers.Abstract
         public IList<Order> Deliveries { get => deliveries; set => deliveries = value; }
         public double AllowedVolume { get => allowedVolume; set => allowedVolume = value; }
         public double AllowedWeight { get => allowedWeight; set => allowedWeight = value; }
+        public int Id { get => id; }
 
         public Courier(string firstName, string lastName, string email, string phoneNumber,
                         int years, Address address, GenderType gender,
                         double allowedWeight, double allowedVolume)
             : base(firstName, lastName, email, phoneNumber, years, address, gender)
         {
-            id += 1;
+            id++;
             this.AllowedVolume = allowedVolume;
             this.AllowedWeight = allowedWeight;
             this.Deliveries = new List<Order>();

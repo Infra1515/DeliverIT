@@ -126,7 +126,7 @@ namespace DeliverIT.Core.Engine
                     break;
 
                 case CountryType.Germany:
-                    country = new Germany();
+                    country = new Serbia();
                     break;
 
                 case CountryType.Russia:
@@ -134,10 +134,11 @@ namespace DeliverIT.Core.Engine
                     break;
 
                 default:
-                    country = new Bulgaria();
-                    break;
+                    throw new ArgumentException("We don't ship to this country yet!");
             }
 
+            // TODO: Implement validation for city: If its not in Country dict with cities
+            // throw exception();
             Console.Write("City: ");
             string city = Console.ReadLine();
 
@@ -218,7 +219,7 @@ namespace DeliverIT.Core.Engine
                     break;
             }
             Product product = this.factory.CreateProduct(x, y, z, isFragile, weight, productType);
-            Console.WriteLine($"Product with ID {product.InstanceId} was added succesfully!");
+            Console.WriteLine($"Product with ID {product.Id} was added succesfully!");
 
             return product;
 
@@ -240,7 +241,6 @@ namespace DeliverIT.Core.Engine
             Console.Write("---Product information---");
             Product product = AddProduct();
 
-            //DateTime sendDate = DateTime.Today;
             Console.Write("Enter date of sending (Day/Month/Year): ");
             DateTime sendDate = DateTime.ParseExact(Console.ReadLine(),
                                 "d/MM/yyyy", CultureInfo.InvariantCulture);
@@ -248,8 +248,10 @@ namespace DeliverIT.Core.Engine
             DateTime dueDate = DateTime.ParseExact(Console.ReadLine(),
                            "d/M/yyyy", CultureInfo.InvariantCulture);
 
+            int postalCode = receiver.Address.Country.CitysAndZips[receiver.Address.City];
+             
             IOrder order = this.factory.CreateOrder(courier, sender, receiver, sendDate, dueDate,
-                OrderState.NotDelivered, receiver.Address, product);
+                OrderState.NotDelivered, receiver.Address, product, postalCode);           
             Console.WriteLine($"Order with ID {order.InstanceId} created!");
             return order;
 
