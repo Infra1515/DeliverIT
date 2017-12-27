@@ -4,14 +4,9 @@ using DeliverIT.Models.Contracts;
 
 namespace DeliverIT.Models.Users.Abstract
 {
-    /// <todo>
-    /// 1. Implement Person behaviour
-    /// 
-    /// </todo>
-    /// 
+
     public abstract class User : IUser
     {
-        //fields
         private string firstName;
         private string lastName;
         private string email;
@@ -62,7 +57,8 @@ namespace DeliverIT.Models.Users.Abstract
             get { return this.email; }
             protected set
             {
-                Validator.ValidateUserInfo(value,  Constants.MinEmailLength, Constants.MaxEmailLength, Constants.InvalidEmail);
+
+                Validator.ValidateEmail(value);
 
                 this.email = value;
             }
@@ -73,9 +69,8 @@ namespace DeliverIT.Models.Users.Abstract
             get { return this.phoneNumber; }
             protected set
             {
-               // Validator.ValidateUserInfo(value, Constants.MinPhoneLength, 
-                   // Constants.MaxPhoneLength, Constants.InvalidPhoneNumber);
 
+                Validator.ValidatePhoneNumber(value);
                 this.phoneNumber = value;
             }
         }
@@ -91,8 +86,31 @@ namespace DeliverIT.Models.Users.Abstract
             }
         }
 
-        public GenderType Gender { get => gender; protected set => gender = value; }
-        public Address Address { get => address; protected set => address = value; }
+        public GenderType Gender
+        {
+            get
+            {
+                return this.Gender;
+            }
+            protected set
+            {
+                Validator.ValidateNotNull(value);
+                this.gender = value;
+            }
+        }
+
+        public Address Address
+        {
+            get
+            {
+                return this.address;
+            }
+            protected set
+            {
+                Validator.ValidateNotNull(value);
+                this.address = value;
+            }
+        }
 
         public Address ShowCurrentAddress()
         {

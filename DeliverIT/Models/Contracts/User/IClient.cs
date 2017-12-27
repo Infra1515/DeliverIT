@@ -7,9 +7,9 @@ namespace DeliverIT.Models.Contracts
     public interface IClient : IUser
     {
 
-        IList<IOrder> OrdersList { get; set; }
+        IList<IOrder> OrdersList { get; }
 
-        ClientType ClientType { get; set; }
+        ClientType ClientType { get; }
 
         int Id { get; }
 

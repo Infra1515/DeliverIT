@@ -10,7 +10,7 @@ namespace DeliverIT.Models.Users.Clients.Abstract
 {
     public class Client : User, IClient
     {
-        private IList<IOrder> ordersList;
+        private readonly IList<IOrder> ordersList;
         private ClientType clientType;
         private static int id = 0;
         public Client(string firstName, string lastName, string email, string phoneNumber,
@@ -18,17 +18,22 @@ namespace DeliverIT.Models.Users.Clients.Abstract
             : base(firstName, lastName, email, phoneNumber, years, address, gender)
         {
             id++;
-            //InstanceId = id;
-            this.OrdersList = new List<IOrder>();
+            this.ordersList = new List<IOrder>();
             this.ClientType = clientType;
         }
 
-        public IList<IOrder> OrdersList { get => ordersList; set => ordersList = value; }
-        public ClientType ClientType { get => clientType; set => clientType = value; }
+        public IList<IOrder> OrdersList { get => new List<IOrder>(ordersList); }
+        public ClientType ClientType { get => clientType; protected set => clientType = value; }
         public int Id { get => id; }
         public void DisplayOrderList()
         {
-            //method for displaying order list
+            Console.WriteLine($"Total orders for {this.FirstName} {this.LastName}");
+            foreach(var order in this.OrdersList)
+            {
+                Console.WriteLine("--------------");
+                Console.WriteLine(order.ToString());
+                Console.WriteLine("---------------");
+            }
         }
 
         public void ShowAllOrders(IList<IOrder> orders)
