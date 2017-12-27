@@ -15,6 +15,7 @@ using DeliverIT.Models.Users.Couriers;
 using DeliverIT.Models.Users.Couriers.Abstract;
 using DeliverIT.Models.Users.Abstract;
 using System.Linq;
+using System.Globalization;
 
 namespace DeliverIT.Core.Engine
 {
@@ -60,7 +61,7 @@ namespace DeliverIT.Core.Engine
                 switch ((Selections)userChoise)
                 {
                     case Selections.AddClient:
-                        AddUser();
+                        AddClient("Client");
                         break;
 
                     case Selections.PlaceOrder:
@@ -91,7 +92,7 @@ namespace DeliverIT.Core.Engine
             while (true);
         }
 
-        private User AddUser()
+        private Client AddClient(string type)
         { 
             Console.Write("First name: ");
             string firstName = Console.ReadLine();
@@ -149,43 +150,27 @@ namespace DeliverIT.Core.Engine
             Address userAddress = new Address(country, streetName, streetNumber, city);
 
             Client client = this.factory.CreateClient(firstName, lastName, email, phoneNumber,
-                years, userAddress, gender);
+                years, userAddress, gender, (ClientType)Enum.Parse(typeof(ClientType), type));
 
-            Console.WriteLine(string.Format(Constants.RegisteredClient, firstName));
+            string clientTypeInfo;
+            switch(type)
+            {
+                case "Client":
+                    clientTypeInfo = Constants.RegisteredClient;
+                    break;
+                case "Sender":
+                    clientTypeInfo = Constants.ChoosenSender;
+                    break;
+                case "Receiver":
+                    clientTypeInfo = Constants.ChoosenReceiver;
+                    break;
+                default:
+                    throw new ArgumentException("No such client type!");
+            }
+            Console.WriteLine(string.Format(clientTypeInfo, client.FirstName));
 
             return client;
         }
-
-        private IOrder AddOrder()
-        {
-
-            Console.WriteLine("Choose a courier: ");
-            Console.WriteLine("8." + new Gosheedy().ToString());
-            Console.WriteLine("9." + new Peshont().ToString());
-            Courier courier = CreateCourier(int.Parse(Console.ReadLine()));
-
-            Console.WriteLine("--- Sender information ---");
-            Sender sender = (Sender) AddUser();
-
-            Console.WriteLine("--- Receiver information ---");
-            Receiver receiver = (Receiver) AddUser();
-
-            Console.Write("---Product information---");
-            Product product = AddProduct();
-
-            DateTime sendDate = DateTime.Now;
-            Console.Write($"Date of sending: {sendDate}");
-
-            DateTime dueDate = sendDate.AddDays(1);
-            Console.Write($"Due date for delivery is: {dueDate}");
-
-            IOrder order = this.factory.CreateOrder(courier, sender, receiver, sendDate, dueDate,
-                OrderState.NotDelivered, receiver.Address, product);
-
-            return order;
-
-        }
-
         private Product AddProduct()
         {
 
@@ -198,7 +183,7 @@ namespace DeliverIT.Core.Engine
             Console.Write("Is the product fragile? ");
             string isFragileStr = Console.ReadLine().ToLower().Trim();
             bool isFragile;
-            if(isFragileStr == "yes")
+            if (isFragileStr == "yes")
             {
                 isFragile = true;
             }
@@ -207,11 +192,11 @@ namespace DeliverIT.Core.Engine
                 isFragile = false;
             }
 
-            Console.Write("What is the product weight?");
+            Console.Write("What is the product weight? ");
             double weight = double.Parse(Console.ReadLine());
 
-            Console.Write("What is the product type?" +
-                "Available:  Clothes, Accessories, Electronics, Other");
+            Console.Write($"What is the product type?/r/n" +
+                "Available:  Clothes, Accessories, Electronics, Other: ");
             string productTypeString = Console.ReadLine().ToLower().Trim();
             ProductType productType;
             switch (productTypeString)
@@ -233,9 +218,43 @@ namespace DeliverIT.Core.Engine
                     break;
             }
             Product product = this.factory.CreateProduct(x, y, z, isFragile, weight, productType);
+            Console.WriteLine($"Product with ID {product.InstanceId} was added succesfully!");
+
             return product;
-            
+
         }
+        private IOrder AddOrder()
+        {
+
+            Console.WriteLine("Choose a courier: ");
+            Console.WriteLine("8." + new Gosheedy().ToString());
+            Console.WriteLine("9." + new Peshont().ToString());
+            Courier courier = CreateCourier(int.Parse(Console.ReadLine()));
+
+            Console.WriteLine("--- Sender information ---");
+            Client sender = AddClient("Sender");
+
+            Console.WriteLine("--- Receiver information ---");
+            Client receiver = AddClient("Receiver");
+
+            Console.Write("---Product information---");
+            Product product = AddProduct();
+
+            //DateTime sendDate = DateTime.Today;
+            Console.Write("Enter date of sending (Day/Month/Year");
+            DateTime sendDate = DateTime.ParseExact(Console.ReadLine(),
+                                "d/MM/yyyy", CultureInfo.InvariantCulture);
+
+            DateTime dueDate = DateTime.ParseExact(Console.ReadLine(),
+                           "d/M/yyyy", CultureInfo.InvariantCulture);
+
+            IOrder order = this.factory.CreateOrder(courier, sender, receiver, sendDate, dueDate,
+                OrderState.NotDelivered, receiver.Address, product);
+            Console.WriteLine($"Order with ID {order.InstanceId} created!");
+            return order;
+
+        }
+
         private string ShowAllClients()
         {
             StringBuilder sb = new StringBuilder();

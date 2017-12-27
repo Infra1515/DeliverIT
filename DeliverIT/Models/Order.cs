@@ -4,6 +4,7 @@ using DeliverIT.Contracts;
 using DeliverIT.Models.Users.Clients;
 using DeliverIT.Models.Users.Couriers.Abstract;
 using DeliverIT.Common.Enums;
+using DeliverIT.Models.Users.Clients.Abstract;
 
 namespace DeliverIT.Models
 {
@@ -13,11 +14,13 @@ namespace DeliverIT.Models
         private DateTime sendDate;
         private DateTime dueDate;
         private static int id = 0;
+        private readonly int instanceId;
 
-        public Order(Courier courier, Sender sender, Receiver receiver, DateTime sendDate, DateTime dueDate,
+        public Order(Courier courier, Client sender, Client receiver, DateTime sendDate, DateTime dueDate,
                  OrderState orderState, Address address, Product product)
         {
             Id += 1;
+            instanceId = Id;
             this.Courier = courier;
             this.Sender = sender;
             this.Receiver = receiver;
@@ -29,35 +32,20 @@ namespace DeliverIT.Models
         }
 
         public Courier Courier { get; set; }
-        public Sender Sender { get; set; }
-        public Receiver Receiver { get; set; }
+        public Client Sender { get; set; }
+        public Client Receiver { get; set; }
 
-        public DateTime SendDate
-        {
-            get { return this.sendDate; }
-            set
-            {
-                Validator.ValidateSendAndDueDate(value, Constants.InvalidSendDate);
-
-                this.sendDate = value;
-            }
-        }
-        public DateTime DueDate
-        {
-            get { return this.dueDate; }
-            set
-            {
-                Validator.ValidateSendAndDueDate(value, Constants.InvalidDueDate);
-
-                this.dueDate = value;
-            }
-        }
         public Address Address { get; set; }
         public Product Product { get; set; }
         public DeliveryType DeliveryType { get; set; }
         public decimal DeliveryPrice { get; set; }
         public static int Id { get { return id; } private set { id = value; } }
         public OrderState OrderState { get; set; }
+        public int InstanceId => instanceId;
+
+        public DateTime SendDate { get => sendDate; set => sendDate = value; }
+        public DateTime DueDate { get => dueDate; set => dueDate = value; }
+
 
 
         //method for calculating order price (delivery type, country tax, size, isFragile)
@@ -88,7 +76,7 @@ namespace DeliverIT.Models
                    $"Sender: {this.Sender.FirstName} {this.Sender.LastName}\n- Receiver: {this.Receiver.FirstName} {this.Receiver.LastName}" +
                    $"\n- Send date: {this.SendDate}\n- Due date: {this.DueDate}" +
                    $"\n- Delivery price: {this.DeliveryPrice}\n- OrderState: {this.OrderState}" +
-                   $"\n- Address: {this.Address.ToString()}\n- Product: {this.Product}";
+                   $"\n- Address: {this.Address.ToString()}\n- Product: {this.Product.ToString()}";
         }
     }
 }

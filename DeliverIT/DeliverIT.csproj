@@ -73,9 +73,7 @@
     <Compile Include="Models\Users\Couriers\Peshont.cs" />
     <Compile Include="Models\Users\Abstract\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Models\Users\Clients\Receiver.cs" />
     <Compile Include="Models\Dimensions.cs" />
-    <Compile Include="Models\Users\Clients\Sender.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

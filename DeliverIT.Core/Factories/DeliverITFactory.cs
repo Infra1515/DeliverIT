@@ -12,12 +12,12 @@ namespace DeliverIT.Core.Factories
     public class DeliverITFactory : IDeliverITFactory
     {
         public Client CreateClient(string firstName, string lastName, string email, string phoneNumber, int years,
-            Address address, GenderType gender)
+            Address address, GenderType gender, ClientType clientType)
         {
-            return new Client(firstName, lastName, email, phoneNumber, years, address, gender);
+            return new Client(firstName, lastName, email, phoneNumber, years, address, gender, clientType);
         }
 
-        public IOrder CreateOrder(Courier courier, Sender sender, Receiver receiver, DateTime sendDate,
+        public IOrder CreateOrder(Courier courier, Client sender, Client receiver, DateTime sendDate,
             DateTime dueDate, OrderState orderState, Address address, Product product)
         {
             return new Order(courier, sender, receiver, sendDate, dueDate, orderState, address, product);

@@ -25,5 +25,12 @@ namespace DeliverIT.Models
         public string StreetName { get => streetName; set => streetName = value; }
         public string City { get => city; set => city = value; }
         public string StreetNumber { get => streetNumber; set => streetNumber = value; }
+
+        public override string ToString()
+        {
+            return $"Country: {this.Country.ToString()}\r\n" +
+                $"City: {this.City}\r\nStreet Name: {this.StreetName} Number: {this.StreetNumber}\r\n";
+        }
     }
 }
+

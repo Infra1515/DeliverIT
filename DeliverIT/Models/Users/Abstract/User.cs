@@ -1,4 +1,5 @@
 ﻿using DeliverIT.Common;
+using DeliverIT.Common.Enums;
 
 namespace DeliverIT.Models.Users.Abstract
 {
@@ -97,9 +98,14 @@ namespace DeliverIT.Models.Users.Abstract
             return this.Address;
         }
 
-        public virtual void ShowInfo()
+        public override string ToString()
         {
-            //method for showing information about curr person
+            return $"First Name: {this.FirstName} -- Last Name: {this.LastName}\r\n" +
+                $"Email : {this.Email} -- Telephone: {this.PhoneNumber}\r\n" +
+                $"Address: {this.Address.ToString()}\r\n" +
+                $"Age : {this.Years} -- Sex: {this.Gender}";
         }
+
+
     }
 }
