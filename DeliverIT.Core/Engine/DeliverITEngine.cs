@@ -5,7 +5,6 @@ using DeliverIT.Common;
 using DeliverIT.Common.Enums;
 using DeliverIT.Contracts;
 using DeliverIT.Core.Contracts;
-using DeliverIT.Core.Factories;
 using DeliverIT.Core.Utilities;
 using DeliverIT.Models;
 using DeliverIT.Models.Countries;
@@ -16,6 +15,7 @@ using DeliverIT.Models.Users.Couriers.Abstract;
 using DeliverIT.Models.Users.Abstract;
 using System.Linq;
 using System.Globalization;
+using DeliverIT.Core.Factories;
 
 namespace DeliverIT.Core.Engine
 {

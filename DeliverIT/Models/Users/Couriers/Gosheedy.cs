@@ -4,7 +4,7 @@ using DeliverIT.Models.Users.Couriers.Abstract;
 
 namespace DeliverIT.Models.Users.Couriers
 {
-    public class Gosheedy :  Courier
+    public class Gosheedy : Courier
     {
         private const string firstName = "Gosheto";
         private const string lastName = "Goshev";

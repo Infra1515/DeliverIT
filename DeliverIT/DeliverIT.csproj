@@ -61,7 +61,7 @@
     <Compile Include="Models\Countries\Germany.cs" />
     <Compile Include="Models\Countries\Russia.cs" />
     <Compile Include="Models\Product.cs" />
-    <Compile Include="Models\Users\Clients\Abstract\Client.cs" />
+    <Compile Include="Models\Users\Clients\Client.cs" />
     <Compile Include="Common\Enums\DeliveryType.cs" />
     <Compile Include="Common\Enums\GenderType.cs" />
     <Compile Include="Models\Contracts\IOrder.cs" />
@@ -78,9 +78,6 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="text_1.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

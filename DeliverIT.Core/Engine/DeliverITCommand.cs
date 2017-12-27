@@ -5,12 +5,10 @@ using DeliverIT.Common;
 using DeliverIT.Common.Enums;
 using DeliverIT.Models;
 using DeliverIT.Models.Countries;
+using DeliverIT.Core.Contracts;
 
 namespace DeliverIT.Core.Engine
 {
-    using System;
-    using DeliverIT.Core.Contracts;
-
     /// <summary>
     /// Class for implementation of different commands
     /// </summary>
