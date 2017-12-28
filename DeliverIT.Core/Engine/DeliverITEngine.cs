@@ -16,6 +16,7 @@ using DeliverIT.Models.Users.Abstract;
 using System.Linq;
 using System.Globalization;
 using DeliverIT.Core.Factories;
+using DeliverIT.Models.Contracts;
 
 namespace DeliverIT.Core.Engine
 {
@@ -93,7 +94,10 @@ namespace DeliverIT.Core.Engine
         }
 
         private Client AddClient(string type)
-        { 
+        {
+            Console.Write("Username: ");
+            string username = Console.ReadLine();
+
             Console.Write("First name: ");
             string firstName = Console.ReadLine();
 
@@ -150,9 +154,6 @@ namespace DeliverIT.Core.Engine
 
             Address userAddress = new Address(country, streetName, streetNumber, city);
 
-            Client client = this.factory.CreateClient(firstName, lastName, email, phoneNumber,
-                years, userAddress, gender, (ClientType)Enum.Parse(typeof(ClientType), type));
-
             string clientTypeInfo;
             switch(type)
             {
@@ -168,9 +169,20 @@ namespace DeliverIT.Core.Engine
                 default:
                     throw new ArgumentException("No such client type!");
             }
-            Console.WriteLine(string.Format(clientTypeInfo, client.FirstName));
 
-            return client;
+            if(this.clients.Any(user => user.UserName == username))
+            {
+                throw new ArgumentException("User already exists!");
+            }
+            else
+            {
+
+                Client client = this.factory.CreateClient(firstName, lastName, email, phoneNumber,
+                    years, userAddress, gender, (ClientType)Enum.Parse(typeof(ClientType), type), username);
+                this.clients.Add(client);
+                Console.WriteLine(string.Format(clientTypeInfo, client.UserName));
+                return client;
+            }
         }
         private Product AddProduct()
         {
@@ -233,10 +245,56 @@ namespace DeliverIT.Core.Engine
             Courier courier = CreateCourier(int.Parse(Console.ReadLine()));
 
             Console.WriteLine("--- Sender information ---");
-            Client sender = AddClient("Sender");
+            Console.WriteLine(@"To choose already registered user press 'C' and type his username");
+            Console.WriteLine("Or press 'R' to register a new user");
+            Client sender;
+            string choice = Console.ReadLine();
+            if(choice == "C")
+            {
+                Console.WriteLine("Type username: ");
+                string username = Console.ReadLine();
+                sender = this.clients.FirstOrDefault(x => x.UserName == username);
+                if(sender == null)
+                {
+                    throw new ArgumentNullException("No such user!");
+                }
+                else
+                {
+                    Console.WriteLine($"Sender {sender.FirstName} {sender.LastName} choosen successfully!");
+
+                }
+            }
+            else
+            {
+                Console.WriteLine("Register the new user: ");
+                sender = AddClient("Sender");
+
+            }
 
             Console.WriteLine("--- Receiver information ---");
-            Client receiver = AddClient("Receiver");
+            Console.WriteLine(@"To choose already registered user press 'C' and type his username");
+            Console.WriteLine("Or press 'R' to register a new user");
+            Client receiver;
+            choice = Console.ReadLine();
+            if (choice == "C")
+            {
+                Console.WriteLine("Type username: ");
+                string username = Console.ReadLine();
+                receiver = this.clients.FirstOrDefault(x => x.UserName == username);
+                if (receiver == null)
+                {
+                    throw new ArgumentNullException("No such user!");
+                }
+                else
+                {
+                    Console.WriteLine($"Reciver {receiver.FirstName} {receiver.LastName} choosen successfully!");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Register the new user: ");
+                receiver = AddClient("Receiver");
+            }
 
             Console.Write("---Product information---");
             Product product = AddProduct();
@@ -253,6 +311,13 @@ namespace DeliverIT.Core.Engine
             IOrder order = this.factory.CreateOrder(courier, sender, receiver, sendDate, dueDate,
                 OrderState.NotDelivered, receiver.Address, product, postalCode);           
             Console.WriteLine($"Order with ID {order.InstanceId} created!");
+
+            this.orders.Add(order);
+
+            receiver.AddOrder(order);
+
+            sender.AddOrder(order);
+
             return order;
 
         }
@@ -260,10 +325,16 @@ namespace DeliverIT.Core.Engine
         private string ShowAllClients()
         {
             StringBuilder sb = new StringBuilder();
-
-            foreach (var client in this.clients)
+            if(this.clients.Count == 0)
             {
-                sb.Append(client.ToString()); //must implement TOSTRING method
+                sb.AppendLine("No clients registered!");
+            }
+            else
+            {
+                foreach (var client in this.clients)
+                {
+                    sb.Append(client.ToString()); //must implement TOSTRING method
+                }
             }
 
             return sb.ToString();
@@ -273,9 +344,16 @@ namespace DeliverIT.Core.Engine
         {
             StringBuilder sb = new StringBuilder();
 
-            foreach (var order in this.orders)
+            if(this.orders.Count == 0)
             {
-                sb.Append(order.ToString()); //must implement TOSTRING method
+                sb.AppendLine("No orders registered!");
+            }
+            else
+            {
+                foreach (var order in this.orders)
+                {
+                    sb.Append(order.ToString()); //must implement TOSTRING method
+                }
             }
 
             return sb.ToString();

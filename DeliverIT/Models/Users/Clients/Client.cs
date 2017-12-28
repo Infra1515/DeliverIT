@@ -14,8 +14,8 @@ namespace DeliverIT.Models.Users.Clients.Abstract
         private ClientType clientType;
         private static int id = 0;
         public Client(string firstName, string lastName, string email, string phoneNumber,
-                        int years, Address address, GenderType gender, ClientType clientType) 
-            : base(firstName, lastName, email, phoneNumber, years, address, gender)
+                        int years, Address address, GenderType gender, ClientType clientType, string userName) 
+            : base(firstName, lastName, email, phoneNumber, years, address, gender, userName)
         {
             id++;
             this.ordersList = new List<IOrder>();
@@ -23,8 +23,12 @@ namespace DeliverIT.Models.Users.Clients.Abstract
         }
 
         public IList<IOrder> OrdersList { get => new List<IOrder>(ordersList); }
+
         public ClientType ClientType { get => clientType; protected set => clientType = value; }
+
         public int Id { get => id; }
+
+
         public void DisplayOrderList()
         {
             Console.WriteLine($"Total orders for {this.FirstName} {this.LastName}");
@@ -34,6 +38,16 @@ namespace DeliverIT.Models.Users.Clients.Abstract
                 Console.WriteLine(order.ToString());
                 Console.WriteLine("---------------");
             }
+        }
+
+        public void AddOrder(IOrder order)
+        {
+            this.ordersList.Add(order);
+        }
+
+        public void RemoveOrder(IOrder order)
+        {
+            this.ordersList.Remove(order);
         }
 
         public void ShowAllOrders(IList<IOrder> orders)

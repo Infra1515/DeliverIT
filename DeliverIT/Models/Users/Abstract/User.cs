@@ -7,6 +7,7 @@ namespace DeliverIT.Models.Users.Abstract
 
     public abstract class User : IUser
     {
+        private string userName;
         private string firstName;
         private string lastName;
         private string email;
@@ -15,8 +16,9 @@ namespace DeliverIT.Models.Users.Abstract
         private Address address;
         private GenderType gender;
 
+
         protected User(string firstName, string lastName, string email, string phoneNumber, int years, 
-            Address address, GenderType genderType)
+            Address address, GenderType genderType, string userName)
         {
             this.FirstName = firstName;
             this.LastName = lastName;
@@ -25,6 +27,19 @@ namespace DeliverIT.Models.Users.Abstract
             this.Years = years;
             this.Address = address;
             this.Gender = genderType;
+            this.UserName = userName;
+        }
+
+        public string UserName
+        {
+            get { return this.userName; }
+            set
+            {
+                Validator.ValidateUserInfo(value, Constants.MinNameLength,
+                    Constants.MaxNameLength, Constants.InvalidName);
+
+                this.userName = value;
+            }
         }
 
         public string FirstName
@@ -90,7 +105,7 @@ namespace DeliverIT.Models.Users.Abstract
         {
             get
             {
-                return this.Gender;
+                return this.gender;
             }
             protected set
             {

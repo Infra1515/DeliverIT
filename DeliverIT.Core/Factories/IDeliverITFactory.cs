@@ -12,7 +12,7 @@ namespace DeliverIT.Core.Factories
     public interface IDeliverITFactory
     {
         Client CreateClient(string firstName, string lastName, string email, string phoneNumber, int years,
-            Address address, GenderType gender, ClientType clientType);
+            Address address, GenderType gender, ClientType clientType, string username);
 
         IOrder CreateOrder(Courier courier, Client sender, Client receiver, DateTime sendDate, DateTime dueDate,
                            OrderState orderState, Address address, Product product, int postalCode);

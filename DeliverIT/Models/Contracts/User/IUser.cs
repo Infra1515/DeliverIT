@@ -9,7 +9,7 @@ namespace DeliverIT.Models.Contracts
 {
     public interface IUser
     {
-
+        string UserName { get; }
         string FirstName { get; }
         string LastName { get; }
         string Email { get; }

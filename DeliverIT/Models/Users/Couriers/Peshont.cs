@@ -6,6 +6,7 @@ namespace DeliverIT.Models.Users.Couriers
 {
     public class Peshont : Courier
     {
+        private const string username = "Peshont";
         private const string firstName = "Peshont";
         private const string lastName = "Peshontov";
         private const string email = "Peshkata@DeliveryIT.com";
@@ -16,8 +17,11 @@ namespace DeliverIT.Models.Users.Couriers
         private const double allowedWeight = 500;
         private const double allowedVolume = 40;
 
-        public Peshont() : base(firstName, lastName, email, phoneNumber, years, address, gender, allowedWeight, allowedVolume)
+        public Peshont() : base(firstName, lastName, email, phoneNumber, years, address, gender,
+            allowedWeight, allowedVolume, username)
         {
+
         }
     }
 }
+

@@ -19,8 +19,8 @@ namespace DeliverIT.Models.Users.Couriers.Abstract
 
         public Courier(string firstName, string lastName, string email, string phoneNumber,
                         int years, Address address, GenderType gender,
-                        double allowedWeight, double allowedVolume)
-            : base(firstName, lastName, email, phoneNumber, years, address, gender)
+                        double allowedWeight, double allowedVolume, string userName)
+            : base(firstName, lastName, email, phoneNumber, years, address, gender, userName)
         {
             id++;
             this.AllowedVolume = allowedVolume;
