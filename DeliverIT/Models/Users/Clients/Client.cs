@@ -10,7 +10,6 @@ namespace DeliverIT.Models.Users.Clients.Abstract
 {
     public class Client : User, IClient
     {
-        private readonly IList<IOrder> ordersList;
         private ClientType clientType;
         private static int id = 0;
         public Client(string firstName, string lastName, string email, string phoneNumber,
@@ -18,36 +17,13 @@ namespace DeliverIT.Models.Users.Clients.Abstract
             : base(firstName, lastName, email, phoneNumber, years, address, gender, userName)
         {
             id++;
-            this.ordersList = new List<IOrder>();
             this.ClientType = clientType;
         }
-
-        public IList<IOrder> OrdersList { get => new List<IOrder>(ordersList); }
 
         public ClientType ClientType { get => clientType; set => clientType = value; }
 
         public int Id { get => id; }
 
-        public void AddOrder(IOrder order)
-        {
-            this.ordersList.Add(order);
-        }
-
-        public void RemoveOrder(IOrder order)
-        {
-            this.ordersList.Remove(order);
-        }
-
-        public void DisplayOrderList()
-        {
-            Console.WriteLine($"Total orders for {this.FirstName} {this.LastName}");
-            foreach(var order in this.OrdersList)
-            {
-                Console.WriteLine("--------------");
-                Console.WriteLine(order.ToString());
-                Console.WriteLine("---------------");
-            }
-        }
 
         public void ShowAllNotPendingOrders(IList<IOrder> orders)
         {
@@ -59,7 +35,6 @@ namespace DeliverIT.Models.Users.Clients.Abstract
                 }
             }
         }
-
 
         public void ShowReceivedOrders(IList<IOrder> orders)
         {

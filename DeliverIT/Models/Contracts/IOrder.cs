@@ -6,13 +6,12 @@ using DeliverIT.Models.Users.Couriers.Abstract;
 using DeliverIT.Common.Enums;
 using DeliverIT.Models.Users.Clients.Abstract;
 using DeliverIT.Models;
+using DeliverIT.Models.Contracts;
 
 namespace DeliverIT.Contracts
 {
     public interface IOrder
     {
-        //todo: use const for calculating the price (isFragile, tax)
-
         Courier Courier { get; set; }
         Client Sender { get; set; }
         Client Receiver { get; set; }
@@ -21,9 +20,10 @@ namespace DeliverIT.Contracts
         DeliveryType DeliveryType { get; set; }
         decimal DeliveryPrice { get; set; }
         OrderState OrderState{ get; set; }
-        Address Address { get; set; } 
-        int InstanceId { get;}
+        Address Address { get; set; }
+        IProduct Product { get; set; }
         decimal CalculatePrice();
         int PostalCode { get; }
+        int Id { get; }
     }
 }

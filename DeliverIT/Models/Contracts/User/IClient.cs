@@ -7,14 +7,9 @@ namespace DeliverIT.Models.Contracts
     public interface IClient : IUser
     {
 
-        IList<IOrder> OrdersList { get; }
-
         ClientType ClientType { get; }
 
         int Id { get; }
-
-
-        void DisplayOrderList();
 
         void ShowAllNotPendingOrders(IList<IOrder> orders);
 

@@ -1,4 +1,5 @@
 ﻿using DeliverIT.Common;
+using DeliverIT.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,5 +18,10 @@ namespace DeliverIT.Models.Contracts
         int Years { get; }
         Address Address { get; }
         Address ShowCurrentAddress();
+        IList<IOrder> OrdersList {get; }
+        void DisplayOrderList();
+        void AddOrder(IOrder order);
+        void RemoveOrder(IOrder order);
+
     }
 }

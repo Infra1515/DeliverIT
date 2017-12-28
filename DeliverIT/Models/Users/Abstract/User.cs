@@ -1,6 +1,9 @@
 ﻿using DeliverIT.Common;
 using DeliverIT.Common.Enums;
+using DeliverIT.Contracts;
 using DeliverIT.Models.Contracts;
+using System;
+using System.Collections.Generic;
 
 namespace DeliverIT.Models.Users.Abstract
 {
@@ -15,6 +18,7 @@ namespace DeliverIT.Models.Users.Abstract
         private int years;
         private Address address;
         private GenderType gender;
+        private IList<IOrder> ordersList;
 
 
         protected User(string firstName, string lastName, string email, string phoneNumber, int years, 
@@ -28,6 +32,7 @@ namespace DeliverIT.Models.Users.Abstract
             this.Address = address;
             this.Gender = genderType;
             this.UserName = userName;
+            this.ordersList = new List<IOrder>();
         }
 
         public string UserName
@@ -127,10 +132,35 @@ namespace DeliverIT.Models.Users.Abstract
             }
         }
 
+        public IList<IOrder> OrdersList { get => new List<IOrder>(ordersList); }
+
+
         public Address ShowCurrentAddress()
         {
             //method showing curr address
             return this.Address;
+        }
+
+
+        public void AddOrder(IOrder order)
+        {
+            this.ordersList.Add(order);
+        }
+
+        public void RemoveOrder(IOrder order)
+        {
+            this.ordersList.Remove(order);
+        }
+
+        public void DisplayOrderList()
+        {
+            Console.WriteLine($"Total orders for {this.FirstName} {this.LastName}");
+            foreach (var order in this.OrdersList)
+            {
+                Console.WriteLine("--------------");
+                Console.WriteLine(order.ToString());
+                Console.WriteLine("---------------");
+            }
         }
 
         public override string ToString()
@@ -140,7 +170,6 @@ namespace DeliverIT.Models.Users.Abstract
                 $"Address: {this.Address.ToString()}\r\n" +
                 $"Age : {this.Years} -- Sex: {this.Gender}";
         }
-
 
     }
 }

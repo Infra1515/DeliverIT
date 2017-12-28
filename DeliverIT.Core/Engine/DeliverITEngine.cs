@@ -208,7 +208,7 @@ namespace DeliverIT.Core.Engine
             Console.Write("What is the product weight? ");
             double weight = double.Parse(Console.ReadLine());
 
-            Console.Write($"What is the product type?/r/n" +
+            Console.Write($"What is the product type?\r\n" +
                 "Available:  Clothes, Accessories, Electronics, Other: ");
             string productTypeString = Console.ReadLine().ToLower().Trim();
             ProductType productType;
@@ -312,13 +312,15 @@ namespace DeliverIT.Core.Engine
              
             IOrder order = this.factory.CreateOrder(courier, sender, receiver, sendDate, dueDate,
                 OrderState.NotDelivered, receiver.Address, product, postalCode);           
-            Console.WriteLine($"Order with ID {order.InstanceId} created!");
+            Console.WriteLine($"Order with ID {order.Id} created!");
 
             this.orders.Add(order);
 
             receiver.AddOrder(order);
 
             sender.AddOrder(order);
+
+            courier.AddOrder(order);
 
             return order;
 

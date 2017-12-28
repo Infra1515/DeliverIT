@@ -5,6 +5,7 @@ using DeliverIT.Models.Users.Clients;
 using DeliverIT.Models.Users.Couriers.Abstract;
 using DeliverIT.Common.Enums;
 using DeliverIT.Models.Users.Clients.Abstract;
+using DeliverIT.Models.Contracts;
 
 namespace DeliverIT.Models
 {
@@ -14,14 +15,12 @@ namespace DeliverIT.Models
         private DateTime sendDate;
         private DateTime dueDate;
         private static int id = 0;
-        private readonly int instanceId;
         private readonly int postalCode;
 
         public Order(Courier courier, Client sender, Client receiver, DateTime sendDate, DateTime dueDate,
                  OrderState orderState, Address address, Product product, int postalCode)
         {
-            Id += 1;
-            instanceId = Id;
+            id++;
             this.Courier = courier;
             this.Sender = sender;
             this.Receiver = receiver;
@@ -36,14 +35,14 @@ namespace DeliverIT.Models
         public Courier Courier { get; set; }
         public Client Sender { get; set; }
         public Client Receiver { get; set; }
-
         public Address Address { get; set; }
-        public Product Product { get; set; }
+        public IProduct Product { get; set; }
         public DeliveryType DeliveryType { get; set; }
         public decimal DeliveryPrice { get; set; }
-        public static int Id { get { return id; } private set { id = value; } }
+        public int PostalCode => postalCode;
         public OrderState OrderState { get; set; }
-        public int InstanceId => instanceId;
+        public int Id { get => id; }
+
 
         public DateTime SendDate
         {
@@ -70,8 +69,6 @@ namespace DeliverIT.Models
                 this.dueDate = value;
             }
         }
-
-        public int PostalCode => postalCode;
 
         //method for calculating order price (delivery type, country tax, size, isFragile)
         public decimal CalculatePrice()
