@@ -260,6 +260,7 @@ namespace DeliverIT.Core.Engine
                 }
                 else
                 {
+                    sender.ClientType = ClientType.Sender;
                     Console.WriteLine($"Sender {sender.FirstName} {sender.LastName} choosen successfully!");
 
                 }
@@ -287,6 +288,7 @@ namespace DeliverIT.Core.Engine
                 }
                 else
                 {
+                    receiver.ClientType = ClientType.Receiver;
                     Console.WriteLine($"Reciver {receiver.FirstName} {receiver.LastName} choosen successfully!");
                 }
             }
@@ -352,7 +354,7 @@ namespace DeliverIT.Core.Engine
             {
                 foreach (var order in this.orders)
                 {
-                    sb.Append(order.ToString()); //must implement TOSTRING method
+                    sb.Append(order.ToString());
                 }
             }
 

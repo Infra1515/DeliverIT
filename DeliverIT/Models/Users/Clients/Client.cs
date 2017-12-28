@@ -24,10 +24,19 @@ namespace DeliverIT.Models.Users.Clients.Abstract
 
         public IList<IOrder> OrdersList { get => new List<IOrder>(ordersList); }
 
-        public ClientType ClientType { get => clientType; protected set => clientType = value; }
+        public ClientType ClientType { get => clientType; set => clientType = value; }
 
         public int Id { get => id; }
 
+        public void AddOrder(IOrder order)
+        {
+            this.ordersList.Add(order);
+        }
+
+        public void RemoveOrder(IOrder order)
+        {
+            this.ordersList.Remove(order);
+        }
 
         public void DisplayOrderList()
         {
@@ -40,44 +49,70 @@ namespace DeliverIT.Models.Users.Clients.Abstract
             }
         }
 
-        public void AddOrder(IOrder order)
+        public void ShowAllNotPendingOrders(IList<IOrder> orders)
         {
-            this.ordersList.Add(order);
+            foreach(var order in this.OrdersList)
+            {
+                if(order.OrderState == OrderState.Delivered)
+                {
+                    Console.WriteLine(order.ToString());
+                }
+            }
         }
 
-        public void RemoveOrder(IOrder order)
-        {
-            this.ordersList.Remove(order);
-        }
-
-        public void ShowAllOrders(IList<IOrder> orders)
-        {
-            throw new NotImplementedException();
-        }
 
         public void ShowReceivedOrders(IList<IOrder> orders)
         {
-            throw new NotImplementedException();
+            foreach(var order in this.OrdersList)
+            {
+                if(order.OrderState == OrderState.Delivered && 
+                    order.Receiver == this)
+                {
+                    Console.WriteLine(order.ToString());
+                }
+            }
         }
 
         public void ShowSentOrders(IList<IOrder> orders)
         {
-            throw new NotImplementedException();
+            foreach (var order in this.OrdersList)
+            {
+                if (order.OrderState == OrderState.Delivered &&
+                    order.Sender == this)
+                {
+                    Console.WriteLine(order.ToString());
+                }
+            }
         }
 
         public void ShowExpectedSendOrders(IList<IOrder> orders)
         {
-            throw new NotImplementedException();
+            foreach (var order in this.OrdersList)
+            {
+                if (order.OrderState == OrderState.NotDelivered &&
+                    order.Sender == this)
+                {
+                    Console.WriteLine(order.ToString());
+                }
+            }
         }
 
         public void ShowExpectedReceiveOrders(IList<IOrder> orders)
         {
-            throw new NotImplementedException();
+            foreach (var order in this.OrdersList)
+            {
+                if (order.OrderState == OrderState.NotDelivered &&
+                    order.Receiver == this)
+                {
+                    Console.WriteLine(order.ToString());
+                }
+            }
         }
 
         public override string ToString()
         {
             return $"Client ID: {this.Id}" + base.ToString() + $"Client Type : {this.ClientType}";
         }
+
     }
 }

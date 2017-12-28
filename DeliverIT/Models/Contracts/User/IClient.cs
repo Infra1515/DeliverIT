@@ -16,7 +16,7 @@ namespace DeliverIT.Models.Contracts
 
         void DisplayOrderList();
 
-        void ShowAllOrders(IList<IOrder> orders);
+        void ShowAllNotPendingOrders(IList<IOrder> orders);
 
         void ShowReceivedOrders(IList<IOrder> orders);
 
