@@ -8,9 +8,9 @@ namespace DeliverIT.Models.Users
     {
         private List<IOrder> pendingOrders;
 
-        public Receiver(string firstName, string lastName, string password, string email, string phoneNumber,
-                int years, Address address, GenderType gender) 
-            : base(firstName, lastName, password, email, phoneNumber, years, address, gender)
+        public Receiver(string username, string firstName, string lastName, string password, string email, string phoneNumber,
+                int age, Address address, GenderType gender) 
+            : base(username, firstName, lastName, password, email, phoneNumber, age, address, gender)
         {
             this.PendingOrders = new List<IOrder>();
         }

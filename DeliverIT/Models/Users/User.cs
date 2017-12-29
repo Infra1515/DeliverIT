@@ -14,9 +14,10 @@ namespace DeliverIT.Models.Users
         private string phoneNumber;
         private int age;
 
-        protected User(string firstName, string lastName, string password, UserRole role, string email, string phoneNumber, int age, 
+        protected User(string username, string firstName, string lastName, string password, UserRole role, string email, string phoneNumber, int age, 
             Address address, GenderType genderType)
         {
+            this.Username = username;
             this.FirstName = firstName;
             this.LastName = lastName;
             this.Password = password;
@@ -27,6 +28,8 @@ namespace DeliverIT.Models.Users
             this.Address = address;
             this.Gender = genderType;
         }
+
+        public string Username { get; protected set; }
 
         public string FirstName
         {

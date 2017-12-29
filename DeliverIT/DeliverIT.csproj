@@ -61,6 +61,7 @@
     <Compile Include="Models\Countries\Germany.cs" />
     <Compile Include="Models\Countries\Russia.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\Users\Administrator.cs" />
     <Compile Include="Models\Users\Client.cs" />
     <Compile Include="Common\Enums\DeliveryType.cs" />
     <Compile Include="Common\Enums\GenderType.cs" />

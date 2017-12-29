@@ -9,9 +9,9 @@ namespace DeliverIT.Models.Users
         private List<IOrder> sendingOrders; // orders that are not received yet
 
 
-        public Sender(string firstName, string lastName, string password, string email, string phoneNumber,
-                        int years, Address address, GenderType gender) 
-            : base(firstName, lastName, password, email, phoneNumber, years, address, gender)
+        public Sender(string username, string firstName, string lastName, string password, string email, string phoneNumber,
+                        int age, Address address, GenderType gender) 
+            : base(username, firstName, lastName, password, email, phoneNumber, age, address, gender)
         {
             this.sendingOrders = new List<IOrder>();
         }

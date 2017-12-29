@@ -5,6 +5,7 @@ namespace DeliverIT.Models.Contracts
 {
     public interface IUser
     {
+        string Username { get; }
         string FirstName { get; }
         string LastName { get; }
         string Password { get; }

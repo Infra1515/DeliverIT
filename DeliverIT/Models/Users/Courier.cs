@@ -15,10 +15,10 @@ namespace DeliverIT.Models.Users
         public double AllowedVolume { get => allowedVolume; set => allowedVolume = value; }
         public double AllowedWeight { get => allowedWeight; set => allowedWeight = value; }
 
-        public Courier(string firstName, string lastName, string password, string email, string phoneNumber,
-                        int years, Address address, GenderType gender,
+        public Courier(string username, string firstName, string lastName, string password, string email, string phoneNumber,
+                        int age, Address address, GenderType gender,
                         double allowedWeight, double allowedVolume) 
-            : base(firstName, lastName, password, UserRole.Normal, email, phoneNumber, years, address, gender)
+            : base(username, firstName, lastName, password, UserRole.Normal, email, phoneNumber, age, address, gender)
         {
             id += 1;
             this.AllowedVolume = allowedVolume;

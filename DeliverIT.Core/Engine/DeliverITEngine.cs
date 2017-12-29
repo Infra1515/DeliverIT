@@ -2,33 +2,32 @@
 using System.Collections.Generic;
 using System.Text;
 using DeliverIT.Common;
-using DeliverIT.Common.Enums;
 using DeliverIT.Contracts;
 using DeliverIT.Core.Contracts;
 using DeliverIT.Core.Utilities;
-using DeliverIT.Models;
-using DeliverIT.Models.Countries;
-using DeliverIT.Models.Users;
 using DeliverIT.Core.Factories;
+using DeliverIT.Models;
+using DeliverIT.Models.Contracts;
+using System.Linq;
 
 namespace DeliverIT.Core.Engine
 {
     public class DeliverITEngine : IEngine
     {
         private static readonly IEngine SingleInstance = new DeliverITEngine();
-        private static readonly StringBuilder sb = new StringBuilder();
 
         private readonly IDeliverITFactory factory;
-        private ICollection<Client> clients;
+        private ICollection<IUser> users;
         private ICollection<IOrder> orders;
-
+        private IUser loggedUser;
+        private MenuState state = MenuState.Login;
 
         private DeliverITEngine()
         {
             this.factory = new DeliverITFactory();
-            this.clients = new List<Client>();
+            this.users = new List<IUser>();
             this.orders = new List<IOrder>();
-            //implement others
+            this.loggedUser = null;
         }
 
         public static IEngine Instance
@@ -36,25 +35,60 @@ namespace DeliverIT.Core.Engine
             get { return SingleInstance; }
         }
 
-        public int MenuState { get; private set; }
-
         public void Start()
         {
+            this.SeedObjects();
+            
             do
             {
-                switch ()
+                switch (state)
                 {
-                    default:
-                }
+                    case MenuState.Login:
 
+                        Console.WriteLine(LookupMenuText.LoginText);
+
+                        int.TryParse(Console.ReadLine(), out int userLoginChoise);
+                        var isValidLoginChoise = Enum.IsDefined(typeof(LoginChoise), userLoginChoise);
+
+                        if (!isValidLoginChoise)
+                        {
+                            Console.WriteLine("You have entered an Invalid Choise!\n");
+                            break;
+                        }
+
+                        LoginMenu((LoginChoise)userLoginChoise);
+
+                        break;
+                        
+                    case MenuState.MainMenu:
+
+                        Console.WriteLine(LookupMenuText.MainMenuText);
+
+                        int.TryParse(Console.ReadLine(), out int userMainMenuChoise);
+                        var isValidMainMenuChoise = Enum.IsDefined(typeof(MainMenuChoise), userMainMenuChoise);
+
+                        if (!isValidMainMenuChoise)
+                        {
+                            Console.WriteLine("You have entered an Invalid Choise!\n");
+                            break;
+                        }
+
+                        MainMenu((MainMenuChoise)userMainMenuChoise);
+
+                        break;
+
+                    default:
+                        state = MenuState.Exit;
+                        break;
+                }
             }
-            while (true);
+            while (state != MenuState.Exit);
         }
 
-        private void RegisterClient(string firstName, string lastName, string password,string email, string phoneNumber,
+        private void RegisterClient(string username, string firstName, string lastName, string password,string email, string phoneNumber,
             int years, Address address, GenderType gender)
         {
-            var user = this.factory.CreateClient(firstName, lastName, password, email, phoneNumber, years, address, gender);
+            var user = this.factory.CreateClient(username, firstName, lastName, password, email, phoneNumber, years, address, gender);
 
             Console.WriteLine(string.Format(Constants.RegisteredClient, firstName)); //todo implement with RETURN NOT CW    
         }
@@ -63,9 +97,9 @@ namespace DeliverIT.Core.Engine
         {
             StringBuilder sb = new StringBuilder();
 
-            foreach (var client in this.clients)
+            foreach (var user in this.users)
             {
-                sb.Append(client.ToString()); //must implement TOSTRING method
+                sb.Append(user.ToString()); //must implement TOSTRING method
             }
 
             return sb.ToString();
@@ -83,37 +117,11 @@ namespace DeliverIT.Core.Engine
             return sb.ToString();
         }
 
-        private string MenuText()
+        private void MainMenu(MainMenuChoise userMainMenuChoise)
         {
-            sb.AppendLine("DeliverIT Menu Options\n");
-            sb.AppendLine("----- Control Options -----\n");
-            sb.AppendLine("1. Add new clients.");
-            sb.AppendLine("2. Place orders for client.");
-            sb.AppendLine("3. Add couriers.\n");
-            sb.AppendLine("----- List Options -----\n");
-            sb.AppendLine("4. List all clients.");
-            sb.AppendLine("5. List all orders.");
-            sb.AppendLine("6. List delivery locations.\n");
-            sb.AppendLine("7. Exit menu.");
-
-            return sb.ToString();
-        }
-
-        private void MainMenu()
-        {
-            int.TryParse(Console.ReadLine(), out var userChoise);
-
-            var isValidChoise = Enum.IsDefined(typeof(Selections), userChoise);
-
-            if (!isValidChoise)
-                userChoise = (int)Selections.Invalid;
-
-            //if (userChoise == (int)Selections.Exit)
-            //    break;
-
-            switch ((Selections)userChoise)
+            switch (userMainMenuChoise)
             {
-                case Selections.AddClient:
+                case MainMenuChoise.AddClient:
                     Console.WriteLine("Implement creating of a client ...");
                     #region Commented Out
                     //Console.Write("First name: ");
@@ -179,31 +187,91 @@ namespace DeliverIT.Core.Engine
                     #endregion
                     break;
 
-                case Selections.PlaceOrder:
+                case MainMenuChoise.PlaceOrder:
                     Console.WriteLine("Implement placing of an order ...");
                     break;
 
-                case Selections.AddCourier:
+                case MainMenuChoise.AddCourier:
                     Console.WriteLine("Implement adding a courier ...");
                     break;
 
-                case Selections.AllClients:
+                case MainMenuChoise.AllClients:
                     Console.WriteLine("Implement clients view ...");
                     //Console.WriteLine(this.ShowAllClients());
                     break;
 
-                case Selections.AllOrders:
+                case MainMenuChoise.AllOrders:
                     Console.WriteLine("Implement orders view ...");
                     //Console.WriteLine(this.ShowAllOrders());
                     break;
 
-                case Selections.AllLocations:
+                case MainMenuChoise.AllLocations:
                     Console.WriteLine("Implement locations view ...");
                     break;
 
-                case Selections.Invalid:
-                    Console.WriteLine("Invalid option selected! Please select a valid option!");
+                case MainMenuChoise.Logout:
+
+                    this.loggedUser = null;
+                    state = MenuState.Login;
+
                     break;
+            }
+        }
+
+        private void LoginMenu(LoginChoise userChoise)
+        {
+            switch (userChoise)
+            {
+                case LoginChoise.Login:
+
+                    Console.Write("Username: ");
+                    string username = Console.ReadLine();
+
+                    Console.Write("Password: ");
+                    string password = Console.ReadLine();
+
+                    var isLogged = this.Login(username, password);
+
+                    if (isLogged)
+                        state = MenuState.MainMenu;
+
+                    break;
+
+                case LoginChoise.Exit:
+                    state = MenuState.Exit;
+                    break;
+            }
+        }
+
+        private void SeedObjects()
+        {
+            var address = new Address()
+            {
+                City = "Sofia",
+                StreetName = "basi ulicata",
+                StreetNumber = "1234"
+            };
+
+            var adminUser = this.factory.CreateAdmin("root", "ivan", "gargov", "1234", "iv.gargov@haha.bg", "1234", 18, address, GenderType.Male);
+
+            this.users.Add(adminUser);
+        }
+
+        private bool Login(string username, string password)
+        {
+            if (this.loggedUser != null)
+                return true;
+
+            var user = this.users.FirstOrDefault(x => x.Username.ToLower() == username.ToLower());
+
+            if (user != null && user.Password == password)
+            {
+                this.loggedUser = user;
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
     }

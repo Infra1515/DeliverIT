@@ -2,7 +2,8 @@
 {
     public enum MenuState
     {
-        RegisterAndLogin,
-        MainMenu
+        Login,
+        MainMenu,
+        Exit
     }
 }
