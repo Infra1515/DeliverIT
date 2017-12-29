@@ -337,7 +337,8 @@ namespace DeliverIT.Core.Engine
             {
                 foreach (var client in this.clients)
                 {
-                    sb.Append(client.ToString()); //must implement TOSTRING method
+                    sb.AppendLine(client.ToString()); //must implement TOSTRING method
+                    sb.AppendLine("-----------------------");
                 }
             }
 

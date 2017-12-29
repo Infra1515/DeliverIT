@@ -10,6 +10,7 @@ namespace DeliverIT.Models.Users.Clients.Abstract
 {
     public class Client : User, IClient
     {
+        // must fix id
         private ClientType clientType;
         private static int id = 0;
         public Client(string firstName, string lastName, string email, string phoneNumber,
@@ -86,7 +87,7 @@ namespace DeliverIT.Models.Users.Clients.Abstract
 
         public override string ToString()
         {
-            return $"Client ID: {this.Id}" + base.ToString() + $"Client Type : {this.ClientType}";
+            return $"Client ID: {this.Id}\r\n" + base.ToString() + $"\r\nClient Type : {this.ClientType}";
         }
 
     }

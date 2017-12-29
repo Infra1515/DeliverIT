@@ -165,10 +165,11 @@ namespace DeliverIT.Models.Users.Abstract
 
         public override string ToString()
         {
-            return $"First Name: {this.FirstName} -- Last Name: {this.LastName}\r\n" +
-                $"Email : {this.Email} -- Telephone: {this.PhoneNumber}\r\n" +
+            return $"Username: {this.UserName}\r\n" +
+                $"First Name: {this.FirstName}\r\nLast Name: {this.LastName}\r\n" +
+                $"Email : {this.Email}\r\nTelephone: {this.PhoneNumber}\r\n" +
                 $"Address: {this.Address.ToString()}\r\n" +
-                $"Age : {this.Years} -- Sex: {this.Gender}";
+                $"Age : {this.Years}\r\nSex: {this.Gender}";
         }
 
     }

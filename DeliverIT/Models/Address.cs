@@ -24,8 +24,8 @@ namespace DeliverIT.Models
 
         public override string ToString()
         {
-            return $"Country: {this.Country.ToString()}\r\n" +
-                $"City: {this.City}\r\nStreet Name: {this.StreetName} Number: {this.StreetNumber}\r\n";
+            return $"Country: {this.Country.GetType().Name}\r\n" +
+                $"City: {this.City}\r\nStreet Name: {this.StreetName}\r\nNumber: {this.StreetNumber}";
         }
     }
 }
