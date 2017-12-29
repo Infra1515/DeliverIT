@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DeliverIT.Models.Countries;
 
-namespace DeliverIT.Models.Contracts
+namespace DeliverIT.Contracts
 {
     public interface IAddress
     {
-
         Country Country { get; set; }
         string StreetName { get; set; }
         string StreetNumber { get; set; }

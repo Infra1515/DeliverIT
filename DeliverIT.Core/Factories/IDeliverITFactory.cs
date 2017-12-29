@@ -1,31 +1,25 @@
 ﻿using System;
-using DeliverIT.Common;
 using DeliverIT.Contracts;
 using DeliverIT.Models;
-using DeliverIT.Models.Users.Clients;
-using DeliverIT.Models.Users.Clients.Abstract;
-using DeliverIT.Models.Users.Couriers.Abstract;
 using DeliverIT.Common.Enums;
+using DeliverIT.Models.Users;
 
 namespace DeliverIT.Core.Factories
 {
     public interface IDeliverITFactory
     {
-        Client CreateClient(string firstName, string lastName, string email, string phoneNumber, int years,
-            Address address, GenderType gender, ClientType clientType, string username);
+        IUser CreateClient(string username, string password, string firstName, string lastName, string email,
+            int age, string phoneNumber, Address address, GenderType gender);
+
+        IUser CreateCourier(string username, string password, string firstName, string lastName, string email,
+            int age, string phoneNumber, Address address, GenderType gender, double allowedWeight, double allowedVolume);
+
+        IUser CreateAdmin(string username, string password, string firstName, string lastName, string email);
 
         IOrder CreateOrder(Courier courier, Client sender, Client receiver, DateTime sendDate, DateTime dueDate,
-                           OrderState orderState, Address address, Product product, int postalCode);
+                           OrderState orderState, Address address, IProduct product, int postalCode);
 
-        Product CreateProduct(double x, double y, double z, bool isFragile, double weight,
+        IProduct CreateProduct(double x, double y, double z, bool isFragile, double weight,
             ProductType productType);
-        Client CreateClient(string username, string firstName, string lastName, string password, string email, string phoneNumber, int years,
-            Address address, GenderType gender);
-
-        IUser CreateAdmin(string username, string firstName, string lastName, string password, string email, string phoneNumber, int age,
-            Address address, GenderType gender);
-
-        //Courier CreateCourier(string firstName, string lastName, string email, string phoneNumber,
-        //    int years, Address address, GenderType gender,double allowedWeight, double allowedVolume);
     }
 }

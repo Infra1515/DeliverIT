@@ -8,7 +8,6 @@
         {
             this.CitysAndZips.Add("Saint-Petersburg", 190000);
             this.CitysAndZips.Add("Moscow", 101000);
-
         }
     }
 }

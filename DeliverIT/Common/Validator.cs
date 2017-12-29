@@ -1,12 +1,9 @@
-﻿using System.Text.RegularExpressions;
+﻿using System;
 
 namespace DeliverIT.Common
 { 
-    using System;
-
     public class Validator
     {
-
         public static void ValidateNotNull<T> (T value)
         {
             if(value == null)
@@ -59,7 +56,7 @@ namespace DeliverIT.Common
                 }
             }
         }
-        public static void ValidateYears(int years, int min, int max, string message)
+        public static void ValidateYears(int age, int min, int max, string message)
         {
             if (age < min || age > max)
             {
@@ -77,7 +74,7 @@ namespace DeliverIT.Common
 
         public static void ValidateDueDate(DateTime sendDate, DateTime dueDate, string message)
         {
-            if(dueDate.Date >= sendDate.Date)
+            if (dueDate.Date >= sendDate.Date)
             {
                 throw new ArgumentException(message);
             }

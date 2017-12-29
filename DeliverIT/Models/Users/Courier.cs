@@ -1,34 +1,42 @@
-﻿using DeliverIT.Common;
-using DeliverIT.Common.Enums;
-using System.Collections.Generic;
-using DeliverIT.Common;
-using DeliverIT.Models.Users.Abstract;
-using DeliverIT.Models.Contracts.User;
+﻿using DeliverIT.Common.Enums;
 using DeliverIT.Contracts;
 
-namespace DeliverIT.Models.Users.Couriers.Abstract
+namespace DeliverIT.Models.Users
 {
-    public abstract class Courier : User, ICourier
+    public class Courier : Person, ICourier
     {
         private static int id = 0;
+        
         private double allowedVolume;
         private double allowedWeight;
 
-
-
-        public Courier(string firstName, string lastName, string email, string phoneNumber,
-                        int years, Address address, GenderType gender,
-                        double allowedWeight, double allowedVolume, string userName)
-            : base(firstName, lastName, email, phoneNumber, years, address, gender, userName)
+        public Courier
+            ( 
+                string username, 
+                string password, 
+                string firstName, 
+                string lastName, 
+                string email, 
+                int age,
+                string phoneNumber, 
+                Address address, 
+                GenderType gender, 
+                double allowedWeight, 
+                double allowedVolume
+            )
+                : base(username, password, firstName, lastName, email, age, phoneNumber, address, gender, UserRole.Operator)
         {
             id++;
+            
             this.AllowedVolume = allowedVolume;
             this.AllowedWeight = allowedWeight;
         }
 
-        public double AllowedVolume { get => allowedVolume; set => allowedVolume = value; }
-        public double AllowedWeight { get => allowedWeight; set => allowedWeight = value; }
         public int Id { get => id; }
+
+        public double AllowedVolume { get => allowedVolume; set => allowedVolume = value; }
+
+        public double AllowedWeight { get => allowedWeight; set => allowedWeight = value; }
 
         //method used for allowed volume and weight orders
         public virtual bool CanCarry()
@@ -50,14 +58,9 @@ namespace DeliverIT.Models.Users.Couriers.Abstract
             return canCarry;
         }
 
-        public void DisplayAllOrders()
-        {
-
-        }
-
         public override string ToString()
         {
-            return $"- {this.FirstName} {this.LastName} {this.Email} {this.PhoneNumber} { this.Years} {this.Address} {this.Gender}";
+            return $"- {this.FirstName} {this.LastName} {this.Email} {this.PhoneNumber} { this.Age} {this.Address} {this.Gender}";
         }
     }
 }

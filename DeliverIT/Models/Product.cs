@@ -1,5 +1,5 @@
 ﻿using DeliverIT.Common.Enums;
-using DeliverIT.Models.Contracts;
+using DeliverIT.Contracts;
 
 namespace DeliverIT.Models
 {

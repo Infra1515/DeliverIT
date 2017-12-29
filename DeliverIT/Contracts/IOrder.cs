@@ -1,12 +1,8 @@
 ﻿using DeliverIT.Common;
-using DeliverIT.Models.Users;
 using System;
-using DeliverIT.Models.Users.Clients;
-using DeliverIT.Models.Users.Couriers.Abstract;
 using DeliverIT.Common.Enums;
-using DeliverIT.Models.Users.Clients.Abstract;
 using DeliverIT.Models;
-using DeliverIT.Models.Contracts;
+using DeliverIT.Models.Users;
 
 namespace DeliverIT.Contracts
 {

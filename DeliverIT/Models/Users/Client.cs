@@ -1,30 +1,37 @@
 ﻿using System;
 using System.Collections.Generic;
-using DeliverIT.Common;
 using DeliverIT.Common.Enums;
 using DeliverIT.Contracts;
-using DeliverIT.Models.Users.Abstract;
-using DeliverIT.Models.Contracts;
 
-namespace DeliverIT.Models.Users.Clients.Abstract
+namespace DeliverIT.Models.Users
 {
-    public class Client : User, IClient
+    public class Client : Person, IClient
     {
         // must fix id
-        private ClientType clientType;
         private static int id = 0;
-        public Client(string firstName, string lastName, string email, string phoneNumber,
-                        int years, Address address, GenderType gender, ClientType clientType, string userName) 
-            : base(firstName, lastName, email, phoneNumber, years, address, gender, userName)
+        private ClientType clientType;
+
+        public Client
+            (
+                string username,
+                string password,
+                string firstName, 
+                string lastName,
+                string email,
+                int age,
+                string phoneNumber,
+                Address address,
+                GenderType gender
+            )
+            : base(username, password, firstName, lastName, email, age, phoneNumber, address, gender, UserRole.Normal)
         {
             id++;
             this.ClientType = clientType;
         }
 
-        public ClientType ClientType { get => clientType; set => clientType = value; }
-
         public int Id { get => id; }
 
+        public ClientType ClientType { get => clientType; set => clientType = value; }
 
         public void ShowAllNotPendingOrders(IList<IOrder> orders)
         {
@@ -89,6 +96,5 @@ namespace DeliverIT.Models.Users.Clients.Abstract
         {
             return $"Client ID: {this.Id}\r\n" + base.ToString() + $"\r\nClient Type : {this.ClientType}";
         }
-
     }
 }

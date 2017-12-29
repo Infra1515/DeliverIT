@@ -1,46 +1,38 @@
 ﻿using System;
-using DeliverIT.Common;
 using DeliverIT.Models.Users;
 using DeliverIT.Contracts;
 using DeliverIT.Models;
-using DeliverIT.Models.Users.Clients;
-using DeliverIT.Models.Users.Clients.Abstract;
-using DeliverIT.Models.Users.Couriers.Abstract;
 using DeliverIT.Common.Enums;
 
 namespace DeliverIT.Core.Factories
 {
     public class DeliverITFactory : IDeliverITFactory
     {
-        public Client CreateClient(string username, string firstName, string lastName, string password, string email, string phoneNumber, int age,
-            Address address, GenderType gender)
+        public IUser CreateClient(string username, string password, string firstName, string lastName, string email,
+            int age, string phoneNumber, Address address, GenderType gender)
         {
-            return new Client(username, firstName, lastName, password, email, phoneNumber, age, address, gender);
+            return new Client(username, password, firstName, lastName, email, age, phoneNumber, address, gender);
         }
 
-        public IUser CreateAdmin(string username, string firstName, string lastName, string password, string email, string phoneNumber, int age,
-            Address address, GenderType gender)
-        public Client CreateClient(string firstName, string lastName, string email, string phoneNumber, int years,
-            Address address, GenderType gender, ClientType clientType, string username)
+        public IUser CreateCourier(string username, string password, string firstName, string lastName, string email,
+            int age, string phoneNumber, Address address, GenderType gender, double allowedWeight, double allowedVolume)
         {
-            return new Client(firstName, lastName, email, phoneNumber, years, address, gender, clientType, username);
-            return new Administrator(username, firstName, lastName, password, UserRole.Administrator, email, phoneNumber, age, address, gender);
+            return new Courier(username, password, firstName, lastName, email, age, phoneNumber, address,
+                gender, allowedWeight, allowedVolume);
         }
 
-        public IOrder CreateOrder(Courier courier, Client sender, Client receiver, DateTime sendDate,
-            DateTime dueDate, OrderState orderState, Address address, Product product, int postalCode)
+        public IUser CreateAdmin(string username, string password, string firstName, string lastName, string email)
+        {
+            return new Administrator(username, password, firstName, lastName, email);
+        }
+
+        public IOrder CreateOrder(Courier courier, Client sender, Client receiver, DateTime sendDate, DateTime dueDate,
+                           OrderState orderState, Address address, IProduct product, int postalCode)
         {
             return new Order(courier, sender, receiver, sendDate, dueDate, orderState, address, product, postalCode);
         }
 
-        //public Courier CreateCourier(string firstName, string lastName, string email, string phoneNumber, int years, Address address,
-        //    GenderType gender, double allowedWeight, double allowedVolume)
-        //{
-        //    return new 
-        //}
-
-        public Product CreateProduct(double x, double y, double z, bool isFragile, double weight,
-            ProductType productType)
+        public IProduct CreateProduct(double x, double y, double z, bool isFragile, double weight, ProductType productType)
         {
             return new Product(x, y, z, isFragile, weight, productType);
         }

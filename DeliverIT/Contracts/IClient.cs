@@ -1,12 +1,10 @@
 ﻿using DeliverIT.Common.Enums;
-using DeliverIT.Contracts;
 using System.Collections.Generic;
 
-namespace DeliverIT.Models.Contracts
+namespace DeliverIT.Contracts
 {
     public interface IClient : IUser
     {
-
         ClientType ClientType { get; }
 
         int Id { get; }
@@ -15,13 +13,10 @@ namespace DeliverIT.Models.Contracts
 
         void ShowReceivedOrders(IList<IOrder> orders);
 
-
         void ShowSentOrders(IList<IOrder> orders);
 
         void ShowExpectedSendOrders(IList<IOrder> orders);
 
-
         void ShowExpectedReceiveOrders(IList<IOrder> orders);
-
     }
 }

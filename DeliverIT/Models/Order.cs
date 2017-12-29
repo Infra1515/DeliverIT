@@ -1,11 +1,8 @@
 ﻿using System;
 using DeliverIT.Common;
 using DeliverIT.Contracts;
-using DeliverIT.Models.Users.Clients;
-using DeliverIT.Models.Users.Couriers.Abstract;
 using DeliverIT.Common.Enums;
-using DeliverIT.Models.Users.Clients.Abstract;
-using DeliverIT.Models.Contracts;
+using DeliverIT.Models.Users;
 
 namespace DeliverIT.Models
 {
@@ -18,7 +15,7 @@ namespace DeliverIT.Models
         private readonly int postalCode;
 
         public Order(Courier courier, Client sender, Client receiver, DateTime sendDate, DateTime dueDate,
-                 OrderState orderState, Address address, Product product, int postalCode)
+                 OrderState orderState, Address address, IProduct product, int postalCode)
         {
             id++;
             this.Courier = courier;
@@ -42,7 +39,6 @@ namespace DeliverIT.Models
         public int PostalCode => postalCode;
         public OrderState OrderState { get; set; }
         public int Id { get => id; }
-
 
         public DateTime SendDate
         {
