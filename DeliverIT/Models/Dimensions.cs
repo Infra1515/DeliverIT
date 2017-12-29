@@ -1,4 +1,4 @@
-﻿namespace DeliverIT
+﻿namespace DeliverIT.Models
 {
     public struct Dimensions
     {

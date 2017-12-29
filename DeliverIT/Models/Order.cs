@@ -1,62 +1,76 @@
-﻿using DeliverIT.Common;
+﻿using System;
+using DeliverIT.Common;
 using DeliverIT.Contracts;
-using DeliverIT.Models;
-using DeliverIT.Models.Users;
-using System;
+using DeliverIT.Models.Users.Clients;
+using DeliverIT.Models.Users.Couriers.Abstract;
+using DeliverIT.Common.Enums;
+using DeliverIT.Models.Users.Clients.Abstract;
+using DeliverIT.Models.Contracts;
 
-namespace DeliverIT
+namespace DeliverIT.Models
 {
+
     public class Order : IOrder
     {
         private DateTime sendDate;
         private DateTime dueDate;
         private static int id = 0;
+        private readonly int postalCode;
 
-        public Order(Courier courier, Sender sender, Receiver receiver, DateTime sendDate, DateTime dueDate, 
-             decimal deliveryPrice, bool isDelivered, Country address)
+        public Order(Courier courier, Client sender, Client receiver, DateTime sendDate, DateTime dueDate,
+                 OrderState orderState, Address address, Product product, int postalCode)
         {
-            Id += 1;
+            id++;
             this.Courier = courier;
             this.Sender = sender;
             this.Receiver = receiver;
             this.SendDate = sendDate;
             this.DueDate = dueDate;
-            this.DeliveryPrice = deliveryPrice;
-            this.IsDelivered = isDelivered; //enum? deliveryState (delivered, not delivered, damaged, not accepted, lost.......)
+            this.OrderState = orderState;
             this.Address = address;
+            this.Product = product;
+            this.postalCode = postalCode;
         }
 
         public Courier Courier { get; set; }
-        public Sender Sender { get; set; }
-        public Receiver Receiver { get; set; }
+        public Client Sender { get; set; }
+        public Client Receiver { get; set; }
+        public Address Address { get; set; }
+        public IProduct Product { get; set; }
+        public DeliveryType DeliveryType { get; set; }
+        public decimal DeliveryPrice { get; set; }
+        public int PostalCode => postalCode;
+        public OrderState OrderState { get; set; }
+        public int Id { get => id; }
+
 
         public DateTime SendDate
         {
-            get { return this.sendDate; }
+            get
+            {
+                return this.sendDate;
+            }
             set
             {
-                Validator.ValidateSendAndDueDate(value, Constants.InvalidSendDate);
-
+                Validator.ValidateSendDate(value, Constants.InvalidSendDate);
                 this.sendDate = value;
             }
         }
+
         public DateTime DueDate
         {
-            get { return this.dueDate; }
+            get
+            {
+                return this.dueDate;
+            }
             set
             {
-                Validator.ValidateSendAndDueDate(value, Constants.InvalidDueDate);
-
+                Validator.ValidateSendDate(value, Constants.InvalidDueDate);
                 this.dueDate = value;
             }
         }
-        public Country Address { get ; set ; }
-        public Product Product { get; set; }
-        public DeliveryType DeliveryType { get; set; }
-        public decimal DeliveryPrice { get; set; }
-        public static int Id { get { return id; } private set { id = value; }}
-        public bool IsDelivered { get ; set ; }
 
+        //method for calculating order price (delivery type, country tax, size, isFragile)
         public decimal CalculatePrice()
         {
             this.DeliveryPrice = Constants.PriceForKg;
@@ -76,8 +90,15 @@ namespace DeliverIT
             this.DeliveryPrice /= (decimal)this.Sender.ClientType; // change delivery price using client type coeff
 
             return this.DeliveryPrice;
+        }
 
-            //method for calculating order price (delivery type, country tax, size, isFragile)
+        public override string ToString()
+        {
+            return $"- Courier: {this.Courier.FirstName} {this.Courier.LastName}\n- " +
+                   $"Sender: {this.Sender.FirstName} {this.Sender.LastName}\n- Receiver: {this.Receiver.FirstName} {this.Receiver.LastName}" +
+                   $"\n- Send date: {this.SendDate}\n- Due date: {this.DueDate}" +
+                   $"\n- Delivery price: {this.DeliveryPrice}\n- OrderState: {this.OrderState}" +
+                   $"\n- Address: {this.Address.ToString()}\n- Product: {this.Product.ToString()}";
         }
     }
 }

@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace DeliverIT.Common.Enums
 {
-    public enum ProductType
+    public enum OrderState
     {
-        Electronics,
-        Clothes,
-        Accessories,
-        Other
+        Delivered,
+        NotDelivered,
+        Damaged,
+        NotAccepted,
+        Lost
     }
 }

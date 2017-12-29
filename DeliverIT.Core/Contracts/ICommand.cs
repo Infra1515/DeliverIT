@@ -4,10 +4,11 @@ namespace DeliverIT.Core.Contracts
 {
     public interface ICommand
     {
-        string CommandName { get; }
 
-        List<string> Parameters { get; }
+        //string CommandName { get; }
 
-        //void ExecuteCommand(string input);
+        //List<string> Parameters { get; }
+
+        ////void ExecuteCommand(string input);
     }
 }

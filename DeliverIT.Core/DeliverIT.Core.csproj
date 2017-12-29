@@ -61,6 +61,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\DeliverIT\DeliverIT.csproj">
       <Project>{81a5fa03-ca1a-4c10-b7ca-c68c607bd5da}</Project>
       <Name>DeliverIT</Name>

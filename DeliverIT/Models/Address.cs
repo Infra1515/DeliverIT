@@ -1,6 +1,8 @@
-﻿namespace DeliverIT.Models
+﻿using DeliverIT.Models.Contracts;
+
+namespace DeliverIT.Models
 {
-    public class Address
+    public class Address : IAddress
     {
         //private Country country;
         private string streetName;
@@ -19,5 +21,12 @@
         public string StreetName { get => streetName; set => streetName = value; }
         public string City { get => city; set => city = value; }
         public string StreetNumber { get => streetNumber; set => streetNumber = value; }
+
+        public override string ToString()
+        {
+            return $"Country: {this.Country.GetType().Name}\r\n" +
+                $"City: {this.City}\r\nStreet Name: {this.StreetName}\r\nNumber: {this.StreetNumber}";
+        }
     }
 }
+
