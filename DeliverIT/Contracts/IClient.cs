@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace DeliverIT.Contracts
 {
-    public interface IClient : IUser
+    public interface IClient
     {
         ClientType ClientType { get; }
 

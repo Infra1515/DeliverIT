@@ -9,6 +9,7 @@ using DeliverIT.Common.Enums;
 using DeliverIT.Core.MenuUtilities;
 using DeliverIT.Models;
 using DeliverIT.Models.Countries;
+using DeliverIT.Common;
 
 namespace DeliverIT.Core.Engine
 {
@@ -162,7 +163,7 @@ namespace DeliverIT.Core.Engine
             return isPresent;
         }
 
-        //private Client AddClient(string type)
+        //private IClient AddClient(string type)
         //{
         //    Console.Write("Username: ");
         //    string username = Console.ReadLine();
@@ -215,7 +216,7 @@ namespace DeliverIT.Core.Engine
         //    Console.Write("Street number: ");
         //    string streetNumber = Console.ReadLine();
 
-        //    //Address userAddress = new Address(country, streetName, streetNumber, city);
+        //    Address userAddress = new Address(country, streetName, streetNumber, city);
 
         //    string clientTypeInfo;
         //    switch (type)
@@ -233,20 +234,21 @@ namespace DeliverIT.Core.Engine
         //            throw new ArgumentException("No such client type!");
         //    }
 
-        //    if (this.users.Any(user => user.UserName == username))
+        //    if (this.users.Any(user => user.Username == username))
         //    {
         //        throw new ArgumentException("User already exists!");
         //    }
         //    else
         //    {
 
-        //        Client client = this.factory.CreateClient(firstName, lastName, email, phoneNumber,
+        //        IClient client = this.factory.CreateClient(firstName, lastName, email, phoneNumber,
         //            years, userAddress, gender, (ClientType)Enum.Parse(typeof(ClientType), type), username);
         //        this.clients.Add(client);
         //        Console.WriteLine(string.Format(clientTypeInfo, client.UserName));
         //        return client;
         //    }
         //}
+
         //private Product AddProduct()
         //{
 
@@ -432,25 +434,6 @@ namespace DeliverIT.Core.Engine
         //    }
         //}
 
-        private void SeedObjects()
-        {
-            var adminUser = this.factory.CreateAdmin("root", "123456", "Ivan", "Gargov", "basi@qkoto.adminsum");
-
-            var country = new Bulgaria();
-            var address = new Address(country, "Dummy", "100", "Sofia");
-
-            var dummyClient = this.factory.CreateClient("client123", "1234", "DummyFirst", "DummyLast", "dummy@dummy.com", 18, "12345678", address, GenderType.Male);
-
-            // Beloved ones resurrected :))
-            var dummyCourierGosheedy = this.factory.CreateCourier("gosheedy", "1234", "Gosheto", "Goshev", "Gosheto@DeliveryIT.com", 20, "0895448694", address, GenderType.Male, 500, 40);
-            var dummyCourierPeshont = this.factory.CreateCourier("peshont", "1234", "Peshont", "Peshontov", "Peshkata@DeliveryIT.com", 20, "0885236652", address, GenderType.Male, 500, 40);
-
-            this.users.Add(adminUser);
-            this.users.Add(dummyClient);
-            this.users.Add(dummyCourierGosheedy);
-            this.users.Add(dummyCourierPeshont);
-        }
-
         private bool Login(string username, string password)
         {
             if (this.loggedUser != null)
@@ -498,5 +481,29 @@ namespace DeliverIT.Core.Engine
         //    strBuilder.AppendLine(counter.ToString() + ". " + CountryType.Germany.ToString());
         //    return strBuilder.ToString();
         //}
+
+        private void SeedObjects()
+        {
+            var adminUser = this.factory.CreateAdmin("root", "123456", "Ivan", "Gargov", "basi@qkoto.adminsum");
+
+            var country = new Bulgaria();
+            var address = new Address(country, "Dummy", "100", "Sofia");
+
+            var dummyClient = this.factory.CreateClient("client123", "1234", "DummyFirst", "DummyLast", "dummy@dummy.com", 18, "12345678", address, GenderType.Male);
+            var dummyClientCool = this.factory.CreateClient("coolClient", "1234", "DummyCool", "DummyLastCool", "dummycool@dummy.com", 18, "12345678", address, GenderType.Male);
+
+            // Beloved ones resurrected :))
+            var dummyCourierGosheedy = this.factory.CreateCourier("gosheedy", "1234", "Gosheto", "Goshev", "Gosheto@DeliveryIT.com", 20, "0895448694", address, GenderType.Male, 500, 40);
+            var dummyCourierPeshont = this.factory.CreateCourier("peshont", "1234", "Peshont", "Peshontov", "Peshkata@DeliveryIT.com", 20, "0885236652", address, GenderType.Male, 500, 40);
+
+            var product = this.factory.CreateProduct(10, 10, 10, false, 50, ProductType.Accessories);
+            var order = this.factory.CreateOrder(dummyCourierGosheedy, dummyClient, dummyClientCool, DateTime.Now, DateTime.Now.AddMinutes(20), OrderState.InProgress, product, 10);
+
+            this.users.Add(adminUser);
+            this.users.Add(dummyClient);
+            this.users.Add(dummyCourierGosheedy);
+            this.users.Add(dummyCourierPeshont);
+            this.orders.Add(order);
+        }
     }
 }

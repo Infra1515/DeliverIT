@@ -1,7 +1,6 @@
 ﻿using DeliverIT.Common;
 using System;
 using DeliverIT.Common.Enums;
-using DeliverIT.Models;
 using DeliverIT.Models.Users;
 
 namespace DeliverIT.Contracts
@@ -16,7 +15,6 @@ namespace DeliverIT.Contracts
         DeliveryType DeliveryType { get; set; }
         decimal DeliveryPrice { get; set; }
         OrderState OrderState{ get; set; }
-        Address Address { get; set; }
         IProduct Product { get; set; }
         decimal CalculatePrice();
         int PostalCode { get; }

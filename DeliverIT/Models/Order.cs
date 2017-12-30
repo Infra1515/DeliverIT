@@ -14,7 +14,7 @@ namespace DeliverIT.Models
         private readonly int postalCode;
 
         public Order(Courier courier, Client sender, Client receiver, DateTime sendDate, DateTime dueDate,
-                 OrderState orderState, Address address, IProduct product, int postalCode)
+                 OrderState orderState, IProduct product, int postalCode)
         {
             id++;
             this.Courier = courier;
@@ -23,7 +23,6 @@ namespace DeliverIT.Models
             this.SendDate = sendDate;
             this.DueDate = dueDate;
             this.OrderState = orderState;
-            this.Address = address;
             this.Product = product;
             this.postalCode = postalCode;
         }
@@ -31,7 +30,6 @@ namespace DeliverIT.Models
         public Courier Courier { get; set; }
         public Client Sender { get; set; }
         public Client Receiver { get; set; }
-        public Address Address { get; set; }
         public IProduct Product { get; set; }
         public DeliveryType DeliveryType { get; set; }
         public decimal DeliveryPrice { get; set; }
@@ -93,7 +91,7 @@ namespace DeliverIT.Models
                    $"Sender: {this.Sender.FirstName} {this.Sender.LastName}\n- Receiver: {this.Receiver.FirstName} {this.Receiver.LastName}" +
                    $"\n- Send date: {this.SendDate}\n- Due date: {this.DueDate}" +
                    $"\n- Delivery price: {this.DeliveryPrice}\n- OrderState: {this.OrderState}" +
-                   $"\n- Address: {this.Address.ToString()}\n- Product: {this.Product.ToString()}";
+                   $"\n- DeliveryAddress: {this.Receiver.Address.ToString()}\n- Product: {this.Product.ToString()}";
         }
     }
 }

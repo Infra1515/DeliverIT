@@ -3,6 +3,7 @@
     public enum OrderState
     {
         Delivered,
+        InProgress,
         NotDelivered,
         Damaged,
         NotAccepted,

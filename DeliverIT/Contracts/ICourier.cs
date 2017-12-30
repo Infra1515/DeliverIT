@@ -1,6 +1,6 @@
 ﻿namespace DeliverIT.Contracts
 {
-    public interface ICourier
+    public interface ICourier : IUser
     {
         int Id { get; }
         double AllowedVolume { get; set; }
