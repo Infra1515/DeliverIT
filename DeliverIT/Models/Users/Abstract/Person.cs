@@ -4,7 +4,7 @@ using DeliverIT.Contracts;
 using System;
 using System.Collections.Generic;
 
-namespace DeliverIT.Models.Users
+namespace DeliverIT.Models.Users.Abstract
 {
     public abstract class Person : User, IPerson
     {

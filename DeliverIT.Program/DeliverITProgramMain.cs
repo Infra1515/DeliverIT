@@ -1,8 +1,7 @@
-﻿namespace DeliverIT.Program
-{
-    using DeliverIT.Core.Engine;
+﻿using DeliverIT.Core.Engine;
 
-    using DeliverIT;
+namespace DeliverIT.Program
+{
     public class DeliverITProgramMain
     {
         public static void Main(string[] args)

@@ -1,4 +1,5 @@
 ﻿using DeliverIT.Common.Enums;
+using DeliverIT.Models.Users.Abstract;
 
 namespace DeliverIT.Models.Users
 {

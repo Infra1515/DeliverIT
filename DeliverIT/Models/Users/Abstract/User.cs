@@ -2,7 +2,7 @@
 using DeliverIT.Common.Enums;
 using DeliverIT.Contracts;
 
-namespace DeliverIT.Models.Users
+namespace DeliverIT.Models.Users.Abstract
 {
     public abstract class User : IUser
     {

@@ -6,7 +6,6 @@ using DeliverIT.Models.Users;
 
 namespace DeliverIT.Models
 {
-
     public class Order : IOrder
     {
         private DateTime sendDate;

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using DeliverIT.Common.Enums;
 using DeliverIT.Contracts;
+using DeliverIT.Models.Users.Abstract;
 
 namespace DeliverIT.Models.Users
 {

@@ -81,7 +81,6 @@ namespace DeliverIT.Core.Engine
             while (state != MenuState.Exit);
         }
 
-
         private void MainMenu(MainMenuChoise mainMenuChoise)
         {
             switch (mainMenuChoise)
