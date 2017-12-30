@@ -5,6 +5,10 @@ using DeliverIT.Core.Contracts;
 using DeliverIT.Core.Utilities;
 using System.Linq;
 using DeliverIT.Core.Factories;
+using DeliverIT.Common.Enums;
+using DeliverIT.Core.MenuUtilities;
+using DeliverIT.Models;
+using DeliverIT.Models.Countries;
 
 namespace DeliverIT.Core.Engine
 {
@@ -83,39 +87,79 @@ namespace DeliverIT.Core.Engine
 
         private void MainMenu(MainMenuChoise mainMenuChoise)
         {
-            switch (mainMenuChoise)
+            bool isPermitted = this.CheckRoleAccess(loggedUser.Role, mainMenuChoise);
+
+            if (isPermitted)
             {
-                case MainMenuChoise.AddClient:
-                    //AddClient("Client");
+                switch (mainMenuChoise)
+                {
+                    case MainMenuChoise.AddClient:
+                        Console.WriteLine("Adding client ...... ");
+                        //AddClient("Client");
+                        break;
+
+                    case MainMenuChoise.PlaceOrder:
+                        Console.WriteLine("Placing order ...... ");
+                        //AddOrder();
+                        break;
+
+                    case MainMenuChoise.AddCourier: //optional?
+                        Console.WriteLine("Adding courier ...... ");
+                        //Console.WriteLine("Implement adding a courier ...");
+                        break;
+
+                    case MainMenuChoise.AllClients:
+                        Console.WriteLine("Listing clients ...... ");
+                        //Console.WriteLine(this.ShowAllClients());
+                        break;
+
+                    case MainMenuChoise.AllOrders:
+                        Console.WriteLine("Listing orders ...... ");
+                        //Console.WriteLine(this.ShowAllOrders());
+                        break;
+
+                    case MainMenuChoise.AllLocations:
+                        Console.WriteLine("Listing locations ...... ");
+                        //Console.WriteLine(ShowAllLocations());
+                        break;
+
+                    case MainMenuChoise.Logout:
+
+                        this.loggedUser = null;
+                        state = MenuState.Login;
+
+                        break;
+                }
+            }
+            else
+            {
+                Console.WriteLine("You have no permission to accesss this operation!\n");
+            }
+        }
+
+        private bool CheckRoleAccess(UserRole role, MainMenuChoise mainMenuChoise)
+        {
+            bool isPresent = false;
+
+            switch (role)
+            {
+                case UserRole.Administrator:
+
+                    isPresent = LookupRoles.Administrator.Contains(mainMenuChoise);
                     break;
 
-                case MainMenuChoise.PlaceOrder:
-                    //AddOrder();
+                case UserRole.Operator:
+
+                    isPresent = LookupRoles.Operator.Contains(mainMenuChoise);
                     break;
 
-                case MainMenuChoise.AddCourier: //optional?
-                    //Console.WriteLine("Implement adding a courier ...");
-                    break;
+                case UserRole.Normal:
 
-                case MainMenuChoise.AllClients:
-                    //Console.WriteLine(this.ShowAllClients());
-                    break;
-
-                case MainMenuChoise.AllOrders:
-                    //Console.WriteLine(this.ShowAllOrders());
-                    break;
-
-                case MainMenuChoise.AllLocations:
-                    //Console.WriteLine(ShowAllLocations());
-                    break;
-
-                case MainMenuChoise.Logout:
-
-                    this.loggedUser = null;
-                    state = MenuState.Login;
-
+                    isPresent = LookupRoles.Normal.Contains(mainMenuChoise);
                     break;
             }
+
+            return isPresent;
         }
 
         //private Client AddClient(string type)
@@ -360,6 +404,8 @@ namespace DeliverIT.Core.Engine
 
                     if (isLogged)
                         state = MenuState.MainMenu;
+                    else
+                        Console.WriteLine("Wrong username or password!\n");
 
                     break;
 
@@ -390,7 +436,19 @@ namespace DeliverIT.Core.Engine
         {
             var adminUser = this.factory.CreateAdmin("root", "123456", "Ivan", "Gargov", "basi@qkoto.adminsum");
 
+            var country = new Bulgaria();
+            var address = new Address(country, "Dummy", "100", "Sofia");
+
+            var dummyClient = this.factory.CreateClient("client123", "1234", "DummyFirst", "DummyLast", "dummy@dummy.com", 18, "12345678", address, GenderType.Male);
+
+            // Beloved ones resurrected :))
+            var dummyCourierGosheedy = this.factory.CreateCourier("gosheedy", "1234", "Gosheto", "Goshev", "Gosheto@DeliveryIT.com", 20, "0895448694", address, GenderType.Male, 500, 40);
+            var dummyCourierPeshont = this.factory.CreateCourier("peshont", "1234", "Peshont", "Peshontov", "Peshkata@DeliveryIT.com", 20, "0885236652", address, GenderType.Male, 500, 40);
+
             this.users.Add(adminUser);
+            this.users.Add(dummyClient);
+            this.users.Add(dummyCourierGosheedy);
+            this.users.Add(dummyCourierPeshont);
         }
 
         private bool Login(string username, string password)
@@ -426,24 +484,6 @@ namespace DeliverIT.Core.Engine
         //    }
 
         //    return sb.ToString();
-        //}
-
-        //private Courier CreateCourier(int choice)
-        //{
-        //    Courier courier = new Gosheedy();
-        //    switch (choice)
-        //    {
-        //        case 8:
-        //            courier = new Gosheedy();
-        //            Console.WriteLine($"{courier.GetType().Name} chosen successfully!");
-        //            return courier;
-        //        case 9:
-        //            courier = new Peshont();
-        //            Console.WriteLine($"{courier.GetType().Name} chosen successfully!");
-        //            return courier;
-        //        default:
-        //            return courier;
-        //    }
         //}
 
         //private string ShowAllLocations()

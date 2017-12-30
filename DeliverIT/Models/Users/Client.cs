@@ -24,7 +24,7 @@ namespace DeliverIT.Models.Users
                 Address address,
                 GenderType gender
             )
-            : base(username, password, firstName, lastName, email, age, phoneNumber, address, gender, UserRole.Normal)
+            : base(username, password, firstName, lastName, email, age, phoneNumber, address, gender, UserRole.Operator)
         {
             id++;
             this.ClientType = clientType;

@@ -51,6 +51,7 @@
     <Compile Include="Engine\DeliverITEngine.cs" />
     <Compile Include="Factories\DeliverITFactory.cs" />
     <Compile Include="Factories\IDeliverITFactory.cs" />
+    <Compile Include="MenuUtilities\LookupRoles.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MenuUtilities\LookupMenuText.cs" />
     <Compile Include="MenuUtilities\MenuState.cs" />

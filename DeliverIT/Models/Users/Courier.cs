@@ -25,7 +25,7 @@ namespace DeliverIT.Models.Users
                 double allowedWeight, 
                 double allowedVolume
             )
-                : base(username, password, firstName, lastName, email, age, phoneNumber, address, gender, UserRole.Operator)
+                : base(username, password, firstName, lastName, email, age, phoneNumber, address, gender, UserRole.Normal)
         {
             id++;
             
