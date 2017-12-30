@@ -9,13 +9,15 @@ using DeliverIT.Common.Enums;
 using DeliverIT.Core.MenuUtilities;
 using DeliverIT.Models;
 using DeliverIT.Models.Countries;
-using DeliverIT.Common;
+using System.Threading;
 
 namespace DeliverIT.Core.Engine
 {
     public class DeliverITEngine : IEngine
     {
         private static readonly IEngine SingleInstance = new DeliverITEngine();
+        private static Timer actionTimer;
+        public static event EventHandler<OrderStateChangedEventArgs> OrderStateChanged;
 
         private readonly IDeliverITFactory factory;
         private ICollection<IUser> users;
@@ -39,7 +41,19 @@ namespace DeliverIT.Core.Engine
         public void Start()
         {
             this.SeedObjects();
-            
+
+            OrderStateChanged += DeliverITEngine_OrderStateChanged;
+
+            actionTimer = new Timer((state) =>
+            {
+                if (this.orders.Any())
+                {
+                    this.ProccessOrders();
+                }
+
+                actionTimer.Change(5000, Timeout.Infinite);
+            }, null, 5000, Timeout.Infinite);
+
             do
             {
                 switch (state)
@@ -417,6 +431,20 @@ namespace DeliverIT.Core.Engine
             }
         }
 
+        private void ProccessOrders()
+        {
+            foreach (var order in this.orders)
+            {
+                var lastState = order.OrderState;
+
+                if (order.DueDate < DateTime.Now && order.OrderState != OrderState.Delivered)
+                {
+                    order.OrderState = OrderState.Delivered;
+                    OnOrderStateChanged(this, new OrderStateChangedEventArgs(lastState, order.OrderState));
+                }
+            }
+        }
+
         //private string ShowAllClients()
         //{
         //    StringBuilder sb = new StringBuilder();
@@ -497,13 +525,23 @@ namespace DeliverIT.Core.Engine
             var dummyCourierPeshont = this.factory.CreateCourier("peshont", "1234", "Peshont", "Peshontov", "Peshkata@DeliveryIT.com", 20, "0885236652", address, GenderType.Male, 500, 40);
 
             var product = this.factory.CreateProduct(10, 10, 10, false, 50, ProductType.Accessories);
-            var order = this.factory.CreateOrder(dummyCourierGosheedy, dummyClient, dummyClientCool, DateTime.Now, DateTime.Now.AddMinutes(20), OrderState.InProgress, product, 10);
+            var order = this.factory.CreateOrder(dummyCourierGosheedy, dummyClient, dummyClientCool, DateTime.Now, DateTime.Now.AddSeconds(30), OrderState.InProgress, product, 10);
 
             this.users.Add(adminUser);
             this.users.Add(dummyClient);
             this.users.Add(dummyCourierGosheedy);
             this.users.Add(dummyCourierPeshont);
             this.orders.Add(order);
+        }
+
+        protected virtual void OnOrderStateChanged(object source, OrderStateChangedEventArgs args)
+        {
+            if (OrderStateChanged != null) OrderStateChanged(this, args);
+        }
+
+        private void DeliverITEngine_OrderStateChanged(object sender, OrderStateChangedEventArgs args)
+        {
+            Console.WriteLine($"Order status changed from {args.LAST_STATE} to {args.CURRENT_STATE}");
         }
     }
 }

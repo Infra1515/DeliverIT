@@ -49,6 +49,7 @@
     <Compile Include="Contracts\IEngine.cs" />
     <Compile Include="Engine\DeliverITCommand.cs" />
     <Compile Include="Engine\DeliverITEngine.cs" />
+    <Compile Include="Engine\OrderStateChangedEventArgs.cs" />
     <Compile Include="Factories\DeliverITFactory.cs" />
     <Compile Include="Factories\IDeliverITFactory.cs" />
     <Compile Include="MenuUtilities\LookupRoles.cs" />
