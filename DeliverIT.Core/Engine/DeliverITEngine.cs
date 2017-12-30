@@ -48,7 +48,7 @@ namespace DeliverIT.Core.Engine
             {
                 if (this.orders.Any())
                 {
-                    this.ProccessOrders();
+                    this.ProcessOrders();
                 }
 
                 actionTimer.Change(5000, Timeout.Infinite);
@@ -431,7 +431,7 @@ namespace DeliverIT.Core.Engine
             }
         }
 
-        private void ProccessOrders()
+        private void ProcessOrders()
         {
             foreach (var order in this.orders)
             {
@@ -440,7 +440,7 @@ namespace DeliverIT.Core.Engine
                 if (order.DueDate < DateTime.Now && order.OrderState != OrderState.Delivered)
                 {
                     order.OrderState = OrderState.Delivered;
-                    OnOrderStateChanged(this, new OrderStateChangedEventArgs(lastState, order.OrderState));
+                    OnOrderStateChanged(this, new OrderStateChangedEventArgs(lastState, order.OrderState, order.Id));
                 }
             }
         }
@@ -541,7 +541,7 @@ namespace DeliverIT.Core.Engine
 
         private void DeliverITEngine_OrderStateChanged(object sender, OrderStateChangedEventArgs args)
         {
-            Console.WriteLine($"Order status changed from {args.LAST_STATE} to {args.CURRENT_STATE}");
+            Console.WriteLine($"Order {args.ID} status changed from {args.LAST_STATE} to {args.CURRENT_STATE}");
         }
     }
 }

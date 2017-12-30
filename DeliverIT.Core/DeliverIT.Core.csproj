@@ -45,9 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contracts\ICommand.cs" />
     <Compile Include="Contracts\IEngine.cs" />
-    <Compile Include="Engine\DeliverITCommand.cs" />
     <Compile Include="Engine\DeliverITEngine.cs" />
     <Compile Include="Engine\OrderStateChangedEventArgs.cs" />
     <Compile Include="Factories\DeliverITFactory.cs" />
