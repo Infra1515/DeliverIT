@@ -7,9 +7,9 @@ namespace DeliverIT.Contracts
 {
     public interface IOrder
     {
-        Courier Courier { get; set; }
-        Client Sender { get; set; }
-        Client Receiver { get; set; }
+        ICourier Courier { get; set; }
+        IClient Sender { get; set; }
+        IClient Receiver { get; set; }
         DateTime SendDate { get; set; }
         DateTime DueDate { get; set; }
         DeliveryType DeliveryType { get; set; }

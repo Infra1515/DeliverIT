@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace DeliverIT.Contracts
 {
-    public interface IClient
+    public interface IClient : IPerson
     {
-        ClientType ClientType { get; }
+        ClientType ClientType { get; set; }
 
         int Id { get; }
 

@@ -10,6 +10,10 @@ using DeliverIT.Core.MenuUtilities;
 using DeliverIT.Models;
 using DeliverIT.Models.Countries;
 using System.Threading;
+using System.Globalization;
+using System.Text;
+using DeliverIT.Models.Users;
+using DeliverIT.Common;
 
 namespace DeliverIT.Core.Engine
 {
@@ -74,7 +78,7 @@ namespace DeliverIT.Core.Engine
                         LoginMenu((LoginChoise)userLoginChoise);
 
                         break;
-                        
+
                     case MenuState.MainMenu:
 
                         Console.WriteLine(LookupMenuText.MainMenuText);
@@ -109,23 +113,23 @@ namespace DeliverIT.Core.Engine
                 switch (mainMenuChoise)
                 {
                     case MainMenuChoise.AddClient:
-                        Console.WriteLine("Adding client ...... ");
-                        //AddClient("Client");
+                        //Console.WriteLine("Adding client ...... ");
+                        AddUser("Client");
                         break;
 
                     case MainMenuChoise.PlaceOrder:
-                        Console.WriteLine("Placing order ...... ");
-                        //AddOrder();
+                        //Console.WriteLine("Placing order ...... ");
+                        AddOrder();
                         break;
 
-                    case MainMenuChoise.AddCourier: //optional?
-                        Console.WriteLine("Adding courier ...... ");
-                        //Console.WriteLine("Implement adding a courier ...");
+                    case MainMenuChoise.AddCourier:
+                        //Console.WriteLine("Adding courier ...... ");
+                        AddUser("Courier");
                         break;
 
                     case MainMenuChoise.AllClients:
-                        Console.WriteLine("Listing clients ...... ");
-                        //Console.WriteLine(this.ShowAllClients());
+                        //Console.WriteLine("Listing clients ...... ");
+                        Console.WriteLine(this.ShowAllClients());
                         break;
 
                     case MainMenuChoise.AllOrders:
@@ -136,8 +140,8 @@ namespace DeliverIT.Core.Engine
                         break;
 
                     case MainMenuChoise.AllLocations:
-                        Console.WriteLine("Listing locations ...... ");
-                        //Console.WriteLine(ShowAllLocations());
+                        //Console.WriteLine("Listing locations ...... ");
+                        Console.WriteLine(ShowAllLocations());
                         break;
 
                     case MainMenuChoise.Logout:
@@ -179,232 +183,293 @@ namespace DeliverIT.Core.Engine
             return isPresent;
         }
 
-        //private IClient AddClient(string type)
-        //{
-        //    Console.Write("Username: ");
-        //    string username = Console.ReadLine();
+        private IUser AddUser(string type)
+        {
+            Console.Write("Username: ");
+            string username = Console.ReadLine();
 
-        //    Console.Write("First name: ");
-        //    string firstName = Console.ReadLine();
+            Console.Write("Password: ");
+            string password = Console.ReadLine();
 
-        //    Console.Write("Phone number: ");
-        //    string phoneNumber = Console.ReadLine();
+            Console.Write("First name: ");
+            string firstName = Console.ReadLine();
 
-        //    Console.Write("Years: ");
-        //    int years = int.Parse(Console.ReadLine());
+            Console.Write("Last name: ");
+            string lastName = Console.ReadLine();
 
-        //    Console.Write("Gender: ");
-        //    GenderType gender = (GenderType)Enum.Parse(typeof(GenderType), Console.ReadLine());
+            Console.Write("Email: ");
+            string email = Console.ReadLine();
 
-        //    Console.WriteLine("--- Address ---");
-        //    Console.Write("Country: ");
-        //    string countryString = Console.ReadLine();
+            Console.Write("Phone number: ");
+            string phoneNumber = Console.ReadLine();
 
-        //    Country country;
+            Console.Write("Years: ");
+            int years = int.Parse(Console.ReadLine());
 
-        //    switch ((CountryType)Enum.Parse(typeof(CountryType), countryString))
-        //    {
+            Console.Write("Gender: ");
+            GenderType gender = (GenderType)Enum.Parse(typeof(GenderType), Console.ReadLine());
 
-        //        case CountryType.Bulgaria:
-        //            country = new Bulgaria();
-        //            break;
+            Console.WriteLine("--- Address ---");
+            Console.Write("Country: ");
+            string countryString = Console.ReadLine();
 
-        //        case CountryType.Germany:
-        //            country = new Serbia();
-        //            break;
+            Country country;
 
-        //        case CountryType.Russia:
-        //            country = new Russia();
-        //            break;
+            switch ((CountryType)Enum.Parse(typeof(CountryType), countryString))
+            {
 
-        //        default:
-        //            throw new ArgumentException("We don't ship to this country yet!");
-        //    }
+                case CountryType.Bulgaria:
+                    country = new Bulgaria();
+                    break;
 
-        //    // TODO: Implement validation for city: If its not in Country dict with cities
-        //    // throw exception();
-        //    Console.Write("City: ");
-        //    string city = Console.ReadLine();
+                case CountryType.Germany:
+                    country = new Serbia();
+                    break;
 
-        //    Console.Write("Street name: ");
-        //    string streetName = Console.ReadLine();
+                case CountryType.Russia:
+                    country = new Russia();
+                    break;
 
-        //    Console.Write("Street number: ");
-        //    string streetNumber = Console.ReadLine();
+                default:
+                    throw new ArgumentException("We don't ship to this country yet!");
+            }
 
-        //    Address userAddress = new Address(country, streetName, streetNumber, city);
+            // TODO: Implement validation for city: If its not in Country dict with cities
+            // throw exception();
+            Console.Write("City: ");
+            string city = Console.ReadLine();
 
-        //    string clientTypeInfo;
-        //    switch (type)
-        //    {
-        //        case "Client":
-        //            clientTypeInfo = Constants.RegisteredClient;
-        //            break;
-        //        case "Sender":
-        //            clientTypeInfo = Constants.ChoosenSender;
-        //            break;
-        //        case "Receiver":
-        //            clientTypeInfo = Constants.ChoosenReceiver;
-        //            break;
-        //        default:
-        //            throw new ArgumentException("No such client type!");
-        //    }
+            Console.Write("Street name: ");
+            string streetName = Console.ReadLine();
 
-        //    if (this.users.Any(user => user.Username == username))
-        //    {
-        //        throw new ArgumentException("User already exists!");
-        //    }
-        //    else
-        //    {
+            Console.Write("Street number: ");
+            string streetNumber = Console.ReadLine();
 
-        //        IClient client = this.factory.CreateClient(firstName, lastName, email, phoneNumber,
-        //            years, userAddress, gender, (ClientType)Enum.Parse(typeof(ClientType), type), username);
-        //        this.clients.Add(client);
-        //        Console.WriteLine(string.Format(clientTypeInfo, client.UserName));
-        //        return client;
-        //    }
-        //}
+            Address userAddress = new Address(country, streetName, streetNumber, city);
 
-        //private Product AddProduct()
-        //{
+            string userTypeInfo;
+            switch (type)
+            {
+                case "Client":
+                    userTypeInfo = Constants.RegisteredClient;
+                    break;
+                case "Courier":
+                    userTypeInfo = Constants.RegisteredCourier;
+                    break;
+                default:
+                    throw new ArgumentException("No such client type!");
+            }
 
-        //    Console.Write("Dimensions(X Y Z): ");
-        //    var dimensions = Console.ReadLine().Split(' ').Select(double.Parse).ToArray();
-        //    double x = dimensions[0];
-        //    double y = dimensions[1];
-        //    double z = dimensions[2];
+            foreach(IUser user in this.users)
+            {
+                if(user.Username == username)
+                {
+                    throw new ArgumentException(string.Format(
+                        Constants.UserAlreadyExists, user.GetType().Name, user.Username));
+                }
+            }
+            if(type == "Client")
+            {
+                IClient client = this.factory.CreateClient(username, password, firstName, lastName, email,
+                        years, phoneNumber, userAddress, gender);
+                this.users.Add(client);
+                Console.WriteLine(string.Format(userTypeInfo, client.Username));
+                return client;
+            }
+            else
+            {
+                Console.Write("Enter maximum allowed weight that the courier can carry: ");
+                double allowedWeight = double.Parse(Console.ReadLine());
+                Console.Write("Enter maximum allowed volume that the courier can carry: ");
+                double allowedVolume = double.Parse(Console.ReadLine());
+                ICourier courier = this.factory.CreateCourier(username, password, firstName, lastName,
+                    email, years, phoneNumber, userAddress, gender, allowedWeight, allowedVolume);
+                return courier;
+            }
 
-        //    Console.Write("Is the product fragile? ");
-        //    string isFragileStr = Console.ReadLine().ToLower().Trim();
-        //    bool isFragile;
-        //    if (isFragileStr == "yes")
-        //    {
-        //        isFragile = true;
-        //    }
-        //    else
-        //    {
-        //        isFragile = false;
-        //    }
+            
+        }
 
-        //    Console.Write("What is the product weight? ");
-        //    double weight = double.Parse(Console.ReadLine());
+        private IProduct AddProduct()
+        {
 
-        //    Console.Write($"What is the product type?\r\n" +
-        //        "Available:  Clothes, Accessories, Electronics, Other: ");
-        //    string productTypeString = Console.ReadLine().ToLower().Trim();
-        //    ProductType productType;
-        //    switch (productTypeString)
-        //    {
-        //        case "clothes":
-        //            productType = ProductType.Clothes;
-        //            break;
-        //        case "accessories":
-        //            productType = ProductType.Clothes;
-        //            break;
-        //        case "electronics":
-        //            productType = ProductType.Electronics;
-        //            break;
-        //        case "other":
-        //            productType = ProductType.Other;
-        //            break;
-        //        default:
-        //            productType = ProductType.Other;
-        //            break;
-        //    }
-        //    Product product = this.factory.CreateProduct(x, y, z, isFragile, weight, productType);
-        //    Console.WriteLine($"Product with ID {product.Id} was added succesfully!");
+            Console.Write("Dimensions(X Y Z): ");
+            var dimensions = Console.ReadLine().Split(' ').Select(double.Parse).ToArray();
+            double x = dimensions[0];
+            double y = dimensions[1];
+            double z = dimensions[2];
 
-        //    return product;
+            Console.Write("Is the product fragile? ");
+            string isFragileStr = Console.ReadLine().ToLower().Trim();
+            bool isFragile;
+            if (isFragileStr == "yes")
+            {
+                isFragile = true;
+            }
+            else
+            {
+                isFragile = false;
+            }
 
-        //}
+            Console.Write("What is the product weight? ");
+            double weight = double.Parse(Console.ReadLine());
 
-        //private IOrder AddOrder()
-        //{
-        //    Console.WriteLine("Choose a courier: ");
-        //    Console.WriteLine("8." + new Gosheedy().ToString());
-        //    Console.WriteLine("9." + new Peshont().ToString());
-        //    Courier courier = CreateCourier(int.Parse(Console.ReadLine()));
+            Console.Write($"What is the product type?\r\n" +
+                "Available:  Clothes, Accessories, Electronics, Other: ");
+            string productTypeString = Console.ReadLine().ToLower().Trim();
+            ProductType productType;
+            switch (productTypeString)
+            {
+                case "clothes":
+                    productType = ProductType.Clothes;
+                    break;
+                case "accessories":
+                    productType = ProductType.Clothes;
+                    break;
+                case "electronics":
+                    productType = ProductType.Electronics;
+                    break;
+                case "other":
+                    productType = ProductType.Other;
+                    break;
+                default:
+                    productType = ProductType.Other;
+                    break;
+            }
+            IProduct product = this.factory.CreateProduct(x, y, z, isFragile, weight, productType);
+            Console.WriteLine($"Product with ID {product.Id} was added succesfully!");
 
-        //    Console.WriteLine("--- Sender information ---");
-        //    Console.WriteLine(@"To choose already registered user press 'C' and type his username");
-        //    Console.WriteLine("Or press 'R' to register a new user");
-        //    Client sender;
-        //    string choice = Console.ReadLine();
-        //    if (choice == "C")
-        //    {
-        //        Console.WriteLine("Type username: ");
-        //        string username = Console.ReadLine();
-        //        sender = this.users.FirstOrDefault(x => x.UserName == username);
+            return product;
 
-        //        if (sender == null)
-        //        {
-        //            throw new ArgumentNullException("No such user!");
-        //        }
-        //        else
-        //        {
-        //            sender.ClientType = ClientType.Sender;
-        //            Console.WriteLine($"Sender {sender.FirstName} {sender.LastName} choosen successfully!");
+        }
 
-        //        }
-        //    }
-        //    else
-        //    {
-        //        Console.WriteLine("Register the new user: ");
-        //        sender = AddClient("Sender");
+        private IOrder AddOrder()
+        {
+            string choice;
+            ICourier courier = (ICourier)this.users.FirstOrDefault(x => x.Role == UserRole.Normal);
 
-        //        Console.WriteLine("--- Receiver information ---");
-        //        Console.WriteLine(@"To choose already registered user press 'C' and type his username");
-        //        Console.WriteLine("Or press 'R' to register a new user");
-        //        Client receiver;
-        //        choice = Console.ReadLine();
-        //        if (choice == "C")
-        //        {
-        //            Console.WriteLine("Type username: ");
-        //            string username = Console.ReadLine();
-        //            receiver = this.clients.FirstOrDefault(x => x.UserName == username);
-        //            if (receiver == null)
-        //            {
-        //                throw new ArgumentNullException("No such user!");
-        //            }
-        //            else
-        //            {
-        //                receiver.ClientType = ClientType.Receiver;
-        //                Console.WriteLine($"Reciver {receiver.FirstName} {receiver.LastName} choosen successfully!");
-        //            }
-        //        }
-        //        else
-        //        {
-        //            Console.WriteLine("Register the new user: ");
-        //            receiver = AddClient("Receiver");
-        //        }
+            if (this.loggedUser.Role == UserRole.Administrator)
+            {
+                Console.WriteLine("--- Courier Information ---");
+                Console.WriteLine(@"To choose already registered Courier press 'C' and type his username");
+                Console.WriteLine("Or press 'R' to register a new Courier");
+                choice = Console.ReadLine();
+                if (choice == "C")
+                {
+                    Console.WriteLine("Type username: ");
+                    string username = Console.ReadLine();
+                    // how to avoid type casting?
+                    foreach (var user in this.users)
+                    {
+                        if (user.Role == UserRole.Normal && user.Username == username)
+                        {
+                            courier = (Courier)user;
+                        }
+                    }
+                    if (courier == null)
+                    {
 
-        //        Console.Write("---Product information---");
-        //        Product product = AddProduct();
+                        throw new ArgumentNullException("No courier found!");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Courier {courier.FirstName} {courier.LastName} choosen successfully!");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Register the new Courier: ");
+                    courier = (ICourier)AddUser("Courier");
+                    Console.WriteLine($"Courier {courier.FirstName} {courier.LastName} choosen succesfully!");
+                }
+            }
 
-        //        Console.Write("Enter date of sending (Day/Month/Year): ");
-        //        DateTime sendDate = DateTime.ParseExact(Console.ReadLine(),
-        //                            "d/MM/yyyy", CultureInfo.InvariantCulture);
-        //        Console.Write("Enter due date for delivery(Day/Month/Year): ");
-        //        DateTime dueDate = DateTime.ParseExact(Console.ReadLine(),
-        //                       "d/M/yyyy", CultureInfo.InvariantCulture);
+            Console.WriteLine("--- Sender information ---");
+            Console.WriteLine(@"To choose already registered user press 'C' and type his username");
+            Console.WriteLine("Or press 'R' to register a new user");
+            IClient sender;
+            choice = Console.ReadLine();
+            if (choice == "C")
+            {
+                Console.WriteLine("Type username: ");
+                string username = Console.ReadLine();
+                // how to avoid type casting?
+                sender = (IClient)this.users.FirstOrDefault(x => x.Username == username);
+                if (sender == null)
+                {
 
-        //        int postalCode = receiver.Address.Country.CitysAndZips[receiver.Address.City];
+                    throw new ArgumentNullException("No such user!");
+                }
+                else
+                {
+                    sender.ClientType = ClientType.Sender;
+                    Console.WriteLine($"Sender {sender.FirstName} {sender.LastName} choosen successfully!");
 
-        //        IOrder order = this.factory.CreateOrder(courier, sender, receiver, sendDate, dueDate,
-        //            OrderState.NotDelivered, receiver.Address, product, postalCode);
-        //        Console.WriteLine($"Order with ID {order.Id} created!");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Register the new user: ");
+                sender = (IClient)AddUser("Client");
+                sender.ClientType = ClientType.Sender;
+                Console.WriteLine($"Sender {sender.FirstName} {sender.LastName} choosen successfully!");
+            }
 
-        //        this.orders.Add(order);
+            Console.WriteLine("--- Receiver information ---");
+            Console.WriteLine(@"To choose already registered user press 'C' and type his username");
+            Console.WriteLine("Or press 'R' to register a new user");
+            IClient receiver;
+            choice = Console.ReadLine();
+            if (choice == "C")
+            {
+                Console.WriteLine("Type username: ");
+                string username = Console.ReadLine();
+                receiver = (Client)this.users.FirstOrDefault(x => x.Username == username);
+                if (receiver == null)
+                {
+                    throw new ArgumentNullException("No such user!");
+                }
+                else
+                {
+                    receiver.ClientType = ClientType.Receiver;
+                    Console.WriteLine($"Receiver {receiver.FirstName} {receiver.LastName} choosen successfully!");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Register the new user: ");
+                receiver = (IClient)AddUser("Client");
+                receiver.ClientType = ClientType.Receiver;
+                Console.WriteLine($"Receiver {receiver.FirstName} {receiver.LastName} choosen successfully!");
+            }
 
-        //        receiver.AddOrder(order);
+            Console.Write("---Product information---");
+            IProduct product = AddProduct();
 
-        //        sender.AddOrder(order);
+            Console.Write("Enter date of sending (Day/Month/Year): ");
+            DateTime sendDate = DateTime.ParseExact(Console.ReadLine(),
+                                "d/MM/yyyy", CultureInfo.InvariantCulture);
+            Console.Write("Enter due date for delivery(Day/Month/Year): ");
+            DateTime dueDate = DateTime.ParseExact(Console.ReadLine(),
+                            "d/M/yyyy", CultureInfo.InvariantCulture);
 
-        //        courier.AddOrder(order);
+            int postalCode = receiver.Address.Country.CitysAndZips[receiver.Address.City];
 
-        //        return order;
-        //    }
-        //}
+            IOrder order = this.factory.CreateOrder(courier, sender, receiver, sendDate, dueDate,
+                OrderState.NotDelivered, product, postalCode);
+            Console.WriteLine($"Order with ID {order.Id} created!");
+
+            this.orders.Add(order);
+
+            receiver.AddOrder(order);
+
+            sender.AddOrder(order);
+
+            courier.AddOrder(order);
+
+            return order;
+        }
+
 
         private void LoginMenu(LoginChoise userChoise)
         {
@@ -447,22 +512,23 @@ namespace DeliverIT.Core.Engine
             }
         }
 
-        //private string ShowAllClients()
-        //{
-        //    StringBuilder sb = new StringBuilder();
-        //    if (this.users.Count == 0)
-        //    {
-        //        sb.AppendLine("No clients registered!");
-        //    }
-        //    else
-        //    {
-        //        foreach (var client in this.users)
-        //        {
-        //            sb.AppendLine(client.ToString()); //must implement TOSTRING method
-        //            sb.AppendLine("-----------------------");
-        //        }
-        //    }
-        //}
+        private string ShowAllClients()
+        {
+            StringBuilder sb = new StringBuilder();
+            if (this.users.Count == 0)
+            {
+                sb.AppendLine("No clients registered!");
+            }
+            else
+            {
+                foreach (var client in this.users)
+                {
+                    sb.AppendLine(client.ToString()); //must implement TOSTRING method
+                    sb.AppendLine("-----------------------");
+                }
+            }
+            return sb.ToString();
+        }
 
         private bool Login(string username, string password)
         {
@@ -493,18 +559,18 @@ namespace DeliverIT.Core.Engine
             }    
         }
 
-        //private string ShowAllLocations()
-        //{
-        //    var counter = 1;
-        //    StringBuilder strBuilder = new StringBuilder();
-        //    strBuilder.AppendLine("--- Delivery locations ---");
-        //    strBuilder.AppendLine(counter.ToString() + ". " + CountryType.Bulgaria.ToString());
-        //    counter++;
-        //    strBuilder.AppendLine(counter.ToString() + ". " + CountryType.Russia.ToString());
-        //    counter++;
-        //    strBuilder.AppendLine(counter.ToString() + ". " + CountryType.Germany.ToString());
-        //    return strBuilder.ToString();
-        //}
+        private string ShowAllLocations()
+        {
+            var counter = 1;
+            StringBuilder strBuilder = new StringBuilder();
+            strBuilder.AppendLine("--- Delivery locations ---");
+            strBuilder.AppendLine(counter.ToString() + ". " + CountryType.Bulgaria.ToString());
+            counter++;
+            strBuilder.AppendLine(counter.ToString() + ". " + CountryType.Russia.ToString());
+            counter++;
+            strBuilder.AppendLine(counter.ToString() + ". " + CountryType.Germany.ToString());
+            return strBuilder.ToString();
+        }
 
         private void SeedObjects()
         {
@@ -512,7 +578,7 @@ namespace DeliverIT.Core.Engine
 
             var country = new Bulgaria();
             var address = new Address(country, "Dummy", "100", "Sofia");
-
+                
             var dummyClient = this.factory.CreateClient("client123", "1234", "DummyFirst", "DummyLast", "dummy@dummy.com", 18, "12345678", address, GenderType.Male);
             var dummyClientCool = this.factory.CreateClient("coolClient", "1234", "DummyCool", "DummyLastCool", "dummycool@dummy.com", 18, "12345678", address, GenderType.Male);
 

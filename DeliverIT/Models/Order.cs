@@ -13,7 +13,7 @@ namespace DeliverIT.Models
         private static int id = 0;
         private readonly int postalCode;
 
-        public Order(Courier courier, Client sender, Client receiver, DateTime sendDate, DateTime dueDate,
+        public Order(ICourier courier, IClient sender, IClient receiver, DateTime sendDate, DateTime dueDate,
                  OrderState orderState, IProduct product, int postalCode)
         {
             id++;
@@ -27,9 +27,9 @@ namespace DeliverIT.Models
             this.postalCode = postalCode;
         }
 
-        public Courier Courier { get; set; }
-        public Client Sender { get; set; }
-        public Client Receiver { get; set; }
+        public ICourier Courier { get; set; }
+        public IClient Sender { get; set; }
+        public IClient Receiver { get; set; }
         public IProduct Product { get; set; }
         public DeliveryType DeliveryType { get; set; }
         public decimal DeliveryPrice { get; set; }

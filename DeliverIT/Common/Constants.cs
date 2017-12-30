@@ -23,11 +23,13 @@
         public const string InvalidSendDate = "Send date must be >= today.";
         public const string InvalidDueDate = "Due date must be > send date.";
         public const string InvalidNullValue = "Value cannot be null!";
+        public const string UserAlreadyExists = "{0} {1} already exists!";
 
         public const decimal Price = 4.5m;
         public const decimal PriceForKg = 0.5m;
         public const decimal FragileCoefficient = 2;
 
+        public const string RegisteredCourier = "Courier {0} registered succesfully!";
         public const string RegisteredClient = "Client {0} registered successfully!";
         public const string ChoosenSender = "Sender {0} choosen successfully!";
         public const string ChoosenReceiver = "Receiver {0} choosen successfully!";

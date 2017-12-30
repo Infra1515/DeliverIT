@@ -26,7 +26,7 @@ namespace DeliverIT.Core.Factories
             return new Administrator(username, password, firstName, lastName, email);
         }
 
-        public IOrder CreateOrder(Courier courier, Client sender, Client receiver, DateTime sendDate, DateTime dueDate,
+        public IOrder CreateOrder(ICourier courier, IClient sender, IClient receiver, DateTime sendDate, DateTime dueDate,
                            OrderState orderState, IProduct product, int postalCode)
         {
             return new Order(courier, sender, receiver, sendDate, dueDate, orderState, product, postalCode);
