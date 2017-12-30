@@ -87,11 +87,14 @@ namespace DeliverIT.Models
 
         public override string ToString()
         {
-            return $"- Courier: {this.Courier.FirstName} {this.Courier.LastName}\n- " +
-                   $"Sender: {this.Sender.FirstName} {this.Sender.LastName}\n- Receiver: {this.Receiver.FirstName} {this.Receiver.LastName}" +
-                   $"\n- Send date: {this.SendDate}\n- Due date: {this.DueDate}" +
-                   $"\n- Delivery price: {this.DeliveryPrice}\n- OrderState: {this.OrderState}" +
-                   $"\n- DeliveryAddress: {this.Receiver.Address.ToString()}\n- Product: {this.Product.ToString()}";
+            return $"- Courier: {this.Courier.FirstName} {this.Courier.LastName}\n" +
+                   $"- Sender: {this.Sender.FirstName} {this.Sender.LastName}\n" +
+                   $"- Receiver: {this.Receiver.FirstName} {this.Receiver.LastName}\n" +
+                   $"- Send date: {this.SendDate}\n- Due date: {this.DueDate}" +
+                   $"- Delivery price: {this.DeliveryPrice}\n- OrderState: {this.OrderState}\n" +
+                   $"- DeliveryAddress:\n" +
+                   $"{this.Receiver.Address.ToString()}\n" +
+                   $"- Product: {this.Product.ToString()}\n";
         }
     }
 }

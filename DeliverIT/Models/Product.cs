@@ -30,10 +30,12 @@ namespace DeliverIT.Models
 
         public override string ToString()
         {
-            return $"Product ID: {this.Id} -- " +
-                $"Product Dimensions: {this.Dimensions.X} {this.Dimensions.Y} {this.Dimensions.Z} -- " +
-                $"Is Fragile: {this.IsFragile} -- Weight: {this.Weight} -- Volume: {this.Volume}" +
-                $"Product Type: {this.ProductType}";
+            return $"- Product ID: {this.Id}\n" +
+                $" -- Product Dimensions: {this.Dimensions.X} {this.Dimensions.Y} {this.Dimensions.Z}\n" +
+                $" -- Is Fragile: {this.IsFragile}\n" +
+                $" -- Weight: {this.Weight}\n" +
+                $" -- Volume: {this.Volume}\n" +
+                $" -- Product Type: {this.ProductType}\n\n";
         }
     }
 }

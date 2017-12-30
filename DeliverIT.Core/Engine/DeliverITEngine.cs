@@ -129,8 +129,10 @@ namespace DeliverIT.Core.Engine
                         break;
 
                     case MainMenuChoise.AllOrders:
+
                         Console.WriteLine("Listing orders ...... ");
-                        //Console.WriteLine(this.ShowAllOrders());
+                        this.ShowAllOrders();
+
                         break;
 
                     case MainMenuChoise.AllLocations:
@@ -480,22 +482,16 @@ namespace DeliverIT.Core.Engine
             }
         }
 
-        //private string ShowAllOrders()
-        //{
-        //    if (this.orders.Count == 0)
-        //    {
-        //        sb.AppendLine("No orders registered!");
-        //    }
-        //    else
-        //    {
-        //        foreach (var order in this.orders)
-        //        {
-        //            sb.Append(order.ToString());
-        //        }
-        //    }
-
-        //    return sb.ToString();
-        //}
+        private void ShowAllOrders()
+        {
+            if (this.orders.Any())
+            {
+                foreach (var order in orders)
+                {
+                    Console.WriteLine(order.ToString());
+                }
+            }    
+        }
 
         //private string ShowAllLocations()
         //{
