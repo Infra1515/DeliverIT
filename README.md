@@ -3,12 +3,19 @@
 > DeliverIT is a console application used for managing orders' delivery. 
 >The application has the following list of commands: 
 >- Add client
+>   - Adds client (sender or receiver) to list of clients
 >- Add courier
+>   - Adds new courier to list of couriers
 >- Place order for client
+>   - Places order for client in specified list of orders 
 >- List all clients
+>   - Shows all clients in list
 >- List all couriers
+>   - Shows all couriers in list
 >- List all orders
+>   - Shows all order in the list of orders
 >- List all delivery locations
+>   - Shows all delivery location in each country
 
 ## Team
 
@@ -17,5 +24,5 @@
 * [Irina Hristova](https://github.com/ihristova11)
 
 ## License
-MIT
+This project is licensed under the MIT License - see the LICENSE.md file for details
 
