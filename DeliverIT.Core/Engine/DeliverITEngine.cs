@@ -551,7 +551,7 @@ namespace DeliverIT.Core.Engine
 
         protected virtual void OnOrderStateChanged(object source, OrderStateChangedEventArgs args)
         {
-            if (OrderStateChanged != null) OrderStateChanged(this, args);
+            OrderStateChanged?.Invoke(this, args);
         }
 
         private void DeliverITEngine_OrderStateChanged(object sender, OrderStateChangedEventArgs args)
