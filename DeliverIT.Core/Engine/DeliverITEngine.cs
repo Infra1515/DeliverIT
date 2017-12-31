@@ -470,7 +470,7 @@ namespace DeliverIT.Core.Engine
             if (this.loggedUser != null)
                 return true;
 
-            var user = this.users.FirstOrDefault(x => x.Username.ToLower() == username.ToLower());
+            var user = this.users.FirstOrDefault(x => string.Equals(x.Username, username, StringComparison.CurrentCultureIgnoreCase));
 
             if (user != null && user.Password == password)
             {
@@ -501,9 +501,9 @@ namespace DeliverIT.Core.Engine
             ShowCities(new Serbia());
         }
 
-        private void ShowCities(Country country)
+        private void ShowCities(ICountry country)
         {
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
             sb.AppendLine($"---{country.GetType().Name.ToUpper()} ---");
             foreach (var city in country.CitysAndZips.Keys)
             {
@@ -511,19 +511,6 @@ namespace DeliverIT.Core.Engine
             }
             Console.WriteLine(sb);
         }
-
-        //private string ShowAllLocations()
-        //{
-        //    var counter = 1;
-        //    StringBuilder strBuilder = new StringBuilder();
-        //    strBuilder.AppendLine("--- Delivery locations ---");
-        //    strBuilder.AppendLine(counter.ToString() + ". " + CountryType.Bulgaria.ToString());
-        //    counter++;
-        //    strBuilder.AppendLine(counter.ToString() + ". " + CountryType.Russia.ToString());
-        //    counter++;
-        //    strBuilder.AppendLine(counter.ToString() + ". " + CountryType.Germany.ToString());
-        //    return strBuilder.ToString();
-        //}
 
         private void SeedObjects()
         {
