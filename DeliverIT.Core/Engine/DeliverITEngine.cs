@@ -12,7 +12,6 @@ using DeliverIT.Models;
 using DeliverIT.Models.Countries;
 using System.Threading;
 using System.Globalization;
-using System.Text;
 using DeliverIT.Models.Users;
 using DeliverIT.Common;
 
@@ -301,16 +300,9 @@ namespace DeliverIT.Core.Engine
             double z = dimensions[2];
 
             Console.Write("Is the product fragile? ");
-            string isFragileStr = Console.ReadLine().ToLower().Trim();
+            string isFragileStr = Console.ReadLine().ToLower().Trim(); // possible null - needs validation!!
             bool isFragile;
-            if (isFragileStr == "yes")
-            {
-                isFragile = true;
-            }
-            else
-            {
-                isFragile = false;
-            }
+            isFragile = isFragileStr == "yes";
 
             Console.Write("What is the product weight? ");
             double weight = double.Parse(Console.ReadLine());
