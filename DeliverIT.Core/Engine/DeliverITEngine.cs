@@ -4,6 +4,7 @@ using DeliverIT.Contracts;
 using DeliverIT.Core.Contracts;
 using DeliverIT.Core.Utilities;
 using System.Linq;
+using System.Text;
 using DeliverIT.Core.Factories;
 using DeliverIT.Common.Enums;
 using DeliverIT.Core.MenuUtilities;
@@ -137,7 +138,7 @@ namespace DeliverIT.Core.Engine
 
                     case MainMenuChoise.AllLocations:
                         Console.WriteLine("Listing locations ...... ");
-                        //Console.WriteLine(ShowAllLocations());
+                        this.ShowAllLocations();
                         break;
 
                     case MainMenuChoise.Logout:
@@ -491,6 +492,24 @@ namespace DeliverIT.Core.Engine
                     Console.WriteLine(order.ToString());
                 }
             }    
+        }
+
+        private void ShowAllLocations()
+        {
+            ShowCities(new Bulgaria());
+            ShowCities(new Russia());
+            ShowCities(new Serbia());
+        }
+
+        private void ShowCities(Country country)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine($"---{country.GetType().Name.ToUpper()} ---");
+            foreach (var city in country.CitysAndZips.Keys)
+            {
+                sb.AppendLine($"{city}, {country.GetType().Name}");
+            }
+            Console.WriteLine(sb);
         }
 
         //private string ShowAllLocations()
