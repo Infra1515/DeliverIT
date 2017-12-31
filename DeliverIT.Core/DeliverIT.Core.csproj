@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contracts\IEngine.cs" />
+    <Compile Include="Engine\CommandProcessor.cs" />
     <Compile Include="Engine\DeliverITEngine.cs" />
     <Compile Include="Engine\OrderStateChangedEventArgs.cs" />
     <Compile Include="Factories\DeliverITFactory.cs" />

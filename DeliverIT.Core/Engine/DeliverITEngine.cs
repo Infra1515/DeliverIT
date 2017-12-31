@@ -60,46 +60,54 @@ namespace DeliverIT.Core.Engine
 
             do
             {
-                switch (state)
+                try
                 {
-                    case MenuState.Login:
+                    switch (state)
+                    {
+                        case MenuState.Login:
 
-                        Console.WriteLine(LookupMenuText.LoginText);
+                            Console.WriteLine(LookupMenuText.LoginText);
 
-                        int.TryParse(Console.ReadLine(), out int userLoginChoise);
-                        var isValidLoginChoise = Enum.IsDefined(typeof(LoginChoise), userLoginChoise);
+                            int.TryParse(Console.ReadLine(), out int userLoginChoise);
+                            var isValidLoginChoise = Enum.IsDefined(typeof(LoginChoise), userLoginChoise);
 
-                        if (!isValidLoginChoise)
-                        {
-                            Console.WriteLine("You have entered an Invalid Choise!\n");
+                            if (!isValidLoginChoise)
+                            {
+                                Console.WriteLine("You have entered an Invalid Choise!\n");
+                                break;
+                            }
+
+                            LoginMenu((LoginChoise)userLoginChoise);
+
                             break;
-                        }
 
-                        LoginMenu((LoginChoise)userLoginChoise);
+                        case MenuState.MainMenu:
 
-                        break;
+                            Console.WriteLine(LookupMenuText.MainMenuText);
 
-                    case MenuState.MainMenu:
+                            int.TryParse(Console.ReadLine(), out int userMainMenuChoise);
+                            var isValidMainMenuChoise = Enum.IsDefined(typeof(MainMenuChoise), userMainMenuChoise);
 
-                        Console.WriteLine(LookupMenuText.MainMenuText);
+                            if (!isValidMainMenuChoise)
+                            {
+                                Console.WriteLine("You have entered an Invalid Choise!\n");
+                                break;
+                            }
 
-                        int.TryParse(Console.ReadLine(), out int userMainMenuChoise);
-                        var isValidMainMenuChoise = Enum.IsDefined(typeof(MainMenuChoise), userMainMenuChoise);
+                            MainMenu((MainMenuChoise)userMainMenuChoise);
 
-                        if (!isValidMainMenuChoise)
-                        {
-                            Console.WriteLine("You have entered an Invalid Choise!\n");
                             break;
-                        }
 
-                        MainMenu((MainMenuChoise)userMainMenuChoise);
-
-                        break;
-
-                    default:
-                        state = MenuState.Exit;
-                        break;
+                        default:
+                            state = MenuState.Exit;
+                            break;
+                    }
                 }
+                catch(Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+               
             }
             while (state != MenuState.Exit);
         }
