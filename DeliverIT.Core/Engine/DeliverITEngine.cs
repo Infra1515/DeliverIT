@@ -4,6 +4,7 @@ using DeliverIT.Contracts;
 using DeliverIT.Core.Contracts;
 using DeliverIT.Core.Utilities;
 using System.Linq;
+using System.Text;
 using DeliverIT.Core.Factories;
 using DeliverIT.Common.Enums;
 using DeliverIT.Core.MenuUtilities;
@@ -140,8 +141,8 @@ namespace DeliverIT.Core.Engine
                         break;
 
                     case MainMenuChoise.AllLocations:
-                        //Console.WriteLine("Listing locations ...... ");
-                        Console.WriteLine(ShowAllLocations());
+                        Console.WriteLine("Listing locations ...... ");
+                        this.ShowAllLocations();
                         break;
 
                     case MainMenuChoise.Logout:
@@ -535,7 +536,7 @@ namespace DeliverIT.Core.Engine
             if (this.loggedUser != null)
                 return true;
 
-            var user = this.users.FirstOrDefault(x => x.Username.ToLower() == username.ToLower());
+            var user = this.users.FirstOrDefault(x => string.Equals(x.Username, username, StringComparison.CurrentCultureIgnoreCase));
 
             if (user != null && user.Password == password)
             {
@@ -559,18 +560,18 @@ namespace DeliverIT.Core.Engine
             }    
         }
 
-        private string ShowAllLocations()
-        {
-            var counter = 1;
-            StringBuilder strBuilder = new StringBuilder();
-            strBuilder.AppendLine("--- Delivery locations ---");
-            strBuilder.AppendLine(counter.ToString() + ". " + CountryType.Bulgaria.ToString());
-            counter++;
-            strBuilder.AppendLine(counter.ToString() + ". " + CountryType.Russia.ToString());
-            counter++;
-            strBuilder.AppendLine(counter.ToString() + ". " + CountryType.Germany.ToString());
-            return strBuilder.ToString();
-        }
+        //private string ShowAllLocations()
+        //{
+        //    var counter = 1;
+        //    StringBuilder strBuilder = new StringBuilder();
+        //    strBuilder.AppendLine("--- Delivery locations ---");
+        //    strBuilder.AppendLine(counter.ToString() + ". " + CountryType.Bulgaria.ToString());
+        //    counter++;
+        //    strBuilder.AppendLine(counter.ToString() + ". " + CountryType.Russia.ToString());
+        //    counter++;
+        //    strBuilder.AppendLine(counter.ToString() + ". " + CountryType.Germany.ToString());
+        //    return strBuilder.ToString();
+        //}
 
         private void SeedObjects()
         {
@@ -598,7 +599,7 @@ namespace DeliverIT.Core.Engine
 
         protected virtual void OnOrderStateChanged(object source, OrderStateChangedEventArgs args)
         {
-            if (OrderStateChanged != null) OrderStateChanged(this, args);
+            OrderStateChanged?.Invoke(this, args);
         }
 
         private void DeliverITEngine_OrderStateChanged(object sender, OrderStateChangedEventArgs args)
