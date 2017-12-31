@@ -560,18 +560,18 @@ namespace DeliverIT.Core.Engine
             }    
         }
 
-        //private string ShowAllLocations()
-        //{
-        //    var counter = 1;
-        //    StringBuilder strBuilder = new StringBuilder();
-        //    strBuilder.AppendLine("--- Delivery locations ---");
-        //    strBuilder.AppendLine(counter.ToString() + ". " + CountryType.Bulgaria.ToString());
-        //    counter++;
-        //    strBuilder.AppendLine(counter.ToString() + ". " + CountryType.Russia.ToString());
-        //    counter++;
-        //    strBuilder.AppendLine(counter.ToString() + ". " + CountryType.Germany.ToString());
-        //    return strBuilder.ToString();
-        //}
+        private string ShowAllLocations()
+        {
+            var counter = 1;
+            StringBuilder strBuilder = new StringBuilder();
+            strBuilder.AppendLine("--- Delivery locations ---");
+            strBuilder.AppendLine(counter.ToString() + ". " + CountryType.Bulgaria.ToString());
+            counter++;
+            strBuilder.AppendLine(counter.ToString() + ". " + CountryType.Russia.ToString());
+            counter++;
+            strBuilder.AppendLine(counter.ToString() + ". " + CountryType.Germany.ToString());
+            return strBuilder.ToString();
+        }
 
         private void SeedObjects()
         {
