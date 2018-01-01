@@ -1,4 +1,6 @@
-﻿using DeliverIT.Contracts;
+﻿using Bytes2you.Validation;
+using DeliverIT.Common;
+using DeliverIT.Contracts;
 using DeliverIT.Models.Countries;
 
 namespace DeliverIT.Models
@@ -17,12 +19,41 @@ namespace DeliverIT.Models
             this.StreetNumber = streetNumber;
             this.City = city;
         }
+        
+        public Country Country
+        {
+            get => country;
+            set
+            {
+                Validator.ValidateNotNull(value);
+                this.country = value;
+            }
+        }
 
-        // TODO: Validation
-        public Country Country { get => country; set => country = value; }
-        public string StreetName { get => streetName; set => streetName = value; }
-        public string City { get => city; set => city = value; }
-        public string StreetNumber { get => streetNumber; set => streetNumber = value; }
+        public string StreetName
+        {
+            get => streetName; set
+            {
+                Validator.ValidateNotNull(value);
+                this.streetName = value;
+            }
+        }
+        public string City
+        {
+            get => city; set
+            {
+                Validator.ValidateNotNull(value);
+                this.city = value;
+            }
+        }
+        public string StreetNumber
+        {
+            get => streetNumber; set
+            {
+                Validator.ValidateNotNull(value);
+                this.streetNumber = value;
+            }
+        }
 
         public override string ToString()
         {

@@ -19,7 +19,6 @@ namespace DeliverIT.Common
             {
                 throw new ArgumentException(message);
             }
-
         }
 
         public static void ValidateEmail(string email)
@@ -78,6 +77,14 @@ namespace DeliverIT.Common
         public static void ValidateCityInCountry(string city, Country country, string message)
         {
             if (!country.CitysAndZips.ContainsKey(city))
+            {
+                throw new ArgumentException(message);
+            }
+        }
+
+        public static void ValidateNotPositive(double number, string message)
+        {
+            if (number <= 0)
             {
                 throw new ArgumentException(message);
             }

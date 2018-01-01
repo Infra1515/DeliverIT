@@ -48,7 +48,10 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\AddressTest.cs" />
+    <Compile Include="Models\DimensionsTest.cs" />
     <Compile Include="Models\OrderTest.cs" />
+    <Compile Include="Models\UserTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

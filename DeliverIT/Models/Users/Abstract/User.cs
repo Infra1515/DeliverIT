@@ -7,6 +7,7 @@ namespace DeliverIT.Models.Users.Abstract
     public abstract class User : IUser
     {
         private string username;
+        private string password;
         private string firstName;
         private string lastName;
         private string email;
@@ -33,7 +34,16 @@ namespace DeliverIT.Models.Users.Abstract
             }
         }
 
-        public string Password { get; private set; }
+        public string Password
+        {
+            get { return this.password; }
+            private set
+            {
+                Validator.ValidateNotNull(value);
+
+                this.password = value;
+            }
+        }
 
         public string FirstName
         {

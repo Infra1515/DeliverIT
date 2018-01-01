@@ -207,7 +207,7 @@ namespace DeliverIT.Core.Engine
             double z = dimensions[2];
 
             Console.Write("Is the product fragile? ");
-            string isFragileStr = Console.ReadLine().ToLower().Trim(); // possible null - needs validation!!
+            string isFragileStr = Console.ReadLine().ToLower().Trim();
             bool isFragile = isFragileStr == "yes";
 
             Console.Write("What is the product weight? ");
