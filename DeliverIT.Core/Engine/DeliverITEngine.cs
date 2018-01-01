@@ -49,6 +49,7 @@ namespace DeliverIT.Core.Engine
 
             do
             {
+                Console.ResetColor();
                 try
                 {
                     switch (state)

@@ -1,4 +1,5 @@
 ﻿using System;
+using DeliverIT.Models.Countries;
 
 namespace DeliverIT.Common
 { 
@@ -72,6 +73,14 @@ namespace DeliverIT.Common
         public static void ValidateDueDate(DateTime sendDate, DateTime dueDate, string message)
         {
             if (dueDate.Date >= sendDate.Date)
+            {
+                throw new ArgumentException(message);
+            }
+        }
+
+        public static void ValidateCityInCountry(string city, Country country, string message)
+        {
+            if (!country.CitysAndZips.ContainsKey(city))
             {
                 throw new ArgumentException(message);
             }
