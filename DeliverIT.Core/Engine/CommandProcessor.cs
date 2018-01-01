@@ -288,7 +288,7 @@ namespace DeliverIT.Core.Engine
 
             Console.Write("Enter date of sending (Day/Month/Year): ");
             DateTime sendDate = DateTime.ParseExact(Console.ReadLine(),
-                                "d/MM/yyyy", CultureInfo.InvariantCulture);
+                                "d/M/yyyy", CultureInfo.InvariantCulture);
             Console.Write("Enter due date for delivery(Day/Month/Year): ");
             DateTime dueDate = DateTime.ParseExact(Console.ReadLine(),
                             "d/M/yyyy", CultureInfo.InvariantCulture);

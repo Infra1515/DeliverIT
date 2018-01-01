@@ -77,8 +77,8 @@ namespace DeliverIT.Models
             }
 
             this.DeliveryPrice *= (decimal)this.DeliveryType; // multiply the price for delivery using express/standart delivery coefficient
-            //this.DeliveryPrice *= this.Receiver.Address.Country.Tax; // multiply the price using country tax
-            this.DeliveryPrice /= (decimal)this.Sender.ClientType; // change delivery price using client type coeff
+            this.DeliveryPrice *= this.Receiver.Address.Country.Tax; // multiply the price using country tax
+            //this.DeliveryPrice /= (decimal)this.Sender.ClientType; // change delivery price using client type coeff
 
             return this.DeliveryPrice;
         }
@@ -88,9 +88,9 @@ namespace DeliverIT.Models
             return $"- Courier: {this.Courier.FirstName} {this.Courier.LastName}\n" +
                    $"- Sender: {this.Sender.FirstName} {this.Sender.LastName}\n" +
                    $"- Receiver: {this.Receiver.FirstName} {this.Receiver.LastName}\n" +
-                   $"- Send date: {this.SendDate}\n- Due date: {this.DueDate}" +
-                   $"- Delivery price: {this.DeliveryPrice}\n- OrderState: {this.OrderState}\n" +
-                   $"- DeliveryAddress:\n" +
+                   $"- Send date: {this.SendDate}\n- Due date: {this.DueDate}\n" +
+                   $"- Delivery price: {this.CalculatePrice()}\n- OrderState: {this.OrderState}\n" +
+                   $"- Delivery Address:\n" +
                    $"{this.Receiver.Address.ToString()}\n" +
                    $"- Product: {this.Product.ToString()}\n";
         }

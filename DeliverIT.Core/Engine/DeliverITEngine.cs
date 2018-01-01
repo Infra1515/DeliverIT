@@ -259,6 +259,7 @@ namespace DeliverIT.Core.Engine
 
             this.commandProcessor.Users.Add(adminUser);
             this.commandProcessor.Users.Add(dummyClient);
+            this.commandProcessor.Users.Add(dummyClientCool);
             this.commandProcessor.Users.Add(dummyCourierGosheedy);
             this.commandProcessor.Users.Add(dummyCourierPeshont);
             this.commandProcessor.Orders.Add(order);

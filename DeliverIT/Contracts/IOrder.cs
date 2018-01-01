@@ -13,7 +13,7 @@ namespace DeliverIT.Contracts
         DateTime SendDate { get; set; }
         DateTime DueDate { get; set; }
         DeliveryType DeliveryType { get; set; }
-        decimal DeliveryPrice { get; set; }
+        decimal DeliveryPrice { get; }
         OrderState OrderState{ get; set; }
         IProduct Product { get; set; }
         decimal CalculatePrice();
