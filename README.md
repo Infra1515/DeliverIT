@@ -41,7 +41,7 @@ The application has the following list of commands:
 - ## DeliverIT
 ![DeliverIT class diagram](https://github.com/Infra1515/DeliverIT/blob/master/imgs/DeliverITcd.png)
 - ## DeliverIT.Core
-
+![DeliverIt.Core class diagram](https://github.com/Infra1515/DeliverIT/blob/master/imgs/DeliverITCore.png)
 ## Team Members
 
 * [Ivan Gargov](https://github.com/igargov)
