@@ -8,7 +8,7 @@ namespace DeliverIT.Common
         {
             if(value == null)
             {
-                throw new ArgumentNullException();
+                throw new ArgumentNullException("Value cannot be null or empty!");
             }
         }
 
@@ -23,10 +23,8 @@ namespace DeliverIT.Common
 
         public static void ValidateEmail(string email)
         {
-            if(string.IsNullOrEmpty(email))
-            {
-                throw new ArgumentNullException();
-            }
+
+            ValidateNotNull(email);
 
             var addr = new System.Net.Mail.MailAddress(email);
 
@@ -39,10 +37,8 @@ namespace DeliverIT.Common
 
         public static void ValidatePhoneNumber(string phoneNumber)
         {
-            if(string.IsNullOrEmpty(phoneNumber))
-            {
-                throw new ArgumentNullException();
-            }
+
+            ValidateNotNull(phoneNumber);
 
             if(phoneNumber.Length < 6 || phoneNumber.Length > 20)
             {

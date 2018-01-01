@@ -27,13 +27,12 @@ namespace DeliverIT.Models.Users
             )
                 : base(username, password, firstName, lastName, email, age, phoneNumber, address, gender, UserRole.Normal)
         {
-            id++;
-            
+            this.Id = id++;
             this.AllowedVolume = allowedVolume;
             this.AllowedWeight = allowedWeight;
         }
 
-        public int Id { get => id; }
+        public int Id { get; protected set; }
 
         public double AllowedVolume { get => allowedVolume; set => allowedVolume = value; }
 
@@ -61,7 +60,8 @@ namespace DeliverIT.Models.Users
 
         public override string ToString()
         {
-            return $"- {this.FirstName} {this.LastName} {this.Email} {this.PhoneNumber} { this.Age} {this.Address} {this.Gender}";
+            return $"ID: {this.Id}\r\n" + base.ToString() + $"Allowed Weight: {this.AllowedWeight}\r\n" +
+                $"Allowed Volume: {this.AllowedVolume}";
         }
     }
 }

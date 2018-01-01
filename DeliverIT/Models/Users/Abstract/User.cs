@@ -71,7 +71,15 @@ namespace DeliverIT.Models.Users.Abstract
                 this.email = value;
             }
         }
-
         public UserRole Role { get; private set; }
+
+        public override string ToString()
+        {
+            return $"User Type: {this.GetType().Name}\r\n" +
+                $"Username: {this.Username}\r\n" +
+                $"First Name: {this.FirstName}\r\nLast Name: {this.LastName}\r\n" +
+                $"Email : {this.Email}\r\n";
+        }
+
     }
 }

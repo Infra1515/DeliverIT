@@ -16,7 +16,7 @@ namespace DeliverIT.Models
         public Order(ICourier courier, IClient sender, IClient receiver, DateTime sendDate, DateTime dueDate,
                  OrderState orderState, IProduct product, int postalCode)
         {
-            id++;
+            this.Id = id++;
             this.Courier = courier;
             this.Sender = sender;
             this.Receiver = receiver;
@@ -26,7 +26,7 @@ namespace DeliverIT.Models
             this.Product = product;
             this.postalCode = postalCode;
         }
-
+        public int Id { get; protected set; }
         public ICourier Courier { get; set; }
         public IClient Sender { get; set; }
         public IClient Receiver { get; set; }
@@ -35,8 +35,6 @@ namespace DeliverIT.Models
         public decimal DeliveryPrice { get; set; }
         public int PostalCode => postalCode;
         public OrderState OrderState { get; set; }
-        public int Id { get => id; }
-
         public DateTime SendDate
         {
             get

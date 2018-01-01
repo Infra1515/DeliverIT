@@ -101,5 +101,12 @@ namespace DeliverIT.Models.Users.Abstract
                 Console.WriteLine("---------------");
             }
         }
+
+        public override string ToString()
+        {
+            return base.ToString() + $"Telephone: { this.PhoneNumber}\r\n" +
+                $"Address: {this.Address.ToString()}\r\n" +
+                $"Age : {this.Age}\r\nSex: {this.Gender}";
+        }
     }
 }

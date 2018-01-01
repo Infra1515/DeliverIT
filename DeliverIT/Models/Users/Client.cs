@@ -26,12 +26,11 @@ namespace DeliverIT.Models.Users
             )
             : base(username, password, firstName, lastName, email, age, phoneNumber, address, gender, UserRole.Operator)
         {
-            id++;
+            this.Id = id++;
             this.ClientType = clientType;
         }
 
-        public int Id { get => id; }
-
+        public int Id { get; protected set; }
         public ClientType ClientType { get => clientType; set => clientType = value; }
 
         public void ShowAllNotPendingOrders(IList<IOrder> orders)
@@ -95,7 +94,7 @@ namespace DeliverIT.Models.Users
 
         public override string ToString()
         {
-            return $"Client ID: {this.Id}\r\n" + base.ToString() + $"\r\nClient Type : {this.ClientType}";
+            return $"ID: {this.Id}\r\n" + base.ToString() + $"\r\nClient Type : {this.ClientType}";
         }
     }
 }

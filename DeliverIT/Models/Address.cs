@@ -29,7 +29,7 @@ namespace DeliverIT.Models
             return $" -- Country: {this.Country.GetType().Name}\n" +
                 $" -- City: {this.City}\n" +
                 $" -- Street Name: {this.StreetName}\n" +
-                $" -- Number: {this.StreetNumber}\n";
+                $" -- Number: {this.StreetNumber}";
         }
     }
 }
