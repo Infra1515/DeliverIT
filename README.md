@@ -8,6 +8,7 @@
 - Description
 - Class Diagrams
 - Team Members
+- Git Repo Link
 - License
 
 ## Task
@@ -47,5 +48,9 @@ The application has the following list of commands:
 * [Ivan Gargov](https://github.com/igargov)
 * [Lyubomir Yonchev](https://github.com/Infra1515)
 * [Irina Hristova](https://github.com/ihristova11)
+
+## Git Repo
+https://github.com/Infra1515/DeliverIT
+
 ## License
 This project is licensed under the MIT License - see the LICENSE.md file for details
