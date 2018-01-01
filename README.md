@@ -6,7 +6,7 @@
 ## Table of Contents
 - Task
 - Description
-- Class Diagram
+- Class Diagrams
 - Team Members
 - License
 
@@ -37,7 +37,10 @@ The application has the following list of commands:
 >- List all delivery locations
 >   - Shows all delivery location in each country
 
-## Class Diagram
+## Class Diagrams
+- ## DeliverIT
+![DeliverIT class diagram](https://github.com/Infra1515/DeliverIT/blob/master/imgs/DeliverITcd.png)
+- ## DeliverIT.Core
 
 ## Team Members
 
