@@ -48,7 +48,7 @@
     <Compile Include="Contracts\IEngine.cs" />
     <Compile Include="Engine\CommandProcessor.cs" />
     <Compile Include="Engine\DeliverITEngine.cs" />
-    <Compile Include="Engine\OrderStateChangedEventArgs.cs" />
+    <Compile Include="Event\OrderStateChangedEventArgs.cs" />
     <Compile Include="Exceptions\InvalidCredentialsException.cs" />
     <Compile Include="Exceptions\InvalidMenuChoiceException.cs" />
     <Compile Include="Factories\DeliverITFactory.cs" />

@@ -4,7 +4,6 @@ using DeliverIT.Contracts;
 using DeliverIT.Core.Factories;
 using DeliverIT.Models;
 using DeliverIT.Models.Countries;
-using DeliverIT.Models.Users;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -17,7 +16,6 @@ namespace DeliverIT.Core.Engine
     {
         private readonly IDeliverITFactory factory;
         private readonly ICollection<IUser> users;
-        private IUser loggedUser;
         private readonly ICollection<IOrder> orders;
 
         public IDeliverITFactory Factory => this.factory;
@@ -26,18 +24,14 @@ namespace DeliverIT.Core.Engine
 
         public ICollection<IOrder> Orders => this.orders;
 
-        public IUser LoggedUser { get => this.loggedUser; set => this.loggedUser = value; }
-
         public CommandProcessor()
         {
             this.users = new List<IUser>();
             this.orders = new List<IOrder>();
             this.factory = new DeliverITFactory();
-            this.LoggedUser = null;
         }
 
-
-        public IUser AddUser(string type)
+        public void AddClient()
         {
             Console.Write("Username: ");
             string username = Console.ReadLine();
@@ -57,8 +51,8 @@ namespace DeliverIT.Core.Engine
             Console.Write("Phone number: ");
             string phoneNumber = Console.ReadLine();
 
-            Console.Write("Years: ");
-            int years = int.Parse(Console.ReadLine()); //possible exceptions
+            Console.Write("Age: ");
+            int age = int.Parse(Console.ReadLine()); //possible exceptions
 
             Console.Write("Gender: ");
             GenderType gender = (GenderType)Enum.Parse(typeof(GenderType), Console.ReadLine()); //possible ex
@@ -86,7 +80,7 @@ namespace DeliverIT.Core.Engine
                 default:
                     throw new ArgumentException("We don't ship to this country yet!");
             }
-            
+
             Console.Write("City: ");
             string city = Console.ReadLine();
 
@@ -102,45 +96,109 @@ namespace DeliverIT.Core.Engine
 
             Address userAddress = new Address(country, streetName, streetNumber, city);
 
-            string userTypeInfo;
-            switch (type)
+            var isUserPresent = this.Users.Where(u => u.Username.Equals(username))
+                .FirstOrDefault();
+
+            if (isUserPresent != null)
+                throw new ArgumentException(string.Format(
+                       Constants.UserAlreadyExists, isUserPresent.GetType().Name, isUserPresent.Username));
+
+
+            var client = this.Factory.CreateClient(username, password, firstName, lastName, email, age, phoneNumber, userAddress, gender);
+
+            this.Users.Add(client);
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine(Constants.RegisteredClient, client.Username);
+            Console.ResetColor();
+        }
+
+        public void AddCourier()
+        {
+            Console.Write("Username: ");
+            string username = Console.ReadLine();
+
+            Console.Write("Password: ");
+            string password = Console.ReadLine();
+
+            Console.Write("First name: ");
+            string firstName = Console.ReadLine();
+
+            Console.Write("Last name: ");
+            string lastName = Console.ReadLine();
+
+            Console.Write("Email: ");
+            string email = Console.ReadLine();
+
+            Console.Write("Phone number: ");
+            string phoneNumber = Console.ReadLine();
+
+            Console.Write("Age: ");
+            int age = int.Parse(Console.ReadLine()); //possible exceptions
+
+            Console.Write("Gender: ");
+            GenderType gender = (GenderType)Enum.Parse(typeof(GenderType), Console.ReadLine()); //possible ex
+
+            Console.WriteLine("--- Address ---");
+            Console.Write("Country: ");
+            string countryString = Console.ReadLine(); // check for null
+
+            Country country;
+
+            switch ((CountryType)Enum.Parse(typeof(CountryType), countryString))
             {
-                case "Client":
-                    userTypeInfo = Constants.RegisteredClient;
+                case CountryType.Bulgaria:
+                    country = new Bulgaria();
                     break;
-                case "Courier":
-                    userTypeInfo = Constants.RegisteredCourier;
+
+                case CountryType.Germany:
+                    country = new Serbia();
                     break;
+
+                case CountryType.Russia:
+                    country = new Russia();
+                    break;
+
                 default:
-                    throw new ArgumentException("No such client type!");
+                    throw new ArgumentException("We don't ship to this country yet!");
             }
 
-            foreach (IUser user in this.Users)
-            {
-                if (user.Username == username)
-                {
-                    throw new ArgumentException(string.Format(
-                        Constants.UserAlreadyExists, user.GetType().Name, user.Username));
-                }
-            }
-            if (type == "Client")
-            {
-                IClient client = this.Factory.CreateClient(username, password, firstName, lastName, email,
-                        years, phoneNumber, userAddress, gender);
-                this.Users.Add(client);
-                Console.WriteLine(userTypeInfo, client.Username);
-                return client;
-            }
-            else
-            {
-                Console.Write("Enter maximum allowed weight that the courier can carry: ");
-                double allowedWeight = double.Parse(Console.ReadLine());
-                Console.Write("Enter maximum allowed volume that the courier can carry: ");
-                double allowedVolume = double.Parse(Console.ReadLine());
-                ICourier courier = this.Factory.CreateCourier(username, password, firstName, lastName,
-                    email, years, phoneNumber, userAddress, gender, allowedWeight, allowedVolume);
-                return courier;
-            }
+            Console.Write("City: ");
+            string city = Console.ReadLine();
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Validator.ValidateCityInCountry(city, country, Constants.NoSuchCity);
+            Console.ForegroundColor = ConsoleColor.White;
+
+            Console.Write("Street name: ");
+            string streetName = Console.ReadLine();
+
+            Console.Write("Street number: ");
+            string streetNumber = Console.ReadLine();
+
+            Console.Write("Enter maximum allowed weight that the courier can carry: ");
+            double allowedWeight = double.Parse(Console.ReadLine());
+
+            Console.Write("Enter maximum allowed volume that the courier can carry: ");
+            double allowedVolume = double.Parse(Console.ReadLine());
+
+            Address userAddress = new Address(country, streetName, streetNumber, city);
+
+            var isUserPresent = this.Users.Where(u => u.Username.Equals(username))
+                .FirstOrDefault();
+
+            if (isUserPresent != null)
+                throw new ArgumentException(string.Format(
+                       Constants.UserAlreadyExists, isUserPresent.GetType().Name, isUserPresent.Username));
+
+
+            var courier = this.Factory.CreateCourier(username, password, firstName, lastName, email, age, phoneNumber, userAddress, gender, allowedWeight, allowedVolume);
+
+            this.Users.Add(courier);
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine(Constants.RegisteredCourier, courier.Username);
+            Console.ResetColor();
         }
 
         public IProduct AddProduct()
@@ -185,103 +243,46 @@ namespace DeliverIT.Core.Engine
             Console.WriteLine($"Product with ID {product.Id} was added succesfully!");
 
             return product;
-
         }
 
-        public IOrder AddOrder()
+        public void AddOrder()
         {
-            string choice;
-            ICourier courier = (ICourier)this.Users.FirstOrDefault(x => x.Role == UserRole.Normal);
+            var couriers = this.Users
+                .Where(u => u.Role == UserRole.Normal)
+                .Cast<ICourier>();
 
-            if (this.LoggedUser.Role == UserRole.Administrator)
-            {
-                Console.WriteLine("--- Courier Information ---");
-                Console.WriteLine(@"To choose already registered Courier press 'C' and type his username");
-                Console.WriteLine("Or press 'R' to register a new Courier");
-                choice = Console.ReadLine();
-                if (choice == "C")
-                {
-                    Console.Write("Type username: ");
-                    string username = Console.ReadLine();
-                    // how to avoid type casting?
-                    foreach (var user in this.Users)
-                    {
-                        if (user.Role == UserRole.Normal && user.Username == username)
-                        {
-                            courier = (Courier)user;
-                        }
-                    }
-                    if (courier == null)
-                    {
+            var clients = this.Users
+                .Where(u => u.Role == UserRole.Operator)
+                .Cast<IClient>();
 
-                        throw new ArgumentNullException("No courier found!");
-                    }
-                    else
-                    {
-                        Console.WriteLine($"Courier {courier.FirstName} {courier.LastName} choosen successfully!");
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("Register the new Courier: ");
-                    courier = (ICourier)AddUser("Courier");
-                    Console.WriteLine($"Courier {courier.FirstName} {courier.LastName} choosen succesfully!");
-                }
-            }
+            this.PrintUser(couriers);
 
-            Console.WriteLine("--- Sender information ---");
-            Console.WriteLine(@"To choose already registered user press 'C' and type his username");
-            Console.WriteLine("Or press 'R' to register a new user");
-            IClient sender;
-            choice = Console.ReadLine();
-            if (choice == "C")
-            {
-                Console.WriteLine("Type username: ");
-                string username = Console.ReadLine();
-                // how to avoid type casting?
-                sender = (IClient)this.Users.FirstOrDefault(x => x.Username == username);
-                if (sender == null)
-                {
-                    throw new ArgumentNullException(Constants.NoSuchUser);
-                }
-                sender.ClientType = ClientType.Sender;
-                Console.WriteLine($"Sender {sender.FirstName} {sender.LastName} choosen successfully!");
-            }
-            else
-            {
-                Console.WriteLine("Register the new user: ");
-                sender = (IClient)AddUser("Client");
-                sender.ClientType = ClientType.Sender;
-                Console.WriteLine($"Sender {sender.FirstName} {sender.LastName} choosen successfully!");
-            }
+            string inputCourier = Console.ReadLine();
 
-            Console.WriteLine("--- Receiver information ---");
-            Console.WriteLine(@"To choose already registered user press 'C' and type his username");
-            Console.WriteLine("Or press 'R' to register a new user");
-            IClient receiver;
-            choice = Console.ReadLine();
-            if (choice == "C")
-            {
-                Console.WriteLine("Type username: ");
-                string username = Console.ReadLine();
-                receiver = (Client)this.Users.FirstOrDefault(x => x.Username == username);
-                if (receiver == null)
-                {
-                    throw new ArgumentNullException(Constants.NoSuchUser);
-                }
-                else
-                {
-                    receiver.ClientType = ClientType.Receiver;
-                    Console.WriteLine($"Receiver {receiver.FirstName} {receiver.LastName} choosen successfully!");
-                }
-            }
-            else
-            {
-                Console.WriteLine("Register the new user: ");
-                receiver = (IClient)AddUser("Client");
-                receiver.ClientType = ClientType.Receiver;
-                Console.WriteLine($"Receiver {receiver.FirstName} {receiver.LastName} choosen successfully!");
-            }
+            ICourier selectedCourier = couriers
+                .FirstOrDefault(sc => sc.Username.Equals(inputCourier));
+
+            Console.WriteLine("--- Sender ---");
+            this.PrintUser(clients);
+
+            string inputSender = Console.ReadLine();
+
+            IClient selectedSender = clients
+                .FirstOrDefault(sc => sc.Username.Equals(inputSender));
+
+            Console.WriteLine("--- Receiver ---");
+            this.PrintUser(clients);
+
+            string inputReceiver = Console.ReadLine();
+
+            IClient selectedReceiver = clients
+               .FirstOrDefault(sc => sc.Username.Equals(inputReceiver));
+
+            Console.WriteLine("---Delivery Type information---");
+            Console.Write("Delivery type (Standart/Express): ");
+
+            string type = Console.ReadLine();
+            DeliveryType deliveryType = AddDeliveryType(type);
 
             Console.Write("---Product information---");
             IProduct product = AddProduct();
@@ -289,27 +290,50 @@ namespace DeliverIT.Core.Engine
             Console.Write("Enter date of sending (Day/Month/Year): ");
             DateTime sendDate = DateTime.ParseExact(Console.ReadLine(),
                                 "d/M/yyyy", CultureInfo.InvariantCulture);
+
             Console.Write("Enter due date for delivery(Day/Month/Year): ");
             DateTime dueDate = DateTime.ParseExact(Console.ReadLine(),
                             "d/M/yyyy", CultureInfo.InvariantCulture);
 
-            int postalCode = receiver.Address.Country.CitysAndZips[receiver.Address.City];
+            int postalCode = selectedReceiver.Address.Country.CitysAndZips[selectedReceiver.Address.City];
 
-            IOrder order = this.Factory.CreateOrder(courier, sender, receiver, sendDate, dueDate,
-                OrderState.NotDelivered, product, postalCode);
-            Console.WriteLine($"Order with ID {order.Id} created!");
+            var order = this.Factory.CreateOrder(selectedCourier, selectedSender, selectedReceiver, deliveryType, sendDate, dueDate, OrderState.InProgress, product, postalCode);
 
             this.Orders.Add(order);
 
-            receiver.AddOrder(order);
-
-            sender.AddOrder(order);
-
-            courier.AddOrder(order);
-
-            return order;
+            selectedCourier.OrdersList.Add(order);
+            selectedReceiver.OrdersList.Add(order);
+            selectedSender.OrdersList.Add(order);
         }
 
+        private void PrintUser<T>(IEnumerable<T> users) where T : IUser
+        {
+            Console.WriteLine("Please select:");
+
+            foreach (var user in users)
+            {
+                Console.WriteLine(user.Username);
+            }
+        }
+
+        public DeliveryType AddDeliveryType(string deliveryType)
+        {
+            DeliveryType type;
+
+            switch ((DeliveryType)Enum.Parse(typeof(DeliveryType), deliveryType))
+            {
+                case DeliveryType.Express:
+                    type = DeliveryType.Express;
+                    break;
+                case DeliveryType.Standart:
+                    type = DeliveryType.Standart;
+                    break;
+                default:
+                    type = DeliveryType.Standart;
+                    break;
+            }
+            return type;
+        }
 
         public string ShowAllClients()
         {
@@ -349,14 +373,11 @@ namespace DeliverIT.Core.Engine
 
         public string ShowAllLocations()
         {
-            var counter = 1;
             StringBuilder strBuilder = new StringBuilder();
             strBuilder.AppendLine("--- Delivery locations ---");
-            strBuilder.AppendLine(counter + ". " + CountryType.Bulgaria);
-            counter++;
-            strBuilder.AppendLine(counter + ". " + CountryType.Russia);
-            counter++;
-            strBuilder.AppendLine(counter + ". " + CountryType.Germany);
+            strBuilder.AppendLine(" -- " + CountryType.Bulgaria);
+            strBuilder.AppendLine(" -- " + CountryType.Russia);
+            strBuilder.AppendLine(" -- " + CountryType.Germany);
             return strBuilder.ToString();
         }
 

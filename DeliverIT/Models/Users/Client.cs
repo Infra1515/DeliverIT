@@ -8,7 +8,6 @@ namespace DeliverIT.Models.Users
 {
     public class Client : Person, IClient
     {
-        // must fix id
         private static int id = 0;
         private ClientType clientType;
 
@@ -26,7 +25,7 @@ namespace DeliverIT.Models.Users
             )
             : base(username, password, firstName, lastName, email, age, phoneNumber, address, gender, UserRole.Operator)
         {
-            this.Id = id++;
+            this.Id = ++id;
             this.ClientType = clientType;
         }
 

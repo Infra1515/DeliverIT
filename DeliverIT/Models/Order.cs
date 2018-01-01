@@ -13,13 +13,14 @@ namespace DeliverIT.Models
         private static int id = 0;
         private readonly int postalCode;
 
-        public Order(ICourier courier, IClient sender, IClient receiver, DateTime sendDate, DateTime dueDate,
+        public Order(ICourier courier, IClient sender, IClient receiver, DeliveryType deliveryType, DateTime sendDate, DateTime dueDate,
                  OrderState orderState, IProduct product, int postalCode)
         {
-            this.Id = id++;
+            this.Id = ++id;
             this.Courier = courier;
             this.Sender = sender;
             this.Receiver = receiver;
+            this.DeliveryType = deliveryType;
             this.SendDate = sendDate;
             this.DueDate = dueDate;
             this.OrderState = orderState;

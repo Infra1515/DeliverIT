@@ -1,7 +1,7 @@
 ﻿using DeliverIT.Common.Enums;
 using System;
 
-namespace DeliverIT.Core.Engine
+namespace DeliverIT.Core.Engine.Event
 {
     public class OrderStateChangedEventArgs : EventArgs
     {

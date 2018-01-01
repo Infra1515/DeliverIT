@@ -9,6 +9,8 @@ using DeliverIT.Models.Countries;
 using System.Threading;
 using DeliverIT.Common;
 using DeliverIT.Core.Exceptions;
+using DeliverIT.Contracts;
+using DeliverIT.Core.Engine.Event;
 
 namespace DeliverIT.Core.Engine
 {
@@ -19,11 +21,13 @@ namespace DeliverIT.Core.Engine
         public static event EventHandler<OrderStateChangedEventArgs> OrderStateChanged;
 
         private MenuState state = MenuState.Login;
+        private IUser loggedUser;
         private readonly CommandProcessor commandProcessor;
 
         private DeliverITEngine()
         {
             this.commandProcessor = new CommandProcessor();
+            this.loggedUser = null;
         }
 
         public static IEngine Instance
@@ -93,6 +97,7 @@ namespace DeliverIT.Core.Engine
                 }
                 catch(Exception ex)
                 {
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine(ex.Message);
                 }
                
@@ -102,7 +107,7 @@ namespace DeliverIT.Core.Engine
 
         private void MainMenu(MainMenuChoice mainMenuChoice)
         {
-            bool isPermitted = this.CheckRoleAccess(commandProcessor.LoggedUser.Role, mainMenuChoice);
+            bool isPermitted = this.CheckRoleAccess(loggedUser.Role, mainMenuChoice);
 
             if (isPermitted)
             {
@@ -110,39 +115,39 @@ namespace DeliverIT.Core.Engine
                 {
                     case MainMenuChoice.AddClient:
                         Console.WriteLine("Adding client ...... ");
-                        commandProcessor.AddUser("Client");
-                        break;
-
-                    case MainMenuChoice.PlaceOrder:
-                        Console.WriteLine("Placing order ...... ");
-                        commandProcessor.AddOrder();
+                        this.commandProcessor.AddClient();
                         break;
 
                     case MainMenuChoice.AddCourier:
                         Console.WriteLine("Adding courier ...... ");
-                        commandProcessor.AddUser("Courier");
+                        this.commandProcessor.AddCourier();
+                        break;
+
+                    case MainMenuChoice.PlaceOrder:
+                        Console.WriteLine("Placing order ...... ");
+                        this.commandProcessor.AddOrder();
                         break;
 
                     case MainMenuChoice.AllClients:
                         Console.WriteLine("Listing clients ...... ");
-                        Console.WriteLine(commandProcessor.ShowAllClients());
+                        Console.WriteLine(this.commandProcessor.ShowAllClients());
                         break;
 
                     case MainMenuChoice.AllOrders:
 
                         Console.WriteLine("Listing orders ...... ");
-                        Console.WriteLine(commandProcessor.ShowAllOrders());
+                        Console.WriteLine(this.commandProcessor.ShowAllOrders());
 
                         break;
 
                     case MainMenuChoice.AllLocations:
                         Console.WriteLine("Listing locations ...... ");
-                        Console.WriteLine(commandProcessor.ShowAllLocations());
+                        Console.WriteLine(this.commandProcessor.ShowAllLocations());
                         break;
 
                     case MainMenuChoice.Logout:
 
-                        this.commandProcessor.LoggedUser = null;
+                        this.loggedUser = null;
                         state = MenuState.Login;
 
                         break;
@@ -223,7 +228,7 @@ namespace DeliverIT.Core.Engine
 
         private bool Login(string username, string password)
         {
-            if (this.commandProcessor.LoggedUser != null)
+            if (this.loggedUser != null)
                 return true;
 
             var user = this.commandProcessor.Users.FirstOrDefault(x => string.Equals(x.Username, username,
@@ -231,7 +236,7 @@ namespace DeliverIT.Core.Engine
 
             if (user != null && user.Password == password)
             {
-                this.commandProcessor.LoggedUser = user;
+                this.loggedUser = user;
                 return true;
             }
             else
@@ -255,7 +260,7 @@ namespace DeliverIT.Core.Engine
             var dummyCourierPeshont = this.commandProcessor.Factory.CreateCourier("peshont", "1234", "Peshont", "Peshontov", "Peshkata@DeliveryIT.com", 20, "0885236652", address, GenderType.Male, 500, 40);
 
             var product = this.commandProcessor.Factory.CreateProduct(10, 10, 10, false, 50, ProductType.Accessories);
-            var order = this.commandProcessor.Factory.CreateOrder(dummyCourierGosheedy, dummyClient, dummyClientCool, DateTime.Now, DateTime.Now.AddSeconds(30), OrderState.InProgress, product, 10);
+            var order = this.commandProcessor.Factory.CreateOrder(dummyCourierGosheedy, dummyClient, dummyClientCool, DeliveryType.Express, DateTime.Now, DateTime.Now.AddSeconds(30), OrderState.InProgress, product, 10);
 
             this.commandProcessor.Users.Add(adminUser);
             this.commandProcessor.Users.Add(dummyClient);
@@ -272,7 +277,9 @@ namespace DeliverIT.Core.Engine
 
         private void DeliverITEngine_OrderStateChanged(object sender, OrderStateChangedEventArgs args)
         {
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine($"Order {args.ID} status changed from {args.LAST_STATE} to {args.CURRENT_STATE}");
+            Console.ResetColor();
         }
     }
 }
