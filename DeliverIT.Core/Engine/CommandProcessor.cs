@@ -20,13 +20,13 @@ namespace DeliverIT.Core.Engine
         private IUser loggedUser;
         private readonly ICollection<IOrder> orders;
 
-        public IDeliverITFactory Factory => factory;
+        public IDeliverITFactory Factory => this.factory;
 
-        public ICollection<IUser> Users => users;
+        public ICollection<IUser> Users => this.users;
 
-        public ICollection<IOrder> Orders => orders;
+        public ICollection<IOrder> Orders => this.orders;
 
-        public IUser LoggedUser { get => loggedUser; set => loggedUser = value; }
+        public IUser LoggedUser { get => this.loggedUser; set => this.loggedUser = value; }
 
         public CommandProcessor()
         {
@@ -58,20 +58,19 @@ namespace DeliverIT.Core.Engine
             string phoneNumber = Console.ReadLine();
 
             Console.Write("Years: ");
-            int years = int.Parse(Console.ReadLine());
+            int years = int.Parse(Console.ReadLine()); //possible exceptions
 
             Console.Write("Gender: ");
-            GenderType gender = (GenderType)Enum.Parse(typeof(GenderType), Console.ReadLine());
+            GenderType gender = (GenderType)Enum.Parse(typeof(GenderType), Console.ReadLine()); //possible ex
 
             Console.WriteLine("--- Address ---");
             Console.Write("Country: ");
-            string countryString = Console.ReadLine();
+            string countryString = Console.ReadLine(); // check for null
 
             Country country;
 
             switch ((CountryType)Enum.Parse(typeof(CountryType), countryString))
             {
-
                 case CountryType.Bulgaria:
                     country = new Bulgaria();
                     break;
@@ -127,7 +126,7 @@ namespace DeliverIT.Core.Engine
                 IClient client = this.Factory.CreateClient(username, password, firstName, lastName, email,
                         years, phoneNumber, userAddress, gender);
                 this.Users.Add(client);
-                Console.WriteLine(string.Format(userTypeInfo, client.Username));
+                Console.WriteLine(userTypeInfo, client.Username);
                 return client;
             }
             else
@@ -153,8 +152,7 @@ namespace DeliverIT.Core.Engine
 
             Console.Write("Is the product fragile? ");
             string isFragileStr = Console.ReadLine().ToLower().Trim(); // possible null - needs validation!!
-            bool isFragile;
-            isFragile = isFragileStr == "yes";
+            bool isFragile = isFragileStr == "yes";
 
             Console.Write("What is the product weight? ");
             double weight = double.Parse(Console.ReadLine());
@@ -201,7 +199,7 @@ namespace DeliverIT.Core.Engine
                 choice = Console.ReadLine();
                 if (choice == "C")
                 {
-                    Console.WriteLine("Type username: ");
+                    Console.Write("Type username: ");
                     string username = Console.ReadLine();
                     // how to avoid type casting?
                     foreach (var user in this.Users)
@@ -245,12 +243,8 @@ namespace DeliverIT.Core.Engine
 
                     throw new ArgumentNullException("No such user!");
                 }
-                else
-                {
-                    sender.ClientType = ClientType.Sender;
-                    Console.WriteLine($"Sender {sender.FirstName} {sender.LastName} choosen successfully!");
-
-                }
+                sender.ClientType = ClientType.Sender;
+                Console.WriteLine($"Sender {sender.FirstName} {sender.LastName} choosen successfully!");
             }
             else
             {
@@ -357,11 +351,11 @@ namespace DeliverIT.Core.Engine
             var counter = 1;
             StringBuilder strBuilder = new StringBuilder();
             strBuilder.AppendLine("--- Delivery locations ---");
-            strBuilder.AppendLine(counter.ToString() + ". " + CountryType.Bulgaria.ToString());
+            strBuilder.AppendLine(counter + ". " + CountryType.Bulgaria);
             counter++;
-            strBuilder.AppendLine(counter.ToString() + ". " + CountryType.Russia.ToString());
+            strBuilder.AppendLine(counter + ". " + CountryType.Russia);
             counter++;
-            strBuilder.AppendLine(counter.ToString() + ". " + CountryType.Germany.ToString());
+            strBuilder.AppendLine(counter + ". " + CountryType.Germany);
             return strBuilder.ToString();
         }
 

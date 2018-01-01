@@ -1,6 +1,6 @@
 ﻿namespace DeliverIT.Core.Utilities
 {
-    public enum LoginChoise
+    public enum LoginChoice
     {
         Login = 1,
         Exit = 2

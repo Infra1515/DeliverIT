@@ -11,7 +11,7 @@
         public const string InvalidDueDate = "Due date must be > send date.";
         public const string InvalidNullValue = "Value cannot be null!";
         public const string UserAlreadyExists = "{0} {1} already exists!";
-        public const string InvalidMenuChoiceMessage = "You have entered an Invalid Choise!";
+        public const string InvalidMenuChoiceMessage = "You have entered an Invalid Choice!";
         public const string InvalidCredentialsMessage = "Wrong username or password!";
 
         public const string RegisteredCourier = "Courier {0} registered succesfully!";

@@ -1,6 +1,6 @@
 ﻿namespace DeliverIT.Core.Utilities
 {
-    public enum MainMenuChoise
+    public enum MainMenuChoice
     {
         Invalid = 0,
         AddClient = 1,
