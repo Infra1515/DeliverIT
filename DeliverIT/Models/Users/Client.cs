@@ -1,46 +1,99 @@
-﻿using DeliverIT.Common;
+﻿using System;
+using System.Collections.Generic;
 using DeliverIT.Common.Enums;
 using DeliverIT.Contracts;
-using System;
-using System.Collections.Generic;
+using DeliverIT.Models.Users.Abstract;
 
 namespace DeliverIT.Models.Users
 {
-    public class Client : User
+    public class Client : Person, IClient
     {
-        private IList<IOrder> ordersList;
-        private ClientType clientType;
         private static int id = 0;
+        private ClientType clientType;
 
-        public IList<IOrder> OrdersList { get => ordersList; set => ordersList = value; }
+        public Client
+            (
+                string username,
+                string password,
+                string firstName, 
+                string lastName,
+                string email,
+                int age,
+                string phoneNumber,
+                Address address,
+                GenderType gender
+            )
+            : base(username, password, firstName, lastName, email, age, phoneNumber, address, gender, UserRole.Operator)
+        {
+            this.Id = ++id;
+            this.ClientType = clientType;
+        }
+
+        public int Id { get; protected set; }
         public ClientType ClientType { get => clientType; set => clientType = value; }
 
-        public Client(string firstName, string lastName, string email, string phoneNumber,
-                        int years, Address address, GenderType gender) 
-            : base(firstName, lastName, email, phoneNumber, years, address, gender)
+        public void ShowAllNotPendingOrders(IList<IOrder> orders)
         {
-            id += 1;
-            this.OrdersList = new List<IOrder>();
+            foreach(var order in this.OrdersList)
+            {
+                if(order.OrderState == OrderState.Delivered)
+                {
+                    Console.WriteLine(order.ToString());
+                }
+            }
         }
 
-        void DisplayOrderList()
+        public void ShowReceivedOrders(IList<IOrder> orders)
         {
-            //method for displaying order list
+            foreach(var order in this.OrdersList)
+            {
+                if(order.OrderState == OrderState.Delivered && 
+                    order.Receiver == this)
+                {
+                    Console.WriteLine(order.ToString());
+                }
+            }
         }
 
-        void ShowAllOrders(IList<IOrder> allOrders)
+        public void ShowSentOrders(IList<IOrder> orders)
         {
-            throw new NotImplementedException();
+            foreach (var order in this.OrdersList)
+            {
+                if (order.OrderState == OrderState.Delivered &&
+                    order.Sender == this)
+                {
+                    Console.WriteLine(order.ToString());
+                }
+            }
         }
 
-        void ShowReceivedOrders(IList<IOrder> allReceivedOrders)
+        public void ShowExpectedSendOrders(IList<IOrder> orders)
         {
-            throw new NotImplementedException();
+            foreach (var order in this.OrdersList)
+            {
+                if (order.OrderState == OrderState.NotDelivered &&
+                    order.Sender == this)
+                {
+                    Console.WriteLine(order.ToString());
+                }
+            }
         }
 
-        void ShowSentOrders(IList<IOrder> allSentOrders)
+        public void ShowExpectedReceiveOrders(IList<IOrder> orders)
         {
-            throw new NotImplementedException();
+            foreach (var order in this.OrdersList)
+            {
+                if (order.OrderState == OrderState.NotDelivered &&
+                    order.Receiver == this)
+                {
+                    Console.WriteLine(order.ToString());
+                }
+            }
+        }
+
+        public override string ToString()
+        {
+            return $"ID: {this.Id}\r\n" + base.ToString() + $"\r\nClient Type : {this.ClientType}";
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace DeliverIT.Common
+﻿namespace DeliverIT.Common.Enums
 {
     public enum GenderType
     {

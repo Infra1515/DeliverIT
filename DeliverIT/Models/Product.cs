@@ -1,16 +1,16 @@
-﻿using DeliverIT.Common.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DeliverIT.Common;
+using DeliverIT.Common.Enums;
+using DeliverIT.Contracts;
 
 namespace DeliverIT.Models
 {
-    public class Product
+    public class Product : IProduct
     {
+        private static int id = 0;
+        private decimal deliveryPrice;
         public Product(double x, double y, double z, bool isFragile, double weight, ProductType productType)
         {
+            id++;
             this.Dimensions = new Dimensions(x, y, z);
             this.Volume = this.Dimensions.CalculateVolume();
             this.IsFragile = isFragile;
@@ -24,15 +24,22 @@ namespace DeliverIT.Models
 
         public Dimensions Dimensions { get; set; }
 
-        private ProductType ProductType { get; set; }
+        public ProductType ProductType { get; set; }
 
         public double Volume { get; set; }
 
+        public int Id { get => id; }
 
-        //todo override tostring 
+        public decimal DeliveryPrice { get => deliveryPrice; set => deliveryPrice = value; }
+
         public override string ToString()
         {
-            return base.ToString();
+            return $"\r\n- ID: {this.Id}\n" +
+                $" -- Dimensions: {this.Dimensions.X} x {this.Dimensions.Y} x {this.Dimensions.Z}\n" +
+                $" -- Is Fragile: {this.IsFragile}\n" +
+                $" -- Weight: {this.Weight}\n" +
+                $" -- Volume: {this.Volume}\n" +
+                $" -- Type: {this.ProductType}\n\n";
         }
     }
 }

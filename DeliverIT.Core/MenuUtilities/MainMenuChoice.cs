@@ -1,14 +1,15 @@
 ﻿namespace DeliverIT.Core.Utilities
 {
-    public enum Selections
+    public enum MainMenuChoice
     {
         Invalid = 0,
         AddClient = 1,
-        PlaceOrder = 2,
-        AddCourier = 3,
+        AddCourier = 2,
+        PlaceOrder = 3,
         AllClients = 4,
         AllOrders = 5,
         AllLocations = 6,
-        Exit = 7
+        Logout = 7,
+        Exit = 8
     }
 }

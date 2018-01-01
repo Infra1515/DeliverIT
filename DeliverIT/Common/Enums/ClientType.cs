@@ -2,7 +2,8 @@
 {
     public enum ClientType
     {
-        LegalEntity = 2,
-        IndividualEntity = 1
+        Client,
+        Sender,
+        Receiver
     }
 }
