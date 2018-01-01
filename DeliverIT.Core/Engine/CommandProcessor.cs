@@ -86,11 +86,13 @@ namespace DeliverIT.Core.Engine
                 default:
                     throw new ArgumentException("We don't ship to this country yet!");
             }
-
-            // TODO: Implement validation for city: If its not in Country dict with cities
-            // throw exception();
+            
             Console.Write("City: ");
             string city = Console.ReadLine();
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Validator.ValidateCityInCountry(city, country, Constants.NoSuchCity);
+            Console.ForegroundColor = ConsoleColor.White;
 
             Console.Write("Street name: ");
             string streetName = Console.ReadLine();
@@ -240,8 +242,7 @@ namespace DeliverIT.Core.Engine
                 sender = (IClient)this.Users.FirstOrDefault(x => x.Username == username);
                 if (sender == null)
                 {
-
-                    throw new ArgumentNullException("No such user!");
+                    throw new ArgumentNullException(Constants.NoSuchUser);
                 }
                 sender.ClientType = ClientType.Sender;
                 Console.WriteLine($"Sender {sender.FirstName} {sender.LastName} choosen successfully!");
@@ -266,7 +267,7 @@ namespace DeliverIT.Core.Engine
                 receiver = (Client)this.Users.FirstOrDefault(x => x.Username == username);
                 if (receiver == null)
                 {
-                    throw new ArgumentNullException("No such user!");
+                    throw new ArgumentNullException(Constants.NoSuchUser);
                 }
                 else
                 {
