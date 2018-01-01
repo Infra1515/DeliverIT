@@ -2,6 +2,7 @@
 {
     public class Constants
     {
+        //messages
         public const string InvalidName = "Invalid name!";
         public const string InvalidEmail = "Invalid email!";
         public const string InvalidPhoneNumber = "Invalid phone number entered! Enter valid phone number!";
@@ -10,14 +11,16 @@
         public const string InvalidDueDate = "Due date must be > send date.";
         public const string InvalidNullValue = "Value cannot be null!";
         public const string UserAlreadyExists = "{0} {1} already exists!";
+        public const string InvalidMenuChoiceMessage = "You have entered an Invalid Choise!";
+        public const string InvalidCredentialsMessage = "Wrong username or password!";
 
         public const string RegisteredCourier = "Courier {0} registered succesfully!";
         public const string RegisteredClient = "Client {0} registered successfully!";
         public const string ChoosenSender = "Sender {0} choosen successfully!";
         public const string ChoosenReceiver = "Receiver {0} choosen successfully!";
 
-        public const string InvalidCredentialsMessage = "Wrong username or password!";
 
+        //min and max constants
         public const int MinNameLength = 2;
         public const int MaxNameLength = 15;
         public const int MinEmailLength = 10;

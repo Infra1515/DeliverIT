@@ -62,8 +62,7 @@ namespace DeliverIT.Core.Engine
 
                             if (!isValidLoginChoise)
                             {
-                                //Console.WriteLine("You have entered an Invalid Choise!\n");
-                                throw new ArgumentException("You have entered an Invalid Choise!\n");
+                                throw new InvalidMenuChoiceException(Constants.InvalidMenuChoiceMessage);
                             }
 
                             LoginMenu((LoginChoise)userLoginChoise);
@@ -79,7 +78,6 @@ namespace DeliverIT.Core.Engine
 
                             if (!isValidMainMenuChoise)
                             {
-                                //Console.WriteLine("You have entered an Invalid Choise!\n");
                                 throw new InvalidCredentialsException(Constants.InvalidCredentialsMessage);
                             }
 
@@ -195,9 +193,13 @@ namespace DeliverIT.Core.Engine
                     var isLogged = this.Login(username, password);
 
                     if (isLogged)
+                    {
                         state = MenuState.MainMenu;
+                    }
                     else
-                        Console.WriteLine("Wrong username or password!\n");
+                    {
+                        throw new InvalidCredentialsException(Constants.InvalidCredentialsMessage);
+                    }
 
                     break;
 
