@@ -4,7 +4,6 @@ using DeliverIT.Models.Users;
 using DeliverIT.Contracts;
 using DeliverIT.Models;
 using DeliverIT.Common.Enums;
-using DeliverIT.Common;
 
 namespace DeliverIT.Core.Factories
 {

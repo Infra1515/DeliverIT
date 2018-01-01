@@ -284,11 +284,6 @@ namespace DeliverIT.Core.Engine
             string type = Console.ReadLine();
             DeliveryType deliveryType = AddDeliveryType(type);
 
-            Console.WriteLine("---Delivery Type information---");
-            Console.Write("Delivery type (Standart/Express): ");
-            string type = Console.ReadLine();
-            DeliveryType deliveryType = AddDeliveryType(type);
-
             Console.Write("---Product information---");
             IProduct product = AddProduct();
 
