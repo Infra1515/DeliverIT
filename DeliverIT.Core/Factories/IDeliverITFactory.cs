@@ -1,4 +1,5 @@
 ﻿using System;
+using DeliverIT.Common;
 using DeliverIT.Contracts;
 using DeliverIT.Models;
 using DeliverIT.Common.Enums;

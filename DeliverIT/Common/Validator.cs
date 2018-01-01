@@ -9,7 +9,7 @@ namespace DeliverIT.Common
         {
             if(value == null)
             {
-                throw new ArgumentNullException("Value cannot be null or empty!");
+                throw new ArgumentNullException(Constants.NullValue);
             }
         }
 

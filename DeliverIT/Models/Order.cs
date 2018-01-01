@@ -26,6 +26,7 @@ namespace DeliverIT.Models
             this.OrderState = orderState;
             this.Product = product;
             this.postalCode = postalCode;
+            this.DeliveryType = deliveryType;
         }
         public int Id { get; protected set; }
         public ICourier Courier { get; set; }
