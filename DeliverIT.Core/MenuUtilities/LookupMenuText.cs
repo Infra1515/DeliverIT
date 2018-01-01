@@ -1,6 +1,6 @@
 ﻿namespace DeliverIT.Core.Utilities
 {
-    public class LookupMenuText
+    public static class LookupMenuText
     {
         public static readonly string MainMenuText =
             "DeliverIT Menu Options\n\n" +

@@ -14,7 +14,7 @@ namespace DeliverIT.Models.Users.Abstract
         private GenderType gender;
         private List<IOrder> ordersList;
 
-        public Person(string username, string password, string firstName, string lastName, string email, int age, string phoneNumber, Address address,
+        protected Person(string username, string password, string firstName, string lastName, string email, int age, string phoneNumber, Address address,
             GenderType gender, UserRole role)
             : base(username, password, firstName, lastName, email, role)
         {
@@ -77,7 +77,6 @@ namespace DeliverIT.Models.Users.Abstract
 
         public Address ShowCurrentAddress()
         {
-            //method showing curr address
             return this.Address;
         }
 
@@ -108,7 +107,7 @@ namespace DeliverIT.Models.Users.Abstract
                 $"Address: \n" +
                 $"{this.Address.ToString()}\n" +
                 $"Age : {this.Age}\n" +
-                $"Sex: {this.Gender}";
+                $"Sex: {this.Gender}\n";
         }
     }
 }

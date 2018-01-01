@@ -80,7 +80,6 @@ namespace DeliverIT.Models
 
             this.DeliveryPrice *= (decimal)this.DeliveryType; // multiply the price for delivery using express/standart delivery coefficient
             this.DeliveryPrice *= this.Receiver.Address.Country.Tax; // multiply the price using country tax
-            //this.DeliveryPrice /= (decimal)this.Sender.ClientType; // change delivery price using client type coeff
 
             return this.DeliveryPrice;
         }

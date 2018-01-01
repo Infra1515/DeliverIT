@@ -1,5 +1,4 @@
-﻿using DeliverIT.Common;
-using DeliverIT.Common.Enums;
+﻿using DeliverIT.Common.Enums;
 using DeliverIT.Contracts;
 
 namespace DeliverIT.Models
@@ -7,7 +6,7 @@ namespace DeliverIT.Models
     public class Product : IProduct
     {
         private static int id = 0;
-        private decimal deliveryPrice;
+
         public Product(double x, double y, double z, bool isFragile, double weight, ProductType productType)
         {
             id++;
@@ -30,7 +29,7 @@ namespace DeliverIT.Models
 
         public int Id { get => id; }
 
-        public decimal DeliveryPrice { get => deliveryPrice; set => deliveryPrice = value; }
+        public decimal DeliveryPrice { get; set; }
 
         public override string ToString()
         {

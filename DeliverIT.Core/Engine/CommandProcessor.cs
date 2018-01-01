@@ -14,21 +14,17 @@ namespace DeliverIT.Core.Engine
 {
     public class CommandProcessor
     {
-        private readonly IDeliverITFactory factory;
-        private readonly ICollection<IUser> users;
-        private readonly ICollection<IOrder> orders;
+        public IDeliverITFactory Factory { get; }
 
-        public IDeliverITFactory Factory => this.factory;
+        public ICollection<IUser> Users { get; }
 
-        public ICollection<IUser> Users => this.users;
-
-        public ICollection<IOrder> Orders => this.orders;
+        public ICollection<IOrder> Orders { get; }
 
         public CommandProcessor()
         {
-            this.users = new List<IUser>();
-            this.orders = new List<IOrder>();
-            this.factory = new DeliverITFactory();
+            this.Users = new List<IUser>();
+            this.Orders = new List<IOrder>();
+            this.Factory = new DeliverITFactory();
         }
 
         public void AddClient()
@@ -52,14 +48,14 @@ namespace DeliverIT.Core.Engine
             string phoneNumber = Console.ReadLine();
 
             Console.Write("Age: ");
-            int age = int.Parse(Console.ReadLine()); //possible exceptions
+            int age = int.Parse(Console.ReadLine()); 
 
             Console.Write("Gender: ");
-            GenderType gender = (GenderType)Enum.Parse(typeof(GenderType), Console.ReadLine()); //possible ex
+            GenderType gender = (GenderType)Enum.Parse(typeof(GenderType), Console.ReadLine()); 
 
             Console.WriteLine("--- Address ---");
             Console.Write("Country: ");
-            string countryString = Console.ReadLine(); // check for null
+            string countryString = Console.ReadLine();
 
             Country country;
 
@@ -86,7 +82,7 @@ namespace DeliverIT.Core.Engine
 
             Console.ForegroundColor = ConsoleColor.Red;
             Validator.ValidateCityInCountry(city, country, Constants.NoSuchCity);
-            Console.ForegroundColor = ConsoleColor.White;
+            Console.ResetColor();
 
             Console.Write("Street name: ");
             string streetName = Console.ReadLine();
@@ -96,8 +92,8 @@ namespace DeliverIT.Core.Engine
 
             Address userAddress = new Address(country, streetName, streetNumber, city);
 
-            var isUserPresent = this.Users.Where(u => u.Username.Equals(username))
-                .FirstOrDefault();
+            var isUserPresent = this.Users
+                .FirstOrDefault(u => u.Username.Equals(username));
 
             if (isUserPresent != null)
                 throw new ArgumentException(string.Format(
@@ -134,14 +130,14 @@ namespace DeliverIT.Core.Engine
             string phoneNumber = Console.ReadLine();
 
             Console.Write("Age: ");
-            int age = int.Parse(Console.ReadLine()); //possible exceptions
+            int age = int.Parse(Console.ReadLine()); 
 
             Console.Write("Gender: ");
-            GenderType gender = (GenderType)Enum.Parse(typeof(GenderType), Console.ReadLine()); //possible ex
+            GenderType gender = (GenderType)Enum.Parse(typeof(GenderType), Console.ReadLine()); 
 
             Console.WriteLine("--- Address ---");
             Console.Write("Country: ");
-            string countryString = Console.ReadLine(); // check for null
+            string countryString = Console.ReadLine(); 
 
             Country country;
 
@@ -168,7 +164,7 @@ namespace DeliverIT.Core.Engine
 
             Console.ForegroundColor = ConsoleColor.Red;
             Validator.ValidateCityInCountry(city, country, Constants.NoSuchCity);
-            Console.ForegroundColor = ConsoleColor.White;
+            Console.ResetColor();
 
             Console.Write("Street name: ");
             string streetName = Console.ReadLine();
@@ -184,8 +180,8 @@ namespace DeliverIT.Core.Engine
 
             Address userAddress = new Address(country, streetName, streetNumber, city);
 
-            var isUserPresent = this.Users.Where(u => u.Username.Equals(username))
-                .FirstOrDefault();
+            var isUserPresent = this.Users
+                .FirstOrDefault(u => u.Username.Equals(username));
 
             if (isUserPresent != null)
                 throw new ArgumentException(string.Format(
@@ -338,15 +334,15 @@ namespace DeliverIT.Core.Engine
         public string ShowAllClients()
         {
             StringBuilder sb = new StringBuilder();
-            if (this.users.Count == 0)
+            if (this.Users.Count == 0)
             {
                 sb.AppendLine("No clients registered!");
             }
             else
             {
-                foreach (var client in this.users)
+                foreach (var client in this.Users)
                 {
-                    sb.AppendLine(client.ToString()); //must implement TOSTRING method
+                    sb.AppendLine(client.ToString());
                     sb.AppendLine("-----------------------");
                 }
             }
@@ -356,9 +352,9 @@ namespace DeliverIT.Core.Engine
         public string ShowAllOrders()
         {
             var sb = new StringBuilder();
-            if (this.orders.Any())
+            if (this.Orders.Any())
             {
-                foreach (var order in orders)
+                foreach (var order in Orders)
                 {
                     sb.AppendLine(order.ToString());
                 }

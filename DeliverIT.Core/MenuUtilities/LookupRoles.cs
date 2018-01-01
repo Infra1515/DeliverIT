@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace DeliverIT.Core.MenuUtilities
 {
-    public class LookupRoles
+    public static class LookupRoles
     {
         public static readonly IList<MainMenuChoice> Administrator = new List<MainMenuChoice>()
         {

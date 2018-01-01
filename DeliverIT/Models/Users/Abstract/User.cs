@@ -40,7 +40,7 @@ namespace DeliverIT.Models.Users.Abstract
             get { return this.firstName; }
             protected set
             {
-                Validator.ValidateUserInfo(value, Constants.MinNameLength, 
+                Validator.ValidateUserInfo(value, Constants.MinNameLength,
                     Constants.MaxNameLength, Constants.InvalidName);
 
                 this.firstName = value;
@@ -52,7 +52,7 @@ namespace DeliverIT.Models.Users.Abstract
             get { return this.lastName; }
             protected set
             {
-                Validator.ValidateUserInfo(value, Constants.MinNameLength, 
+                Validator.ValidateUserInfo(value, Constants.MinNameLength,
                     Constants.MaxNameLength, Constants.InvalidName);
 
                 this.lastName = value;
@@ -77,7 +77,8 @@ namespace DeliverIT.Models.Users.Abstract
         {
             return $"User Type: {this.GetType().Name}\r\n" +
                 $"Username: {this.Username}\r\n" +
-                $"First Name: {this.FirstName}\r\nLast Name: {this.LastName}\r\n" +
+                $"First Name: {this.FirstName}\r\n" +
+                $"Last Name: {this.LastName}\r\n" +
                 $"Email : {this.Email}\r\n";
         }
 

@@ -3,7 +3,7 @@ using DeliverIT.Models.Countries;
 
 namespace DeliverIT.Common
 { 
-    public class Validator
+    public static class Validator
     {
         public static void ValidateNotNull<T> (T value)
         {
@@ -24,7 +24,6 @@ namespace DeliverIT.Common
 
         public static void ValidateEmail(string email)
         {
-
             ValidateNotNull(email);
 
             var addr = new System.Net.Mail.MailAddress(email);
@@ -33,12 +32,10 @@ namespace DeliverIT.Common
             {
                 throw new ArgumentException(Constants.InvalidEmail);
             }
-
         }
 
         public static void ValidatePhoneNumber(string phoneNumber)
         {
-
             ValidateNotNull(phoneNumber);
 
             if(phoneNumber.Length < 6 || phoneNumber.Length > 20)

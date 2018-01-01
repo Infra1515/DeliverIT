@@ -4,14 +4,12 @@ namespace DeliverIT.Contracts
 {
     public interface ICountry
     {
-        string Name { get; set; }
-        //string TelephoneCode { get; set; }
-        string PostalCode { get; set; }
-        string TimeZone { get; set; }
-        //Continent Continent { get; set; }
-        Dictionary<string, int> CitysAndZips { get; set; }
+        string Name { get; }
+        string PostalCode { get; }
+        string TimeZone { get; }
+        Dictionary<string, int> CitysAndZips { get; }
 
         void AddCityWithZip(string city, int zip);
-        void RemoveCityWithZip(string city, int zip);
+        void RemoveCityWithZip(string city);
     }
 }

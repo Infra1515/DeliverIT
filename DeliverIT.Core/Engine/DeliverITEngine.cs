@@ -155,7 +155,9 @@ namespace DeliverIT.Core.Engine
             }
             else
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("You have no permission to accesss this operation!\n");
+                Console.ResetColor();
             }
         }
 
@@ -184,9 +186,9 @@ namespace DeliverIT.Core.Engine
             return isPresent;
         }
 
-        private void LoginMenu(LoginChoice userChoise)
+        private void LoginMenu(LoginChoice userChoice)
         {
-            switch (userChoise)
+            switch (userChoice)
             {
                 case LoginChoice.Login:
 

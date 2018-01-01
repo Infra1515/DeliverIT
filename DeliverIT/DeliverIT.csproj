@@ -50,7 +50,6 @@
   <ItemGroup>
     <Compile Include="Common\Constants.cs" />
     <Compile Include="Common\Enums\ClientType.cs" />
-    <Compile Include="Common\Enums\Continent.cs" />
     <Compile Include="Common\Enums\CountryType.cs" />
     <Compile Include="Common\Enums\OrderState.cs" />
     <Compile Include="Common\Enums\ProductType.cs" />

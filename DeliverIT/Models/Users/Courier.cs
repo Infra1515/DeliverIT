@@ -60,7 +60,9 @@ namespace DeliverIT.Models.Users
 
         public override string ToString()
         {
-            return $"ID: {this.Id}\n" + base.ToString() + $"Allowed Weight: {this.AllowedWeight}\n" +
+            return $"ID: {this.Id}\n" +
+                base.ToString() +
+                $"Allowed Weight: {this.AllowedWeight}\n" +
                 $"Allowed Volume: {this.AllowedVolume}";
         }
     }

@@ -4,6 +4,7 @@
     {
         private const string name = "Serbia";
         private const decimal tax = 0.25m;
+
         public Serbia() : base(name, tax)
         {
             this.CitysAndZips.Add("Belgrade", 11000);
