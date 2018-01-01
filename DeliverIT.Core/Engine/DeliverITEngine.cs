@@ -93,6 +93,7 @@ namespace DeliverIT.Core.Engine
                 }
                 catch(Exception ex)
                 {
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine(ex.Message);
                 }
                
@@ -255,7 +256,7 @@ namespace DeliverIT.Core.Engine
             var dummyCourierPeshont = this.commandProcessor.Factory.CreateCourier("peshont", "1234", "Peshont", "Peshontov", "Peshkata@DeliveryIT.com", 20, "0885236652", address, GenderType.Male, 500, 40);
 
             var product = this.commandProcessor.Factory.CreateProduct(10, 10, 10, false, 50, ProductType.Accessories);
-            var order = this.commandProcessor.Factory.CreateOrder(dummyCourierGosheedy, dummyClient, dummyClientCool, DateTime.Now, DateTime.Now.AddSeconds(30), OrderState.InProgress, product, 10);
+            var order = this.commandProcessor.Factory.CreateOrder(dummyCourierGosheedy, dummyClient, dummyClientCool, DeliveryType.Express, DateTime.Now, DateTime.Now.AddSeconds(30), OrderState.InProgress, product, 10);
 
             this.commandProcessor.Users.Add(adminUser);
             this.commandProcessor.Users.Add(dummyClient);

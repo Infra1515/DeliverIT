@@ -1,4 +1,5 @@
 ﻿using System;
+using DeliverIT.Common;
 using DeliverIT.Models.Users;
 using DeliverIT.Contracts;
 using DeliverIT.Models;
@@ -26,10 +27,10 @@ namespace DeliverIT.Core.Factories
             return new Administrator(username, password, firstName, lastName, email);
         }
 
-        public IOrder CreateOrder(ICourier courier, IClient sender, IClient receiver, DateTime sendDate, DateTime dueDate,
+        public IOrder CreateOrder(ICourier courier, IClient sender, IClient receiver, DeliveryType deliveryType, DateTime sendDate, DateTime dueDate,
                            OrderState orderState, IProduct product, int postalCode)
         {
-            return new Order(courier, sender, receiver, sendDate, dueDate, orderState, product, postalCode);
+            return new Order(courier, sender, receiver, deliveryType, sendDate, dueDate, orderState, product, postalCode);
         }
 
         public IProduct CreateProduct(double x, double y, double z, bool isFragile, double weight, ProductType productType)

@@ -86,7 +86,7 @@ namespace DeliverIT.Core.Engine
                 default:
                     throw new ArgumentException("We don't ship to this country yet!");
             }
-            
+
             Console.Write("City: ");
             string city = Console.ReadLine();
 
@@ -185,7 +185,25 @@ namespace DeliverIT.Core.Engine
             Console.WriteLine($"Product with ID {product.Id} was added succesfully!");
 
             return product;
+        }
 
+        public DeliveryType AddDeliveryType(string deliveryType)
+        {
+            DeliveryType type;
+
+            switch ((DeliveryType)Enum.Parse(typeof(DeliveryType), deliveryType))
+            {
+                case DeliveryType.Express:
+                    type = DeliveryType.Express;
+                    break;
+                case DeliveryType.Standart:
+                    type = DeliveryType.Standart;
+                    break;
+                default:
+                    type = DeliveryType.Standart;
+                    break;
+            }
+            return type;
         }
 
         public IOrder AddOrder()
@@ -283,6 +301,11 @@ namespace DeliverIT.Core.Engine
                 Console.WriteLine($"Receiver {receiver.FirstName} {receiver.LastName} choosen successfully!");
             }
 
+            Console.WriteLine("---Delivery Type information---");
+            Console.Write("Delivery type (Standart/Express): ");
+            string type = Console.ReadLine();
+            DeliveryType deliveryType = AddDeliveryType(type);
+
             Console.Write("---Product information---");
             IProduct product = AddProduct();
 
@@ -295,7 +318,7 @@ namespace DeliverIT.Core.Engine
 
             int postalCode = receiver.Address.Country.CitysAndZips[receiver.Address.City];
 
-            IOrder order = this.Factory.CreateOrder(courier, sender, receiver, sendDate, dueDate,
+            IOrder order = this.Factory.CreateOrder(courier, sender, receiver, deliveryType, sendDate, dueDate,
                 OrderState.NotDelivered, product, postalCode);
             Console.WriteLine($"Order with ID {order.Id} created!");
 

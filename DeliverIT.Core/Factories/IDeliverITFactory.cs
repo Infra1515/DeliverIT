@@ -1,4 +1,5 @@
 ﻿using System;
+using DeliverIT.Common;
 using DeliverIT.Contracts;
 using DeliverIT.Models;
 using DeliverIT.Common.Enums;
@@ -16,7 +17,7 @@ namespace DeliverIT.Core.Factories
 
         IUser CreateAdmin(string username, string password, string firstName, string lastName, string email);
 
-        IOrder CreateOrder(ICourier courier, IClient sender, IClient receiver, DateTime sendDate, DateTime dueDate,
+        IOrder CreateOrder(ICourier courier, IClient sender, IClient receiver, DeliveryType deliveryType, DateTime sendDate, DateTime dueDate,
                            OrderState orderState, IProduct product, int postalCode);
 
         IProduct CreateProduct(double x, double y, double z, bool isFragile, double weight,

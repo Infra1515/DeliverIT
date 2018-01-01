@@ -15,6 +15,7 @@
         public const string InvalidCredentialsMessage = "Wrong username or password!";
         public const string NoSuchUser = "No such user!";
         public const string NoSuchCity = "We don't ship to this city yet!";
+        public const string NullValue = "Value cannot be null or empty!";
 
         public const string RegisteredCourier = "Courier {0} registered succesfully!";
         public const string RegisteredClient = "Client {0} registered successfully!";

@@ -13,7 +13,7 @@ namespace DeliverIT.Models
         private static int id = 0;
         private readonly int postalCode;
 
-        public Order(ICourier courier, IClient sender, IClient receiver, DateTime sendDate, DateTime dueDate,
+        public Order(ICourier courier, IClient sender, IClient receiver, DeliveryType deliveryType, DateTime sendDate, DateTime dueDate,
                  OrderState orderState, IProduct product, int postalCode)
         {
             this.Id = id++;
@@ -25,6 +25,7 @@ namespace DeliverIT.Models
             this.OrderState = orderState;
             this.Product = product;
             this.postalCode = postalCode;
+            this.DeliveryType = deliveryType;
         }
         public int Id { get; protected set; }
         public ICourier Courier { get; set; }
