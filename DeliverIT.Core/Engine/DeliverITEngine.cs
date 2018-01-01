@@ -1,19 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using DeliverIT.Contracts;
 using DeliverIT.Core.Contracts;
 using DeliverIT.Core.Utilities;
 using System.Linq;
-using System.Text;
-using DeliverIT.Core.Factories;
 using DeliverIT.Common.Enums;
 using DeliverIT.Core.MenuUtilities;
 using DeliverIT.Models;
 using DeliverIT.Models.Countries;
 using System.Threading;
-using System.Globalization;
-using DeliverIT.Models.Users;
 using DeliverIT.Common;
+using DeliverIT.Core.Exceptions;
 
 namespace DeliverIT.Core.Engine
 {
@@ -24,7 +19,7 @@ namespace DeliverIT.Core.Engine
         public static event EventHandler<OrderStateChangedEventArgs> OrderStateChanged;
 
         private MenuState state = MenuState.Login;
-        private CommandProcessor commandProcessor;
+        private readonly CommandProcessor commandProcessor;
 
         private DeliverITEngine()
         {
@@ -67,8 +62,8 @@ namespace DeliverIT.Core.Engine
 
                             if (!isValidLoginChoise)
                             {
-                                Console.WriteLine("You have entered an Invalid Choise!\n");
-                                break;
+                                //Console.WriteLine("You have entered an Invalid Choise!\n");
+                                throw new ArgumentException("You have entered an Invalid Choise!\n");
                             }
 
                             LoginMenu((LoginChoise)userLoginChoise);
@@ -84,8 +79,8 @@ namespace DeliverIT.Core.Engine
 
                             if (!isValidMainMenuChoise)
                             {
-                                Console.WriteLine("You have entered an Invalid Choise!\n");
-                                break;
+                                //Console.WriteLine("You have entered an Invalid Choise!\n");
+                                throw new InvalidCredentialsException(Constants.InvalidCredentialsMessage);
                             }
 
                             MainMenu((MainMenuChoise)userMainMenuChoise);

@@ -29,6 +29,7 @@ namespace DeliverIT.Common
             }
 
             var addr = new System.Net.Mail.MailAddress(email);
+
             if(addr.Address != email)
             {
                 throw new ArgumentException(Constants.InvalidEmail);
