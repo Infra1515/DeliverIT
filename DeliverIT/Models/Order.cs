@@ -2,7 +2,6 @@
 using DeliverIT.Common;
 using DeliverIT.Contracts;
 using DeliverIT.Common.Enums;
-using DeliverIT.Models.Users;
 
 namespace DeliverIT.Models
 {
@@ -90,7 +89,8 @@ namespace DeliverIT.Models
                    $"- Sender: {this.Sender.FirstName} {this.Sender.LastName}\n" +
                    $"- Receiver: {this.Receiver.FirstName} {this.Receiver.LastName}\n" +
                    $"- Send date: {this.SendDate}\n- Due date: {this.DueDate}\n" +
-                   $"- Delivery price: {this.CalculatePrice()}\n- OrderState: {this.OrderState}\n" +
+                   $"- Delivery price: {this.CalculatePrice()}\n" +
+                   $"- OrderState: {this.OrderState}\n" +
                    $"- Delivery Address:\n" +
                    $"{this.Receiver.Address.ToString()}\n" +
                    $"- Product: {this.Product.ToString()}\n";

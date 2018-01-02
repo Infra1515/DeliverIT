@@ -1,2 +1,97 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram /> 
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="DeliverIT.Core.Engine.CommandProcessor" Collapsed="true">
+    <Position X="5.25" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACEAACAgAAQAAAAAIAAAQEAAAAAAAAAAAAQCAAADAAA=</HashCode>
+      <FileName>Engine\CommandProcessor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DeliverIT.Core.Engine.DeliverITEngine" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQBAAAAACAAAAAIAAAAAAASAAAAAGANQgAQAAAAAAA=</HashCode>
+      <FileName>Engine\DeliverITEngine.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DeliverIT.Core.Engine.Event.OrderStateChangedEventArgs" Collapsed="true">
+    <Position X="7" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAgAAAAAAEAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Event\OrderStateChangedEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DeliverIT.Core.Exceptions.InvalidCredentialsException" Collapsed="true">
+    <Position X="5.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Exceptions\InvalidCredentialsException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DeliverIT.Core.Exceptions.InvalidMenuChoiceException" Collapsed="true">
+    <Position X="7" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Exceptions\InvalidMenuChoiceException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DeliverIT.Core.Factories.DeliverITFactory" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAQAAAAEAAAAAAAAABAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Factories\DeliverITFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DeliverIT.Core.Utilities.LookupMenuText" Collapsed="true">
+    <Position X="8.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>MenuUtilities\LookupMenuText.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DeliverIT.Core.MenuUtilities.LookupRoles" Collapsed="true">
+    <Position X="5.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAEIAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>MenuUtilities\LookupRoles.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="DeliverIT.Core.Contracts.IEngine" Collapsed="true">
+    <Position X="7" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Contracts\IEngine.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DeliverIT.Core.Factories.IDeliverITFactory" Collapsed="true">
+    <Position X="5.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAQAAAAEAAAAAAAAABAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Factories\IDeliverITFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="DeliverIT.Core.Utilities.LoginChoice" Collapsed="true">
+    <Position X="5.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAQAAAAAAA=</HashCode>
+      <FileName>MenuUtilities\LoginChoice.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="DeliverIT.Core.Utilities.MainMenuChoice" Collapsed="true">
+    <Position X="7" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEEAAAAAAAAEAAAIAAAAAAAAAIAQCAABAAAg=</HashCode>
+      <FileName>MenuUtilities\MainMenuChoice.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="DeliverIT.Core.Utilities.MenuState" Collapsed="true">
+    <Position X="8.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAIAAQAAAAAAA=</HashCode>
+      <FileName>MenuUtilities\MenuState.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

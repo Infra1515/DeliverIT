@@ -65,7 +65,7 @@ namespace DeliverIT.Core.Engine
                     country = new Bulgaria();
                     break;
 
-                case CountryType.Germany:
+                case CountryType.Serbia:
                     country = new Serbia();
                     break;
 
@@ -147,7 +147,7 @@ namespace DeliverIT.Core.Engine
                     country = new Bulgaria();
                     break;
 
-                case CountryType.Germany:
+                case CountryType.Serbia:
                     country = new Serbia();
                     break;
 
@@ -373,7 +373,7 @@ namespace DeliverIT.Core.Engine
             strBuilder.AppendLine("--- Delivery locations ---");
             strBuilder.AppendLine(" -- " + CountryType.Bulgaria);
             strBuilder.AppendLine(" -- " + CountryType.Russia);
-            strBuilder.AppendLine(" -- " + CountryType.Germany);
+            strBuilder.AppendLine(" -- " + CountryType.Serbia);
             return strBuilder.ToString();
         }
 

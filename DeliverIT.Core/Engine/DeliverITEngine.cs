@@ -62,15 +62,15 @@ namespace DeliverIT.Core.Engine
 
                             Console.WriteLine(LookupMenuText.LoginText);
 
-                            int.TryParse(Console.ReadLine(), out int userLoginChoise);
-                            bool isValidLoginChoise = Enum.IsDefined(typeof(LoginChoice), userLoginChoise);
+                            int.TryParse(Console.ReadLine(), out int userLoginChoice);
+                            bool isValidLoginChoice = Enum.IsDefined(typeof(LoginChoice), userLoginChoice);
 
-                            if (!isValidLoginChoise)
+                            if (!isValidLoginChoice)
                             {
                                 throw new InvalidMenuChoiceException(Constants.InvalidMenuChoiceMessage);
                             }
 
-                            LoginMenu((LoginChoice)userLoginChoise);
+                            LoginMenu((LoginChoice)userLoginChoice);
 
                             break;
 
@@ -78,15 +78,15 @@ namespace DeliverIT.Core.Engine
 
                             Console.WriteLine(LookupMenuText.MainMenuText);
 
-                            int.TryParse(Console.ReadLine(), out int userMainMenuChoise);
-                            var isValidMainMenuChoise = Enum.IsDefined(typeof(MainMenuChoice), userMainMenuChoise);
+                            int.TryParse(Console.ReadLine(), out int userMainMenuChoice);
+                            var isValidMainMenuChoise = Enum.IsDefined(typeof(MainMenuChoice), userMainMenuChoice);
 
                             if (!isValidMainMenuChoise)
                             {
                                 throw new InvalidCredentialsException(Constants.InvalidCredentialsMessage);
                             }
 
-                            MainMenu((MainMenuChoice)userMainMenuChoise);
+                            MainMenu((MainMenuChoice)userMainMenuChoice);
 
                             break;
 
