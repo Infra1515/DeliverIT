@@ -48,7 +48,6 @@
     <Compile Include="Commands\AddClientCommand.cs" />
     <Compile Include="Commands\AddCourierCommand.cs" />
     <Compile Include="Commands\AddOrderCommand.cs" />
-    <Compile Include="Commands\AddProductCommand.cs" />
     <Compile Include="Commands\ShowAllClientsCommand.cs" />
     <Compile Include="Commands\ShowAllLocationsCommand.cs" />
     <Compile Include="Commands\ShowAllOrdersCommand.cs" />
