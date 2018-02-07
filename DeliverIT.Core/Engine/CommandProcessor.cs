@@ -199,7 +199,6 @@ namespace DeliverIT.Core.Engine
 
         public IProduct AddProduct()
         {
-
             Console.Write("Dimensions(X Y Z): ");
             var dimensions = Console.ReadLine().Split(' ').Select(double.Parse).ToArray();
             double x = dimensions[0];
@@ -376,6 +375,5 @@ namespace DeliverIT.Core.Engine
             strBuilder.AppendLine(" -- " + CountryType.Serbia);
             return strBuilder.ToString();
         }
-
     }
 }

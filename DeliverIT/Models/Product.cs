@@ -7,7 +7,13 @@ namespace DeliverIT.Models
     {
         private static int id = 0;
 
-        public Product(double x, double y, double z, bool isFragile, double weight, ProductType productType)
+        public Product(
+            double x, 
+            double y, 
+            double z, 
+            bool isFragile, 
+            double weight, 
+            ProductType productType)
         {
             id++;
             this.Dimensions = new Dimensions(x, y, z);

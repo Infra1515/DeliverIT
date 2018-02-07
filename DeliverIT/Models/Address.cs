@@ -11,7 +11,11 @@ namespace DeliverIT.Models
         private string streetNumber;
         private string city;
 
-        public Address(Country country, string streetName, string streetNumber, string city)
+        public Address(
+            Country country, 
+            string streetName, 
+            string streetNumber, 
+            string city)
         {
             this.Country = country;
             this.StreetName = streetName;
