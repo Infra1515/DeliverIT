@@ -1,4 +1,6 @@
-﻿using DeliverIT.Core.Contracts;
+﻿using System.Text;
+using DeliverIT.Common.Enums;
+using DeliverIT.Core.Contracts;
 
 namespace DeliverIT.Core.Commands
 {
@@ -6,7 +8,14 @@ namespace DeliverIT.Core.Commands
     {
         public void Execute()
         {
-            throw new System.NotImplementedException();
+            StringBuilder strBuilder = new StringBuilder();
+            strBuilder.AppendLine("--- Delivery locations ---");
+            strBuilder.AppendLine(" -- " + CountryType.Bulgaria);
+            strBuilder.AppendLine(" -- " + CountryType.Russia);
+            strBuilder.AppendLine(" -- " + CountryType.Serbia);
+
+            // todo fix returns
+            //return strBuilder.ToString();
         }
     }
 }
