@@ -52,6 +52,7 @@
     <Compile Include="Commands\ShowAllClientsCommand.cs" />
     <Compile Include="Commands\ShowAllLocationsCommand.cs" />
     <Compile Include="Commands\ShowAllOrdersCommand.cs" />
+    <Compile Include="Contracts\ICommand.cs" />
     <Compile Include="Contracts\IEngine.cs" />
     <Compile Include="Engine\CommandProcessor.cs" />
     <Compile Include="Engine\DeliverITEngine.cs" />

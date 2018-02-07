@@ -1,6 +1,12 @@
-﻿namespace DeliverIT.Core.Commands
+﻿using DeliverIT.Core.Contracts;
+
+namespace DeliverIT.Core.Commands
 {
-    public class ShowAllClientsCommand
+    public class ShowAllClientsCommand : ICommand
     {
+        public void Execute()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
