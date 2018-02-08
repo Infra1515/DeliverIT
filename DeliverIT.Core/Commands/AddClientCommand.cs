@@ -4,6 +4,7 @@ using DeliverIT.Common;
 using DeliverIT.Common.Enums;
 using DeliverIT.Core.Contracts;
 using DeliverIT.Core.Factories;
+using DeliverIT.Core.IOUtilities.Contracts;
 using DeliverIT.Models;
 using DeliverIT.Models.Countries;
 
@@ -13,41 +14,49 @@ namespace DeliverIT.Core.Commands
     {
         private readonly IDeliverITFactory factory;
         private readonly IDataStore dataStore;
+        private readonly IWriter writer;
+        private readonly IReader reader;
 
-        public AddClientCommand(IDataStore dataStore, IDeliverITFactory factory)
+        public AddClientCommand(
+            IDataStore dataStore, 
+            IDeliverITFactory factory,
+            IWriter writer, 
+            IReader reader)
         {
             this.dataStore = dataStore;
             this.factory = factory;
+            this.writer = writer;
+            this.reader = reader;
         }
         public void Execute()
         {
-            Console.Write("Username: ");
+            this.writer.Write("Username: ");
             string username = Console.ReadLine();
-
-            Console.Write("Password: ");
+            
+            this.writer.Write("Password: ");
             string password = Console.ReadLine();
-
-            Console.Write("First name: ");
+            
+            this.writer.Write("First name: ");
             string firstName = Console.ReadLine();
-
-            Console.Write("Last name: ");
+            
+            this.writer.Write("Last name: ");
             string lastName = Console.ReadLine();
-
-            Console.Write("Email: ");
+            
+            this.writer.Write("Email: ");
             string email = Console.ReadLine();
-
-            Console.Write("Phone number: ");
+            
+            this.writer.Write("Phone number: ");
             string phoneNumber = Console.ReadLine();
-
-            Console.Write("Age: ");
+            
+            this.writer.Write("Age: ");
             int age = int.Parse(Console.ReadLine());
 
-            Console.Write("Gender: ");
-            GenderType gender = (GenderType)Enum.Parse(typeof(GenderType), Console.ReadLine());
-
-            Console.WriteLine("--- Address ---");
-            Console.Write("Country: ");
-            string countryString = Console.ReadLine();
+            this.writer.Write("Gender: ");
+            GenderType gender = (GenderType)Enum.Parse(typeof(GenderType), this.reader.ReadLine());
+            
+            this.writer.WriteLine("--- Address ---");
+            this.writer.Write("Country: ");
+            string countryString = this.reader.ReadLine();
 
             Country country;
 
@@ -68,24 +77,26 @@ namespace DeliverIT.Core.Commands
                 default:
                     throw new ArgumentException("We don't ship to this country yet!");
             }
-
-            Console.Write("City: ");
-            string city = Console.ReadLine();
+            
+            this.writer.Write("City: ");
+            string city = this.reader.ReadLine();
 
             Console.ForegroundColor = ConsoleColor.Red;
             Validator.ValidateCityInCountry(city, country, Constants.NoSuchCity);
             Console.ResetColor();
 
-            Console.Write("Street name: ");
-            string streetName = Console.ReadLine();
+            this.writer.Write("Street name: ");
+            string streetName = this.reader.ReadLine();
 
-            Console.Write("Street number: ");
-            string streetNumber = Console.ReadLine();
+            this.writer.Write("Street number: ");
+            string streetNumber = this.reader.ReadLine();
 
             Address userAddress = new Address(country, streetName, streetNumber, city);
 
             var isUserPresent = this.dataStore.Users
                 .FirstOrDefault(u => u.Username.Equals(username));
+
+            // todo constants di 
 
             if (isUserPresent != null)
                 throw new ArgumentException(string.Format(
@@ -97,7 +108,7 @@ namespace DeliverIT.Core.Commands
             this.dataStore.Users.Add(client);
 
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine(Constants.RegisteredClient, client.Username);
+            this.writer.WriteLine(string.Format(Constants.RegisteredClient, client.Username));
             Console.ResetColor();
         }
     }
