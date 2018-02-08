@@ -8,5 +8,9 @@ namespace DeliverIT.Core.Contracts
         ICollection<IUser> Users { get; }
 
         ICollection<IOrder> Orders { get; }
+
+        void AddUser(IUser user);
+
+        void AddOrder(IOrder order);
     }
 }

@@ -35,8 +35,15 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac, Version=4.6.2.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.6.2\lib\net45\Autofac.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -52,12 +59,16 @@
     <Compile Include="Commands\ShowAllLocationsCommand.cs" />
     <Compile Include="Commands\ShowAllOrdersCommand.cs" />
     <Compile Include="Contracts\ICommand.cs" />
+    <Compile Include="Contracts\ICommandsFactory.cs" />
+    <Compile Include="Contracts\IDataStore.cs" />
     <Compile Include="Contracts\IEngine.cs" />
     <Compile Include="Engine\CommandProcessor.cs" />
+    <Compile Include="Engine\DataStorage.cs" />
     <Compile Include="Engine\DeliverITEngine.cs" />
     <Compile Include="Event\OrderStateChangedEventArgs.cs" />
     <Compile Include="Exceptions\InvalidCredentialsException.cs" />
     <Compile Include="Exceptions\InvalidMenuChoiceException.cs" />
+    <Compile Include="Factories\CommandsFactory.cs" />
     <Compile Include="Factories\DeliverITFactory.cs" />
     <Compile Include="Factories\IDeliverITFactory.cs" />
     <Compile Include="MenuUtilities\LookupRoles.cs" />
@@ -70,6 +81,7 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="DeliverITCore.cd" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

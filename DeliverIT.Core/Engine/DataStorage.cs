@@ -6,8 +6,30 @@ namespace DeliverIT.Core.Engine
 {
     public class DataStorage : IDataStore
     {
-        public ICollection<IUser> Users { get; }
+        private readonly ICollection<IUser> users;
 
-        public ICollection<IOrder> Orders { get; }
+        private readonly ICollection<IOrder> orders;
+
+        public DataStorage()
+        {
+            this.users = new List<IUser>();
+            this.orders = new List<IOrder>();
+        }
+
+        public ICollection<IUser> Users => this.users;
+
+        public ICollection<IOrder> Orders => this.orders;
+
+        public void AddUser(IUser user)
+        {
+            // todo validations ? 
+            this.users.Add(user);
+        }
+
+        public void AddOrder(IOrder order)
+        {
+            // todo validations ?
+            this.orders.Add(order);
+        }
     }
 }
