@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using DeliverIT.Common;
 using DeliverIT.Common.Enums;
-using DeliverIT.Contracts;
 using DeliverIT.Core.Contracts;
 using DeliverIT.Core.Factories;
 using DeliverIT.Models;
@@ -14,11 +12,11 @@ namespace DeliverIT.Core.Commands
     public class AddClientCommand : ICommand
     {
         private readonly IDeliverITFactory factory;
-        private readonly ICollection<IUser> users;
+        private readonly IDataStore dataStore;
 
-        public AddClientCommand(ICollection<IUser> users, IDeliverITFactory factory )
+        public AddClientCommand(IDataStore dataStore, IDeliverITFactory factory)
         {
-            this.users = users;
+            this.dataStore = dataStore;
             this.factory = factory;
         }
         public void Execute()
@@ -86,7 +84,7 @@ namespace DeliverIT.Core.Commands
 
             Address userAddress = new Address(country, streetName, streetNumber, city);
 
-            var isUserPresent = this.users
+            var isUserPresent = this.dataStore.Users
                 .FirstOrDefault(u => u.Username.Equals(username));
 
             if (isUserPresent != null)
@@ -96,7 +94,7 @@ namespace DeliverIT.Core.Commands
 
             var client = this.factory.CreateClient(username, password, firstName, lastName, email, age, phoneNumber, userAddress, gender);
 
-            this.users.Add(client);
+            this.dataStore.Users.Add(client);
 
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine(Constants.RegisteredClient, client.Username);

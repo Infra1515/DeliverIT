@@ -7,23 +7,23 @@ namespace DeliverIT.Core.Commands
 {
     public class ShowAllClientsCommand : ICommand
     {
-        private readonly ICollection<IUser> users;
+        private readonly IDataStore dataStore;
 
-        public ShowAllClientsCommand(ICollection<IUser> users)
+        public ShowAllClientsCommand(IDataStore dataStore)
         {
-            this.users = users;
+            this.dataStore = dataStore;
         }
 
         public void Execute()
         {
             StringBuilder sb = new StringBuilder();
-            if (this.users.Count == 0)
+            if (this.dataStore.Users.Count == 0)
             {
                 sb.AppendLine("No clients registered!");
             }
             else
             {
-                foreach (var client in this.users)
+                foreach (var client in this.dataStore.Users)
                 {
                     sb.AppendLine(client.ToString());
                     sb.AppendLine("-----------------------");

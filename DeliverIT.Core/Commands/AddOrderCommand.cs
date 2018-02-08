@@ -12,27 +12,24 @@ namespace DeliverIT.Core.Commands
 {
     public class AddOrderCommand : ICommand
     {
-        private readonly ICollection<IUser> users;
-        private readonly ICollection<IOrder> orders;
+        private readonly IDataStore dataStore;
         private readonly IDeliverITFactory factory;
 
         public AddOrderCommand(
-            ICollection<IUser> users, 
-            ICollection<IOrder> orders, 
+            IDataStore dataStore,
             IDeliverITFactory factory)
         {
-            this.users = users;
-            this.orders = orders;
+            this.dataStore = dataStore;
             this.factory = factory;
         }
 
         public void Execute()
         {
-            var couriers = this.users
+            var couriers = this.dataStore.Users
                .Where(u => u.Role == UserRole.Normal)
                .Cast<ICourier>();
 
-            var clients = this.users
+            var clients = this.dataStore.Users
                 .Where(u => u.Role == UserRole.Operator)
                 .Cast<IClient>();
 
@@ -80,7 +77,7 @@ namespace DeliverIT.Core.Commands
 
             var order = this.factory.CreateOrder(selectedCourier, selectedSender, selectedReceiver, deliveryType, sendDate, dueDate, OrderState.InProgress, product, postalCode);
 
-            this.orders.Add(order);
+            this.dataStore.Orders.Add(order);
 
             selectedCourier.OrdersList.Add(order);
             selectedReceiver.OrdersList.Add(order);

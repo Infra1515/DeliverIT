@@ -13,12 +13,12 @@ namespace DeliverIT.Core.Commands
 {
     public class AddCourierCommand : ICommand
     {
-        private readonly ICollection<IUser> users;
+        private readonly IDataStore dataStore;
         private readonly IDeliverITFactory factory;
 
-        public AddCourierCommand(ICollection<IUser> users, IDeliverITFactory factory)
+        public AddCourierCommand(IDataStore dataStore, IDeliverITFactory factory)
         {
-            this.users = users;
+            this.dataStore = dataStore;
             this.factory = factory;
         }
 
@@ -93,7 +93,7 @@ namespace DeliverIT.Core.Commands
 
             Address userAddress = new Address(country, streetName, streetNumber, city);
 
-            var isUserPresent = this.users
+            var isUserPresent = this.dataStore.Users
                 .FirstOrDefault(u => u.Username.Equals(username));
 
             if (isUserPresent != null)
@@ -103,7 +103,7 @@ namespace DeliverIT.Core.Commands
 
             var courier = this.factory.CreateCourier(username, password, firstName, lastName, email, age, phoneNumber, userAddress, gender, allowedWeight, allowedVolume);
 
-            this.users.Add(courier);
+            this.dataStore.Users.Add(courier);
 
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine(Constants.RegisteredCourier, courier.Username);

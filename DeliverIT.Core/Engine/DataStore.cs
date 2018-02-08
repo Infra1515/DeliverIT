@@ -4,13 +4,15 @@ using DeliverIT.Core.Contracts;
 
 namespace DeliverIT.Core.Engine
 {
-    public class DataStorage : IDataStore
+    public class DataStore : IDataStore
     {
+        // todo --- > should contain both users and orders or not
+
         private readonly ICollection<IUser> users;
 
         private readonly ICollection<IOrder> orders;
 
-        public DataStorage()
+        public DataStore()
         {
             this.users = new List<IUser>();
             this.orders = new List<IOrder>();

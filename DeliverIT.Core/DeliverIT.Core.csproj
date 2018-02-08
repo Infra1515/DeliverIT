@@ -63,7 +63,7 @@
     <Compile Include="Contracts\IDataStore.cs" />
     <Compile Include="Contracts\IEngine.cs" />
     <Compile Include="Engine\CommandProcessor.cs" />
-    <Compile Include="Engine\DataStorage.cs" />
+    <Compile Include="Engine\DataStore.cs" />
     <Compile Include="Engine\DeliverITEngine.cs" />
     <Compile Include="Event\OrderStateChangedEventArgs.cs" />
     <Compile Include="Exceptions\InvalidCredentialsException.cs" />

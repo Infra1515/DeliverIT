@@ -8,19 +8,19 @@ namespace DeliverIT.Core.Commands
 {
     public class ShowAllOrdersCommand : ICommand
     {
-        private readonly ICollection<IOrder> orders;
+        private readonly IDataStore dataStore;
 
-        public ShowAllOrdersCommand(ICollection<IOrder> orders)
+        public ShowAllOrdersCommand(IDataStore dataStore)
         {
-            this.orders = orders;
+            this.dataStore = dataStore;
         }
 
         public void Execute()
         {
             var sb = new StringBuilder();
-            if (this.orders.Any())
+            if (this.dataStore.Orders.Any())
             {
-                foreach (var order in orders)
+                foreach (var order in this.dataStore.Orders)
                 {
                     sb.AppendLine(order.ToString());
                 }
