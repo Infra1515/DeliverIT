@@ -71,6 +71,10 @@
     <Compile Include="Factories\CommandsFactory.cs" />
     <Compile Include="Factories\DeliverITFactory.cs" />
     <Compile Include="Factories\IDeliverITFactory.cs" />
+    <Compile Include="IOUtilities\ConsoleReader.cs" />
+    <Compile Include="IOUtilities\ConsoleWriter.cs" />
+    <Compile Include="IOUtilities\Contracts\IReader.cs" />
+    <Compile Include="IOUtilities\Contracts\IWriter.cs" />
     <Compile Include="MenuUtilities\LookupRoles.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MenuUtilities\LookupMenuText.cs" />
