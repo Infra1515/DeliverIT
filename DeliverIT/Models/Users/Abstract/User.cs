@@ -4,7 +4,7 @@ using DeliverIT.Contracts;
 
 namespace DeliverIT.Models.Users.Abstract
 {
-    public abstract class User : IUser
+    public class User : IUser
     {
         private string username;
         private string password;

@@ -6,13 +6,13 @@ namespace DeliverIT.Models
 {
     public class Address : IAddress
     {
-        private Country country;
+        private ICountry country;
         private string streetName;
         private string streetNumber;
         private string city;
 
         public Address(
-            Country country, 
+            ICountry country, 
             string streetName, 
             string streetNumber, 
             string city)
@@ -23,7 +23,7 @@ namespace DeliverIT.Models
             this.City = city;
         }
         
-        public Country Country
+        public ICountry Country
         {
             get => country;
             set
@@ -35,7 +35,8 @@ namespace DeliverIT.Models
 
         public string StreetName
         {
-            get => streetName; set
+            get => streetName;
+            set
             {
                 Validator.ValidateNotNull(value);
                 this.streetName = value;
@@ -43,7 +44,8 @@ namespace DeliverIT.Models
         }
         public string City
         {
-            get => city; set
+            get => city;
+            set
             {
                 Validator.ValidateNotNull(value);
                 this.city = value;
@@ -51,7 +53,8 @@ namespace DeliverIT.Models
         }
         public string StreetNumber
         {
-            get => streetNumber; set
+            get => streetNumber;
+            set
             {
                 Validator.ValidateNotNull(value);
                 this.streetNumber = value;

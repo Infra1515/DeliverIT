@@ -101,7 +101,9 @@ namespace DeliverIT.Core.Commands
                        Constants.UserAlreadyExists, isUserPresent.GetType().Name, isUserPresent.Username));
 
 
-            var courier = this.factory.CreateCourier(username, password, firstName, lastName, email, age, phoneNumber, userAddress, gender, allowedWeight, allowedVolume);
+            var courier = this.factory.CreateCourier(username, password,
+                firstName, lastName, email, age, phoneNumber, userAddress,
+                gender, allowedWeight, allowedVolume);
 
             this.dataStore.Users.Add(courier);
 

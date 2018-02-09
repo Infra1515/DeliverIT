@@ -1,4 +1,5 @@
 ﻿using System;
+using DeliverIT.Contracts;
 using DeliverIT.Models.Countries;
 
 namespace DeliverIT.Common
@@ -74,7 +75,7 @@ namespace DeliverIT.Common
             }
         }
 
-        public static void ValidateCityInCountry(string city, Country country, string message)
+        public static void ValidateCityInCountry(string city, ICountry country, string message)
         {
             if (!country.CitysAndZips.ContainsKey(city))
             {
