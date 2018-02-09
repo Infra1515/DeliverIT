@@ -12,7 +12,7 @@ namespace DeliverIT.Models.Users.Abstract
         private string lastName;
         private string email;
 
-        protected User(string username, string password, string firstName, string lastName, string email, UserRole userRole)
+        public User(string username, string password, string firstName, string lastName, string email, UserRole userRole)
         {
             this.Username = username;
             this.Password = password;

@@ -16,7 +16,7 @@ namespace DeliverIT.Core.Engine
 {
     public class DeliverITEngine : IEngine
     {
-        private static readonly IEngine SingleInstance = new DeliverITEngine();
+        //private static readonly IEngine SingleInstance = new DeliverITEngine();
         private static Timer actionTimer;
         public static event EventHandler<OrderStateChangedEventArgs> OrderStateChanged;
 
@@ -30,10 +30,10 @@ namespace DeliverIT.Core.Engine
             this.loggedUser = null;
         }
 
-        public static IEngine Instance
-        {
-            get { return SingleInstance; }
-        }
+        //public static IEngine Instance
+        //{
+        //    get { return SingleInstance; }
+        //}
 
         public void Start()
         {

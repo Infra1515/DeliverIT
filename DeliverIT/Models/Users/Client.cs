@@ -20,7 +20,7 @@ namespace DeliverIT.Models.Users
                 string email,
                 int age,
                 string phoneNumber,
-                Address address,
+                IAddress address,
                 GenderType gender
             )
             : base(username, password, firstName, lastName, email, age, phoneNumber, address, gender, UserRole.Operator)

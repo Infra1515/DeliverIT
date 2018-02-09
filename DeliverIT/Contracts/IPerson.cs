@@ -8,7 +8,7 @@ namespace DeliverIT.Contracts
     {
         int Age { get; }
         string PhoneNumber { get; }
-        Address Address { get; }
+        IAddress Address { get; }
         GenderType Gender { get; }
         IList<IOrder> OrdersList { get; }
 

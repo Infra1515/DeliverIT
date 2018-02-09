@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Text;
-using DeliverIT.Contracts;
+﻿using System.Text;
 using DeliverIT.Core.Contracts;
 
 namespace DeliverIT.Core.Commands

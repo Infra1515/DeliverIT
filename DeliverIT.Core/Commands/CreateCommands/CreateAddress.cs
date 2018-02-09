@@ -1,25 +1,31 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DeliverIT.Common;
-using DeliverIT.Common.Enums;
 using DeliverIT.Contracts;
 using DeliverIT.Core.Factories;
 using DeliverIT.Core.IOUtilities.Contracts;
-using DeliverIT.Models;
-using DeliverIT.Models.Countries;
 
 namespace DeliverIT.Core.Commands
 {
-    public class CreateAddress
+    public class CreateAddress : ICreateAddress
     {
-        //private readonly IWriter writer;
-        //private readonly IReader reader;
-        //private readonly CountryFactory factory;
+        private readonly IWriter writer;
+        private readonly IReader reader;
+        private readonly CountryFactory factory;
+        private readonly IDeliverITFactory deliverItFactory;
 
-        public IAddress Create(IWriter writer, IReader reader, CountryFactory factory)
+        public CreateAddress(
+            IWriter writer, 
+            IReader reader, 
+            CountryFactory factory, 
+            IDeliverITFactory deliverItFactory)
+        {
+            this.writer = writer;
+            this.reader = reader;
+            this.factory = factory;
+            this.deliverItFactory = deliverItFactory;
+        }
+        
+        public IAddress Create()
         {
             writer.WriteLine("--- Address ---");
             writer.Write("Country: ");
@@ -40,7 +46,7 @@ namespace DeliverIT.Core.Commands
             writer.Write("Street number: ");
             string streetNumber = reader.ReadLine();
 
-            Address userAddress = new Address(country, streetName, streetNumber, city);
+            var userAddress = this.deliverItFactory.CreateAddress(country, streetName, streetNumber, city);
 
             return userAddress;
         }

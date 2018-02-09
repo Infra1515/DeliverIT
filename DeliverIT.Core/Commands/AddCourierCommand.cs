@@ -1,97 +1,69 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using DeliverIT.Common;
 using DeliverIT.Common.Enums;
-using DeliverIT.Contracts;
 using DeliverIT.Core.Contracts;
 using DeliverIT.Core.Factories;
-using DeliverIT.Models;
-using DeliverIT.Models.Countries;
+using DeliverIT.Core.IOUtilities.Contracts;
 
 namespace DeliverIT.Core.Commands
 {
     public class AddCourierCommand : ICommand
     {
         private readonly IDataStore dataStore;
-        private readonly IDeliverITFactory factory;
+        private readonly IUserFactory userFactory;
+        private readonly IWriter writer;
+        private readonly IReader reader;
+        private readonly ICreateAddress createAddress;
 
-        public AddCourierCommand(IDataStore dataStore, IDeliverITFactory factory)
+        public AddCourierCommand(
+            IDataStore dataStore, 
+            IUserFactory userFactory, 
+            IWriter writer, 
+            IReader reader,
+            ICreateAddress createAddress)
         {
             this.dataStore = dataStore;
-            this.factory = factory;
+            this.userFactory = userFactory;
+            this.writer = writer;
+            this.reader = reader;
+            this.createAddress = createAddress;
         }
 
         public void Execute()
         {
-            Console.Write("Username: ");
-            string username = Console.ReadLine();
+            this.writer.Write("Username: ");
+            string username = this.reader.ReadLine();
 
-            Console.Write("Password: ");
-            string password = Console.ReadLine();
+            this.writer.Write("Password: ");
+            string password = this.reader.ReadLine();
 
-            Console.Write("First name: ");
-            string firstName = Console.ReadLine();
+            this.writer.Write("First name: ");
+            string firstName = this.reader.ReadLine();
 
-            Console.Write("Last name: ");
-            string lastName = Console.ReadLine();
+            this.writer.Write("Last name: ");
+            string lastName = this.reader.ReadLine();
 
-            Console.Write("Email: ");
-            string email = Console.ReadLine();
+            this.writer.Write("Email: ");
+            string email = this.reader.ReadLine();
 
-            Console.Write("Phone number: ");
-            string phoneNumber = Console.ReadLine();
+            this.writer.Write("Phone number: ");
+            string phoneNumber = this.reader.ReadLine();
 
-            Console.Write("Age: ");
-            int age = int.Parse(Console.ReadLine());
+            this.writer.Write("Age: ");
+            int age = int.Parse(this.reader.ReadLine());
 
-            Console.Write("Gender: ");
-            GenderType gender = (GenderType)Enum.Parse(typeof(GenderType), Console.ReadLine());
+            this.writer.Write("Gender: ");
+            GenderType gender = (GenderType)Enum.Parse(typeof(GenderType), this.reader.ReadLine());
 
-            Console.WriteLine("--- Address ---");
-            Console.Write("Country: ");
-            string countryString = Console.ReadLine();
+            var userAddress = this.createAddress.Create();
 
-            Country country;
+            this.writer.Write("Enter maximum allowed weight that the courier can carry: ");
+            double allowedWeight = double.Parse(this.reader.ReadLine());
 
-            switch ((CountryType)Enum.Parse(typeof(CountryType), countryString))
-            {
-                case CountryType.Bulgaria:
-                    country = new Bulgaria();
-                    break;
+            this.writer.Write("Enter maximum allowed volume that the courier can carry: ");
+            double allowedVolume = double.Parse(this.reader.ReadLine());
 
-                case CountryType.Serbia:
-                    country = new Serbia();
-                    break;
-
-                case CountryType.Russia:
-                    country = new Russia();
-                    break;
-
-                default:
-                    throw new ArgumentException("We don't ship to this country yet!");
-            }
-
-            Console.Write("City: ");
-            string city = Console.ReadLine();
-
-            Console.ForegroundColor = ConsoleColor.Red;
-            Validator.ValidateCityInCountry(city, country, Constants.NoSuchCity);
-            Console.ResetColor();
-
-            Console.Write("Street name: ");
-            string streetName = Console.ReadLine();
-
-            Console.Write("Street number: ");
-            string streetNumber = Console.ReadLine();
-
-            Console.Write("Enter maximum allowed weight that the courier can carry: ");
-            double allowedWeight = double.Parse(Console.ReadLine());
-
-            Console.Write("Enter maximum allowed volume that the courier can carry: ");
-            double allowedVolume = double.Parse(Console.ReadLine());
-
-            Address userAddress = new Address(country, streetName, streetNumber, city);
 
             var isUserPresent = this.dataStore.Users
                 .FirstOrDefault(u => u.Username.Equals(username));
@@ -101,14 +73,14 @@ namespace DeliverIT.Core.Commands
                        Constants.UserAlreadyExists, isUserPresent.GetType().Name, isUserPresent.Username));
 
 
-            var courier = this.factory.CreateCourier(username, password,
+            var courier = this.userFactory.CreateCourier(username, password,
                 firstName, lastName, email, age, phoneNumber, userAddress,
                 gender, allowedWeight, allowedVolume);
 
             this.dataStore.Users.Add(courier);
 
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine(Constants.RegisteredCourier, courier.Username);
+            this.writer.WriteLine(string.Format(Constants.RegisteredCourier, courier.Username));
             Console.ResetColor();
         }
     }

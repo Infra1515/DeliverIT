@@ -10,11 +10,11 @@ namespace DeliverIT.Models.Users.Abstract
     {
         private int age;
         private string phoneNumber;
-        private Address address;
+        private IAddress address;
         private GenderType gender;
         private List<IOrder> ordersList;
 
-        protected Person(string username, string password, string firstName, string lastName, string email, int age, string phoneNumber, Address address,
+        protected Person(string username, string password, string firstName, string lastName, string email, int age, string phoneNumber, IAddress address,
             GenderType gender, UserRole role)
             : base(username, password, firstName, lastName, email, role)
         {
@@ -49,7 +49,7 @@ namespace DeliverIT.Models.Users.Abstract
             }
         }
 
-        public Address Address
+        public IAddress Address
         {
             get
             {
@@ -75,7 +75,7 @@ namespace DeliverIT.Models.Users.Abstract
             }
         }
 
-        public Address ShowCurrentAddress()
+        public IAddress ShowCurrentAddress()
         {
             return this.Address;
         }

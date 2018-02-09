@@ -20,7 +20,7 @@ namespace DeliverIT.Models.Users
                 string email, 
                 int age,
                 string phoneNumber, 
-                Address address, 
+                IAddress address, 
                 GenderType gender, 
                 double allowedWeight, 
                 double allowedVolume

@@ -5,8 +5,10 @@ using System.Linq;
 using DeliverIT.Common;
 using DeliverIT.Common.Enums;
 using DeliverIT.Contracts;
+using DeliverIT.Core.Commands.CreateCommands.Contracts;
 using DeliverIT.Core.Contracts;
 using DeliverIT.Core.Factories;
+using DeliverIT.Core.IOUtilities.Contracts;
 
 namespace DeliverIT.Core.Commands
 {
@@ -14,13 +16,22 @@ namespace DeliverIT.Core.Commands
     {
         private readonly IDataStore dataStore;
         private readonly IDeliverITFactory factory;
+        private readonly IWriter writer;
+        private readonly IReader reader;
+        private readonly ICreateProduct createCommand;
 
         public AddOrderCommand(
             IDataStore dataStore,
-            IDeliverITFactory factory)
+            IDeliverITFactory factory, 
+            IWriter writer, 
+            IReader reader, 
+            ICreateProduct createCommand)
         {
             this.dataStore = dataStore;
             this.factory = factory;
+            this.writer = writer;
+            this.reader = reader;
+            this.createCommand = createCommand;
         }
 
         public void Execute()
@@ -35,42 +46,42 @@ namespace DeliverIT.Core.Commands
 
             this.PrintUser(couriers);
 
-            string inputCourier = Console.ReadLine();
+            string inputCourier = this.reader.ReadLine();
 
             ICourier selectedCourier = couriers
                 .FirstOrDefault(sc => sc.Username.Equals(inputCourier));
 
-            Console.WriteLine("--- Sender ---");
+            this.writer.WriteLine("--- Sender ---");
             this.PrintUser(clients);
 
-            string inputSender = Console.ReadLine();
+            string inputSender = this.reader.ReadLine();
 
             IClient selectedSender = clients
                 .FirstOrDefault(sc => sc.Username.Equals(inputSender));
 
-            Console.WriteLine("--- Receiver ---");
+            this.writer.WriteLine("--- Receiver ---");
             this.PrintUser(clients);
 
-            string inputReceiver = Console.ReadLine();
+            string inputReceiver = this.reader.ReadLine();
 
             IClient selectedReceiver = clients
                .FirstOrDefault(sc => sc.Username.Equals(inputReceiver));
 
-            Console.WriteLine("---Delivery Type information---");
-            Console.Write("Delivery type (Standart/Express): ");
+            this.writer.WriteLine("---Delivery Type information---");
+            this.writer.Write("Delivery type (Standart/Express): ");
 
-            string type = Console.ReadLine();
+            string type = this.reader.ReadLine();
             DeliveryType deliveryType = AddDeliveryType(type);
 
-            Console.Write("---Product information---");
-            IProduct product = AddProduct();
+            this.writer.Write("---Product information---");
+            var product = createCommand.Create();
 
-            Console.Write("Enter date of sending (Day/Month/Year): ");
-            DateTime sendDate = DateTime.ParseExact(Console.ReadLine(),
+            this.writer.Write("Enter date of sending (Day/Month/Year): ");
+            DateTime sendDate = DateTime.ParseExact(this.reader.ReadLine(),
                                 "d/M/yyyy", CultureInfo.InvariantCulture);
 
-            Console.Write("Enter due date for delivery(Day/Month/Year): ");
-            DateTime dueDate = DateTime.ParseExact(Console.ReadLine(),
+            this.writer.Write("Enter due date for delivery(Day/Month/Year): ");
+            DateTime dueDate = DateTime.ParseExact(this.reader.ReadLine(),
                             "d/M/yyyy", CultureInfo.InvariantCulture);
 
             int postalCode = selectedReceiver.Address.Country.CitysAndZips[selectedReceiver.Address.City];
@@ -84,7 +95,7 @@ namespace DeliverIT.Core.Commands
             selectedSender.OrdersList.Add(order);
         }
 
-        public DeliveryType AddDeliveryType(string deliveryType)
+        private DeliveryType AddDeliveryType(string deliveryType)
         {
             DeliveryType type;
 
@@ -103,56 +114,13 @@ namespace DeliverIT.Core.Commands
             return type;
         }
 
-        public IProduct AddProduct()
-        {
-            Console.Write("Dimensions(X Y Z): ");
-            var dimensions = Console.ReadLine().Split(' ').Select(double.Parse).ToArray();
-            double x = dimensions[0];
-            double y = dimensions[1];
-            double z = dimensions[2];
-
-            Console.Write("Is the product fragile? ");
-            string isFragileStr = Console.ReadLine().ToLower().Trim();
-            bool isFragile = isFragileStr == "yes";
-
-            Console.Write("What is the product weight? ");
-            double weight = double.Parse(Console.ReadLine());
-
-            Console.Write($"What is the product type?\r\n" +
-                          "Available:  Clothes, Accessories, Electronics, Other: ");
-            string productTypeString = Console.ReadLine().ToLower().Trim();
-            ProductType productType;
-            switch (productTypeString)
-            {
-                case "clothes":
-                    productType = ProductType.Clothes;
-                    break;
-                case "accessories":
-                    productType = ProductType.Clothes;
-                    break;
-                case "electronics":
-                    productType = ProductType.Electronics;
-                    break;
-                case "other":
-                    productType = ProductType.Other;
-                    break;
-                default:
-                    productType = ProductType.Other;
-                    break;
-            }
-            IProduct product = this.factory.CreateProduct(x, y, z, isFragile, weight, productType);
-            Console.WriteLine($"Product with ID {product.Id} was added succesfully!");
-
-            return product;
-        }
-
         private void PrintUser<T>(IEnumerable<T> users) where T : IUser
         {
-            Console.WriteLine("Please select:");
+            this.writer.WriteLine("Please select:");
 
             foreach (var user in users)
             {
-                Console.WriteLine(user.Username);
+                this.writer.WriteLine(user.Username);
             }
         }
     }

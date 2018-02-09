@@ -55,7 +55,10 @@
     <Compile Include="Commands\AddClientCommand.cs" />
     <Compile Include="Commands\AddCourierCommand.cs" />
     <Compile Include="Commands\AddOrderCommand.cs" />
-    <Compile Include="Commands\CreateAddress.cs" />
+    <Compile Include="Commands\CreateCommands\Contracts\ICreateProduct.cs" />
+    <Compile Include="Commands\CreateCommands\CreateAddress.cs" />
+    <Compile Include="Commands\CreateCommands\CreateProduct.cs" />
+    <Compile Include="Commands\CreateCommands\Contracts\ICreateAddress.cs" />
     <Compile Include="Commands\ShowAllClientsCommand.cs" />
     <Compile Include="Commands\ShowAllLocationsCommand.cs" />
     <Compile Include="Commands\ShowAllOrdersCommand.cs" />
@@ -73,6 +76,8 @@
     <Compile Include="Factories\CountryFactory.cs" />
     <Compile Include="Factories\DeliverITFactory.cs" />
     <Compile Include="Factories\IDeliverITFactory.cs" />
+    <Compile Include="Factories\IUserFactory.cs" />
+    <Compile Include="Factories\UserFactory.cs" />
     <Compile Include="IOUtilities\ConsoleReader.cs" />
     <Compile Include="IOUtilities\ConsoleWriter.cs" />
     <Compile Include="IOUtilities\Contracts\IReader.cs" />
