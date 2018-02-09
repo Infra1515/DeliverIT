@@ -11,14 +11,14 @@ using DeliverIT.Core.Factories;
 
 namespace DeliverIT.Core.Demo
 {
-    public class Demo
+    public class Seed
     {
         private readonly IDataStore dataStore;
         private readonly IUserFactory userFactory;
         private readonly IDeliverITFactory deliverItFactory;
         
 
-        public Demo(IDataStore dataStore, IUserFactory userFactory,
+        public Seed(IDataStore dataStore, IUserFactory userFactory,
             IDeliverITFactory deliverItFactory)
         {
             this.dataStore = dataStore;
@@ -50,6 +50,5 @@ namespace DeliverIT.Core.Demo
             this.dataStore.AddUser(dummyCourierPeshont);
             this.dataStore.Orders.Add(order);
         }
-
     }
 }

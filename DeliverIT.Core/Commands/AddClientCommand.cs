@@ -14,7 +14,7 @@ namespace DeliverIT.Core.Commands
         private readonly IDataStore dataStore;
         private readonly IWriter writer;
         private readonly IReader reader;
-        private readonly ICreateAddress createAddress;
+        private readonly ICreateAddress createCommand;
 
         public AddClientCommand(
             IDataStore dataStore, 
@@ -27,7 +27,7 @@ namespace DeliverIT.Core.Commands
             this.userFactory = userFactory;
             this.writer = writer;
             this.reader = reader;
-            this.createAddress = createAddress;
+            this.createCommand = createAddress;
         }
         public void Execute()
         {
@@ -55,7 +55,7 @@ namespace DeliverIT.Core.Commands
             this.writer.Write("Gender: ");
             GenderType gender = (GenderType)Enum.Parse(typeof(GenderType), this.reader.ReadLine());
 
-            var userAddress = this.createAddress.Create();
+            var userAddress = this.createCommand.Create();
 
             var isUserPresent = this.dataStore.Users
                 .FirstOrDefault(u => u.Username.Equals(username));

@@ -10,18 +10,15 @@ namespace DeliverIT.Core.Commands
     {
         private readonly IWriter writer;
         private readonly IReader reader;
-        private readonly CountryFactory factory;
         private readonly IDeliverITFactory deliverItFactory;
 
         public CreateAddress(
             IWriter writer, 
             IReader reader, 
-            CountryFactory factory, 
             IDeliverITFactory deliverItFactory)
         {
             this.writer = writer;
             this.reader = reader;
-            this.factory = factory;
             this.deliverItFactory = deliverItFactory;
         }
         
@@ -31,7 +28,7 @@ namespace DeliverIT.Core.Commands
             writer.Write("Country: ");
             string countryString = reader.ReadLine();
 
-            ICountry country = factory.CreateCountry(countryString);
+            ICountry country = deliverItFactory.CreateCountry(countryString);
 
             writer.Write("City: ");
             string city = reader.ReadLine();

@@ -12,169 +12,62 @@ using DeliverIT.Core.Exceptions;
 using DeliverIT.Contracts;
 using DeliverIT.Core.Engine.Event;
 using DeliverIT.Core.IOUtilities.Contracts;
+using DeliverIT.Core.Demo;
 
 namespace DeliverIT.Core.Engine
 {
     public class DeliverITEngine : IEngine
     {
-        //private static readonly IEngine SingleInstance = new DeliverITEngine();
-        private static Timer actionTimer;
-        private readonly IDataStore dataStore;
-        private readonly IReader reader;
+
+        public static EventHandler<OrderStateChangedEventArgs> OrderStateChanged;
+        private readonly ICommandsFactory factory;
         private readonly IWriter writer;
-        public static event EventHandler<OrderStateChangedEventArgs> OrderStateChanged;
-        
+        private readonly IReader reader;
+        private DataStore dataStore;
+        //private Seed demo;
 
-
-        private MenuState state = MenuState.Login;
-        private IUser loggedUser;
-        //private readonly CommandProcessor commandProcessor;
-
-        public DeliverITEngine(IDataStore dataStore, IWriter writer, IReader reader)
+        public DeliverITEngine(
+            DataStore dataStore, 
+            ICommandsFactory factory,
+            IWriter writer, 
+            IReader reader
+            //Seed demo
+            )
         {
-            //this.commandProcessor = new CommandProcessor();
-            this.loggedUser = null;
             this.dataStore = dataStore;
+            this.factory = factory;
             this.writer = writer;
             this.reader = reader;
+            //this.demo = demo;
         }
 
-        //public static IEngine Instance
-        //{
-        //    get { return SingleInstance; }
-        //}
 
         public void Start()
         {
-            //this.SeedObjects();
-
-            OrderStateChanged += DeliverITEngine_OrderStateChanged;
-
-            actionTimer = new Timer((state) =>
-            {
-                if (this.dataStore.Orders.Any())
-                {
-                    this.ProcessOrders();
-                }
-
-                actionTimer.Change(5000, Timeout.Infinite);
-            }, null, 5000, Timeout.Infinite);
 
             do
             {
                 Console.ResetColor();
                 try
                 {
-                    switch (state)
-                    {
-                        case MenuState.Login:
-
-                            //this.writer.WriteLine(LookupMenuText.LoginText);
-
-                            //int.TryParse(Console.ReadLine(), out int userLoginChoice);
-                            //bool isValidLoginChoice = Enum.IsDefined(typeof(LoginChoice), userLoginChoice);
-
-                            //if (!isValidLoginChoice)
-                            //{
-                            //    throw new InvalidMenuChoiceException(Constants.InvalidMenuChoiceMessage);
-                            //}
-
-                            //LoginMenu((LoginChoice)userLoginChoice);
-
-                            break;
-
-                        case MenuState.MainMenu:
-
-                            this.writer.WriteLine(LookupMenuText.MainMenuText);
-
-                            int.TryParse(Console.ReadLine(), out int userMainMenuChoice);
-                            var isValidMainMenuChoice = Enum.IsDefined(typeof(MainMenuChoice), userMainMenuChoice);
-
-                            if (!isValidMainMenuChoice)
-                            {
-                                throw new InvalidCredentialsException(Constants.InvalidCredentialsMessage);
-                            }
-
-                            //MainMenu((MainMenuChoice)userMainMenuChoice);
-
-                            break;
-
-                        default:
-                            state = MenuState.Exit;
-                            break;
-                    }
+                    this.writer.WriteLine(LookupMenuText.MainMenuText);
+                    var commandNumber = this.reader.ReadLine();
+                    var command = this.factory.GetCommand(commandNumber);
+                    command.Execute();
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
-                    this.writer.WriteLine(ex.Message);
+                    Console.WriteLine(ex.Message);
                 }
-               
+
             }
-            while (state != MenuState.Exit); 
+            while (true);
         }
-
-        //private void MainMenu(MainMenuChoice mainMenuChoice)
-        //{
-        //    //bool isPermitted = this.CheckRoleAccess(loggedUser.Role, mainMenuChoice);
-
-        //    if (isPermitted)
-        //    {
-        //        switch (mainMenuChoice)
-        //        {
-        //            case MainMenuChoice.AddClient:
-        //                Console.WriteLine("Adding client ...... ");
-        //                this.commandProcessor.AddClient();
-        //                break;
-
-        //            case MainMenuChoice.AddCourier:
-        //                Console.WriteLine("Adding courier ...... ");
-        //                this.commandProcessor.AddCourier();
-        //                break;
-
-        //            case MainMenuChoice.PlaceOrder:
-        //                Console.WriteLine("Placing order ...... ");
-        //                this.commandProcessor.AddOrder();
-        //                break;
-
-        //            case MainMenuChoice.AllClients:
-        //                Console.WriteLine("Listing clients ...... ");
-        //                Console.WriteLine(this.commandProcessor.ShowAllClients());
-        //                break;
-
-        //            case MainMenuChoice.AllOrders:
-
-        //                Console.WriteLine("Listing orders ...... ");
-        //                Console.WriteLine(this.commandProcessor.ShowAllOrders());
-
-        //                break;
-
-        //            case MainMenuChoice.AllLocations:
-        //                Console.WriteLine("Listing locations ...... ");
-        //                Console.WriteLine(this.commandProcessor.ShowAllLocations());
-        //                break;
-
-        //            case MainMenuChoice.Logout:
-
-        //                this.loggedUser = null;
-        //                state = MenuState.Login;
-
-        //                break;
-        //        }
-        //    }
-        //    else
-        //    {
-        //        Console.ForegroundColor = ConsoleColor.Red;
-        //        Console.WriteLine("You have no permission to accesss this operation!\n");
-        //        Console.ResetColor();
-        //    }
-        //}
-
-        
 
         private void ProcessOrders()
         {
-            foreach (var order in this.dataStore.Orders)
+            foreach (var order in dataStore.Orders)
             {
                 var lastState = order.OrderState;
 
@@ -186,25 +79,7 @@ namespace DeliverIT.Core.Engine
             }
         }
 
-        private bool Login(string username, string password)
-        {
-            if (this.loggedUser != null)
-                return true;
-
-            var user = this.dataStore.Users.FirstOrDefault(x => string.Equals(x.Username, username,
-                StringComparison.CurrentCultureIgnoreCase));
-
-            if (user != null && user.Password == password)
-            {
-                this.loggedUser = user;
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
+       
         protected virtual void OnOrderStateChanged(object source, OrderStateChangedEventArgs args)
         {
             OrderStateChanged?.Invoke(this, args);

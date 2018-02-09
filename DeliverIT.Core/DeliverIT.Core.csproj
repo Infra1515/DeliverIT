@@ -66,7 +66,7 @@
     <Compile Include="Contracts\ICommandsFactory.cs" />
     <Compile Include="Contracts\IDataStore.cs" />
     <Compile Include="Contracts\IEngine.cs" />
-    <Compile Include="Demo\Demo.cs" />
+    <Compile Include="Demo\Seed.cs" />
     <Compile Include="Engine\CommandProcessor.cs" />
     <Compile Include="Engine\Commands\LoginCommand.cs" />
     <Compile Include="Engine\DataStore.cs" />
@@ -76,11 +76,11 @@
     <Compile Include="Exceptions\InvalidCredentialsException.cs" />
     <Compile Include="Exceptions\InvalidMenuChoiceException.cs" />
     <Compile Include="Factories\CommandsFactory.cs" />
-    <Compile Include="Factories\CountryFactory.cs" />
     <Compile Include="Factories\DeliverITFactory.cs" />
     <Compile Include="Factories\IDeliverITFactory.cs" />
     <Compile Include="Factories\IUserFactory.cs" />
     <Compile Include="Factories\UserFactory.cs" />
+    <Compile Include="Injection\AutofacConfig.cs" />
     <Compile Include="IOUtilities\ConsoleReader.cs" />
     <Compile Include="IOUtilities\ConsoleWriter.cs" />
     <Compile Include="IOUtilities\Contracts\IReader.cs" />
