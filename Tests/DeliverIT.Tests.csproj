@@ -66,9 +66,9 @@
       <Project>{8ef456ee-4a8f-4dd4-8f34-c58748850fdf}</Project>
       <Name>DeliverIT.Program</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DeliverIT\DeliverIT.csproj">
+    <ProjectReference Include="..\DeliverIT\DeliverIT.Data.csproj">
       <Project>{81a5fa03-ca1a-4c10-b7ca-c68c607bd5da}</Project>
-      <Name>DeliverIT</Name>
+      <Name>DeliverIT.Data</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

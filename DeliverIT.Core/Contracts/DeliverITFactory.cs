@@ -1,12 +1,12 @@
 ﻿using System;
 using DeliverIT.Common;
-using DeliverIT.Models.Users;
 using DeliverIT.Contracts;
 using DeliverIT.Models;
 using DeliverIT.Common.Enums;
 using DeliverIT.Models.Countries;
+using DeliverIT.Core.Contracts;
 
-namespace DeliverIT.Core.Factories
+namespace DeliverIT.Core.Contracts
 {
     public class DeliverITFactory : IDeliverITFactory
     {

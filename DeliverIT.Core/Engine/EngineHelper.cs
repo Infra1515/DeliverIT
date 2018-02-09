@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DeliverIT.Common;
 using DeliverIT.Common.Enums;
 using DeliverIT.Core.Exceptions;
@@ -33,33 +29,33 @@ namespace DeliverIT.Core.Engine
                 throw new InvalidMenuChoiceException(Constants.InvalidMenuChoiceMessage);
             }
         }
-        private void LoginMenu(LoginChoice userChoice)
-        {
-            switch (userChoice)
-            {
-                case LoginChoice.Login:
+        //private void LoginMenu(LoginChoice userChoice)
+        //{
+        //    switch (userChoice)
+        //    {
+        //        case LoginChoice.Login:
 
-                    Console.Write("Username: ");
-                    string username = Console.ReadLine();
+        //            Console.Write("Username: ");
+        //            string username = Console.ReadLine();
 
-                    Console.Write("Password: ");
-                    string password = Console.ReadLine();
+        //            Console.Write("Password: ");
+        //            string password = Console.ReadLine();
 
-                    var isLogged = this.Login(username, password);
+        //            var isLogged = this.Login(username, password);
 
-                    if (!isLogged)
-                    {
-                        throw new InvalidCredentialsException(Constants.InvalidCredentialsMessage);
-                    }
+        //            if (!isLogged)
+        //            {
+        //                throw new InvalidCredentialsException(Constants.InvalidCredentialsMessage);
+        //            }
 
-                    state = MenuState.MainMenu;
-                    break;
+        //            state = MenuState.MainMenu;
+        //            break;
 
-                case LoginChoice.Exit:
-                    state = MenuState.Exit;
-                    break;
-            }
-        }
+        //        case LoginChoice.Exit:
+        //            state = MenuState.Exit;
+        //            break;
+        //    }
+        //}
 
         private bool CheckRoleAccess(UserRole role, MainMenuChoice mainMenuChoice)
         {

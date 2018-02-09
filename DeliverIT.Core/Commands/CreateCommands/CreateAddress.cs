@@ -3,6 +3,7 @@ using DeliverIT.Common;
 using DeliverIT.Contracts;
 using DeliverIT.Core.Factories;
 using DeliverIT.Core.IOUtilities.Contracts;
+using DeliverIT.Core.Contracts;
 
 namespace DeliverIT.Core.Commands
 {

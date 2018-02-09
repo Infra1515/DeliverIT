@@ -1,4 +1,6 @@
-﻿using DeliverIT.Core.Engine;
+﻿using Autofac;
+using DeliverIT.Core.Contracts;
+using DeliverIT.Core.Dependency;
 
 namespace DeliverIT.Program
 {
@@ -6,7 +8,13 @@ namespace DeliverIT.Program
     {
         public static void Main(string[] args)
         {
-           DeliverITEngine.Instance.Start();
+            var builder = new ContainerBuilder();
+
+            builder.RegisterModule(new AutofacConfigModule());
+
+            var container = builder.Build();
+            var engine = container.Resolve<IEngine>();
+            engine.Start();
         }
     }
 }

@@ -1,9 +1,8 @@
 ﻿using DeliverIT.Common.Enums;
 using DeliverIT.Contracts;
-using DeliverIT.Models;
 using DeliverIT.Models.Users;
 
-namespace DeliverIT.Core.Factories
+namespace DeliverIT.Core.Contracts
 {
     public interface IUserFactory
     {

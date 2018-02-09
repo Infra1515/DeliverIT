@@ -2,64 +2,36 @@
 using DeliverIT.Core.Contracts;
 using DeliverIT.Core.Utilities;
 using System.Linq;
-using DeliverIT.Common.Enums;
-using DeliverIT.Core.MenuUtilities;
-using DeliverIT.Models;
-using DeliverIT.Models.Countries;
-using System.Threading;
 using DeliverIT.Common;
 using DeliverIT.Core.Exceptions;
 using DeliverIT.Contracts;
-using DeliverIT.Core.Engine.Event;
 using DeliverIT.Core.IOUtilities.Contracts;
+using DeliverIT.Common.Enums;
+using DeliverIT.Core.MenuUtilities;
 
 namespace DeliverIT.Core.Engine
 {
     public class DeliverITEngine : IEngine
     {
-        //private static readonly IEngine SingleInstance = new DeliverITEngine();
-        private static Timer actionTimer;
         private readonly IDataStore dataStore;
         private readonly IReader reader;
+        private readonly ICommandsFactory commandsFactory;
         private readonly IWriter writer;
-        public static event EventHandler<OrderStateChangedEventArgs> OrderStateChanged;
-        
-
 
         private MenuState state = MenuState.Login;
         private IUser loggedUser;
-        //private readonly CommandProcessor commandProcessor;
 
-        public DeliverITEngine(IDataStore dataStore, IWriter writer, IReader reader)
+        public DeliverITEngine(IDataStore dataStore, IWriter writer, IReader reader, ICommandsFactory commandsFactory)
         {
-            //this.commandProcessor = new CommandProcessor();
             this.loggedUser = null;
             this.dataStore = dataStore;
             this.writer = writer;
             this.reader = reader;
+            this.commandsFactory = commandsFactory;
         }
-
-        //public static IEngine Instance
-        //{
-        //    get { return SingleInstance; }
-        //}
 
         public void Start()
         {
-            //this.SeedObjects();
-
-            OrderStateChanged += DeliverITEngine_OrderStateChanged;
-
-            actionTimer = new Timer((state) =>
-            {
-                if (this.dataStore.Orders.Any())
-                {
-                    this.ProcessOrders();
-                }
-
-                actionTimer.Change(5000, Timeout.Infinite);
-            }, null, 5000, Timeout.Infinite);
-
             do
             {
                 Console.ResetColor();
@@ -69,17 +41,17 @@ namespace DeliverIT.Core.Engine
                     {
                         case MenuState.Login:
 
-                            //this.writer.WriteLine(LookupMenuText.LoginText);
+                            this.writer.WriteLine(LookupMenuText.LoginText);
 
-                            //int.TryParse(Console.ReadLine(), out int userLoginChoice);
-                            //bool isValidLoginChoice = Enum.IsDefined(typeof(LoginChoice), userLoginChoice);
+                            int.TryParse(Console.ReadLine(), out int userLoginChoice);
+                            bool isValidLoginChoice = Enum.IsDefined(typeof(LoginChoice), userLoginChoice);
 
-                            //if (!isValidLoginChoice)
-                            //{
-                            //    throw new InvalidMenuChoiceException(Constants.InvalidMenuChoiceMessage);
-                            //}
+                            if (!isValidLoginChoice)
+                            {
+                                throw new InvalidMenuChoiceException(Constants.InvalidMenuChoiceMessage);
+                            }
 
-                            //LoginMenu((LoginChoice)userLoginChoice);
+                            LoginMenu((LoginChoice)userLoginChoice);
 
                             break;
 
@@ -95,7 +67,7 @@ namespace DeliverIT.Core.Engine
                                 throw new InvalidCredentialsException(Constants.InvalidCredentialsMessage);
                             }
 
-                            //MainMenu((MainMenuChoice)userMainMenuChoice);
+                            MainMenu((MainMenuChoice)userMainMenuChoice);
 
                             break;
 
@@ -114,75 +86,59 @@ namespace DeliverIT.Core.Engine
             while (state != MenuState.Exit); 
         }
 
-        //private void MainMenu(MainMenuChoice mainMenuChoice)
-        //{
-        //    //bool isPermitted = this.CheckRoleAccess(loggedUser.Role, mainMenuChoice);
-
-        //    if (isPermitted)
-        //    {
-        //        switch (mainMenuChoice)
-        //        {
-        //            case MainMenuChoice.AddClient:
-        //                Console.WriteLine("Adding client ...... ");
-        //                this.commandProcessor.AddClient();
-        //                break;
-
-        //            case MainMenuChoice.AddCourier:
-        //                Console.WriteLine("Adding courier ...... ");
-        //                this.commandProcessor.AddCourier();
-        //                break;
-
-        //            case MainMenuChoice.PlaceOrder:
-        //                Console.WriteLine("Placing order ...... ");
-        //                this.commandProcessor.AddOrder();
-        //                break;
-
-        //            case MainMenuChoice.AllClients:
-        //                Console.WriteLine("Listing clients ...... ");
-        //                Console.WriteLine(this.commandProcessor.ShowAllClients());
-        //                break;
-
-        //            case MainMenuChoice.AllOrders:
-
-        //                Console.WriteLine("Listing orders ...... ");
-        //                Console.WriteLine(this.commandProcessor.ShowAllOrders());
-
-        //                break;
-
-        //            case MainMenuChoice.AllLocations:
-        //                Console.WriteLine("Listing locations ...... ");
-        //                Console.WriteLine(this.commandProcessor.ShowAllLocations());
-        //                break;
-
-        //            case MainMenuChoice.Logout:
-
-        //                this.loggedUser = null;
-        //                state = MenuState.Login;
-
-        //                break;
-        //        }
-        //    }
-        //    else
-        //    {
-        //        Console.ForegroundColor = ConsoleColor.Red;
-        //        Console.WriteLine("You have no permission to accesss this operation!\n");
-        //        Console.ResetColor();
-        //    }
-        //}
-
-        
-
-        private void ProcessOrders()
+        private void MainMenu(MainMenuChoice mainMenuChoice)
         {
-            foreach (var order in this.dataStore.Orders)
-            {
-                var lastState = order.OrderState;
+            bool isPermitted = this.CheckRoleAccess(loggedUser.Role, mainMenuChoice);
 
-                if (order.DueDate < DateTime.Now && order.OrderState != OrderState.Delivered)
+            if (isPermitted)
+            {
+                switch (mainMenuChoice)
                 {
-                    order.OrderState = OrderState.Delivered;
-                    OnOrderStateChanged(this, new OrderStateChangedEventArgs(lastState, order.OrderState, order.Id));
+                    case MainMenuChoice.AddClient:
+                        Console.WriteLine("Adding client ...... ");
+                        this.commandsFactory.GetCommand("addclient");
+                        break;
+
+                    case MainMenuChoice.AddCourier:
+                        Console.WriteLine("Adding courier ...... ");
+                        this.commandsFactory.GetCommand("addcourier");
+                        break;
+
+                    case MainMenuChoice.PlaceOrder:
+                        Console.WriteLine("Placing order ...... ");
+                        this.commandsFactory.GetCommand("addorder");
+                        break;
+
+                    case MainMenuChoice.AllClients:
+                        Console.WriteLine("Listing clients ...... ");
+                        this.commandsFactory.GetCommand("showallclients");
+                        break;
+
+                    case MainMenuChoice.AllOrders:
+
+                        Console.WriteLine("Listing orders ...... ");
+                        this.commandsFactory.GetCommand("showallorders");
+
+                        break;
+
+                    case MainMenuChoice.AllLocations:
+                        Console.WriteLine("Listing locations ...... ");
+                        this.commandsFactory.GetCommand("showalllocations");
+                        break;
+
+                    case MainMenuChoice.Logout:
+
+                        this.loggedUser = null;
+                        state = MenuState.Login;
+
+                        break;
                 }
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("You have no permission to accesss this operation!\n");
+                Console.ResetColor();
             }
         }
 
@@ -205,16 +161,57 @@ namespace DeliverIT.Core.Engine
             }
         }
 
-        protected virtual void OnOrderStateChanged(object source, OrderStateChangedEventArgs args)
+        private void LoginMenu(LoginChoice userChoice)
         {
-            OrderStateChanged?.Invoke(this, args);
+            switch (userChoice)
+            {
+                case LoginChoice.Login:
+
+                    Console.Write("Username: ");
+                    string username = Console.ReadLine();
+
+                    Console.Write("Password: ");
+                    string password = Console.ReadLine();
+
+                    var isLogged = this.Login(username, password);
+
+                    if (!isLogged)
+                    {
+                        throw new InvalidCredentialsException(Constants.InvalidCredentialsMessage);
+                    }
+
+                    state = MenuState.MainMenu;
+                    break;
+
+                case LoginChoice.Exit:
+                    state = MenuState.Exit;
+                    break;
+            }
         }
 
-        private void DeliverITEngine_OrderStateChanged(object sender, OrderStateChangedEventArgs args)
+        private bool CheckRoleAccess(UserRole role, MainMenuChoice mainMenuChoice)
         {
-            Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Console.WriteLine($"Order {args.ID} status changed from {args.LAST_STATE} to {args.CURRENT_STATE}");
-            Console.ResetColor();
+            bool isPresent = false;
+
+            switch (role)
+            {
+                case UserRole.Administrator:
+
+                    isPresent = LookupRoles.Administrator.Contains(mainMenuChoice);
+                    break;
+
+                case UserRole.Operator:
+
+                    isPresent = LookupRoles.Operator.Contains(mainMenuChoice);
+                    break;
+
+                case UserRole.Normal:
+
+                    isPresent = LookupRoles.Normal.Contains(mainMenuChoice);
+                    break;
+            }
+
+            return isPresent;
         }
     }
 }
