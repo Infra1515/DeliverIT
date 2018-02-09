@@ -66,9 +66,12 @@
     <Compile Include="Contracts\ICommandsFactory.cs" />
     <Compile Include="Contracts\IDataStore.cs" />
     <Compile Include="Contracts\IEngine.cs" />
+    <Compile Include="Demo\Demo.cs" />
     <Compile Include="Engine\CommandProcessor.cs" />
+    <Compile Include="Engine\Commands\LoginCommand.cs" />
     <Compile Include="Engine\DataStore.cs" />
     <Compile Include="Engine\DeliverITEngine.cs" />
+    <Compile Include="Engine\EngineHelper.cs" />
     <Compile Include="Event\OrderStateChangedEventArgs.cs" />
     <Compile Include="Exceptions\InvalidCredentialsException.cs" />
     <Compile Include="Exceptions\InvalidMenuChoiceException.cs" />

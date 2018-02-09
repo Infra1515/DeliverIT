@@ -16,5 +16,7 @@ namespace DeliverIT.Core.Factories
             ProductType productType);
 
         IAddress CreateAddress(ICountry country, string streetName, string streetNumber, string city);
+
+        ICountry CreateCountry(string countryName);
     }
 }

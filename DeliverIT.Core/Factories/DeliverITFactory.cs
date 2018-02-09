@@ -4,6 +4,7 @@ using DeliverIT.Models.Users;
 using DeliverIT.Contracts;
 using DeliverIT.Models;
 using DeliverIT.Common.Enums;
+using DeliverIT.Models.Countries;
 
 namespace DeliverIT.Core.Factories
 {
@@ -23,6 +24,24 @@ namespace DeliverIT.Core.Factories
         public IAddress CreateAddress(ICountry country, string streetName, string streetNumber, string city)
         {
             return new Address(country, streetName, streetNumber, city);
+        }
+
+        public ICountry CreateCountry(string countryName)
+        {
+            switch ((CountryType)Enum.Parse(typeof(CountryType), countryName))
+            {
+                case CountryType.Bulgaria:
+                    return new Bulgaria();
+
+                case CountryType.Serbia:
+                    return new Serbia();
+
+                case CountryType.Russia:
+                    return new Russia();
+
+                default:
+                    throw new ArgumentException("We don't ship to this country yet!");
+            }
         }
     }
 }
