@@ -1,7 +1,9 @@
-﻿namespace DeliverIT.Core.Contracts
+﻿using DeliverIT.Core.Utilities;
+
+namespace DeliverIT.Core.Contracts
 {
     public interface ICommandsFactory
     {
-        ICommand GetCommand(string commandName);
+        ICommand GetCommand(MainMenuChoice mainMenuChoice);
     }
 }

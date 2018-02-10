@@ -1,24 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DeliverIT.Common;
 using DeliverIT.Common.Enums;
 using DeliverIT.Core.Contracts;
-using DeliverIT.Core.Engine;
-using DeliverIT.Core.Factories;
 
-namespace DeliverIT.Core.Demo
+namespace DeliverIT.Core.Configuration
 {
-    public class Demo
+    public class SeedDataStore
     {
         private readonly IDataStore dataStore;
         private readonly IUserFactory userFactory;
         private readonly IDeliverITFactory deliverItFactory;
-        
 
-        public Demo(IDataStore dataStore, IUserFactory userFactory,
+        public SeedDataStore(IDataStore dataStore, IUserFactory userFactory,
             IDeliverITFactory deliverItFactory)
         {
             this.dataStore = dataStore;
@@ -26,7 +19,7 @@ namespace DeliverIT.Core.Demo
             this.deliverItFactory = deliverItFactory;
 
         }
-        private void SeedObjects()
+        public void SeedObjects()
         {
             var adminUser = this.userFactory.CreateAdmin("root", "123456", "Ivan", "Gargov", "basi@qkoto.adminsum");
 

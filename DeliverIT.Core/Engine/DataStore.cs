@@ -6,10 +6,7 @@ namespace DeliverIT.Core.Engine
 {
     public class DataStore : IDataStore
     {
-        // todo --- > should contain both users and orders or not
-
         private readonly ICollection<IUser> users;
-
         private readonly ICollection<IOrder> orders;
 
         public DataStore()
@@ -18,9 +15,9 @@ namespace DeliverIT.Core.Engine
             this.orders = new List<IOrder>();
         }
 
-        public ICollection<IUser> Users => this.users;
+        public ICollection<IUser> Users => new List<IUser>(this.users);
 
-        public ICollection<IOrder> Orders => this.orders;
+        public ICollection<IOrder> Orders => new List<IOrder>(this.orders);
 
         public void AddUser(IUser user)
         {

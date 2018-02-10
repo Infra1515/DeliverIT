@@ -1,5 +1,6 @@
 ﻿using DeliverIT.Common.Enums;
 using DeliverIT.Contracts;
+using DeliverIT.Core.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +11,5 @@ namespace DeliverIT.Core.Controllers
 {
     public class UserController
     {
-        public UserRole UserRole { get; set; }
-
-        public IUser CurrentUser { get; set; }
     }
 }

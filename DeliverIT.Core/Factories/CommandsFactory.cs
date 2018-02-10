@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using DeliverIT.Core.Contracts;
+using DeliverIT.Core.Utilities;
 
 namespace DeliverIT.Core.Factories
 {
@@ -12,9 +13,9 @@ namespace DeliverIT.Core.Factories
             this.container = container;
         }
 
-        public ICommand GetCommand(string commandName)
+        public ICommand GetCommand(MainMenuChoice mainMenuChoice)
         {
-            return this.container.ResolveNamed<ICommand>(commandName);
+            return this.container.ResolveKeyed<ICommand>(mainMenuChoice);
         }
     }
 }

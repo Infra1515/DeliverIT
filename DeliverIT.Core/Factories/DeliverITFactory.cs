@@ -6,7 +6,7 @@ using DeliverIT.Common.Enums;
 using DeliverIT.Models.Countries;
 using DeliverIT.Core.Contracts;
 
-namespace DeliverIT.Core.Contracts
+namespace DeliverIT.Core.Factories
 {
     public class DeliverITFactory : IDeliverITFactory
     {

@@ -8,28 +8,28 @@ namespace DeliverIT.Core.MenuUtilities
         public static readonly IList<MainMenuChoice> Administrator = new List<MainMenuChoice>()
         {
             MainMenuChoice.AddClient,
-            MainMenuChoice.PlaceOrder,
+            MainMenuChoice.AddOrder,
             MainMenuChoice.AddCourier,
-            MainMenuChoice.AllClients,
-            MainMenuChoice.AllOrders,
-            MainMenuChoice.AllLocations,
+            MainMenuChoice.ShowAllClients,
+            MainMenuChoice.ShowAllOrders,
+            MainMenuChoice.ShowAllLocations,
             MainMenuChoice.Logout
         };
 
         public static readonly IList<MainMenuChoice> Normal = new List<MainMenuChoice>()
         {
-            MainMenuChoice.AllClients,
-            MainMenuChoice.AllLocations,
-            MainMenuChoice.AllOrders,
+            MainMenuChoice.ShowAllClients,
+            MainMenuChoice.ShowAllLocations,
+            MainMenuChoice.ShowAllOrders,
             MainMenuChoice.Logout
         };
 
         public static readonly IList<MainMenuChoice> Operator = new List<MainMenuChoice>()
         {
-            MainMenuChoice.PlaceOrder,
-            MainMenuChoice.AllClients,
-            MainMenuChoice.AllLocations,
-            MainMenuChoice.AllOrders,
+            MainMenuChoice.AddOrder,
+            MainMenuChoice.ShowAllClients,
+            MainMenuChoice.ShowAllLocations,
+            MainMenuChoice.ShowAllOrders,
             MainMenuChoice.Logout
         };
     }
