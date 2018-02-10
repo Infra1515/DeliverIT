@@ -12,22 +12,33 @@ namespace Tests.Core.Commands.CreateCommands.CreateAddressTests
         [TestMethod]
         public void CallDeliverITFactory_OnlyOnce()
         {
-            var country = new Mock<Country>();
+
+            // Arrange
+            var country = new Mock<ICountry>();
             var city = "Lovech";
             var streetName = "Bulgaria";
             var streetNumber = "81";
 
             var deliverITFactoryMock = new Mock<IDeliverITFactory>();
             deliverITFactoryMock.Setup(x =>
-                x.CreateAddress(It.IsAny<Bulgaria>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>())).Verifiable();
+                x.CreateAddress(It.IsAny<ICountry>(), It.IsAny<string>(), It.IsAny<string>(),
+                It.IsAny<string>())).Verifiable();
 
-            deliverITFactoryMock.Verify(x => x.CreateAddress(country.Object, city, streetName, streetNumber), Times.Once);
+            // Act
+            deliverITFactoryMock.Object.CreateAddress(country.Object, streetName,
+                streetNumber, city);
+
+            // Assert
+            deliverITFactoryMock.Verify(x => x.CreateAddress(country.Object,
+                streetName, streetNumber, city), Times.Once);
         }
 
 
         [TestMethod]
-        public void ReturnCorrectMessage_WhenInvoked()
+        public void ReturnCorrectAddress_WhenInvokedWithValidArguments()
         {
+            // Arrange
+            var deliverITFactoryMock = new Mock<IDeliverITFactory>();
 
         }
     }
