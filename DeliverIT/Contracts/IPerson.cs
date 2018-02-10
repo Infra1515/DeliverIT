@@ -1,5 +1,4 @@
 ﻿using DeliverIT.Common.Enums;
-using DeliverIT.Models;
 using System.Collections.Generic;
 
 namespace DeliverIT.Contracts

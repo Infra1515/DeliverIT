@@ -1,15 +1,20 @@
 ﻿using System.Text;
 using DeliverIT.Core.Contracts;
+using DeliverIT.Core.IOUtilities.Contracts;
 
 namespace DeliverIT.Core.Commands
 {
     public class ShowAllClientsCommand : ICommand
     {
         private readonly IDataStore dataStore;
+        private readonly IWriter writer;
 
-        public ShowAllClientsCommand(IDataStore dataStore)
+        public ShowAllClientsCommand(
+            IDataStore dataStore, 
+            IWriter writer)
         {
             this.dataStore = dataStore;
+            this.writer = writer;
         }
 
         public void Execute()
@@ -28,9 +33,7 @@ namespace DeliverIT.Core.Commands
                 }
             }
 
-            // todo fix returns 
-
-            //return sb.ToString();
+            this.writer.Write(sb.ToString());
         }
     }
 }

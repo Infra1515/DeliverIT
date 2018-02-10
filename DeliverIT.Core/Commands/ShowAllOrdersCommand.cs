@@ -3,16 +3,21 @@ using System.Linq;
 using System.Text;
 using DeliverIT.Contracts;
 using DeliverIT.Core.Contracts;
+using DeliverIT.Core.IOUtilities.Contracts;
 
 namespace DeliverIT.Core.Commands
 {
     public class ShowAllOrdersCommand : ICommand
     {
         private readonly IDataStore dataStore;
+        private readonly IWriter writer;
 
-        public ShowAllOrdersCommand(IDataStore dataStore)
+        public ShowAllOrdersCommand(
+            IDataStore dataStore, 
+            IWriter writer)
         {
             this.dataStore = dataStore;
+            this.writer = writer;
         }
 
         public void Execute()
@@ -30,8 +35,7 @@ namespace DeliverIT.Core.Commands
                 sb.AppendLine("No orders placed yet!");
             }
 
-            // todo fix returns
-            //return sb.ToString();
+            this.writer.WriteLine(sb.ToString());
         }
     }
 }

@@ -2,6 +2,7 @@
 using Autofac;
 using DeliverIT.Core.Commands;
 using DeliverIT.Core.Contracts;
+using DeliverIT.Core.Demo;
 using DeliverIT.Core.Engine;
 using DeliverIT.Core.Factories;
 
@@ -22,6 +23,7 @@ namespace DeliverIT.Core.Injection
                 .SingleInstance();
             builder.RegisterType<DataStore>().AsSelf()
                 .SingleInstance();
+            builder.RegisterType<Seed>().AsSelf();
      
 
             // register commands

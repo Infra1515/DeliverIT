@@ -1,6 +1,5 @@
 ﻿using DeliverIT.Common;
 using DeliverIT.Contracts;
-using DeliverIT.Models.Countries;
 
 namespace DeliverIT.Models
 {

@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DeliverIT.Common;
 using DeliverIT.Common.Enums;
 using DeliverIT.Core.Contracts;
-using DeliverIT.Core.Engine;
 using DeliverIT.Core.Factories;
 
 namespace DeliverIT.Core.Demo
@@ -17,14 +12,15 @@ namespace DeliverIT.Core.Demo
         private readonly IUserFactory userFactory;
         private readonly IDeliverITFactory deliverItFactory;
         
-
-        public Seed(IDataStore dataStore, IUserFactory userFactory,
+        public Seed(
+            IDataStore dataStore, 
+            IUserFactory userFactory,
             IDeliverITFactory deliverItFactory)
         {
             this.dataStore = dataStore;
             this.userFactory = userFactory;
             this.deliverItFactory = deliverItFactory;
-
+            this.SeedObjects();
         }
         private void SeedObjects()
         {
