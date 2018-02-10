@@ -3,6 +3,7 @@ using DeliverIT.Core.Contracts;
 using DeliverIT.Core.Utilities;
 using DeliverIT.Core.Demo;
 using DeliverIT.Core.IOUtilities.Contracts;
+using DeliverIT.Core.Factories;
 
 namespace DeliverIT.Core.Engine
 {
@@ -29,6 +30,11 @@ namespace DeliverIT.Core.Engine
         public void Start()
         {
             string commandNumber = "0";
+            var userFactory = new UserFactory();
+            var deliverITFactory = new DeliverITFactory();
+            var seed = new Seed(this.dataStore, userFactory, deliverITFactory);
+            seed.SeedObjects();
+                
             do
             {
                 Console.ResetColor();

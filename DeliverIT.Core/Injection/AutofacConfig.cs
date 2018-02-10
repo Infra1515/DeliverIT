@@ -21,10 +21,10 @@ namespace DeliverIT.Core.Injection
             // register core components
             builder.RegisterType<DeliverITEngine>().As<IEngine>()
                 .SingleInstance();
-            builder.RegisterType<DataStore>().AsSelf()
+            builder.RegisterType<DataStore>().As<IDataStore>()
                 .SingleInstance();
-            builder.RegisterType<Seed>().AsSelf()
-                .SingleInstance();
+            //builder.RegisterType<Seed>().AsSelf()
+            //    .SingleInstance();
      
 
             // register commands
@@ -36,10 +36,10 @@ namespace DeliverIT.Core.Injection
                 ("3");
             builder.RegisterType<ShowAllClientsCommand>().Named<ICommand>
                 ("4");
-            builder.RegisterType<ShowAllLocationsCommand>().Named<ICommand>
-                ("5");
             builder.RegisterType<ShowAllOrdersCommand>().Named<ICommand>
-                ("6");
+                ("5");
+            builder.RegisterType<ShowAllLocationsCommand>().Named<ICommand>
+               ("6");
             builder.RegisterType<ExitCommand>().Named<ICommand>
                 ("7");
 

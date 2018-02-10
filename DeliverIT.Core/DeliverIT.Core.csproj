@@ -103,5 +103,9 @@
       <Name>DeliverIT</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Engine\Commands\" />
+    <Folder Include="Event\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
