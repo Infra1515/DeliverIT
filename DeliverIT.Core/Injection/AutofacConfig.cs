@@ -23,7 +23,8 @@ namespace DeliverIT.Core.Injection
                 .SingleInstance();
             builder.RegisterType<DataStore>().AsSelf()
                 .SingleInstance();
-            builder.RegisterType<Seed>().AsSelf();
+            builder.RegisterType<Seed>().AsSelf()
+                .SingleInstance();
      
 
             // register commands
@@ -39,6 +40,8 @@ namespace DeliverIT.Core.Injection
                 ("5");
             builder.RegisterType<ShowAllOrdersCommand>().Named<ICommand>
                 ("6");
+            builder.RegisterType<ExitCommand>().Named<ICommand>
+                ("7");
 
             builder.RegisterType<CommandsFactory>().As<ICommandsFactory>()
                 .SingleInstance();

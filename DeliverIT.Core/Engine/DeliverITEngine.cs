@@ -31,13 +31,15 @@ namespace DeliverIT.Core.Engine
 
         public void Start()
         {
+            string commandNumber = "0";
+            this.demo.SeedObjects();
             do
             {
                 Console.ResetColor();
                 try
                 {
                     this.writer.WriteLine(LookupMenuText.MainMenuText);
-                    var commandNumber = this.reader.ReadLine();
+                    commandNumber = this.reader.ReadLine();
                     var command = this.factory.GetCommand(commandNumber);
                     command.Execute();
                 }
@@ -48,7 +50,7 @@ namespace DeliverIT.Core.Engine
                 }
 
             }
-            while (true);
+            while (commandNumber != "7");
         }
     }
 }

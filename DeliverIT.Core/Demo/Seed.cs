@@ -20,9 +20,8 @@ namespace DeliverIT.Core.Demo
             this.dataStore = dataStore;
             this.userFactory = userFactory;
             this.deliverItFactory = deliverItFactory;
-            this.SeedObjects();
         }
-        private void SeedObjects()
+        public void SeedObjects()
         {
             var adminUser = this.userFactory.CreateAdmin("root", "123456", "Ivan", "Gargov", "basi@qkoto.adminsum");
 

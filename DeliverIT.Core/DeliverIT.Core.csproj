@@ -59,6 +59,7 @@
     <Compile Include="Commands\CreateCommands\CreateAddress.cs" />
     <Compile Include="Commands\CreateCommands\CreateProduct.cs" />
     <Compile Include="Commands\CreateCommands\Contracts\ICreateAddress.cs" />
+    <Compile Include="Commands\ExitCommand.cs" />
     <Compile Include="Commands\ShowAllClientsCommand.cs" />
     <Compile Include="Commands\ShowAllLocationsCommand.cs" />
     <Compile Include="Commands\ShowAllOrdersCommand.cs" />
