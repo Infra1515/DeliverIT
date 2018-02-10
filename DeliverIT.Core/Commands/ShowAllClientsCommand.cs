@@ -23,6 +23,7 @@ namespace DeliverIT.Core.Commands
             if (this.dataStore.Users.Count == 0)
             {
                 sb.AppendLine("No clients registered!");
+                sb.AppendLine();
             }
             else
             {

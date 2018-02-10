@@ -40,6 +40,10 @@ namespace DeliverIT.Core.Engine
                 {
                     this.writer.WriteLine(LookupMenuText.MainMenuText);
                     commandNumber = this.reader.ReadLine();
+                    if (string.IsNullOrEmpty(commandNumber) || int.Parse(commandNumber) > 7 || int.Parse(commandNumber) == 0)
+                    {
+                        throw new ArgumentException("Invalid command!");
+                    }
                     var command = this.factory.GetCommand(commandNumber);
                     command.Execute();
                 }
