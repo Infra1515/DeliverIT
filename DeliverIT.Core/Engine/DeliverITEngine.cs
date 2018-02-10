@@ -40,17 +40,18 @@ namespace DeliverIT.Core.Engine
                 {
                     this.writer.WriteLine(LookupMenuText.MainMenuText);
                     commandNumber = this.reader.ReadLine();
-                    if (string.IsNullOrEmpty(commandNumber) || int.Parse(commandNumber) > 7 || int.Parse(commandNumber) == 0)
-                    {
-                        throw new ArgumentException("Invalid command!");
-                    }
                     var command = this.factory.GetCommand(commandNumber);
                     command.Execute();
+                }
+                catch (Autofac.Core.Registration.ComponentNotRegisteredException)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    this.writer.WriteLine("Invalid command entered!");
                 }
                 catch (Exception ex)
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine(ex.Message);
+                    this.writer.WriteLine(ex.Message);
                 }
 
             }
