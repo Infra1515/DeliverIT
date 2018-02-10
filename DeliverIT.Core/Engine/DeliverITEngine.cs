@@ -12,27 +12,23 @@ namespace DeliverIT.Core.Engine
         private readonly IWriter writer;
         private readonly IReader reader;
         private readonly IDataStore dataStore;
-        private readonly Seed demo;
 
         public DeliverITEngine(
             IDataStore dataStore,
             ICommandsFactory factory,
             IWriter writer,
-            IReader reader,
-            Seed demo
+            IReader reader
             )
         {
             this.dataStore = dataStore;
             this.factory = factory;
             this.writer = writer;
             this.reader = reader;
-            this.demo = demo;
         }
 
         public void Start()
         {
             string commandNumber = "0";
-            this.demo.SeedObjects();
             do
             {
                 Console.ResetColor();
