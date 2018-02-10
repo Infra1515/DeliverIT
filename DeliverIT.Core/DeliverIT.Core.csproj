@@ -66,6 +66,8 @@
     <Compile Include="Contracts\ICommandsFactory.cs" />
     <Compile Include="Contracts\IDataStore.cs" />
     <Compile Include="Contracts\IEngine.cs" />
+    <Compile Include="Controllers\MenuController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Demo\Demo.cs" />
     <Compile Include="Dependency\AutofacConfigModule.cs" />
     <Compile Include="Engine\Commands\LoginCommand.cs" />
@@ -90,6 +92,7 @@
     <Compile Include="MenuUtilities\MenuState.cs" />
     <Compile Include="MenuUtilities\MainMenuChoice.cs" />
     <Compile Include="MenuUtilities\LoginChoice.cs" />
+    <Compile Include="Providers\AuthProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -105,5 +108,6 @@
       <Name>DeliverIT.Data</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
