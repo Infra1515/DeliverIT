@@ -20,9 +20,9 @@ namespace Tests.Core.Commands.AddCommands.AddOrderCommandShould
             var receiverStub = new Mock<IClient>();
             var productStub = new Mock<IProduct>();
             var courierStub = new Mock<ICourier>();
-            var type = DeliverIT.Common.DeliveryType.Express;
-            var sendDate = System.DateTime.Today;
-            var dueDate = System.DateTime.Today;
+            var type = DeliveryType.Express;
+            var sendDate = DateTime.Today;
+            var dueDate = DateTime.Today;
             var orderState = OrderState.Damaged;
             var postalCode = 5555;
 
