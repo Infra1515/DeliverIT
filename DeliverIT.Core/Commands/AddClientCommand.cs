@@ -59,9 +59,7 @@ namespace DeliverIT.Core.Commands
 
             var isUserPresent = this.dataStore.Users
                 .FirstOrDefault(u => u.Username.Equals(username));
-
-            // todo constants di 
-
+            
             if (isUserPresent != null)
                 throw new ArgumentException(string.Format(Constants.UserAlreadyExists, isUserPresent.GetType().Name, isUserPresent.Username));
 

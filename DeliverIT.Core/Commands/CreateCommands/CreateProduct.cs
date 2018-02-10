@@ -5,7 +5,7 @@ using DeliverIT.Core.Commands.CreateCommands.Contracts;
 using DeliverIT.Core.Factories;
 using DeliverIT.Core.IOUtilities.Contracts;
 
-namespace DeliverIT.Core.Commands
+namespace DeliverIT.Core.Commands.CreateCommands
 {
     public class CreateProduct : ICreateProduct
     {
