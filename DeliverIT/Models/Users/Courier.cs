@@ -1,4 +1,5 @@
-﻿using DeliverIT.Common.Enums;
+﻿using Bytes2you.Validation;
+using DeliverIT.Common.Enums;
 using DeliverIT.Contracts;
 using DeliverIT.Models.Users.Abstract;
 
@@ -27,6 +28,8 @@ namespace DeliverIT.Models.Users
             )
                 : base(username, password, firstName, lastName, email, age, phoneNumber, address, gender, UserRole.Normal)
         {
+            Guard.WhenArgument(allowedVolume, "allowed volume negative").IsLessThanOrEqual(0).Throw();
+            Guard.WhenArgument(allowedWeight, "allowed weight negative").IsLessThanOrEqual(0).Throw();
             this.Id = ++id;
             this.AllowedVolume = allowedVolume;
             this.AllowedWeight = allowedWeight;

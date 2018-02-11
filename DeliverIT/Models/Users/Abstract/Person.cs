@@ -3,6 +3,7 @@ using DeliverIT.Common.Enums;
 using DeliverIT.Contracts;
 using System;
 using System.Collections.Generic;
+using System.Text;
 using Bytes2you.Validation;
 
 namespace DeliverIT.Models.Users.Abstract
@@ -90,15 +91,18 @@ namespace DeliverIT.Models.Users.Abstract
             this.ordersList.Remove(order);
         }
 
-        public void DisplayOrderList()
+        public string DisplayOrderList()
         {
-            Console.WriteLine($"Total orders for {this.FirstName} {this.LastName}");
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine($"Total orders for {this.FirstName} {this.LastName}");
             foreach (var order in OrdersList)
             {
-                Console.WriteLine("--------------");
-                Console.WriteLine(order.ToString());
-                Console.WriteLine("---------------");
+                sb.AppendLine("--------------");
+                sb.AppendLine(order.ToString());
+                sb.AppendLine("---------------");
             }
+
+            return sb.ToString();
         }
 
         public override string ToString()

@@ -1,5 +1,7 @@
-﻿using DeliverIT.Contracts;
+﻿using System;
+using DeliverIT.Contracts;
 using System.Collections.Generic;
+using Bytes2you.Validation;
 
 namespace DeliverIT.Models.Countries
 {
@@ -21,11 +23,17 @@ namespace DeliverIT.Models.Countries
 
         public void AddCityWithZip(string city, int zip)
         {
+            Guard.WhenArgument(city, "add city null").IsNull().Throw();
             this.CitysAndZips.Add(city, zip);
         }
 
         public void RemoveCityWithZip(string city)
         {
+            Guard.WhenArgument(city, "remove city null").IsNull().Throw();
+            if (!this.CitysAndZips.ContainsKey(city))
+            {
+                throw new ArgumentException("No such city for that country.");
+            }
             this.CitysAndZips.Remove(city);
         }
 

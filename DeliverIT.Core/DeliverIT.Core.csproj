@@ -67,6 +67,8 @@
     <Compile Include="Commands\ShowAllLocationsCommand.cs" />
     <Compile Include="Commands\ShowAllOrdersCommand.cs" />
     <Compile Include="Contracts\ICommand.cs" />
+    <Compile Include="Commands\Providers\CommandParser.cs" />
+    <Compile Include="Commands\Providers\ICommandParser.cs" />
     <Compile Include="Factories\AddressFactory.cs" />
     <Compile Include="Factories\Contracts\IAddressFactory.cs" />
     <Compile Include="Factories\Contracts\ICommandsFactory.cs" />

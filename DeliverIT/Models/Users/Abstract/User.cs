@@ -1,4 +1,5 @@
-﻿using DeliverIT.Common;
+﻿using Bytes2you.Validation;
+using DeliverIT.Common;
 using DeliverIT.Common.Enums;
 using DeliverIT.Contracts;
 
@@ -29,7 +30,7 @@ namespace DeliverIT.Models.Users.Abstract
             {
                 Validator.ValidateUserInfo(value, Constants.MinNameLength,
                     Constants.MaxNameLength, Constants.InvalidName);
-
+                
                 this.username = value;
             }
         }
@@ -39,7 +40,7 @@ namespace DeliverIT.Models.Users.Abstract
             get { return this.password; }
             private set
             {
-                Validator.ValidateNotNull(value);
+                Guard.WhenArgument(value, "password null").IsNull().Throw();
 
                 this.password = value;
             }

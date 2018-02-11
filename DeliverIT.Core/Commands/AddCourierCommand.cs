@@ -81,7 +81,6 @@ namespace DeliverIT.Core.Commands
 
             Console.ForegroundColor = ConsoleColor.Green;
             return string.Format(Constants.RegisteredCourier, courier.Username);
-            //Console.ResetColor();
         }
     }
 }

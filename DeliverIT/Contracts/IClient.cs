@@ -9,14 +9,14 @@ namespace DeliverIT.Contracts
 
         int Id { get; }
 
-        void ShowAllNotPendingOrders(IList<IOrder> orders);
+        string ShowAllNotPendingOrders(IList<IOrder> orders);
 
-        void ShowReceivedOrders(IList<IOrder> orders);
+        string ShowReceivedOrders(IList<IOrder> orders);
 
-        void ShowSentOrders(IList<IOrder> orders);
+        string ShowSentOrders(IList<IOrder> orders);
 
-        void ShowExpectedSendOrders(IList<IOrder> orders);
+        string ShowExpectedSendOrders(IList<IOrder> orders);
 
-        void ShowExpectedReceiveOrders(IList<IOrder> orders);
+        string ShowExpectedReceiveOrders(IList<IOrder> orders);
     }
 }
