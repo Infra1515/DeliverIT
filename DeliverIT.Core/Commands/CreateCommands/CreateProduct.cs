@@ -11,16 +11,16 @@ namespace DeliverIT.Core.Commands.CreateCommands
     {
         private readonly IWriter writer;
         private readonly IReader reader;
-        private readonly IDeliverITFactory deliverItFactory;
+        private readonly IProductFactory productFactory;
 
         public CreateProduct(
             IWriter writer,
             IReader reader,
-            IDeliverITFactory deliverItFactory)
+            IProductFactory productFactory)
         {
             this.writer = writer;
             this.reader = reader;
-            this.deliverItFactory = deliverItFactory;
+            this.productFactory = productFactory;
         }
 
         public IProduct Create()
@@ -60,7 +60,7 @@ namespace DeliverIT.Core.Commands.CreateCommands
                     productType = ProductType.Other;
                     break;
             }
-            IProduct product = this.deliverItFactory.CreateProduct(x, y, z, isFragile, weight, productType);
+            IProduct product = this.productFactory.CreateProduct(x, y, z, isFragile, weight, productType);
             this.writer.WriteLine($"Product with ID {product.Id} was added succesfully!");
 
             return product;

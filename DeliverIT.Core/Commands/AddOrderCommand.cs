@@ -7,7 +7,7 @@ using DeliverIT.Common.Enums;
 using DeliverIT.Contracts;
 using DeliverIT.Core.Commands.CreateCommands.Contracts;
 using DeliverIT.Core.Contracts;
-using DeliverIT.Core.Factories;
+using DeliverIT.Core.Factories.Contracts;
 using DeliverIT.Core.IOUtilities.Contracts;
 
 namespace DeliverIT.Core.Commands
@@ -15,20 +15,20 @@ namespace DeliverIT.Core.Commands
     public class AddOrderCommand : ICommand
     {
         private readonly IDataStore dataStore;
-        private readonly IDeliverITFactory factory;
+        private readonly IOrderFactory orderFactory;
         private readonly IWriter writer;
         private readonly IReader reader;
         private readonly ICreateProduct createCommand;
 
         public AddOrderCommand(
             IDataStore dataStore,
-            IDeliverITFactory factory, 
+            IOrderFactory orderFactory, 
             IWriter writer, 
             IReader reader, 
             ICreateProduct createCommand)
         {
             this.dataStore = dataStore;
-            this.factory = factory;
+            this.orderFactory = orderFactory;
             this.writer = writer;
             this.reader = reader;
             this.createCommand = createCommand;
@@ -86,7 +86,7 @@ namespace DeliverIT.Core.Commands
 
             int postalCode = selectedReceiver.Address.Country.CitysAndZips[selectedReceiver.Address.City];
 
-            var order = this.factory.CreateOrder(selectedCourier, selectedSender, selectedReceiver, deliveryType, sendDate, dueDate, OrderState.InProgress, product, postalCode);
+            var order = this.orderFactory.CreateOrder(selectedCourier, selectedSender, selectedReceiver, deliveryType, sendDate, dueDate, OrderState.InProgress, product, postalCode);
 
             this.dataStore.Orders.Add(order);
 

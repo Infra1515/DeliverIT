@@ -1,7 +1,7 @@
 ﻿using System;
 using DeliverIT.Common;
 using DeliverIT.Contracts;
-using DeliverIT.Core.Factories;
+using DeliverIT.Core.Factories.Contracts;
 using DeliverIT.Core.IOUtilities.Contracts;
 
 namespace DeliverIT.Core.Commands.CreateCommands
@@ -10,16 +10,19 @@ namespace DeliverIT.Core.Commands.CreateCommands
     {
         private readonly IWriter writer;
         private readonly IReader reader;
-        private readonly IDeliverITFactory deliverItFactory;
+        private readonly IAddressFactory addressFactory;
+        private readonly ICountryFactory countryFactory;
 
         public CreateAddress(
             IWriter writer, 
             IReader reader, 
-            IDeliverITFactory deliverItFactory)
+            IAddressFactory deliverItFactory, 
+            ICountryFactory countryFactory)
         {
             this.writer = writer;
             this.reader = reader;
-            this.deliverItFactory = deliverItFactory;
+            this.addressFactory = deliverItFactory;
+            this.countryFactory = countryFactory;
         }
         
         public IAddress Create()
@@ -28,7 +31,7 @@ namespace DeliverIT.Core.Commands.CreateCommands
             writer.Write("Country: ");
             string countryString = reader.ReadLine();
 
-            ICountry country = deliverItFactory.CreateCountry(countryString);
+            ICountry country = this.countryFactory.CreateCountry(countryString);
 
             writer.Write("City: ");
             string city = reader.ReadLine();
@@ -43,7 +46,7 @@ namespace DeliverIT.Core.Commands.CreateCommands
             writer.Write("Street number: ");
             string streetNumber = reader.ReadLine();
 
-            var userAddress = this.deliverItFactory.CreateAddress(country, streetName, streetNumber, city);
+            var userAddress = this.addressFactory.CreateAddress(country, streetName, streetNumber, city);
 
             return userAddress;
         }

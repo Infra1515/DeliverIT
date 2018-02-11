@@ -1,4 +1,6 @@
-﻿namespace DeliverIT.Core.Contracts
+﻿using DeliverIT.Core.Contracts;
+
+namespace DeliverIT.Core.Factories.Contracts
 {
     public interface ICommandsFactory
     {

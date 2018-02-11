@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using DeliverIT.Core.Contracts;
+using DeliverIT.Core.Factories.Contracts;
 
 namespace DeliverIT.Core.Factories
 {

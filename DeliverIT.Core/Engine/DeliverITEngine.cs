@@ -4,35 +4,51 @@ using DeliverIT.Core.Utilities;
 using DeliverIT.Core.Demo;
 using DeliverIT.Core.IOUtilities.Contracts;
 using DeliverIT.Core.Factories;
+using DeliverIT.Core.Factories.Contracts;
 
 namespace DeliverIT.Core.Engine
 {
     public class DeliverITEngine : IEngine
     {
-        private readonly ICommandsFactory factory;
+        private readonly ICommandsFactory commandsFactory;
         private readonly IWriter writer;
         private readonly IReader reader;
+        private readonly ICountryFactory countryFactory;
+        private readonly IAddressFactory addressFactory;
+        private readonly IOrderFactory orderFactory;
+        private readonly IUserFactory userFactory;
+        private readonly IProductFactory productFactory;
         private readonly IDataStore dataStore;
 
         public DeliverITEngine(
             IDataStore dataStore,
-            ICommandsFactory factory,
+            ICommandsFactory commandsFactory,
+            IUserFactory userFactory,
+            IProductFactory productFactory,
+            ICountryFactory countryFactory,
+            IAddressFactory addressFactory,
+            IOrderFactory orderFactory,
             IWriter writer,
             IReader reader
             )
         {
             this.dataStore = dataStore;
-            this.factory = factory;
             this.writer = writer;
             this.reader = reader;
+            this.commandsFactory = commandsFactory;
+            this.countryFactory = countryFactory;
+            this.addressFactory = addressFactory;
+            this.orderFactory = orderFactory;
+            this.userFactory = userFactory;
+            this.productFactory = productFactory;
         }
 
         public void Start()
         {
             string commandNumber = "0";
             var userFactory = new UserFactory();
-            var deliverITFactory = new DeliverITFactory();
-            var seed = new Seed(this.dataStore, userFactory, deliverITFactory);
+            var deliverITFactory = new ProductFactory();
+            var seed = new Seed(this.dataStore, this.userFactory, this.productFactory, this.orderFactory,this.countryFactory, this.addressFactory);
             seed.SeedObjects();
                 
             do
@@ -42,7 +58,7 @@ namespace DeliverIT.Core.Engine
                 {
                     this.writer.WriteLine(LookupMenuText.MainMenuText);
                     commandNumber = this.reader.ReadLine();
-                    var command = this.factory.GetCommand(commandNumber);
+                    var command = this.commandsFactory.GetCommand(commandNumber);
                     command.Execute();
                 }
                 catch (Autofac.Core.Registration.ComponentNotRegisteredException)

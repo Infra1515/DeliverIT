@@ -64,7 +64,9 @@
     <Compile Include="Commands\ShowAllLocationsCommand.cs" />
     <Compile Include="Commands\ShowAllOrdersCommand.cs" />
     <Compile Include="Contracts\ICommand.cs" />
-    <Compile Include="Contracts\ICommandsFactory.cs" />
+    <Compile Include="Factories\AddressFactory.cs" />
+    <Compile Include="Factories\Contracts\IAddressFactory.cs" />
+    <Compile Include="Factories\Contracts\ICommandsFactory.cs" />
     <Compile Include="Contracts\IDataStore.cs" />
     <Compile Include="Contracts\IEngine.cs" />
     <Compile Include="Demo\Seed.cs" />
@@ -73,9 +75,13 @@
     <Compile Include="Exceptions\InvalidCredentialsException.cs" />
     <Compile Include="Exceptions\InvalidMenuChoiceException.cs" />
     <Compile Include="Factories\CommandsFactory.cs" />
-    <Compile Include="Factories\DeliverITFactory.cs" />
-    <Compile Include="Factories\IDeliverITFactory.cs" />
-    <Compile Include="Factories\IUserFactory.cs" />
+    <Compile Include="Factories\Contracts\ICountryFactory.cs" />
+    <Compile Include="Factories\Contracts\IOrderFactory.cs" />
+    <Compile Include="Factories\CountryFactory.cs" />
+    <Compile Include="Factories\ProductFactory.cs" />
+    <Compile Include="Factories\Contracts\IProductFactory.cs" />
+    <Compile Include="Factories\Contracts\IUserFactory.cs" />
+    <Compile Include="Factories\OrderFactory.cs" />
     <Compile Include="Factories\UserFactory.cs" />
     <Compile Include="Injection\AutofacConfig.cs" />
     <Compile Include="IOUtilities\ConsoleReader.cs" />
@@ -103,9 +109,6 @@
       <Name>DeliverIT</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Engine\Commands\" />
-    <Folder Include="Event\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

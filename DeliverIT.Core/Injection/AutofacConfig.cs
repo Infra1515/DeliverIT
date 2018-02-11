@@ -5,6 +5,7 @@ using DeliverIT.Core.Contracts;
 using DeliverIT.Core.Demo;
 using DeliverIT.Core.Engine;
 using DeliverIT.Core.Factories;
+using DeliverIT.Core.Factories.Contracts;
 
 namespace DeliverIT.Core.Injection
 {
