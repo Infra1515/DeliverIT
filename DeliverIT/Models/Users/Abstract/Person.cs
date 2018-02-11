@@ -3,6 +3,7 @@ using DeliverIT.Common.Enums;
 using DeliverIT.Contracts;
 using System;
 using System.Collections.Generic;
+using Bytes2you.Validation;
 
 namespace DeliverIT.Models.Users.Abstract
 {
@@ -44,7 +45,7 @@ namespace DeliverIT.Models.Users.Abstract
             private set
             {
 
-                Validator.ValidatePhoneNumber(value);
+                Guard.WhenArgument(value, "phone number null").IsNull().Throw();
                 this.phoneNumber = value;
             }
         }
@@ -57,7 +58,7 @@ namespace DeliverIT.Models.Users.Abstract
             }
             private set
             {
-                Validator.ValidateNotNull(value);
+                Guard.WhenArgument(value, "address null").IsNull().Throw();
                 this.address = value;
             }
         }
@@ -70,7 +71,6 @@ namespace DeliverIT.Models.Users.Abstract
             }
             private set
             {
-                Validator.ValidateNotNull(value);
                 this.gender = value;
             }
         }

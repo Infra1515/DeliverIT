@@ -38,6 +38,9 @@
     <Reference Include="Autofac, Version=4.6.2.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <HintPath>..\packages\Autofac.4.6.2\lib\net45\Autofac.dll</HintPath>
     </Reference>
+    <Reference Include="Bytes2you.Validation, Version=2.0.0.0, Culture=neutral, PublicKeyToken=a7d501dd757e0442, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bytes2you.Validation.2.0.0.0\lib\portable-win+net40+sl40+wp+Xbox40\Bytes2you.Validation.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -69,7 +72,7 @@
     <Compile Include="Factories\Contracts\ICommandsFactory.cs" />
     <Compile Include="Contracts\IDataStore.cs" />
     <Compile Include="Contracts\IEngine.cs" />
-    <Compile Include="Demo\Seed.cs" />
+    <Compile Include="Configuration\Seed.cs" />
     <Compile Include="Engine\DataStore.cs" />
     <Compile Include="Engine\DeliverITEngine.cs" />
     <Compile Include="Exceptions\InvalidCredentialsException.cs" />

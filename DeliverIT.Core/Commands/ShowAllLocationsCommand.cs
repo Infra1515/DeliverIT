@@ -12,20 +12,10 @@ namespace DeliverIT.Core.Commands
 {
     public class ShowAllLocationsCommand : ICommand
     {
-        private readonly IWriter writer;
-
-        public ShowAllLocationsCommand(IWriter writer)
-        {
-            this.writer = writer;
-        }
-
-        public void Execute()
+        public string Execute()
         {
             StringBuilder strBuilder = new StringBuilder();
             strBuilder.AppendLine("--- Delivery locations ---");
-            //strBuilder.AppendLine(" -- " + CountryType.Bulgaria);
-            //strBuilder.AppendLine(" -- " + CountryType.Russia);
-            //strBuilder.AppendLine(" -- " + CountryType.Serbia);
 
             var countries = FindDerivedTypes(Assembly.GetAssembly(typeof(ICountry)), typeof(Country));
             foreach (var country in countries)
@@ -33,7 +23,7 @@ namespace DeliverIT.Core.Commands
                 strBuilder.AppendLine($" -- {country.Name}");
             }
 
-            this.writer.WriteLine(strBuilder.ToString());
+            return strBuilder.ToString();
         }
 
         public IEnumerable<Type> FindDerivedTypes(Assembly assembly, Type baseType)

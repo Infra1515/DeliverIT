@@ -1,4 +1,5 @@
-﻿using DeliverIT.Common.Enums;
+﻿using Bytes2you.Validation;
+using DeliverIT.Common.Enums;
 using DeliverIT.Contracts;
 
 namespace DeliverIT.Models
@@ -15,6 +16,8 @@ namespace DeliverIT.Models
             double weight, 
             ProductType productType)
         {
+            Guard.WhenArgument(weight, "weight not negative").IsLessThanOrEqual(0).Throw();
+
             id++;
             this.Dimensions = new Dimensions(x, y, z);
             this.Volume = this.Dimensions.CalculateVolume();

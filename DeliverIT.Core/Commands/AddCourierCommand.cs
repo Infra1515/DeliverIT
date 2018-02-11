@@ -30,7 +30,7 @@ namespace DeliverIT.Core.Commands
             this.createAddress = createAddress;
         }
 
-        public void Execute()
+        public string Execute()
         {
             this.writer.Write("Username: ");
             string username = this.reader.ReadLine();
@@ -80,8 +80,8 @@ namespace DeliverIT.Core.Commands
             this.dataStore.Users.Add(courier);
 
             Console.ForegroundColor = ConsoleColor.Green;
-            this.writer.WriteLine(string.Format(Constants.RegisteredCourier, courier.Username));
-            Console.ResetColor();
+            return string.Format(Constants.RegisteredCourier, courier.Username);
+            //Console.ResetColor();
         }
     }
 }

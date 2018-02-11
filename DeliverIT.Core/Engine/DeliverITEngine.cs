@@ -46,8 +46,8 @@ namespace DeliverIT.Core.Engine
         public void Start()
         {
             string commandNumber = "0";
-            var userFactory = new UserFactory();
-            var deliverITFactory = new ProductFactory();
+            //var userFactory = new UserFactory();
+            //var deliverITFactory = new ProductFactory();
             var seed = new Seed(this.dataStore, this.userFactory, this.productFactory, this.orderFactory,this.countryFactory, this.addressFactory);
             seed.SeedObjects();
                 
@@ -59,7 +59,8 @@ namespace DeliverIT.Core.Engine
                     this.writer.WriteLine(LookupMenuText.MainMenuText);
                     commandNumber = this.reader.ReadLine();
                     var command = this.commandsFactory.GetCommand(commandNumber);
-                    command.Execute();
+                    this.writer.WriteLine(command.Execute());
+                    
                 }
                 catch (Autofac.Core.Registration.ComponentNotRegisteredException)
                 {
@@ -72,6 +73,7 @@ namespace DeliverIT.Core.Engine
                     this.writer.WriteLine(ex.Message);
                 }
 
+                Console.ResetColor();
             }
             while (commandNumber != "7");
         }

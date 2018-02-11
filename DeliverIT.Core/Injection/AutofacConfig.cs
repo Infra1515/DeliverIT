@@ -2,10 +2,7 @@
 using Autofac;
 using DeliverIT.Core.Commands;
 using DeliverIT.Core.Contracts;
-using DeliverIT.Core.Demo;
 using DeliverIT.Core.Engine;
-using DeliverIT.Core.Factories;
-using DeliverIT.Core.Factories.Contracts;
 
 namespace DeliverIT.Core.Injection
 {
@@ -24,9 +21,6 @@ namespace DeliverIT.Core.Injection
                 .SingleInstance();
             builder.RegisterType<DataStore>().As<IDataStore>()
                 .SingleInstance();
-            //builder.RegisterType<Seed>().AsSelf()
-            //    .SingleInstance();
-     
 
             // register commands
             builder.RegisterType<AddClientCommand>().Named<ICommand>
@@ -44,8 +38,8 @@ namespace DeliverIT.Core.Injection
             builder.RegisterType<ExitCommand>().Named<ICommand>
                 ("7");
 
-            builder.RegisterType<CommandsFactory>().As<ICommandsFactory>()
-                .SingleInstance();
+            //builder.RegisterType<CommandsFactory>().As<ICommandsFactory>()
+            //    .SingleInstance();
 
         }
     }

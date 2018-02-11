@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Bytes2you.Validation;
 using DeliverIT.Contracts;
 using DeliverIT.Core.Contracts;
 
@@ -18,19 +19,21 @@ namespace DeliverIT.Core.Engine
             this.orders = new List<IOrder>();
         }
 
+        // todo : encapsulate
+
         public ICollection<IUser> Users => this.users;
 
         public ICollection<IOrder> Orders => this.orders;
 
         public void AddUser(IUser user)
         {
-            // todo validations ? 
+            Guard.WhenArgument(user, "add user null").IsNull().Throw();
             this.users.Add(user);
         }
 
         public void AddOrder(IOrder order)
         {
-            // todo validations ?
+            Guard.WhenArgument(order, "add order null").IsNull().Throw();
             this.orders.Add(order);
         }
     }

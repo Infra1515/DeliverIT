@@ -1,10 +1,14 @@
-﻿using DeliverIT.Core.Contracts;
+﻿using System;
+using DeliverIT.Core.Contracts;
 
 namespace DeliverIT.Core.Commands
 {
     public class ExitCommand : ICommand
     {
-        public void Execute()
-        { }
+        public string Execute()
+        {
+            Console.ForegroundColor = ConsoleColor.DarkMagenta;
+            return $"Thank you for using our app!";
+        }
     }
 }

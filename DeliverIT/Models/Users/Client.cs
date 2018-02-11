@@ -22,6 +22,7 @@ namespace DeliverIT.Models.Users
                 string phoneNumber,
                 IAddress address,
                 GenderType gender
+                
             )
             : base(username, password, firstName, lastName, email, age, phoneNumber, address, gender, UserRole.Operator)
         {
@@ -30,7 +31,7 @@ namespace DeliverIT.Models.Users
         }
 
         public int Id { get; protected set; }
-        public ClientType ClientType { get => clientType; set => clientType = value; }
+        public ClientType ClientType { get => this.clientType; set => this.clientType = value; }
 
         public void ShowAllNotPendingOrders(IList<IOrder> orders)
         {

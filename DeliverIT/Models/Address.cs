@@ -1,4 +1,4 @@
-﻿using DeliverIT.Common;
+﻿using Bytes2you.Validation;
 using DeliverIT.Contracts;
 
 namespace DeliverIT.Models
@@ -27,7 +27,7 @@ namespace DeliverIT.Models
             get => country;
             set
             {
-                Validator.ValidateNotNull(value);
+                Guard.WhenArgument(value, "country null").IsNull().Throw();
                 this.country = value;
             }
         }
@@ -37,7 +37,7 @@ namespace DeliverIT.Models
             get => streetName;
             set
             {
-                Validator.ValidateNotNull(value);
+                Guard.WhenArgument(value, "street name null").IsNull().Throw();
                 this.streetName = value;
             }
         }
@@ -46,7 +46,7 @@ namespace DeliverIT.Models
             get => city;
             set
             {
-                Validator.ValidateNotNull(value);
+                Guard.WhenArgument(value, "city null").IsNull().Throw();
                 this.city = value;
             }
         }
@@ -55,7 +55,7 @@ namespace DeliverIT.Models
             get => streetNumber;
             set
             {
-                Validator.ValidateNotNull(value);
+                Guard.WhenArgument(value, "street number null").IsNull().Throw();
                 this.streetNumber = value;
             }
         }

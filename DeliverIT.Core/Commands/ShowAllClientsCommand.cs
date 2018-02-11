@@ -7,17 +7,13 @@ namespace DeliverIT.Core.Commands
     public class ShowAllClientsCommand : ICommand
     {
         private readonly IDataStore dataStore;
-        private readonly IWriter writer;
 
-        public ShowAllClientsCommand(
-            IDataStore dataStore, 
-            IWriter writer)
+        public ShowAllClientsCommand(IDataStore dataStore)
         {
             this.dataStore = dataStore;
-            this.writer = writer;
         }
 
-        public void Execute()
+        public string Execute()
         {
             StringBuilder sb = new StringBuilder();
             if (this.dataStore.Users.Count == 0)
@@ -34,7 +30,7 @@ namespace DeliverIT.Core.Commands
                 }
             }
 
-            this.writer.Write(sb.ToString());
+            return sb.ToString();
         }
     }
 }

@@ -34,7 +34,7 @@ namespace DeliverIT.Core.Commands
             this.createCommand = createCommand;
         }
 
-        public void Execute()
+        public string Execute()
         {
             var couriers = this.dataStore.Users
                .Where(u => u.Role == UserRole.Normal)
@@ -93,6 +93,9 @@ namespace DeliverIT.Core.Commands
             selectedCourier.OrdersList.Add(order);
             selectedReceiver.OrdersList.Add(order);
             selectedSender.OrdersList.Add(order);
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            return $"Successfully added order with delivery type {order.DeliveryType}.";
         }
 
         private DeliveryType AddDeliveryType(string deliveryType)

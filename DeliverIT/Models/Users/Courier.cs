@@ -34,9 +34,9 @@ namespace DeliverIT.Models.Users
 
         public int Id { get; protected set; }
 
-        public double AllowedVolume { get => allowedVolume; set => allowedVolume = value; }
+        public double AllowedVolume { get => this.allowedVolume; set => this.allowedVolume = value; }
 
-        public double AllowedWeight { get => allowedWeight; set => allowedWeight = value; }
+        public double AllowedWeight { get => this.allowedWeight; set => this.allowedWeight = value; }
 
         //method used for allowed volume and weight orders
         public virtual bool CanCarry()

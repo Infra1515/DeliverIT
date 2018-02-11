@@ -1,4 +1,5 @@
-﻿using DeliverIT.Common;
+﻿using Bytes2you.Validation;
+using DeliverIT.Common;
 
 namespace DeliverIT.Models
 {
@@ -10,13 +11,13 @@ namespace DeliverIT.Models
 
         public Dimensions(double x, double y, double z)
         {
-            Validator.ValidateNotPositive(x, Constants.NotPositiveNumber);
+            Guard.WhenArgument(x, "x is negative").IsLessThanOrEqual(0).Throw();
             this.x = x;
 
-            Validator.ValidateNotPositive(y, Constants.NotPositiveNumber);
+            Guard.WhenArgument(y, "y is negative").IsLessThanOrEqual(0).Throw();
             this.y = y;
 
-            Validator.ValidateNotPositive(z, Constants.NotPositiveNumber);
+            Guard.WhenArgument(z, "z is negative").IsLessThanOrEqual(0).Throw();
             this.z = z;
         }
 
