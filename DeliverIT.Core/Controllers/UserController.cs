@@ -9,7 +9,14 @@ using System.Threading.Tasks;
 
 namespace DeliverIT.Core.Controllers
 {
-    public class UserController
+    public class UserController : IUserController
     {
+        public IUser CurrentUser { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+        public IList<string> Permissions
+        {
+            get => throw new NotImplementedException();
+            set => throw new NotImplementedException();
+        }
     }
 }

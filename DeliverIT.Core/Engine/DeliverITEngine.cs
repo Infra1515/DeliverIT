@@ -1,8 +1,6 @@
 ﻿using System;
 using DeliverIT.Core.Contracts;
 using DeliverIT.Core.Utilities;
-using DeliverIT.Common;
-using DeliverIT.Core.Exceptions;
 using DeliverIT.Core.IOUtilities.Contracts;
 using DeliverIT.Core.Providers;
 using DeliverIT.Core.Configuration;
@@ -18,8 +16,13 @@ namespace DeliverIT.Core.Engine
         private readonly SeedDataStore seedDataStore;
         private AuthProvider authentication;
 
-        public DeliverITEngine(IDataStore dataStore, IWriter writer, IReader reader, ICommandsFactory commandsFactory, 
-            AuthProvider authentication, SeedDataStore seedDataStore)
+        public DeliverITEngine(
+            IDataStore dataStore, 
+            IWriter writer, 
+            IReader reader, 
+            ICommandsFactory commandsFactory, 
+            AuthProvider authentication, 
+            SeedDataStore seedDataStore)
         {
             this.dataStore = dataStore;
             this.writer = writer;
@@ -33,45 +36,49 @@ namespace DeliverIT.Core.Engine
         {
             this.seedDataStore.SeedObjects();
 
-            do
+            while(true)
             {
-                if (!this.authentication.IsLogged)
+                if (!this.authentication.IsUserLogged)
                 {
                     this.writer.WriteLine(LookupMenuText.LoginText);
 
-                    int.TryParse(Console.ReadLine(), out int userLoginChoice);
+                    int.TryParse(this.reader.ReadLine(), out int userLoginChoice);
                     bool isValidLoginChoice = Enum.IsDefined(typeof(LoginChoice), userLoginChoice);
 
-                    if (!isValidLoginChoice)
+                    if (isValidLoginChoice)
                     {
-                        throw new InvalidCredentialsException(Constants.InvalidCredentialsMessage);
+                        if ((LoginChoice)userLoginChoice == LoginChoice.Exit)
+                            break;
+
+                        this.writer.WriteLine("Username: ");
+                        string username = this.reader.ReadLine();
+
+                        this.writer.WriteLine("Password: ");
+                        string password = this.reader.ReadLine();
+
+                        this.authentication.Login(username, password);
                     }
-
-                    this.writer.WriteLine("Username: ");
-                    string username = this.reader.ReadLine();
-
-                    this.writer.WriteLine("Password: ");
-                    string password = this.reader.ReadLine();
-
-                    this.authentication.Login(username, password);
                 }
                 else
                 {
                     this.writer.WriteLine(LookupMenuText.MainMenuText);
 
-                    int.TryParse(Console.ReadLine(), out int userMainMenuChoice);
-                    var isValidMainMenuChoice = Enum.IsDefined(typeof(MainMenuChoice), userMainMenuChoice);
+                    int.TryParse(this.reader.ReadLine(), out int userMainMenuChoice);
+                    bool isValidMainMenuChoice = Enum.IsDefined(typeof(MainMenuChoice), userMainMenuChoice);
 
-                    if (!isValidMainMenuChoice)
+                    if (isValidMainMenuChoice)
                     {
-                        throw new InvalidMenuChoiceException(Constants.InvalidMenuChoiceMessage);
-                    }
+                        if ((MainMenuChoice)userMainMenuChoice == MainMenuChoice.Logout)
+                        {
+                            this.authentication.Logout();
+                            continue;
+                        }
 
-                    var command = this.commandsFactory.GetCommand((MainMenuChoice)userMainMenuChoice);
-                    command.Execute();
+                        var command = this.commandsFactory.GetCommand((MainMenuChoice)userMainMenuChoice);
+                        command.Execute();
+                    }
                 }
             }
-            while (true); 
         }
     }
 }

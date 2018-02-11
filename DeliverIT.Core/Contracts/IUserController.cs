@@ -5,7 +5,7 @@ namespace DeliverIT.Core.Contracts
 {
     public interface IUserController
     {
-        IUser User { get; set; }
+        IUser CurrentUser { get; set; }
 
         IList<string> Permissions { get; set; }
     }

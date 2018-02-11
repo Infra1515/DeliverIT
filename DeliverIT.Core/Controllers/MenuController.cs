@@ -9,6 +9,14 @@ namespace DeliverIT.Core.Controllers
 {
     public class MenuController
     {
-        public MenuState State { get; set; }
+        public MenuController()
+        {
+
+        }
+
+        public void Display()
+        {
+
+        }
     }
 }

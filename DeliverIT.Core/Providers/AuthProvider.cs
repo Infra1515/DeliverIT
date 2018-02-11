@@ -8,16 +8,16 @@ namespace DeliverIT.Core.Providers
     public class AuthProvider
     {
         private readonly IDataStore dataStore;
-        private bool isLogged;
+        private bool isUserLogged;
 
         public AuthProvider(IDataStore dataStore)
         {
             this.dataStore = dataStore;
         }
 
-        public bool IsLogged
+        public bool IsUserLogged
         {
-            get { return this.isLogged; }
+            get { return this.isUserLogged; }
             private set { }
         }
 
@@ -28,12 +28,17 @@ namespace DeliverIT.Core.Providers
 
             if (user != null && user.Password.Equals(password))
             {
-                this.isLogged = true;
+                this.isUserLogged = true;
             }
             else
             {
-                this.isLogged = false;
+                this.isUserLogged = false;
             }
+        }
+
+        public void Logout()
+        {
+            this.isUserLogged = false;
         }
     }
 }
