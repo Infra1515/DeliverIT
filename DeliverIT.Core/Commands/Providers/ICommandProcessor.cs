@@ -2,8 +2,8 @@
 
 namespace DeliverIT.Core.Commands.Providers
 {
-    public interface ICommandParser
+    public interface ICommandProcessor
     {
-        IList<string> Parse();
+        IList<string> ParametersToProcess { get; set; }
     }
 }

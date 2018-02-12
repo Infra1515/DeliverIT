@@ -6,8 +6,8 @@ using DeliverIT.Common;
 using DeliverIT.Common.Enums;
 using DeliverIT.Contracts;
 using DeliverIT.Core.Commands.CreateCommands.Contracts;
+using DeliverIT.Core.Commands.Providers;
 using DeliverIT.Core.Contracts;
-using DeliverIT.Core.Engine.Providers;
 using DeliverIT.Core.Factories.Contracts;
 using DeliverIT.Core.IOUtilities.Contracts;
 using DeliverIT.Data;
@@ -18,29 +18,23 @@ namespace DeliverIT.Core.Commands
     {
         private readonly IDataStore dataStore;
         private readonly IOrderFactory orderFactory;
-        private readonly IWriter writer;
-        private readonly IReader reader;
         private readonly ICreateProduct createCommand;
-        private readonly ICommandParser commandParser;
+        private readonly ICommandParser productInfoCommandParser;
 
         public AddOrderCommand(
             IDataStore dataStore,
             IOrderFactory orderFactory, 
-            IWriter writer, 
-            IReader reader, 
             ICreateProduct createCommand,
-            ICommandParser commandParser)
+            ICommandParser productInfoCommandParser)
         {
             this.dataStore = dataStore;
             this.orderFactory = orderFactory;
-            this.writer = writer;
-            this.reader = reader;
             this.createCommand = createCommand;
+            this.productInfoCommandParser = productInfoCommandParser;
         }
 
         public string Execute(IList<string> commandParameters)
         {
-
             string courier = commandParameters[0];
             string sender = commandParameters[1];
             string receiver = commandParameters[2];
@@ -67,7 +61,7 @@ namespace DeliverIT.Core.Commands
 
             int postalCode = selectedReceiver.Address.Country.CitysAndZips[selectedReceiver.Address.City];
 
-            var productInfo = this.commandParser.ProductInfoCommandParameters();
+            var productInfo = this.productInfoCommandParser.Parse();
             var product = this.createCommand.Create(productInfo);
 
             var order = this.orderFactory.CreateOrder(selectedCourier, selectedSender, selectedReceiver, deliveryType, sendDate, dueDate, OrderState.InProgress, product, postalCode);

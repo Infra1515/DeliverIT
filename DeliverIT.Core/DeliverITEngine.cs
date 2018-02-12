@@ -1,12 +1,13 @@
 ﻿using System;
+using DeliverIT.Core.Commands.Providers;
 using DeliverIT.Core.Contracts;
-using DeliverIT.Core.Utilities;
+using DeliverIT.Core.Factories.Contracts;
 using DeliverIT.Core.IOUtilities.Contracts;
 using DeliverIT.Core.Providers;
+using DeliverIT.Core.Utilities;
 using DeliverIT.Data;
-using DeliverIT.Core.Factories.Contracts;
 
-namespace DeliverIT.Core.Engine
+namespace DeliverIT.Core
 {
     public class DeliverITEngine : IEngine
     {
@@ -15,6 +16,8 @@ namespace DeliverIT.Core.Engine
         private readonly ICommandsFactory commandsFactory;
         private readonly IWriter writer;
         private readonly IUserContext userController;
+        private readonly ICommandProcessor commandProcessor;
+        private readonly ICommandParser commandParser;
         private AuthProvider authentication;
 
         public DeliverITEngine(
@@ -23,7 +26,9 @@ namespace DeliverIT.Core.Engine
             IReader reader,
             ICommandsFactory commandsFactory,
             AuthProvider authentication,
-            IUserContext userController)
+            IUserContext userController,
+            ICommandProcessor commandProcessor, 
+            ICommandParser commandParser)
         {
             this.dataStore = dataStore;
             this.writer = writer;
@@ -31,6 +36,8 @@ namespace DeliverIT.Core.Engine
             this.commandsFactory = commandsFactory;
             this.authentication = authentication;
             this.userController = userController;
+            this.commandProcessor = commandProcessor;
+            this.commandParser = commandParser;
         }
 
         public void Start()
@@ -73,9 +80,11 @@ namespace DeliverIT.Core.Engine
                             continue;
                         }
 
+                        // parse command
+                        //usermainchoice int -> resolve with it
+                        //var parser = 
                         var command = this.commandsFactory.GetCommand((MainMenuChoice)userMainMenuChoice);
-                        command.Execute()
-                        //command.Execute();
+                        command.Execute(this.commandProcessor.ParametersToProcess);
                     }
                 }
             }

@@ -3,8 +3,6 @@ using DeliverIT.Core.Commands;
 using DeliverIT.Core.Commands.CreateCommands;
 using DeliverIT.Core.Commands.CreateCommands.Contracts;
 using DeliverIT.Core.Contracts;
-using DeliverIT.Core.Engine;
-using DeliverIT.Core.Engine.Providers;
 using DeliverIT.Core.Factories;
 using DeliverIT.Core.IOUtilities;
 using DeliverIT.Core.IOUtilities.Contracts;
@@ -13,6 +11,8 @@ using DeliverIT.Core.Utilities;
 using DeliverIT.Data;
 using DeliverIT.Data.Configuration;
 using System.Reflection;
+using DeliverIT.Core.Commands.Parsers;
+using DeliverIT.Core.Commands.Providers;
 
 namespace DeliverIT.Core.Dependency
 {
@@ -37,7 +37,13 @@ namespace DeliverIT.Core.Dependency
             builder.RegisterType<AuthProvider>().AsSelf().SingleInstance();
             builder.RegisterType<SeedDataStore>().AsSelf().SingleInstance();
             builder.RegisterType<UserContext>().As<IUserContext>().SingleInstance();
-            builder.RegisterType<CommandParser>().As<ICommandParser>().SingleInstance();
+
+            builder.RegisterType<AddressInfoCommandParser>().As<ICommandParser>();
+            builder.RegisterType<CourierInfoCommandParser>().As<ICommandParser>();
+            builder.RegisterType<OrderInfoCommandParser>().As<ICommandParser>();
+            builder.RegisterType<ProductInfoCommandParser>().As<ICommandParser>();
+            builder.RegisterType<UserInfoCommandParser>().As<ICommandParser>();
+            //builder.RegisterType<CommandParser>().As<ICommandParser>().SingleInstance();
 
             builder.RegisterAssemblyTypes(Assembly.GetAssembly(typeof(IEngine)))
                 .Where(x => x.Namespace.Contains("Factories"))

@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using DeliverIT.Common;
 using DeliverIT.Common.Enums;
+using DeliverIT.Core.Commands.Providers;
 using DeliverIT.Core.Contracts;
-using DeliverIT.Core.IOUtilities.Contracts;
 using DeliverIT.Data;
 using DeliverIT.Core.Factories;
-using DeliverIT.Core.Engine.Providers;
 
 namespace DeliverIT.Core.Commands
 {
@@ -16,27 +14,21 @@ namespace DeliverIT.Core.Commands
     {
         private readonly IUserFactory userFactory;
         private readonly IDataStore dataStore;
-        private readonly IWriter writer;
-        private readonly IReader reader;
         private readonly ICreateAddress createAddress;
-        private readonly ICommandParser commandParser;
+        private readonly ICommandParser addressInfoCommandParser;
 
         public AddClientCommand(
             IDataStore dataStore, 
             IUserFactory userFactory,
-            IWriter writer, 
-            IReader reader,
             ICreateAddress createAddress,
-            ICommandParser commandParser)
+            ICommandParser addressInfoCommandParser)
         {
             this.dataStore = dataStore;
             this.userFactory = userFactory;
-            this.writer = writer;
-            this.reader = reader;
             this.createAddress = createAddress;
-            this.commandParser = commandParser;
-
+            this.addressInfoCommandParser = addressInfoCommandParser;
         }
+
         public string Execute(IList<string> commandParameters)
         {
             var username = commandParameters[0];
@@ -48,7 +40,7 @@ namespace DeliverIT.Core.Commands
             var age = int.Parse(commandParameters[6]);
             var gender = (GenderType)Enum.Parse(typeof(GenderType),
                 commandParameters[7]);
-            var userAddressInfo = this.commandParser.AddressInfoParseCommandParameters();
+            var userAddressInfo = this.addressInfoCommandParser.Parse();
             var userAddress = this.createAddress.Create(userAddressInfo);
 
             var isUserPresent = this.dataStore.Users
