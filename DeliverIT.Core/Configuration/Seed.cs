@@ -5,7 +5,7 @@ using DeliverIT.Core.Contracts;
 using DeliverIT.Core.Factories;
 using DeliverIT.Core.Factories.Contracts;
 
-namespace DeliverIT.Core.Demo
+namespace DeliverIT.Core.Configuration
 {
     public class Seed
     {
