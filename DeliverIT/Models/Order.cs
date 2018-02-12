@@ -53,7 +53,6 @@ namespace DeliverIT.Models
             }
             set
             {
-                Validator.ValidateSendDate(value, Constants.InvalidSendDate);
                 this.sendDate = value;
             }
         }
@@ -66,7 +65,6 @@ namespace DeliverIT.Models
             }
             set
             {
-                Validator.ValidateSendDate(value, Constants.InvalidDueDate);
                 this.dueDate = value;
             }
         }

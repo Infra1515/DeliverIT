@@ -33,8 +33,8 @@ namespace DeliverIT.Models.Users.Abstract
             get { return this.age; }
             private set
             {
-                Validator.ValidateYears(value, Constants.MinAge, Constants.MaxAge, Constants.InvalidYears);
-
+                Guard.WhenArgument(value, "years").IsLessThan(Constants.MinAge).Throw();
+                Guard.WhenArgument(value, "years").IsGreaterThan(Constants.MaxAge);
                 this.age = value;
             }
         }

@@ -7,6 +7,7 @@ namespace DeliverIT.Models
     public class Product : IProduct
     {
         private static int id = 0;
+        private double volume;
 
         public Product(
             double x, 
@@ -34,7 +35,15 @@ namespace DeliverIT.Models
 
         public ProductType ProductType { get; set; }
 
-        public double Volume { get; set; }
+        public double Volume
+        {
+            get { return this.volume; }
+            set
+            {
+                Guard.WhenArgument(value, "volume").IsLessThanOrEqual(0).Throw();
+                this.volume = value;
+            }
+        }
 
         public int Id { get => id; }
 

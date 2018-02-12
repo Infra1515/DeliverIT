@@ -1,5 +1,4 @@
 ﻿using System;
-using DeliverIT.Common;
 using DeliverIT.Contracts;
 using DeliverIT.Core.Factories.Contracts;
 using DeliverIT.Core.IOUtilities.Contracts;
@@ -37,7 +36,6 @@ namespace DeliverIT.Core.Commands.CreateCommands
             string city = reader.ReadLine();
 
             Console.ForegroundColor = ConsoleColor.Red;
-            Validator.ValidateCityInCountry(city, country, Constants.NoSuchCity);
             Console.ResetColor();
 
             writer.Write("Street name: ");
