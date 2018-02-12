@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using DeliverIT.Contracts;
 
-namespace DeliverIT.Core.Contracts
+namespace DeliverIT.Data
 {
     public interface IDataStore
     {

@@ -3,7 +3,7 @@ using DeliverIT.Common;
 using DeliverIT.Common.Enums;
 using DeliverIT.Core.Contracts;
 
-namespace DeliverIT.Core.Configuration
+namespace DeliverIT.Data.Configuration
 {
     public class SeedDataStore
     {

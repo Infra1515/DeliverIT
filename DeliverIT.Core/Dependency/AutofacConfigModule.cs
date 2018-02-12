@@ -1,7 +1,6 @@
 ﻿using Autofac;
 using DeliverIT.Core.Commands;
 using DeliverIT.Core.Commands.CreateCommands.Contracts;
-using DeliverIT.Core.Configuration;
 using DeliverIT.Core.Contracts;
 using DeliverIT.Core.Engine;
 using DeliverIT.Core.Factories;
@@ -9,6 +8,8 @@ using DeliverIT.Core.IOUtilities;
 using DeliverIT.Core.IOUtilities.Contracts;
 using DeliverIT.Core.Providers;
 using DeliverIT.Core.Utilities;
+using DeliverIT.Data;
+using DeliverIT.Data.Configuration;
 
 namespace DeliverIT.Core.Dependency
 {
@@ -33,8 +34,9 @@ namespace DeliverIT.Core.Dependency
             builder.RegisterType<DeliverITFactory>().As<IDeliverITFactory>().SingleInstance();
             builder.RegisterType<ConsoleReader>().As<IReader>().SingleInstance();
             builder.RegisterType<ConsoleWriter>().As<IWriter>().SingleInstance();
-            builder.RegisterType<AuthProvider>().AsSelf();
+            builder.RegisterType<AuthProvider>().AsSelf().SingleInstance();
             builder.RegisterType<SeedDataStore>().AsSelf().SingleInstance();
+            builder.RegisterType<UserContext>().As<IUserContext>().SingleInstance();
         }
     }
 }

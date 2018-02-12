@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8EF456EE-4A8F-4DD4-8F34-C58748850FDF}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>DeliverIT.Program</RootNamespace>
-    <AssemblyName>DeliverIT.Program</AssemblyName>
+    <ProjectGuid>{B08256B2-9C5E-4292-A6C5-B1A2C306D4CC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DeliverIT.Menu</RootNamespace>
+    <AssemblyName>DeliverIT.Menu</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -32,15 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Autofac, Version=4.6.2.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <HintPath>..\packages\Autofac.4.6.2\lib\net45\Autofac.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.IO.Compression.FileSystem" />
-    <Reference Include="System.Numerics" />
-    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -49,17 +40,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DeliverITProgram.cs" />
+    <Compile Include="IOUtilities\ConsoleReader.cs" />
+    <Compile Include="IOUtilities\ConsoleWriter.cs" />
+    <Compile Include="IOUtilities\Contracts\IReader.cs" />
+    <Compile Include="IOUtilities\Contracts\IWriter.cs" />
+    <Compile Include="MenuUtilities\LoginChoice.cs" />
+    <Compile Include="MenuUtilities\LookupMenuText.cs" />
+    <Compile Include="MenuUtilities\LookupRoles.cs" />
+    <Compile Include="MenuUtilities\MainMenuChoice.cs" />
+    <Compile Include="MenuUtilities\MenuState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DeliverIT.Core\DeliverIT.Core.csproj">
-      <Project>{8F5E7B0C-3994-40CF-99EC-EE9ABBB940A4}</Project>
-      <Name>DeliverIT.Core</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

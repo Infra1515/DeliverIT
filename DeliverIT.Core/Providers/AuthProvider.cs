@@ -1,6 +1,5 @@
 ﻿using DeliverIT.Contracts;
-using DeliverIT.Core.Contracts;
-using System;
+using DeliverIT.Data;
 using System.Linq;
 
 namespace DeliverIT.Core.Providers
@@ -8,17 +7,16 @@ namespace DeliverIT.Core.Providers
     public class AuthProvider
     {
         private readonly IDataStore dataStore;
-        private bool isUserLogged;
+        private IUser loggedUser;
 
         public AuthProvider(IDataStore dataStore)
         {
             this.dataStore = dataStore;
         }
 
-        public bool IsUserLogged
+        public IUser GetCurrentUser()
         {
-            get { return this.isUserLogged; }
-            private set { }
+            return this.loggedUser;
         }
 
         public void Login(string username, string password)
@@ -28,17 +26,17 @@ namespace DeliverIT.Core.Providers
 
             if (user != null && user.Password.Equals(password))
             {
-                this.isUserLogged = true;
+                this.loggedUser = user;
             }
             else
             {
-                this.isUserLogged = false;
+                this.loggedUser = null;
             }
         }
 
         public void Logout()
         {
-            this.isUserLogged = false;
+            this.loggedUser = null;
         }
     }
 }

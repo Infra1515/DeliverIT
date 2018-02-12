@@ -3,7 +3,8 @@ using DeliverIT.Core.Contracts;
 using DeliverIT.Core.Utilities;
 using DeliverIT.Core.IOUtilities.Contracts;
 using DeliverIT.Core.Providers;
-using DeliverIT.Core.Configuration;
+using DeliverIT.Data;
+using DeliverIT.Data.Configuration;
 
 namespace DeliverIT.Core.Engine
 {
@@ -13,32 +14,30 @@ namespace DeliverIT.Core.Engine
         private readonly IReader reader;
         private readonly ICommandsFactory commandsFactory;
         private readonly IWriter writer;
-        private readonly SeedDataStore seedDataStore;
+        private readonly IUserContext userController;
         private AuthProvider authentication;
 
         public DeliverITEngine(
-            IDataStore dataStore, 
-            IWriter writer, 
-            IReader reader, 
-            ICommandsFactory commandsFactory, 
-            AuthProvider authentication, 
-            SeedDataStore seedDataStore)
+            IDataStore dataStore,
+            IWriter writer,
+            IReader reader,
+            ICommandsFactory commandsFactory,
+            AuthProvider authentication,
+            IUserContext userController)
         {
             this.dataStore = dataStore;
             this.writer = writer;
             this.reader = reader;
             this.commandsFactory = commandsFactory;
             this.authentication = authentication;
-            this.seedDataStore = seedDataStore;
+            this.userController = userController;
         }
 
         public void Start()
         {
-            this.seedDataStore.SeedObjects();
-
             while(true)
             {
-                if (!this.authentication.IsUserLogged)
+                if (this.userController.CurrentUser == null)
                 {
                     this.writer.WriteLine(LookupMenuText.LoginText);
 

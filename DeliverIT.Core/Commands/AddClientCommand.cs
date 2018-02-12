@@ -3,8 +3,8 @@ using System.Linq;
 using DeliverIT.Common;
 using DeliverIT.Common.Enums;
 using DeliverIT.Core.Contracts;
-using DeliverIT.Core.Factories;
 using DeliverIT.Core.IOUtilities.Contracts;
+using DeliverIT.Data;
 
 namespace DeliverIT.Core.Commands
 {
