@@ -4,7 +4,6 @@ using DeliverIT.Core.Utilities;
 using DeliverIT.Core.IOUtilities.Contracts;
 using DeliverIT.Core.Providers;
 using DeliverIT.Data;
-using DeliverIT.Data.Configuration;
 
 namespace DeliverIT.Core.Engine
 {
