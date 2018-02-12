@@ -59,7 +59,7 @@ namespace DeliverIT.Core.Engine
                     this.writer.WriteLine(LookupMenuText.MainMenuText);
                     commandNumber = this.reader.ReadLine();
                     var command = this.commandsFactory.GetCommand(commandNumber);
-                    this.writer.WriteLine(command.Execute());
+                    //this.writer.WriteLine(command.Execute());
                     
                 }
                 catch (Autofac.Core.Registration.ComponentNotRegisteredException)

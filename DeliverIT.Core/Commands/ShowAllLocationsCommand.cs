@@ -12,7 +12,7 @@ namespace DeliverIT.Core.Commands
 {
     public class ShowAllLocationsCommand : ICommand
     {
-        public string Execute()
+        public string Execute(IList<string> commandParameters)
         {
             StringBuilder strBuilder = new StringBuilder();
             strBuilder.AppendLine("--- Delivery locations ---");

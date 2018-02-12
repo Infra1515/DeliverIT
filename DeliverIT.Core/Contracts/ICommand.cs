@@ -1,7 +1,9 @@
-﻿namespace DeliverIT.Core.Contracts
+﻿using System.Collections.Generic;
+
+namespace DeliverIT.Core.Contracts
 {
     public interface ICommand
     {
-        string Execute();
+        string Execute(IList<string> commandParameters);
     }
 }
