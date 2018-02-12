@@ -41,6 +41,7 @@ namespace DeliverIT.Models
                 this.streetName = value;
             }
         }
+
         public string City
         {
             get => city;
@@ -50,6 +51,7 @@ namespace DeliverIT.Models
                 this.city = value;
             }
         }
+
         public string StreetNumber
         {
             get => streetNumber;

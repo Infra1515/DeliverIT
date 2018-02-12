@@ -81,8 +81,11 @@
     <Compile Include="Core\Commands\CreateCommands\CreateAddressTests\Create_Should.cs" />
     <Compile Include="Core\Commands\CreateCommands\CreateProductTests\Create_Should.cs" />
     <Compile Include="Core\EngineTests\Start_Should.cs" />
-    <Compile Include="Models\AddressTests\AddressTest.cs" />
-    <Compile Include="Models\DimensionsTests\DimensionsTest.cs" />
+    <Compile Include="Models\AddressTests\City_Should.cs" />
+    <Compile Include="Models\AddressTests\Country_Should.cs" />
+    <Compile Include="Models\AddressTests\StreetName_Should.cs" />
+    <Compile Include="Models\AddressTests\StreetNumber_Should.cs" />
+    <Compile Include="Models\DimensionsTests\Constructor_Should.cs" />
     <Compile Include="Models\OrderTests\OrderTest.cs" />
     <Compile Include="Models\UsersTests\UserTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
