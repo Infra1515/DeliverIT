@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Text;
 using DeliverIT.Common.Enums;
 using DeliverIT.Contracts;
 using DeliverIT.Models.Users.Abstract;
@@ -22,6 +22,7 @@ namespace DeliverIT.Models.Users
                 string phoneNumber,
                 IAddress address,
                 GenderType gender
+                
             )
             : base(username, password, firstName, lastName, email, age, phoneNumber, address, gender, UserRole.Operator)
         {
@@ -30,65 +31,80 @@ namespace DeliverIT.Models.Users
         }
 
         public int Id { get; protected set; }
-        public ClientType ClientType { get => clientType; set => clientType = value; }
+        public ClientType ClientType { get => this.clientType; set => this.clientType = value; }
 
-        public void ShowAllNotPendingOrders(IList<IOrder> orders)
+        public string ShowAllNotPendingOrders(IList<IOrder> orders)
         {
+            StringBuilder sb = new StringBuilder();
             foreach(var order in this.OrdersList)
             {
                 if(order.OrderState == OrderState.Delivered)
                 {
-                    Console.WriteLine(order.ToString());
+                    sb.AppendLine(order.ToString());
                 }
             }
+
+            return sb.ToString();
         }
 
-        public void ShowReceivedOrders(IList<IOrder> orders)
+        public string ShowReceivedOrders(IList<IOrder> orders)
         {
+            StringBuilder sb = new StringBuilder();
             foreach(var order in this.OrdersList)
             {
                 if(order.OrderState == OrderState.Delivered && 
                     order.Receiver == this)
                 {
-                    Console.WriteLine(order.ToString());
+                    sb.AppendLine(order.ToString());
                 }
             }
+
+            return sb.ToString();
         }
 
-        public void ShowSentOrders(IList<IOrder> orders)
+        public string ShowSentOrders(IList<IOrder> orders)
         {
+            StringBuilder sb = new StringBuilder();
             foreach (var order in this.OrdersList)
             {
                 if (order.OrderState == OrderState.Delivered &&
                     order.Sender == this)
                 {
-                    Console.WriteLine(order.ToString());
+                    sb.AppendLine(order.ToString());
                 }
             }
+
+            return sb.ToString();
         }
 
-        public void ShowExpectedSendOrders(IList<IOrder> orders)
+        public string ShowExpectedSendOrders(IList<IOrder> orders)
         {
+            StringBuilder sb = new StringBuilder();
             foreach (var order in this.OrdersList)
             {
                 if (order.OrderState == OrderState.NotDelivered &&
                     order.Sender == this)
                 {
-                    Console.WriteLine(order.ToString());
+                    sb.AppendLine(order.ToString());
                 }
             }
+
+            return sb.ToString();
         }
 
-        public void ShowExpectedReceiveOrders(IList<IOrder> orders)
+        public string ShowExpectedReceiveOrders(IList<IOrder> orders)
         {
+            StringBuilder sb = new StringBuilder();
             foreach (var order in this.OrdersList)
             {
                 if (order.OrderState == OrderState.NotDelivered &&
                     order.Receiver == this)
                 {
-                    Console.WriteLine(order.ToString());
+                    sb.AppendLine(order.ToString());
                 }
             }
+
+            return sb.ToString();
         }
 
         public override string ToString()

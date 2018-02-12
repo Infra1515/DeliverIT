@@ -1,11 +1,12 @@
 ﻿using System;
 using DeliverIT.Common.Enums;
 using DeliverIT.Contracts;
+using DeliverIT.Core.Factories.Contracts;
 using DeliverIT.Models.Countries;
 
 namespace DeliverIT.Core.Factories
 {
-    public class CountryFactory  // : ICountryFactory
+    public class CountryFactory : ICountryFactory
     {
         public ICountry CreateCountry(string countryName)
         {

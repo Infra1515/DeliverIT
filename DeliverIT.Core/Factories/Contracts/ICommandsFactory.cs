@@ -1,6 +1,6 @@
-﻿using DeliverIT.Core.Utilities;
+﻿using DeliverIT.Core.Contracts;
 
-namespace DeliverIT.Core.Contracts
+namespace DeliverIT.Core.Factories.Contracts
 {
     public interface ICommandsFactory
     {

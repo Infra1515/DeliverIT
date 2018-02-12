@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Bytes2you.Validation;
 using DeliverIT.Contracts;
 
 namespace DeliverIT.Data
@@ -20,13 +21,13 @@ namespace DeliverIT.Data
 
         public void AddUser(IUser user)
         {
-            // todo validations ? 
+            Guard.WhenArgument(user, "add user null").IsNull().Throw();
             this.users.Add(user);
         }
 
         public void AddOrder(IOrder order)
         {
-            // todo validations ?
+            Guard.WhenArgument(order, "add order null").IsNull().Throw();
             this.orders.Add(order);
         }
     }

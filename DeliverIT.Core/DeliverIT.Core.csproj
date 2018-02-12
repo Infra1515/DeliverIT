@@ -38,6 +38,9 @@
     <Reference Include="Autofac, Version=4.6.2.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <HintPath>..\packages\Autofac.4.6.2\lib\net45\Autofac.dll</HintPath>
     </Reference>
+    <Reference Include="Bytes2you.Validation, Version=2.0.0.0, Culture=neutral, PublicKeyToken=a7d501dd757e0442, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bytes2you.Validation.2.0.0.0\lib\portable-win+net40+sl40+wp+Xbox40\Bytes2you.Validation.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -64,7 +67,12 @@
     <Compile Include="Commands\ShowAllOrdersCommand.cs" />
     <Compile Include="Configuration\SeedDataStore.cs" />
     <Compile Include="Contracts\ICommand.cs" />
-    <Compile Include="Contracts\ICommandsFactory.cs" />
+    <Compile Include="Commands\Providers\CommandParser.cs" />
+    <Compile Include="Commands\Providers\ICommandParser.cs" />
+    <Compile Include="Factories\AddressFactory.cs" />
+    <Compile Include="Factories\Contracts\IAddressFactory.cs" />
+    <Compile Include="Factories\Contracts\ICommandsFactory.cs" />
+    <Compile Include="Contracts\IDataStore.cs" />
     <Compile Include="Contracts\IEngine.cs" />
     <Compile Include="Contracts\IUserContext.cs" />
     <Compile Include="Providers\UserContext.cs" />
@@ -73,11 +81,20 @@
     <Compile Include="Exceptions\InvalidCredentialsException.cs" />
     <Compile Include="Exceptions\InvalidMenuChoiceException.cs" />
     <Compile Include="Factories\CommandsFactory.cs" />
+    <Compile Include="Factories\Contracts\ICountryFactory.cs" />
+    <Compile Include="Factories\Contracts\IOrderFactory.cs" />
     <Compile Include="Factories\CountryFactory.cs" />
-    <Compile Include="Factories\DeliverITFactory.cs" />
-    <Compile Include="Contracts\IDeliverITFactory.cs" />
-    <Compile Include="Contracts\IUserFactory.cs" />
+    <Compile Include="Factories\ProductFactory.cs" />
+    <Compile Include="Factories\Contracts\IProductFactory.cs" />
+    <Compile Include="Factories\Contracts\IUserFactory.cs" />
+    <Compile Include="Factories\OrderFactory.cs" />
     <Compile Include="Factories\UserFactory.cs" />
+    <Compile Include="Injection\AutofacConfig.cs" />
+    <Compile Include="IOUtilities\ConsoleReader.cs" />
+    <Compile Include="IOUtilities\ConsoleWriter.cs" />
+    <Compile Include="IOUtilities\Contracts\IReader.cs" />
+    <Compile Include="IOUtilities\Contracts\IWriter.cs" />
+    <Compile Include="MenuUtilities\LookupRoles.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\AuthProvider.cs" />
   </ItemGroup>
@@ -99,5 +116,6 @@
       <Name>DeliverIT.Data</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

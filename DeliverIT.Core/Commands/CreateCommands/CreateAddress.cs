@@ -1,53 +1,61 @@
 ﻿using System;
+using System.Collections.Generic;
 using DeliverIT.Common;
 using DeliverIT.Contracts;
-using DeliverIT.Core.Factories;
+using DeliverIT.Core.Factories.Contracts;
 using DeliverIT.Core.IOUtilities.Contracts;
 using DeliverIT.Core.Contracts;
 
-namespace DeliverIT.Core.Commands
+namespace DeliverIT.Core.Commands.CreateCommands
 {
     public class CreateAddress : ICreateAddress
     {
         private readonly IWriter writer;
         private readonly IReader reader;
-        private readonly CountryFactory factory;
-        private readonly IDeliverITFactory deliverItFactory;
+        private readonly IAddressFactory addressFactory;
+        private readonly ICountryFactory countryFactory;
 
         public CreateAddress(
             IWriter writer, 
             IReader reader, 
-            CountryFactory factory, 
-            IDeliverITFactory deliverItFactory)
+            IAddressFactory deliverItFactory, 
+            ICountryFactory countryFactory)
         {
             this.writer = writer;
             this.reader = reader;
-            this.factory = factory;
-            this.deliverItFactory = deliverItFactory;
+            this.addressFactory = deliverItFactory;
+            this.countryFactory = countryFactory;
         }
         
-        public IAddress Create()
+        public IAddress Create(IList<string> commandParameters)
         {
-            writer.WriteLine("--- Address ---");
-            writer.Write("Country: ");
-            string countryString = reader.ReadLine();
+            //writer.WriteLine("--- Address ---");
+            //writer.Write("Country: ");
+            //string countryString = reader.ReadLine();
 
-            ICountry country = factory.CreateCountry(countryString);
+            //ICountry country = this.countryFactory.CreateCountry(countryString);
 
-            writer.Write("City: ");
-            string city = reader.ReadLine();
+            //writer.Write("City: ");
+            //string city = reader.ReadLine();
 
-            Console.ForegroundColor = ConsoleColor.Red;
-            Validator.ValidateCityInCountry(city, country, Constants.NoSuchCity);
-            Console.ResetColor();
+            //Console.ForegroundColor = ConsoleColor.Red;
+            //Validator.ValidateCityInCountry(city, country, Constants.NoSuchCity);
+            //Console.ResetColor();
 
-            writer.Write("Street name: ");
-            string streetName = reader.ReadLine();
+            //writer.Write("Street name: ");
+            //string streetName = reader.ReadLine();
 
-            writer.Write("Street number: ");
-            string streetNumber = reader.ReadLine();
+            //writer.Write("Street number: ");
+            //string streetNumber = reader.ReadLine();
 
-            var userAddress = this.deliverItFactory.CreateAddress(country, streetName, streetNumber, city);
+            var countryAsString = commandParameters[0];
+            var cityAsString = commandParameters[1];
+            var streetNameAsString = commandParameters[2];
+            var streetNumberAsString = commandParameters[3];
+
+            var country = this.countryFactory.CreateCountry(countryAsString);
+
+            var userAddress = this.addressFactory.CreateAddress(country, streetNameAsString, streetNumberAsString, cityAsString);
 
             return userAddress;
         }

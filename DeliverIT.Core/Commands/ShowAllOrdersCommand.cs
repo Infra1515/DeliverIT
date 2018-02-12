@@ -14,7 +14,7 @@ namespace DeliverIT.Core.Commands
             this.dataStore = dataStore;
         }
 
-        public void Execute()
+        public string Execute(IList<string> commandParameters)
         {
             var sb = new StringBuilder();
             if (this.dataStore.Orders.Any())
@@ -29,8 +29,7 @@ namespace DeliverIT.Core.Commands
                 sb.AppendLine("No orders placed yet!");
             }
 
-            // todo fix returns
-            //return sb.ToString();
+            return sb.ToString();
         }
     }
 }

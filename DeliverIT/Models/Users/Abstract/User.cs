@@ -1,4 +1,5 @@
-﻿using DeliverIT.Common;
+﻿using Bytes2you.Validation;
+using DeliverIT.Common;
 using DeliverIT.Common.Enums;
 using DeliverIT.Contracts;
 
@@ -27,9 +28,9 @@ namespace DeliverIT.Models.Users.Abstract
             get { return this.username; }
             private set
             {
-                Validator.ValidateUserInfo(value, Constants.MinNameLength,
-                    Constants.MaxNameLength, Constants.InvalidName);
-
+                Guard.WhenArgument(value, "username").IsNull().Throw();
+                Guard.WhenArgument(value.Length, "length").IsLessThanOrEqual(Constants.MinNameLength).IsGreaterThanOrEqual(Constants.MaxNameLength).Throw();
+                
                 this.username = value;
             }
         }
@@ -39,7 +40,7 @@ namespace DeliverIT.Models.Users.Abstract
             get { return this.password; }
             private set
             {
-                Validator.ValidateNotNull(value);
+                Guard.WhenArgument(value, "password null").IsNull().Throw();
 
                 this.password = value;
             }
@@ -50,8 +51,8 @@ namespace DeliverIT.Models.Users.Abstract
             get { return this.firstName; }
             protected set
             {
-                Validator.ValidateUserInfo(value, Constants.MinNameLength,
-                    Constants.MaxNameLength, Constants.InvalidName);
+                Guard.WhenArgument(value, "firstName").IsNull().Throw();
+                Guard.WhenArgument(value.Length, "length").IsLessThanOrEqual(Constants.MinNameLength).IsGreaterThanOrEqual(Constants.MaxNameLength).Throw();
 
                 this.firstName = value;
             }
@@ -62,8 +63,8 @@ namespace DeliverIT.Models.Users.Abstract
             get { return this.lastName; }
             protected set
             {
-                Validator.ValidateUserInfo(value, Constants.MinNameLength,
-                    Constants.MaxNameLength, Constants.InvalidName);
+                Guard.WhenArgument(value, "lastName").IsNull().Throw();
+                Guard.WhenArgument(value.Length, "length").IsLessThanOrEqual(Constants.MinNameLength).IsGreaterThanOrEqual(Constants.MaxNameLength).Throw();
 
                 this.lastName = value;
             }
@@ -76,7 +77,7 @@ namespace DeliverIT.Models.Users.Abstract
             protected set
             {
 
-                Validator.ValidateEmail(value);
+                Guard.WhenArgument(value, "email null").IsNull().Throw();
 
                 this.email = value;
             }

@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Collections.Generic;
+using System.Text;
 using DeliverIT.Core.Contracts;
 using DeliverIT.Data;
 
@@ -13,12 +14,13 @@ namespace DeliverIT.Core.Commands
             this.dataStore = dataStore;
         }
 
-        public void Execute()
+        public string Execute(IList<string> commandParametes)
         {
             StringBuilder sb = new StringBuilder();
             if (this.dataStore.Users.Count == 0)
             {
                 sb.AppendLine("No clients registered!");
+                sb.AppendLine();
             }
             else
             {
@@ -29,9 +31,7 @@ namespace DeliverIT.Core.Commands
                 }
             }
 
-            // todo fix returns 
-
-            //return sb.ToString();
+            return sb.ToString();
         }
     }
 }

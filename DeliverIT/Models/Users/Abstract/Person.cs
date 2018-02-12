@@ -1,8 +1,9 @@
 ﻿using DeliverIT.Common;
 using DeliverIT.Common.Enums;
 using DeliverIT.Contracts;
-using System;
 using System.Collections.Generic;
+using System.Text;
+using Bytes2you.Validation;
 
 namespace DeliverIT.Models.Users.Abstract
 {
@@ -32,8 +33,8 @@ namespace DeliverIT.Models.Users.Abstract
             get { return this.age; }
             private set
             {
-                Validator.ValidateYears(value, Constants.MinAge, Constants.MaxAge, Constants.InvalidYears);
-
+                Guard.WhenArgument(value, "years").IsLessThan(Constants.MinAge).Throw();
+                Guard.WhenArgument(value, "years").IsGreaterThan(Constants.MaxAge);
                 this.age = value;
             }
         }
@@ -44,7 +45,7 @@ namespace DeliverIT.Models.Users.Abstract
             private set
             {
 
-                Validator.ValidatePhoneNumber(value);
+                Guard.WhenArgument(value, "phone number null").IsNull().Throw();
                 this.phoneNumber = value;
             }
         }
@@ -57,7 +58,7 @@ namespace DeliverIT.Models.Users.Abstract
             }
             private set
             {
-                Validator.ValidateNotNull(value);
+                Guard.WhenArgument(value, "address null").IsNull().Throw();
                 this.address = value;
             }
         }
@@ -70,7 +71,6 @@ namespace DeliverIT.Models.Users.Abstract
             }
             private set
             {
-                Validator.ValidateNotNull(value);
                 this.gender = value;
             }
         }
@@ -90,15 +90,18 @@ namespace DeliverIT.Models.Users.Abstract
             this.ordersList.Remove(order);
         }
 
-        public void DisplayOrderList()
+        public string DisplayOrderList()
         {
-            Console.WriteLine($"Total orders for {this.FirstName} {this.LastName}");
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine($"Total orders for {this.FirstName} {this.LastName}");
             foreach (var order in OrdersList)
             {
-                Console.WriteLine("--------------");
-                Console.WriteLine(order.ToString());
-                Console.WriteLine("---------------");
+                sb.AppendLine("--------------");
+                sb.AppendLine(order.ToString());
+                sb.AppendLine("---------------");
             }
+
+            return sb.ToString();
         }
 
         public override string ToString()

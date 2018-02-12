@@ -1,4 +1,5 @@
-﻿using DeliverIT.Common.Enums;
+﻿using Bytes2you.Validation;
+using DeliverIT.Common.Enums;
 using DeliverIT.Contracts;
 
 namespace DeliverIT.Models
@@ -6,6 +7,7 @@ namespace DeliverIT.Models
     public class Product : IProduct
     {
         private static int id = 0;
+        private double volume;
 
         public Product(
             double x, 
@@ -15,6 +17,8 @@ namespace DeliverIT.Models
             double weight, 
             ProductType productType)
         {
+            Guard.WhenArgument(weight, "weight not negative").IsLessThanOrEqual(0).Throw();
+
             id++;
             this.Dimensions = new Dimensions(x, y, z);
             this.Volume = this.Dimensions.CalculateVolume();
@@ -31,7 +35,15 @@ namespace DeliverIT.Models
 
         public ProductType ProductType { get; set; }
 
-        public double Volume { get; set; }
+        public double Volume
+        {
+            get { return this.volume; }
+            set
+            {
+                Guard.WhenArgument(value, "volume").IsLessThanOrEqual(0).Throw();
+                this.volume = value;
+            }
+        }
 
         public int Id { get => id; }
 

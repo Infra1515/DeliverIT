@@ -35,6 +35,7 @@ namespace DeliverIT.Models
             this.postalCode = postalCode;
             this.DeliveryType = deliveryType;
         }
+
         public int Id { get; protected set; }
         public ICourier Courier { get; set; }
         public IClient Sender { get; set; }
@@ -52,7 +53,6 @@ namespace DeliverIT.Models
             }
             set
             {
-                Validator.ValidateSendDate(value, Constants.InvalidSendDate);
                 this.sendDate = value;
             }
         }
@@ -65,7 +65,6 @@ namespace DeliverIT.Models
             }
             set
             {
-                Validator.ValidateSendDate(value, Constants.InvalidDueDate);
                 this.dueDate = value;
             }
         }
