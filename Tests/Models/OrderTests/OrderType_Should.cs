@@ -2,13 +2,13 @@
 using DeliverIT.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace DeliverIT.Tests.Models
+namespace Tests.Models.OrderTests
 {
     [TestClass]
-    public class OrderTest
+    public class OrderType_Should
     {
         [TestMethod]
-        public void Order_Type_Should_Implement_IOrder_Interface()
+        public void ImplementIOrderInterface()
         {
             var type = typeof(Order);
             var isAssignable = typeof(IOrder).IsAssignableFrom(type);

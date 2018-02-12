@@ -1,7 +1,7 @@
 ﻿using System;
+using DeliverIT.Core.Configuration;
 using DeliverIT.Core.Contracts;
 using DeliverIT.Core.Utilities;
-using DeliverIT.Core.Demo;
 using DeliverIT.Core.IOUtilities.Contracts;
 using DeliverIT.Core.Factories;
 using DeliverIT.Core.Factories.Contracts;

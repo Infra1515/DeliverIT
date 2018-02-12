@@ -61,7 +61,6 @@
     <Compile Include="Common\Enums\OrderState.cs" />
     <Compile Include="Common\Enums\ProductType.cs" />
     <Compile Include="Common\Enums\UserRole.cs" />
-    <Compile Include="Common\Validator.cs" />
     <Compile Include="Contracts\IPerson.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Contracts\IAddress.cs" />
