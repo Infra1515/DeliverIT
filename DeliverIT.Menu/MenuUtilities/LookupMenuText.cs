@@ -16,7 +16,7 @@
 
         public static readonly string LoginText =
             "-----> Awesome DeliverIT Application <-----\n\n" +
-            "A. Login\n\n" +
-            "B. Exit\n";
+            "1. Login\n\n" +
+            "2. Exit\n";
     }
 }

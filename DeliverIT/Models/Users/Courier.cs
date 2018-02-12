@@ -28,8 +28,8 @@ namespace DeliverIT.Models.Users
             )
                 : base(username, password, firstName, lastName, email, age, phoneNumber, address, gender, UserRole.Normal)
         {
-            Guard.WhenArgument(allowedVolume, "allowed volume negative").IsLessThanOrEqual(0).Throw();
-            Guard.WhenArgument(allowedWeight, "allowed weight negative").IsLessThanOrEqual(0).Throw();
+            //Guard.WhenArgument(allowedVolume, "allowed volume negative").IsLessThanOrEqual(0).Throw();
+            //Guard.WhenArgument(allowedWeight, "allowed weight negative").IsLessThanOrEqual(0).Throw();
             this.Id = ++id;
             this.AllowedVolume = allowedVolume;
             this.AllowedWeight = allowedWeight;
@@ -42,7 +42,8 @@ namespace DeliverIT.Models.Users
             get => this.allowedVolume;
             set
             {
-                Guard.WhenArgument(allowedVolume, "allowed volume negative").IsLessThanOrEqual(0).Throw(); this.allowedVolume = value;
+                // Guard.WhenArgument(allowedVolume, "allowed volume negative").IsLessThanOrEqual(0).Throw(); 
+                this.allowedVolume = value;
             }
         }
 
@@ -51,7 +52,7 @@ namespace DeliverIT.Models.Users
             get => this.allowedWeight;
             set
             {
-                Guard.WhenArgument(allowedWeight, "allowed weight negative").IsLessThanOrEqual(0).Throw();
+                //Guard.WhenArgument(allowedWeight, "allowed weight negative").IsLessThanOrEqual(0).Throw();
                 this.allowedWeight = value;
             }
         }

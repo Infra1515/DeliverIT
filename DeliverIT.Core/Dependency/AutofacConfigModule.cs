@@ -1,8 +1,10 @@
 ﻿using Autofac;
 using DeliverIT.Core.Commands;
+using DeliverIT.Core.Commands.CreateCommands;
 using DeliverIT.Core.Commands.CreateCommands.Contracts;
 using DeliverIT.Core.Contracts;
 using DeliverIT.Core.Engine;
+using DeliverIT.Core.Engine.Providers;
 using DeliverIT.Core.Factories;
 using DeliverIT.Core.IOUtilities;
 using DeliverIT.Core.IOUtilities.Contracts;
@@ -10,10 +12,11 @@ using DeliverIT.Core.Providers;
 using DeliverIT.Core.Utilities;
 using DeliverIT.Data;
 using DeliverIT.Data.Configuration;
+using System.Reflection;
 
 namespace DeliverIT.Core.Dependency
 {
-    public class AutofacConfigModule : Module
+    public class AutofacConfigModule : Autofac.Module
     {
         protected override void Load(ContainerBuilder builder)
         {
@@ -29,14 +32,17 @@ namespace DeliverIT.Core.Dependency
 
             builder.RegisterType<DataStore>().As<IDataStore>().SingleInstance();
             builder.RegisterType<DeliverITEngine>().As<IEngine>().SingleInstance();
-            builder.RegisterType<CommandsFactory>().As<ICommandsFactory>().SingleInstance();
-            builder.RegisterType<UserFactory>().As<IUserFactory>().SingleInstance();
-            builder.RegisterType<DeliverITFactory>().As<IDeliverITFactory>().SingleInstance();
             builder.RegisterType<ConsoleReader>().As<IReader>().SingleInstance();
             builder.RegisterType<ConsoleWriter>().As<IWriter>().SingleInstance();
             builder.RegisterType<AuthProvider>().AsSelf().SingleInstance();
             builder.RegisterType<SeedDataStore>().AsSelf().SingleInstance();
             builder.RegisterType<UserContext>().As<IUserContext>().SingleInstance();
+            builder.RegisterType<CommandParser>().As<ICommandParser>().SingleInstance();
+
+            builder.RegisterAssemblyTypes(Assembly.GetAssembly(typeof(IEngine)))
+                .Where(x => x.Namespace.Contains("Factories"))
+                .AsImplementedInterfaces()
+                .SingleInstance();
         }
     }
 }

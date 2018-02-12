@@ -4,6 +4,7 @@ using DeliverIT.Core.Utilities;
 using DeliverIT.Core.IOUtilities.Contracts;
 using DeliverIT.Core.Providers;
 using DeliverIT.Data;
+using DeliverIT.Core.Factories.Contracts;
 
 namespace DeliverIT.Core.Engine
 {
@@ -73,7 +74,8 @@ namespace DeliverIT.Core.Engine
                         }
 
                         var command = this.commandsFactory.GetCommand((MainMenuChoice)userMainMenuChoice);
-                        command.Execute();
+                        command.Execute()
+                        //command.Execute();
                     }
                 }
             }
