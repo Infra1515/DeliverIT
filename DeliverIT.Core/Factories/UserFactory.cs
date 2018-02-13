@@ -6,13 +6,13 @@ namespace DeliverIT.Core.Factories
 {
     public class UserFactory : IUserFactory
     {
-        public Client CreateClient(string username, string password, string firstName, string lastName, string email,
+        public IClient CreateClient(string username, string password, string firstName, string lastName, string email,
             int age, string phoneNumber, IAddress address, GenderType gender)
         {
             return new Client(username, password, firstName, lastName, email, age, phoneNumber, address, gender);
         }
 
-        public Courier CreateCourier(string username, string password, string firstName, string lastName, string email,
+        public ICourier CreateCourier(string username, string password, string firstName, string lastName, string email,
             int age, string phoneNumber, IAddress address, GenderType gender, double allowedWeight, double allowedVolume)
         {
             return new Courier(username, password, firstName, lastName, email, age, phoneNumber, address,

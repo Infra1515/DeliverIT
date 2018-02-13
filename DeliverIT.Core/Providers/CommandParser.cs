@@ -45,6 +45,7 @@ namespace DeliverIT.Core.Providers
         public IList<string> OrderInfoCommandParameters()
         {
             var commandParameters = new List<string>();
+
             var couriers = this.dataStore.Users
                             .Where(u => u.Role == UserRole.Normal)
                             .Cast<ICourier>();
@@ -56,13 +57,10 @@ namespace DeliverIT.Core.Providers
             this.PrintUser(couriers);
             commandParameters.Add(this.reader.ReadLine());
 
-
             this.writer.WriteLine("--- Sender ---");
             this.PrintUser(clients);
 
-            string inputSender = this.reader.ReadLine();
             commandParameters.Add(this.reader.ReadLine());
-
 
             this.writer.WriteLine("--- Receiver ---");
             this.PrintUser(clients);
@@ -181,7 +179,7 @@ namespace DeliverIT.Core.Providers
         {
             this.writer.WriteLine("Please select:");
 
-            foreach (var user in this.dataStore.Users)
+            foreach (var user in users)
             {
                 this.writer.WriteLine(user.Username);
             }
