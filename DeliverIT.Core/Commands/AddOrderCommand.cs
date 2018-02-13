@@ -7,6 +7,7 @@ using DeliverIT.Core.Factories.Contracts;
 using DeliverIT.Data;
 using DeliverIT.Data.Common.Enums;
 using DeliverIT.Data.Contracts;
+using DeliverIT.Data.Models.Users;
 
 namespace DeliverIT.Core.Commands
 {
@@ -48,13 +49,13 @@ namespace DeliverIT.Core.Commands
 
             DeliveryType deliveryType = AddDeliveryType(deliveryTypeStr);
 
-            ICourier selectedCourier = (ICourier)this.dataStore.Users
+            ICourier selectedCourier = (Courier)this.dataStore.Users
                 .FirstOrDefault(sc => sc.Username.Equals(courier));
 
-            IClient selectedSender = (IClient)this.dataStore.Users
+            IClient selectedSender = (Client)this.dataStore.Users
                 .FirstOrDefault(sc => sc.Username.Equals(sender));
 
-            IClient selectedReceiver = (IClient)this.dataStore.Users
+            IClient selectedReceiver = (Client)this.dataStore.Users
                .FirstOrDefault(sc => sc.Username.Equals(receiver));
 
             int postalCode = selectedReceiver.Address.Country.CitysAndZips[selectedReceiver.Address.City];
