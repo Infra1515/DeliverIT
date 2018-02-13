@@ -1,24 +1,38 @@
 
-# DeliverIT [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-### Team 4 --- Telerik Academy Alpha OOP Teamwork Project
+# **DeliverIT** [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+### **Team 4** --- Telerik Academy Alpha High Quality Code & Design Patterns Teamwork Project
 
 
 ## Table of Contents
-- Task
-- Description
-- Class Diagrams
-- Team Members
-- Git Repo Link
-- License
+- **Task**
+- **Description**
+- **Class Diagrams**
+- **Team Members**
+- **Git Repo Link**
+- **License**
 
 ## Task
-Our task is to design and implement **obejct-oriented** application by choice, following the **best practices for OO design**:  
-- Data encapsulation
-- Exception handling properly
-- Delegates and events
-- Inheritance
-- Abstraction and polymorphism
-- Principles of strong cohesion and loose coupling
+Our task is to design and implement application by choice, following:
+- The **OOP** principles (where applicable)
+  - Inheritance
+  - Encapsulation
+  - Abstraction
+  - Polymorphism
+- The **SOLID** principles (where applicable)
+  - Single responsibility
+  - Open/closed
+  - Liskov substitution
+  - Interface segregation
+  - Dependency inversion
+- Dependency inversion container (using Autofac)
+  - Favor composition over inheritance
+  - Introduce object lifetime management
+  - Introduce convention based binding
+- Unit tests
+  - Introduced unit tests that use **both**:
+     - **MSTest** (or other testing framework)
+     - **Moq** (or other mocking framework)
+
 
 ## Description
 DeliverIT is a simple console application used for managing orders' delivery. 
@@ -39,10 +53,14 @@ The application has the following list of commands:
 >   - Shows all delivery location in each country
 
 ## Class Diagrams
-- ## DeliverIT
-![DeliverIT class diagram](https://github.com/Infra1515/DeliverIT/blob/master/imgs/DeliverITcd.png)
 - ## DeliverIT.Core
 ![DeliverIt.Core class diagram](https://github.com/Infra1515/DeliverIT/blob/master/imgs/DeliverITCore.png)
+
+- ## DeliverIT.Data
+![DeliverIT class diagram](https://github.com/Infra1515/DeliverIT/blob/master/imgs/DeliverITData.png)
+
+- ## DeliverIT.Utilities
+![DeliverIT class diagram](https://github.com/Infra1515/DeliverIT/blob/master/imgs/DeliverITUtilities.png)
 ## Team Members
 
 * [Ivan Gargov](https://github.com/igargov)
