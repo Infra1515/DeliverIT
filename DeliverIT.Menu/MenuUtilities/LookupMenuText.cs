@@ -12,7 +12,7 @@
             "4. List All Users.\n" +
             "5. List All Orders.\n" +
             "6. List Delivery Locations.\n" +
-            "7. Exit.\n";
+            "7. Logout.\n";
 
         public static readonly string LoginText =
             "-----> Awesome DeliverIT Application <-----\n\n" +

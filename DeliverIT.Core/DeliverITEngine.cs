@@ -73,8 +73,18 @@ namespace DeliverIT.Core.Engine
                             continue;
                         }
 
-                        var command = this.commandsFactory.GetCommand((MainMenuChoice)userMainMenuChoice);
-                        command.Execute();
+                        try
+                        {
+                            var command = this.commandsFactory.GetCommand((MainMenuChoice)userMainMenuChoice);
+                            var result = command.Execute();
+
+                            this.writer.WriteLine(result);
+                        }
+                        catch (Exception ex)
+                        {
+                            this.writer.WriteLine(ex.Message);
+                        }
+                        
                     }
                 }
             }
