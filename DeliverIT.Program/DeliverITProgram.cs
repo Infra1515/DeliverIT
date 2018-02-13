@@ -14,8 +14,8 @@ namespace DeliverIT.Program
             builder.RegisterModule(new AutofacConfigModule());
 
             var container = builder.Build();
-            var engine = container.Resolve<IEngine>();
 
+            var engine = container.Resolve<IEngine>();
             var seed = container.Resolve<SeedDataStore>();
             seed.SeedObjects();
             engine.Start();

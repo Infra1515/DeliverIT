@@ -27,6 +27,7 @@ namespace DeliverIT.Core.Configuration
             this.orderFactory = orderFactory;
 
         }
+
         public void SeedObjects()
         {
             var adminUser = this.userFactory.CreateAdmin("root", "123456", "Ivan", "Gargov", "basi@qkoto.adminsum");
