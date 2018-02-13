@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using DeliverIT.Common;
-using DeliverIT.Contracts;
+﻿using System.Collections.Generic;
 using DeliverIT.Core.Factories.Contracts;
-using DeliverIT.Core.IOUtilities.Contracts;
-using DeliverIT.Core.Contracts;
+using DeliverIT.Core.Commands.CreateCommands.Contracts;
+using DeliverIT.Utilities.IOUtilities.Contracts;
+using DeliverIT.Data.Contracts;
 
 namespace DeliverIT.Core.Commands.CreateCommands
 {
@@ -29,25 +27,6 @@ namespace DeliverIT.Core.Commands.CreateCommands
         
         public IAddress Create(IList<string> commandParameters)
         {
-            //writer.WriteLine("--- Address ---");
-            //writer.Write("Country: ");
-            //string countryString = reader.ReadLine();
-
-            //ICountry country = this.countryFactory.CreateCountry(countryString);
-
-            //writer.Write("City: ");
-            //string city = reader.ReadLine();
-
-            //Console.ForegroundColor = ConsoleColor.Red;
-            //Validator.ValidateCityInCountry(city, country, Constants.NoSuchCity);
-            //Console.ResetColor();
-
-            //writer.Write("Street name: ");
-            //string streetName = reader.ReadLine();
-
-            //writer.Write("Street number: ");
-            //string streetNumber = reader.ReadLine();
-
             var countryAsString = commandParameters[0];
             var cityAsString = commandParameters[1];
             var streetNameAsString = commandParameters[2];

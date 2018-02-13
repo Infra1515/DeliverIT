@@ -1,7 +1,6 @@
-﻿using DeliverIT.Core.Utilities;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace DeliverIT.Core.MenuUtilities
+namespace DeliverIT.Utilities.MenuUtilities
 {
     public static class LookupRoles
     {

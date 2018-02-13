@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace DeliverIT.Core.Engine.Providers
+namespace DeliverIT.Core.Contracts
 {
     public interface ICommandParser
     {

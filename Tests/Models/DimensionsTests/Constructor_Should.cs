@@ -1,6 +1,6 @@
 ﻿using System;
-using DeliverIT.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using DeliverIT.Data.Models;
 
 namespace Tests.Models
 {

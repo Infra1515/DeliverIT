@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
-using DeliverIT.Core.IOUtilities.Contracts;
 using System.Linq;
-using DeliverIT.Common.Enums;
-using DeliverIT.Contracts;
 using DeliverIT.Data;
+using DeliverIT.Core.Contracts;
+using DeliverIT.Utilities.IOUtilities.Contracts;
+using DeliverIT.Data.Contracts;
+using DeliverIT.Data.Common.Enums;
 
-namespace DeliverIT.Core.Engine.Providers
+namespace DeliverIT.Core.Providers
 {
     public class CommandParser : ICommandParser
     {
@@ -24,7 +25,6 @@ namespace DeliverIT.Core.Engine.Providers
         {
             var commandParameters = new List<string>();
             
-
             writer.WriteLine("--- Address ---");
 
             writer.Write("Country: ");
@@ -40,7 +40,6 @@ namespace DeliverIT.Core.Engine.Providers
             commandParameters.Add(this.reader.ReadLine());
 
             return commandParameters;
-
         }
 
         public IList<string> OrderInfoCommandParameters()
@@ -138,6 +137,9 @@ namespace DeliverIT.Core.Engine.Providers
             this.writer.Write("Age: ");
             commandParameters.Add(this.reader.ReadLine());
 
+            this.writer.Write("Gender: ");
+            commandParameters.Add(this.reader.ReadLine());
+
             this.writer.Write("Enter maximum allowed weight that the courier can carry: ");
             commandParameters.Add(this.reader.ReadLine());
 
@@ -171,6 +173,9 @@ namespace DeliverIT.Core.Engine.Providers
             commandParameters.Add(this.reader.ReadLine());
 
             this.writer.Write("Age: ");
+            commandParameters.Add(this.reader.ReadLine());
+
+            this.writer.Write("Gender: ");
             commandParameters.Add(this.reader.ReadLine());
 
             return commandParameters;

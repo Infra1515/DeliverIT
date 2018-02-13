@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using DeliverIT.Contracts;
+using DeliverIT.Data.Contracts;
 
-namespace DeliverIT.Core.Commands
+namespace DeliverIT.Core.Commands.CreateCommands.Contracts
 {
     public interface ICreateAddress
     {

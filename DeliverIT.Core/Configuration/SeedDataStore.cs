@@ -1,11 +1,10 @@
 ﻿using System;
-using DeliverIT.Common;
-using DeliverIT.Common.Enums;
-using DeliverIT.Core.Contracts;
 using DeliverIT.Core.Factories;
 using DeliverIT.Core.Factories.Contracts;
+using DeliverIT.Data;
+using DeliverIT.Data.Common.Enums;
 
-namespace DeliverIT.Data.Configuration
+namespace DeliverIT.Core.Configuration
 {
     public class SeedDataStore
     {

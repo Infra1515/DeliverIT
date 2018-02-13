@@ -1,5 +1,5 @@
-﻿using DeliverIT.Contracts;
-using DeliverIT.Common.Enums;
+﻿using DeliverIT.Data.Common.Enums;
+using DeliverIT.Data.Contracts;
 
 namespace DeliverIT.Core.Factories
 {

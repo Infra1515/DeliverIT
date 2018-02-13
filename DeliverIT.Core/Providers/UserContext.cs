@@ -1,6 +1,5 @@
-﻿using DeliverIT.Contracts;
-using DeliverIT.Core.Contracts;
-using DeliverIT.Core.Providers;
+﻿using DeliverIT.Core.Contracts;
+using DeliverIT.Data.Contracts;
 using System;
 using System.Collections.Generic;
 

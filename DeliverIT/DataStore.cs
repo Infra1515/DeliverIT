@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using Bytes2you.Validation;
-using DeliverIT.Contracts;
+using DeliverIT.Data.Contracts;
 
 namespace DeliverIT.Data
 {

@@ -1,9 +1,9 @@
-﻿using System;
-using DeliverIT.Common;
-using DeliverIT.Contracts;
-using DeliverIT.Common.Enums;
+﻿using DeliverIT.Data.Common;
+using DeliverIT.Data.Common.Enums;
+using DeliverIT.Data.Contracts;
+using System;
 
-namespace DeliverIT.Models
+namespace DeliverIT.Data.Models
 {
     public class Order : IOrder
     {

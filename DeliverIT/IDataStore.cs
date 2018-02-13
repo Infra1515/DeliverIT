@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using DeliverIT.Contracts;
+using DeliverIT.Data.Contracts;
 
 namespace DeliverIT.Data
 {

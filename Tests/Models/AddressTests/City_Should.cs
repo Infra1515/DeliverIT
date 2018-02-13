@@ -1,7 +1,7 @@
 ﻿using System;
-using DeliverIT.Models;
-using DeliverIT.Models.Countries;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using DeliverIT.Data.Models;
+using DeliverIT.Data.Models.Countries;
 
 namespace Tests.Models
 {

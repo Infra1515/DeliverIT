@@ -1,4 +1,4 @@
-﻿using DeliverIT.Contracts;
+﻿using DeliverIT.Data.Contracts;
 
 namespace DeliverIT.Core.Factories.Contracts
 {

@@ -1,4 +1,4 @@
-﻿namespace DeliverIT.Core.IOUtilities.Contracts
+﻿namespace DeliverIT.Utilities.IOUtilities.Contracts
 {
     public interface IReader
     {

@@ -1,7 +1,7 @@
 ﻿using Bytes2you.Validation;
-using DeliverIT.Common;
-using DeliverIT.Common.Enums;
-using DeliverIT.Contracts;
+using DeliverIT.Data.Common;
+using DeliverIT.Data.Common.Enums;
+using DeliverIT.Data.Contracts;
 
 namespace DeliverIT.Models.Users.Abstract
 {

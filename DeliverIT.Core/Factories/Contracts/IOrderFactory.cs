@@ -1,7 +1,6 @@
 ﻿using System;
-using DeliverIT.Common;
-using DeliverIT.Common.Enums;
-using DeliverIT.Contracts;
+using DeliverIT.Data.Contracts;
+using DeliverIT.Data.Common.Enums;
 
 namespace DeliverIT.Core.Factories.Contracts
 {

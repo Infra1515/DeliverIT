@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Text;
-using DeliverIT.Common.Enums;
-using DeliverIT.Contracts;
 using DeliverIT.Models.Users.Abstract;
+using DeliverIT.Data.Contracts;
+using DeliverIT.Data.Common.Enums;
 
-namespace DeliverIT.Models.Users
+namespace DeliverIT.Data.Models.Users
 {
     public class Client : Person, IClient
     {

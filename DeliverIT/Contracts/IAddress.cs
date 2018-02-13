@@ -1,6 +1,4 @@
-﻿using DeliverIT.Models.Countries;
-
-namespace DeliverIT.Contracts
+﻿namespace DeliverIT.Data.Contracts
 {
     public interface IAddress
     {

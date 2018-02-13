@@ -1,4 +1,4 @@
-﻿namespace DeliverIT.Common.Enums
+﻿namespace DeliverIT.Data.Common.Enums
 {
     public enum OrderState
     {

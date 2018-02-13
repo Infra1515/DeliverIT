@@ -1,7 +1,7 @@
-﻿using DeliverIT.Common.Enums;
-using DeliverIT.Models;
+﻿using DeliverIT.Data.Common.Enums;
+using DeliverIT.Data.Models;
 
-namespace DeliverIT.Contracts
+namespace DeliverIT.Data.Contracts
 {
     public interface IProduct
     {

@@ -1,5 +1,5 @@
-﻿using DeliverIT.Contracts;
-using DeliverIT.Data;
+﻿using DeliverIT.Data;
+using DeliverIT.Data.Contracts;
 using System.Linq;
 
 namespace DeliverIT.Core.Providers

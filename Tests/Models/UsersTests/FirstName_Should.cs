@@ -1,9 +1,9 @@
 ﻿using System;
-using DeliverIT.Common.Enums;
-using DeliverIT.Models;
-using DeliverIT.Models.Countries;
-using DeliverIT.Models.Users;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using DeliverIT.Data.Models.Users;
+using DeliverIT.Data.Models;
+using DeliverIT.Data.Models.Countries;
+using DeliverIT.Data.Common.Enums;
 
 namespace Tests.Models.UsersTests
 {

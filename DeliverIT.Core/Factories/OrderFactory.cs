@@ -1,9 +1,8 @@
 ﻿using System;
-using DeliverIT.Common;
-using DeliverIT.Common.Enums;
-using DeliverIT.Contracts;
 using DeliverIT.Core.Factories.Contracts;
-using DeliverIT.Models;
+using DeliverIT.Data.Contracts;
+using DeliverIT.Data.Common.Enums;
+using DeliverIT.Data.Models;
 
 namespace DeliverIT.Core.Factories
 {

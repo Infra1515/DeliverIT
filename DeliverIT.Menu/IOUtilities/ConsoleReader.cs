@@ -1,7 +1,7 @@
 ﻿using System;
-using DeliverIT.Core.IOUtilities.Contracts;
+using DeliverIT.Utilities.IOUtilities.Contracts;
 
-namespace DeliverIT.Core.IOUtilities
+namespace DeliverIT.Utilities.IOUtilities
 {
     public class ConsoleReader : IReader
     {

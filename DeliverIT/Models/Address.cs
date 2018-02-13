@@ -1,7 +1,7 @@
 ﻿using Bytes2you.Validation;
-using DeliverIT.Contracts;
+using DeliverIT.Data.Contracts;
 
-namespace DeliverIT.Models
+namespace DeliverIT.Data.Models
 {
     public class Address : IAddress
     {

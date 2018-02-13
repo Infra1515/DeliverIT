@@ -1,4 +1,4 @@
-﻿namespace DeliverIT.Contracts
+﻿namespace DeliverIT.Data.Contracts
 {
     public interface ICourier : IPerson
     {

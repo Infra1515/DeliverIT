@@ -1,7 +1,7 @@
-﻿using DeliverIT.Common.Enums;
+﻿using DeliverIT.Data.Common.Enums;
 using System.Collections.Generic;
 
-namespace DeliverIT.Contracts
+namespace DeliverIT.Data.Contracts
 {
     public interface IPerson : IUser
     {

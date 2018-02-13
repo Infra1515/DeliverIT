@@ -4,6 +4,6 @@ namespace DeliverIT.Core.Contracts
 {
     public interface ICommand
     {
-        string Execute(IList<string> commandParameters);
+        string Execute();
     }
 }

@@ -1,5 +1,5 @@
 ﻿using DeliverIT.Core.Contracts;
-using DeliverIT.Core.Utilities;
+using DeliverIT.Utilities.MenuUtilities;
 
 namespace DeliverIT.Core.Factories.Contracts
 {

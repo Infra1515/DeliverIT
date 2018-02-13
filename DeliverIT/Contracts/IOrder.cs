@@ -1,9 +1,7 @@
-﻿using DeliverIT.Common;
+﻿using DeliverIT.Data.Common.Enums;
 using System;
-using DeliverIT.Common.Enums;
-using DeliverIT.Models.Users;
 
-namespace DeliverIT.Contracts
+namespace DeliverIT.Data.Contracts
 {
     public interface IOrder
     {

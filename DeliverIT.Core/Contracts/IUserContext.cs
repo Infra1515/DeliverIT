@@ -1,4 +1,4 @@
-﻿using DeliverIT.Contracts;
+﻿using DeliverIT.Data.Contracts;
 using System.Collections.Generic;
 
 namespace DeliverIT.Core.Contracts

@@ -3,16 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using DeliverIT.Contracts;
 using DeliverIT.Core.Contracts;
-using DeliverIT.Core.IOUtilities.Contracts;
-using DeliverIT.Models.Countries;
+using DeliverIT.Data.Contracts;
+using DeliverIT.Data.Models.Countries;
 
 namespace DeliverIT.Core.Commands
 {
     public class ShowAllLocationsCommand : ICommand
     {
-        public string Execute(IList<string> commandParameters)
+        public string Execute()
         {
             StringBuilder strBuilder = new StringBuilder();
             strBuilder.AppendLine("--- Delivery locations ---");

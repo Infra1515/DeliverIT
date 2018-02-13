@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace DeliverIT.Contracts
+namespace DeliverIT.Data.Contracts
 {
     public interface ICountry
     {

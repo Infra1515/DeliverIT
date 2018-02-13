@@ -1,8 +1,8 @@
 ﻿using Bytes2you.Validation;
-using DeliverIT.Common.Enums;
-using DeliverIT.Contracts;
+using DeliverIT.Data.Common.Enums;
+using DeliverIT.Data.Contracts;
 
-namespace DeliverIT.Models
+namespace DeliverIT.Data.Models
 {
     public class Product : IProduct
     {

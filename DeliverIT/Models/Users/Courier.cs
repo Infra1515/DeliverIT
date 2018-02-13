@@ -1,9 +1,8 @@
-﻿using Bytes2you.Validation;
-using DeliverIT.Common.Enums;
-using DeliverIT.Contracts;
+﻿using DeliverIT.Data.Common.Enums;
+using DeliverIT.Data.Contracts;
 using DeliverIT.Models.Users.Abstract;
 
-namespace DeliverIT.Models.Users
+namespace DeliverIT.Data.Models.Users
 {
     public class Courier : Person, ICourier
     {

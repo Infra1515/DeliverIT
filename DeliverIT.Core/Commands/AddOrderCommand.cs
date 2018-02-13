@@ -2,15 +2,13 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using DeliverIT.Common;
-using DeliverIT.Common.Enums;
-using DeliverIT.Contracts;
 using DeliverIT.Core.Commands.CreateCommands.Contracts;
 using DeliverIT.Core.Contracts;
-using DeliverIT.Core.Engine.Providers;
 using DeliverIT.Core.Factories.Contracts;
-using DeliverIT.Core.IOUtilities.Contracts;
 using DeliverIT.Data;
+using DeliverIT.Data.Common.Enums;
+using DeliverIT.Data.Contracts;
+using DeliverIT.Utilities.IOUtilities.Contracts;
 
 namespace DeliverIT.Core.Commands
 {
@@ -38,15 +36,16 @@ namespace DeliverIT.Core.Commands
             this.createCommand = createCommand;
         }
 
-        public string Execute(IList<string> commandParameters)
+        public string Execute()
         {
+            var orderParams = this.commandParser.OrderInfoCommandParameters();
 
-            string courier = commandParameters[0];
-            string sender = commandParameters[1];
-            string receiver = commandParameters[2];
-            string deliveryTypeStr = commandParameters[3];
-            string sendDateParam = commandParameters[4];
-            string dueDateParam = commandParameters[5];
+            string courier = orderParams[0];
+            string sender = orderParams[1];
+            string receiver = orderParams[2];
+            string deliveryTypeStr = orderParams[3];
+            string sendDateParam = orderParams[4];
+            string dueDateParam = orderParams[5];
 
             DateTime sendDate = DateTime.ParseExact(sendDateParam,
                                     "d/M/yyyy", CultureInfo.InvariantCulture);

@@ -1,6 +1,6 @@
-﻿using DeliverIT.Common.Enums;
+﻿using DeliverIT.Data.Common.Enums;
 
-namespace DeliverIT.Contracts
+namespace DeliverIT.Data.Contracts
 {
     public interface IUser
     {

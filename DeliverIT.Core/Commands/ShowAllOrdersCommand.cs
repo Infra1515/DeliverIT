@@ -2,7 +2,6 @@
 using System.Text;
 using DeliverIT.Core.Contracts;
 using DeliverIT.Data;
-using System.Collections.Generic;
 
 namespace DeliverIT.Core.Commands
 {
@@ -15,7 +14,7 @@ namespace DeliverIT.Core.Commands
             this.dataStore = dataStore;
         }
 
-        public string Execute(IList<string> commandParameters)
+        public string Execute()
         {
             var sb = new StringBuilder();
             if (this.dataStore.Orders.Any())

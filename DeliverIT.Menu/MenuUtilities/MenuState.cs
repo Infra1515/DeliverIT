@@ -1,4 +1,4 @@
-﻿namespace DeliverIT.Core.Utilities
+﻿namespace DeliverIT.Utilities.MenuUtilities
 {
     public enum MenuState
     {

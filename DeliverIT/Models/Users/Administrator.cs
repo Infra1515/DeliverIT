@@ -1,7 +1,7 @@
-﻿using DeliverIT.Common.Enums;
+﻿using DeliverIT.Data.Common.Enums;
 using DeliverIT.Models.Users.Abstract;
 
-namespace DeliverIT.Models.Users
+namespace DeliverIT.Data.Models.Users
 {
     public class Administrator : User
     {

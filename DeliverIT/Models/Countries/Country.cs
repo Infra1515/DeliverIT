@@ -1,9 +1,9 @@
 ﻿using System;
-using DeliverIT.Contracts;
 using System.Collections.Generic;
 using Bytes2you.Validation;
+using DeliverIT.Data.Contracts;
 
-namespace DeliverIT.Models.Countries
+namespace DeliverIT.Data.Models.Countries
 {
     public abstract class Country : ICountry
     {

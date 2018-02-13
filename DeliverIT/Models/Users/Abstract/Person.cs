@@ -1,9 +1,9 @@
-﻿using DeliverIT.Common;
-using DeliverIT.Common.Enums;
-using DeliverIT.Contracts;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Text;
 using Bytes2you.Validation;
+using DeliverIT.Data.Common;
+using DeliverIT.Data.Contracts;
+using DeliverIT.Data.Common.Enums;
 
 namespace DeliverIT.Models.Users.Abstract
 {

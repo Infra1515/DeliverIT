@@ -67,8 +67,8 @@
     <Compile Include="Commands\ShowAllOrdersCommand.cs" />
     <Compile Include="Configuration\SeedDataStore.cs" />
     <Compile Include="Contracts\ICommand.cs" />
-    <Compile Include="Commands\Providers\CommandParser.cs" />
-    <Compile Include="Commands\Providers\ICommandParser.cs" />
+    <Compile Include="Providers\CommandParser.cs" />
+    <Compile Include="Contracts\ICommandParser.cs" />
     <Compile Include="Factories\AddressFactory.cs" />
     <Compile Include="Factories\Contracts\IAddressFactory.cs" />
     <Compile Include="Factories\Contracts\ICommandsFactory.cs" />

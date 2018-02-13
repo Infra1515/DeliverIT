@@ -1,6 +1,6 @@
-﻿using DeliverIT.Contracts;
-using DeliverIT.Core.Factories.Contracts;
-using DeliverIT.Models;
+﻿using DeliverIT.Core.Factories.Contracts;
+using DeliverIT.Data.Contracts;
+using DeliverIT.Data.Models;
 
 namespace DeliverIT.Core.Factories
 {

@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
-using DeliverIT.Common;
-using DeliverIT.Common.Enums;
 using DeliverIT.Core.Contracts;
-using DeliverIT.Core.IOUtilities.Contracts;
 using DeliverIT.Data;
 using DeliverIT.Core.Factories;
-using DeliverIT.Core.Engine.Providers;
+using DeliverIT.Core.Commands.CreateCommands.Contracts;
+using DeliverIT.Utilities.IOUtilities.Contracts;
+using DeliverIT.Data.Common.Enums;
+using DeliverIT.Data.Common;
 
 namespace DeliverIT.Core.Commands
 {
@@ -37,17 +35,19 @@ namespace DeliverIT.Core.Commands
             this.commandParser = commandParser;
 
         }
-        public string Execute(IList<string> commandParameters)
+        public string Execute()
         {
-            var username = commandParameters[0];
-            var password = commandParameters[1];
-            var firstName = commandParameters[2];
-            var lastName = commandParameters[3];
-            var email = commandParameters[4];
-            var phoneNumber = commandParameters[5];
-            var age = int.Parse(commandParameters[6]);
+            var userParams = this.commandParser.UserInfoParseCommandParameters();
+            var username = userParams[0];
+            var password = userParams[1];
+            var firstName = userParams[2];
+            var lastName = userParams[3];
+            var email = userParams[4];
+            var phoneNumber = userParams[5];
+            var age = int.Parse(userParams[6]);
             var gender = (GenderType)Enum.Parse(typeof(GenderType),
-                commandParameters[7]);
+                userParams[7]);
+
             var userAddressInfo = this.commandParser.AddressInfoParseCommandParameters();
             var userAddress = this.createAddress.Create(userAddressInfo);
 

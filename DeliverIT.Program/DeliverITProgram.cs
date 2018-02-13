@@ -1,7 +1,7 @@
 ﻿using Autofac;
+using DeliverIT.Core.Configuration;
 using DeliverIT.Core.Contracts;
 using DeliverIT.Core.Dependency;
-using DeliverIT.Data.Configuration;
 
 namespace DeliverIT.Program
 {

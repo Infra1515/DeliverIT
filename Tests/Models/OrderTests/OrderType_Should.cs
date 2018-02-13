@@ -1,5 +1,5 @@
-﻿using DeliverIT.Contracts;
-using DeliverIT.Models;
+﻿using DeliverIT.Data.Contracts;
+using DeliverIT.Data.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Tests.Models.OrderTests

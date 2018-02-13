@@ -1,7 +1,6 @@
 ﻿using Bytes2you.Validation;
-using DeliverIT.Common;
 
-namespace DeliverIT.Models
+namespace DeliverIT.Data.Models
 {
     public struct Dimensions
     {

@@ -1,4 +1,4 @@
-﻿namespace DeliverIT.Models.Countries
+﻿namespace DeliverIT.Data.Models.Countries
 {
     public class Russia : Country
     {

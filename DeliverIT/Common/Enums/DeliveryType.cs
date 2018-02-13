@@ -1,4 +1,4 @@
-﻿namespace DeliverIT.Common
+﻿namespace DeliverIT.Data.Common.Enums
 {
     public enum DeliveryType
     {

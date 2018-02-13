@@ -2,16 +2,15 @@
 using DeliverIT.Core.Commands;
 using DeliverIT.Core.Commands.CreateCommands;
 using DeliverIT.Core.Commands.CreateCommands.Contracts;
+using DeliverIT.Core.Configuration;
 using DeliverIT.Core.Contracts;
 using DeliverIT.Core.Engine;
-using DeliverIT.Core.Engine.Providers;
 using DeliverIT.Core.Factories;
-using DeliverIT.Core.IOUtilities;
-using DeliverIT.Core.IOUtilities.Contracts;
 using DeliverIT.Core.Providers;
-using DeliverIT.Core.Utilities;
 using DeliverIT.Data;
-using DeliverIT.Data.Configuration;
+using DeliverIT.Utilities.IOUtilities;
+using DeliverIT.Utilities.IOUtilities.Contracts;
+using DeliverIT.Utilities.MenuUtilities;
 using System.Reflection;
 
 namespace DeliverIT.Core.Dependency
