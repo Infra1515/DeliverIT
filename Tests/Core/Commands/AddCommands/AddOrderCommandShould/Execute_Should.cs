@@ -1,8 +1,9 @@
 ﻿//using System;
-//using DeliverIT.Common;
-//using DeliverIT.Common.Enums;
-//using DeliverIT.Contracts;
-//using DeliverIT.Core.Factories;
+//using System.Collections.Generic;
+//using DeliverIT.Core.Commands.CreateCommands.Contracts;
+//using DeliverIT.Core.Contracts;
+//using DeliverIT.Core.Factories.Contracts;
+//using DeliverIT.Data;
 //using Microsoft.VisualStudio.TestTools.UnitTesting;
 //using Moq;
 
@@ -12,28 +13,34 @@
 //    public class Execute_Should
 //    {
 //        [TestMethod]
-//        public void CallDeliverITFactory_WithProperParameters()
+//        public void ReturnCorrectMessage_WhenCalledWithValidData()
 //        {
-//            // Arrange
-//            var deliverITFactoryMock = new Mock<IDeliverITFactory>();
-//            var senderStub = new Mock<IClient>();
-//            var receiverStub = new Mock<IClient>();
-//            var productStub = new Mock<IProduct>();
-//            var courierStub = new Mock<ICourier>();
-//            var type = DeliveryType.Express;
-//            var sendDate = DateTime.Today;
-//            var dueDate = DateTime.Today;
-//            var orderState = OrderState.Damaged;
-//            var postalCode = 5555;
+        
+//            var dataStorMock = new Mock<IDataStore>();
+//            var factoryMock = new Mock<IOrderFactory>();
+//            var createProductMock = new Mock<ICreateProduct>();
+//            var commandParserMock = new Mock<ICommandParser>();
 
-//            deliverITFactoryMock.Setup(a => a.CreateOrder(It.IsAny<ICourier>(), It.IsAny<IClient>(), It.IsAny<IClient>(), It.IsAny<DeliveryType>(), It.IsAny<DateTime>(), It.IsAny<DateTime>(), It.IsAny<OrderState>(), It.IsAny<IProduct>(), It.IsAny<int>())).Verifiable();
-            
-//            // Act
-//            deliverITFactoryMock.Object
-//                .CreateOrder(courierStub.Object, senderStub.Object, receiverStub.Object, type, sendDate, dueDate, orderState, productStub.Object, postalCode);
+//            var orderParamsStub = new List<string>
+//            {
+//                "Gosheedy",
+//                "Senderov",
+//                "Receivarov",
+//                "Express",
+//                "5/5/2017",
+//                "6/5/2017",
 
-//            // Assert
-//            deliverITFactoryMock.Verify(b => b.CreateOrder(courierStub.Object, senderStub.Object, receiverStub.Object, type, sendDate, dueDate, orderState, productStub.Object, postalCode), Times.Once);
+//            };
+
+//            //var orderParams = this.commandParser.OrderInfoCommandParameters();
+
+//            //string courier = orderParams[0];
+//            //string sender = orderParams[1];
+//            //string receiver = orderParams[2];
+//            //string deliveryTypeStr = orderParams[3];
+//            //string sendDateParam = orderParams[4];
+//            //string dueDateParam = orderParams[5];
+
 //        }
 //    }
 //}

@@ -17,23 +17,6 @@ namespace Tests.Core.Commands.AddCommands.AddClientCommandTests
     [TestClass]
     public class Execute_Should
     {
-        //[TestMethod]
-        //public void CallUserFactory_WithProperParameters()
-        //{
-        //    // Arrange
-        //    var userFactoryMock = new Mock<IUserFactory>();
-        //    var addressStub = new Mock<IAddress>();
-
-        //    userFactoryMock.Setup(a => a.CreateClient(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<int>(), It.IsAny<string>(), It.IsAny<IAddress>(), It.IsAny<GenderType>())).Verifiable();
-            
-        //    // Act
-        //    userFactoryMock.Object
-        //        .CreateClient("client123", "1234", "DummyFirst", "DummyLast", "dummy@dummy.com", 18, "12345678", addressStub.Object, GenderType.Male);
-
-        //    // Assert
-        //    userFactoryMock.Verify(b => b.CreateClient("client123", "1234", "DummyFirst", "DummyLast", "dummy@dummy.com", 18, "12345678", addressStub.Object, GenderType.Male), Times.Once);
-        //}
-
         [TestMethod]
         public void ReturnCorrectMessage_WhenCalledWithValidData()
         {
@@ -72,6 +55,7 @@ namespace Tests.Core.Commands.AddCommands.AddClientCommandTests
             //dataStoreMock.Setup(x => x.Users.FirstOrDefault(
             //    u => u.Username.Equals(It.IsAny<string>())))
             //    .Returns<IUser>(null);
+
             dataStoreMock.Setup(x => x.Users)
                 .Returns(new List<IUser> { clientMockTwo.Object });
 
@@ -97,8 +81,6 @@ namespace Tests.Core.Commands.AddCommands.AddClientCommandTests
 
             // Assert
             StringAssert.Equals(expectedResult, actualResult);
-
-
         }
     }
 }
