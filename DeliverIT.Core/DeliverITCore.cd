@@ -1,2 +1,259 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram /> 
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="DeliverIT.Core.Commands.AddClientCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAACAAAAAAAQAAAAAEAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Commands\AddClientCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DeliverIT.Core.Commands.AddCourierCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAACAAAAAAAQAAAAAEAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Commands\AddCourierCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DeliverIT.Core.Commands.AddOrderCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAQAAAAACAAAAAEAAAAAAAAEAAACAAA=</HashCode>
+      <FileName>Commands\AddOrderCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DeliverIT.Core.Commands.ShowAllClientsCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Commands\ShowAllClientsCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DeliverIT.Core.Commands.ShowAllLocationsCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>Commands\ShowAllLocationsCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DeliverIT.Core.Commands.ShowAllOrdersCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Commands\ShowAllOrdersCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DeliverIT.Core.Commands.CreateCommands.CreateAddress" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAIAgAA=</HashCode>
+      <FileName>Commands\CreateCommands\CreateAddress.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DeliverIT.Core.Commands.CreateCommands.CreateProduct" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAgAAAAAAAAEAAAQAAAAAAAAA=</HashCode>
+      <FileName>Commands\CreateCommands\CreateProduct.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DeliverIT.Core.Configuration.SeedDataStore" Collapsed="true">
+    <Position X="4" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAmAACAAEAAAAAAAAAAAIAgAA=</HashCode>
+      <FileName>Configuration\SeedDataStore.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DeliverIT.Core.DeliverITEngine" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAgAAAAAAAAAAAAAAARAAAAAQBAA=</HashCode>
+      <FileName>DeliverITEngine.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DeliverIT.Core.Dependency.AutofacConfigModule" Collapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Dependency\AutofacConfigModule.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DeliverIT.Core.Exceptions.InvalidCredentialsException" Collapsed="true">
+    <Position X="5.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Exceptions\InvalidCredentialsException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DeliverIT.Core.Exceptions.InvalidMenuChoiceException" Collapsed="true">
+    <Position X="7.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Exceptions\InvalidMenuChoiceException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DeliverIT.Core.Factories.AddressFactory" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>Factories\AddressFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DeliverIT.Core.Factories.CommandsFactory" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Factories\CommandsFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DeliverIT.Core.Factories.CountryFactory" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Factories\CountryFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DeliverIT.Core.Factories.OrderFactory" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Factories\OrderFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DeliverIT.Core.Factories.ProductFactory" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Factories\ProductFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DeliverIT.Core.Factories.UserFactory" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAEAAAAAAAAABAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Factories\UserFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DeliverIT.Core.Providers.AuthProvider" Collapsed="true">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAAAAAAIAAAEAACAAAAAQAAAAAAA=</HashCode>
+      <FileName>Providers\AuthProvider.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DeliverIT.Core.Providers.CommandParser" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAIAAQAACAAQAAAAAAAAAEAAAAAAQAAAAAQAIA=</HashCode>
+      <FileName>Providers\CommandParser.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DeliverIT.Core.Providers.UserContext" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAAEAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Providers\UserContext.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="DeliverIT.Core.Commands.CreateCommands.Contracts.ICreateAddress" Collapsed="true">
+    <Position X="2.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Commands\CreateCommands\Contracts\ICreateAddress.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DeliverIT.Core.Commands.CreateCommands.Contracts.ICreateProduct" Collapsed="true">
+    <Position X="4" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Commands\CreateCommands\Contracts\ICreateProduct.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DeliverIT.Core.Contracts.ICommand" Collapsed="true">
+    <Position X="4" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Contracts\ICommand.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DeliverIT.Core.Contracts.ICommandParser" Collapsed="true">
+    <Position X="5.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAIAAAAACAAQAAAAAAAAAAAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>Contracts\ICommandParser.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DeliverIT.Core.Contracts.IEngine" Collapsed="true">
+    <Position X="5.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Contracts\IEngine.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DeliverIT.Core.Contracts.IUserContext" Collapsed="true">
+    <Position X="2.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Contracts\IUserContext.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DeliverIT.Core.Factories.IProductFactory" Collapsed="true">
+    <Position X="9.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Factories\Contracts\IProductFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DeliverIT.Core.Factories.IUserFactory" Collapsed="true">
+    <Position X="4" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAEAAAAAAAAABAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Factories\Contracts\IUserFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DeliverIT.Core.Factories.Contracts.IAddressFactory" Collapsed="true">
+    <Position X="2.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>Factories\Contracts\IAddressFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DeliverIT.Core.Factories.Contracts.ICommandsFactory" Collapsed="true">
+    <Position X="7.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Factories\Contracts\ICommandsFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DeliverIT.Core.Factories.Contracts.ICountryFactory" Collapsed="true">
+    <Position X="9.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Factories\Contracts\ICountryFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DeliverIT.Core.Factories.Contracts.IOrderFactory" Collapsed="true">
+    <Position X="7.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Factories\Contracts\IOrderFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
