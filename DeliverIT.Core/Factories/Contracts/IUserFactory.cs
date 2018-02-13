@@ -6,7 +6,7 @@ namespace DeliverIT.Core.Factories
 {
     public interface IUserFactory
     {
-        Client CreateClient(string username, string password, string firstName, string lastName, string email,
+        IClient CreateClient(string username, string password, string firstName, string lastName, string email,
             int age, string phoneNumber, IAddress address, GenderType gender);
 
         Courier CreateCourier(string username, string password, string firstName, string lastName, string email,
