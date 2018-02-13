@@ -81,7 +81,13 @@
     <Compile Include="Core\Commands\CreateCommands\CreateAddressTests\Create_Should.cs" />
     <Compile Include="Core\Commands\CreateCommands\CreateProductTests\Create_Should.cs" />
     <Compile Include="Core\EngineTests\Start_Should.cs" />
+    <Compile Include="Core\Factories\AddressFactoryTests\CreateAddress_Should.cs" />
     <Compile Include="Core\Factories\OrderFactoryTests\CreateOrder_Should.cs" />
+    <Compile Include="Core\Factories\ProductFactoryTests\CreateProduct_Should.cs" />
+    <Compile Include="Core\Factories\UserFactoryTests\CreateAdministrator_Should.cs" />
+    <Compile Include="Core\Factories\UserFactoryTests\CreateClient_Should.cs" />
+    <Compile Include="Core\Factories\UserFactoryTests\CreateCourier_Should.cs" />
+    <Compile Include="Mocks\DateTimeProvider.cs" />
     <Compile Include="Models\AddressTests\City_Should.cs" />
     <Compile Include="Models\AddressTests\Country_Should.cs" />
     <Compile Include="Models\AddressTests\StreetName_Should.cs" />

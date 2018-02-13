@@ -1,7 +1,10 @@
 ﻿using DeliverIT.Common;
+using DeliverIT.Common.Enums;
 using DeliverIT.Contracts;
+using DeliverIT.Core.Factories;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using Tests.Mocks;
 
 namespace Tests.Core.Factories.OrderFactoryTests
 {
@@ -11,17 +14,21 @@ namespace Tests.Core.Factories.OrderFactoryTests
         [TestMethod]
         public void ReturnValueOfCorrectType()
         {
-            //public IOrder CreateOrder(ICourier courier, IClient sender, IClient receiver, DeliveryType deliveryType, DateTime sendDate, DateTime dueDate,
-            //    OrderState orderState, IProduct product, int postalCode)
-            //{
-            //    return new Order(courier, sender, receiver, deliveryType, sendDate, dueDate, orderState, product, postalCode);
-            //}
-
             var courierStub = new Mock<ICourier>();
             var senderStub = new Mock<IClient>();
             var receiver = new Mock<IClient>();
             var deliveryType = DeliveryType.Express;
-            //var dateTimeStub
+            var sendTimeStub = new DateTimeProvider();
+            var dueDateStub = new DateTimeProvider();
+            var orderState = OrderState.Damaged;
+            var product = new Mock<IProduct>();
+            var postalCode = 5500;
+
+            var sut = new OrderFactory();
+            var returned = sut.CreateOrder(courierStub.Object, senderStub.Object, receiver.Object, deliveryType,
+                sendTimeStub.Now, dueDateStub.Now, orderState, product.Object, postalCode);
+
+            Assert.IsInstanceOfType(returned, typeof(IOrder));
         }
     }
 }

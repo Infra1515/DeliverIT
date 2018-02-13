@@ -1,6 +1,5 @@
 ﻿using DeliverIT.Common.Enums;
 using DeliverIT.Contracts;
-using DeliverIT.Core.Contracts;
 using DeliverIT.Models.Users;
 
 namespace DeliverIT.Core.Factories

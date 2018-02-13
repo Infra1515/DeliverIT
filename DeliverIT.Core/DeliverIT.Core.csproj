@@ -69,6 +69,8 @@
     <Compile Include="Commands\Parsers\UserInfoCommandParser.cs" />
     <Compile Include="Commands\Providers\CommandProcessor.cs" />
     <Compile Include="Commands\Providers\ICommandProcessor.cs" />
+    <Compile Include="Commands\Providers\IParserFactory.cs" />
+    <Compile Include="Commands\Providers\ParserFactory.cs" />
     <Compile Include="Commands\ShowAllClientsCommand.cs" />
     <Compile Include="Commands\ShowAllLocationsCommand.cs" />
     <Compile Include="Commands\ShowAllOrdersCommand.cs" />

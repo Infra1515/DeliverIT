@@ -20,6 +20,9 @@ namespace DeliverIT.Core.Dependency
     {
         protected override void Load(ContainerBuilder builder)
         {
+            builder.RegisterAssemblyTypes(Assembly.GetAssembly(typeof(IEngine)))
+                .AsImplementedInterfaces();
+
             builder.RegisterType<AddClientCommand>().Keyed<ICommand>(MainMenuChoice.AddClient);
             builder.RegisterType<AddCourierCommand>().Keyed<ICommand>(MainMenuChoice.AddCourier);
             builder.RegisterType<AddOrderCommand>().Keyed<ICommand>(MainMenuChoice.AddOrder);
@@ -39,16 +42,14 @@ namespace DeliverIT.Core.Dependency
             builder.RegisterType<UserContext>().As<IUserContext>().SingleInstance();
 
             builder.RegisterType<AddressInfoCommandParser>().As<ICommandParser>();
-            builder.RegisterType<CourierInfoCommandParser>().As<ICommandParser>();
-            builder.RegisterType<OrderInfoCommandParser>().As<ICommandParser>();
+            builder.RegisterType<CourierInfoCommandParser>().Named<ICommandParser>("2");
+            builder.RegisterType<OrderInfoCommandParser>().Named<ICommandParser>("3");
             builder.RegisterType<ProductInfoCommandParser>().As<ICommandParser>();
-            builder.RegisterType<UserInfoCommandParser>().As<ICommandParser>();
+            builder.RegisterType<UserInfoCommandParser>().Named<ICommandParser>("1");
+
+            builder.RegisterType<ParserFactory>().As<IParserFactory>();
             //builder.RegisterType<CommandParser>().As<ICommandParser>().SingleInstance();
 
-            builder.RegisterAssemblyTypes(Assembly.GetAssembly(typeof(IEngine)))
-                .Where(x => x.Namespace.Contains("Factories"))
-                .AsImplementedInterfaces()
-                .SingleInstance();
         }
     }
 }
