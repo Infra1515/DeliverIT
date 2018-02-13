@@ -89,10 +89,7 @@
     <Compile Include="Core\Factories\UserFactoryTests\CreateClient_Should.cs" />
     <Compile Include="Core\Factories\UserFactoryTests\CreateCourier_Should.cs" />
     <Compile Include="Mocks\DateTimeProvider.cs" />
-    <Compile Include="Models\AddressTests\City_Should.cs" />
-    <Compile Include="Models\AddressTests\Country_Should.cs" />
-    <Compile Include="Models\AddressTests\StreetName_Should.cs" />
-    <Compile Include="Models\AddressTests\StreetNumber_Should.cs" />
+    <Compile Include="Models\AddressTests\Address_Should.cs" />
     <Compile Include="Models\DimensionsTests\Constructor_Should.cs" />
     <Compile Include="Models\OrderTests\Constructor_Should.cs" />
     <Compile Include="Models\OrderTests\OrderType_Should.cs" />
