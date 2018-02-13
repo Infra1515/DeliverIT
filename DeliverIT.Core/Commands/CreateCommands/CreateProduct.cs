@@ -10,16 +10,13 @@ namespace DeliverIT.Core.Commands.CreateCommands
     public class CreateProduct : ICreateProduct
     {
         private readonly IWriter writer;
-        private readonly IReader reader;
         private readonly IProductFactory productFactory;
 
         public CreateProduct(
             IWriter writer,
-            IReader reader,
             IProductFactory productFactory)
         {
             this.writer = writer;
-            this.reader = reader;
             this.productFactory = productFactory;
         }
 

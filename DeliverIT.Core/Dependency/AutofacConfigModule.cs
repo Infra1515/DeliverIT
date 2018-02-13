@@ -38,10 +38,6 @@ namespace DeliverIT.Core.Dependency
             builder.RegisterType<UserContext>().As<IUserContext>().SingleInstance();
             builder.RegisterType<CommandParser>().As<ICommandParser>().SingleInstance();
 
-            builder.RegisterAssemblyTypes(Assembly.GetAssembly(typeof(IEngine)))
-                .Where(x => x.Namespace.Contains("Factories"))
-                .AsImplementedInterfaces()
-                .SingleInstance();
         }
     }
 }

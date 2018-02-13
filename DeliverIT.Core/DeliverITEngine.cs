@@ -10,7 +10,6 @@ namespace DeliverIT.Core.Engine
 {
     public class DeliverITEngine : IEngine
     {
-        private readonly IDataStore dataStore;
         private readonly IReader reader;
         private readonly ICommandsFactory commandsFactory;
         private readonly IWriter writer;
@@ -18,14 +17,12 @@ namespace DeliverIT.Core.Engine
         private AuthProvider authentication;
 
         public DeliverITEngine(
-            IDataStore dataStore,
             IWriter writer,
             IReader reader,
             ICommandsFactory commandsFactory,
             AuthProvider authentication,
             IUserContext userController)
         {
-            this.dataStore = dataStore;
             this.writer = writer;
             this.reader = reader;
             this.commandsFactory = commandsFactory;

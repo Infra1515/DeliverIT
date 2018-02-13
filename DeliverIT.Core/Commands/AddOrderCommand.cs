@@ -4,7 +4,9 @@ using System.Globalization;
 using System.Linq;
 using DeliverIT.Core.Commands.CreateCommands.Contracts;
 using DeliverIT.Core.Contracts;
+using DeliverIT.Core.Engine.Providers;
 using DeliverIT.Core.Factories.Contracts;
+using DeliverIT.Core.IOUtilities.Contracts;
 using DeliverIT.Data;
 using DeliverIT.Data.Common.Enums;
 using DeliverIT.Data.Contracts;
@@ -16,23 +18,17 @@ namespace DeliverIT.Core.Commands
     {
         private readonly IDataStore dataStore;
         private readonly IOrderFactory orderFactory;
-        private readonly IWriter writer;
-        private readonly IReader reader;
         private readonly ICreateProduct createCommand;
         private readonly ICommandParser commandParser;
 
         public AddOrderCommand(
             IDataStore dataStore,
             IOrderFactory orderFactory, 
-            IWriter writer, 
-            IReader reader, 
             ICreateProduct createCommand,
             ICommandParser commandParser)
         {
             this.dataStore = dataStore;
             this.orderFactory = orderFactory;
-            this.writer = writer;
-            this.reader = reader;
             this.createCommand = createCommand;
         }
 

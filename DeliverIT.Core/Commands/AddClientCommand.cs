@@ -14,25 +14,20 @@ namespace DeliverIT.Core.Commands
     {
         private readonly IUserFactory userFactory;
         private readonly IDataStore dataStore;
-        private readonly IWriter writer;
-        private readonly IReader reader;
         private readonly ICreateAddress createAddress;
-        private readonly ICommandParser commandParser;
+        private readonly ICommandParser addressInfoCommandParser;
 
         public AddClientCommand(
             IDataStore dataStore, 
             IUserFactory userFactory,
-            IWriter writer, 
-            IReader reader,
             ICreateAddress createAddress,
-            ICommandParser commandParser)
+            ICommandParser addressInfoCommandParser)
         {
             this.dataStore = dataStore;
             this.userFactory = userFactory;
-            this.writer = writer;
-            this.reader = reader;
             this.createAddress = createAddress;
-            this.commandParser = commandParser;
+            this.addressInfoCommandParser = addressInfoCommandParser;
+        }
 
         }
         public string Execute()

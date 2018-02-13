@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Linq;
 using DeliverIT.Core.Contracts;
+using DeliverIT.Core.Engine.Providers;
 using DeliverIT.Core.Factories;
+using DeliverIT.Core.IOUtilities.Contracts;
 using DeliverIT.Data;
 using DeliverIT.Core.Commands.CreateCommands.Contracts;
 using DeliverIT.Utilities.IOUtilities.Contracts;
@@ -14,23 +16,19 @@ namespace DeliverIT.Core.Commands
     {
         private readonly IDataStore dataStore;
         private readonly IUserFactory userFactory;
-        private readonly IWriter writer;
-        private readonly IReader reader;
         private readonly ICreateAddress createAddress;
         private readonly ICommandParser commandParser;
 
         public AddCourierCommand(
             IDataStore dataStore, 
             IUserFactory userFactory, 
-            IWriter writer, 
-            IReader reader,
-            ICreateAddress createAddress)
+            ICreateAddress createAddress,
+            ICommandParser addressInfoCommandParser)
         {
             this.dataStore = dataStore;
             this.userFactory = userFactory;
-            this.writer = writer;
-            this.reader = reader;
             this.createAddress = createAddress;
+            this.addressInfoCommandParser = addressInfoCommandParser;
         }
 
         public string Execute()
@@ -49,7 +47,7 @@ namespace DeliverIT.Core.Commands
             var allowedWeight = double.Parse(courierInfo[8]);
             var allowedVolume = double.Parse(courierInfo[9]);
 
-            var userAddressInfo = this.commandParser.AddressInfoParseCommandParameters();
+            var userAddressInfo = this.addressInfoCommandParser.Parse();
             var userAddress = this.createAddress.Create(userAddressInfo);
 
             var isUserPresent = this.dataStore.Users

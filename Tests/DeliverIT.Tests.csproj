@@ -81,18 +81,29 @@
     <Compile Include="Core\Commands\CreateCommands\CreateAddressTests\Create_Should.cs" />
     <Compile Include="Core\Commands\CreateCommands\CreateProductTests\Create_Should.cs" />
     <Compile Include="Core\EngineTests\Start_Should.cs" />
+    <Compile Include="Core\Factories\AddressFactoryTests\CreateAddress_Should.cs" />
+    <Compile Include="Core\Factories\CountryFactoryTests\CreateCountry_Should.cs" />
     <Compile Include="Core\Factories\OrderFactoryTests\CreateOrder_Should.cs" />
+    <Compile Include="Core\Factories\ProductFactoryTests\CreateProduct_Should.cs" />
+    <Compile Include="Core\Factories\UserFactoryTests\CreateAdministrator_Should.cs" />
+    <Compile Include="Core\Factories\UserFactoryTests\CreateClient_Should.cs" />
+    <Compile Include="Core\Factories\UserFactoryTests\CreateCourier_Should.cs" />
+    <Compile Include="Mocks\DateTimeProvider.cs" />
     <Compile Include="Models\AddressTests\City_Should.cs" />
     <Compile Include="Models\AddressTests\Country_Should.cs" />
     <Compile Include="Models\AddressTests\StreetName_Should.cs" />
     <Compile Include="Models\AddressTests\StreetNumber_Should.cs" />
     <Compile Include="Models\DimensionsTests\Constructor_Should.cs" />
+    <Compile Include="Models\OrderTests\Constructor_Should.cs" />
     <Compile Include="Models\OrderTests\OrderType_Should.cs" />
-    <Compile Include="Models\UsersTests\FirstName_Should.cs" />
-    <Compile Include="Models\UsersTests\LastName_Should.cs" />
-    <Compile Include="Models\UsersTests\Password_Should.cs" />
-    <Compile Include="Models\UsersTests\Username_Should.cs" />
-    <Compile Include="Models\UsersTests\Email_Should.cs" />
+    <Compile Include="Models\ProductTests\Constructor_Should.cs" />
+    <Compile Include="Models\ProductTests\Volume_Should.cs" />
+    <Compile Include="Models\Users\PersonTests\Constructor_Should.cs" />
+    <Compile Include="Models\Users\UsersTests\FirstName_Should.cs" />
+    <Compile Include="Models\Users\UsersTests\LastName_Should.cs" />
+    <Compile Include="Models\Users\UsersTests\Password_Should.cs" />
+    <Compile Include="Models\Users\UsersTests\Username_Should.cs" />
+    <Compile Include="Models\Users\UsersTests\Email_Should.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -103,6 +114,10 @@
       <Project>{8f5e7b0c-3994-40cf-99ec-ee9abbb940a4}</Project>
       <Name>DeliverIT.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DeliverIT.Menu\DeliverIT.Utilities.csproj">
+      <Project>{b08256b2-9c5e-4292-a6c5-b1a2c306d4cc}</Project>
+      <Name>DeliverIT.Utilities</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DeliverIT.Program\DeliverIT.Program.csproj">
       <Project>{8ef456ee-4a8f-4dd4-8f34-c58748850fdf}</Project>
       <Name>DeliverIT.Program</Name>
@@ -112,9 +127,7 @@
       <Name>DeliverIT.Data</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Core\Factories\CommandFactoryTests\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

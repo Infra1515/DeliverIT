@@ -7,7 +7,7 @@ using DeliverIT.Data.Common.Enums;
 
 namespace DeliverIT.Models.Users.Abstract
 {
-    public abstract class Person : User, IPerson
+    public class Person : User, IPerson
     {
         private int age;
         private string phoneNumber;
@@ -15,10 +15,16 @@ namespace DeliverIT.Models.Users.Abstract
         private GenderType gender;
         private List<IOrder> ordersList;
 
-        protected Person(string username, string password, string firstName, string lastName, string email, int age, string phoneNumber, IAddress address,
+        public Person(string username, string password, string firstName, string lastName, string email, int age, string phoneNumber, IAddress address,
             GenderType gender, UserRole role)
             : base(username, password, firstName, lastName, email, role)
         {
+            Guard.WhenArgument(address, "address null").IsNull().Throw();
+
+            Guard.WhenArgument(age, "years").IsLessThan(Constants.MinAge).Throw();
+            Guard.WhenArgument(age, "years").IsGreaterThan(Constants.MaxAge).Throw();
+
+            Guard.WhenArgument(phoneNumber, "phone number null").IsNull().Throw();
             this.Age = age;
             this.phoneNumber = phoneNumber;
             this.address = address;
@@ -33,8 +39,6 @@ namespace DeliverIT.Models.Users.Abstract
             get { return this.age; }
             private set
             {
-                Guard.WhenArgument(value, "years").IsLessThan(Constants.MinAge).Throw();
-                Guard.WhenArgument(value, "years").IsGreaterThan(Constants.MaxAge);
                 this.age = value;
             }
         }
@@ -44,8 +48,6 @@ namespace DeliverIT.Models.Users.Abstract
             get { return this.phoneNumber; }
             private set
             {
-
-                Guard.WhenArgument(value, "phone number null").IsNull().Throw();
                 this.phoneNumber = value;
             }
         }
