@@ -59,7 +59,7 @@ namespace DeliverIT.Core.Commands
                 firstName, lastName, email, age, phoneNumber, userAddress,
                 gender, allowedWeight, allowedVolume);
 
-            this.dataStore.Users.Add(courier);
+            this.dataStore.AddUser(courier);
 
             Console.ForegroundColor = ConsoleColor.Green;
             return string.Format(Constants.RegisteredCourier, courier.Username);

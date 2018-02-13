@@ -64,7 +64,7 @@ namespace DeliverIT.Core.Commands
 
             var order = this.orderFactory.CreateOrder(selectedCourier, selectedSender, selectedReceiver, deliveryType, sendDate, dueDate, OrderState.InProgress, product, postalCode);
 
-            this.dataStore.Orders.Add(order);
+            this.dataStore.AddOrder(order);
 
             selectedCourier.OrdersList.Add(order);
             selectedReceiver.OrdersList.Add(order);

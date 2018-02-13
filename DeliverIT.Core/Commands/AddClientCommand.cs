@@ -54,7 +54,7 @@ namespace DeliverIT.Core.Commands
 
             var client = this.userFactory.CreateClient(username, password, firstName, lastName, email, age, phoneNumber, userAddress, gender);
 
-            this.dataStore.Users.Add(client);
+            this.dataStore.AddUser(client);
 
             Console.ForegroundColor = ConsoleColor.Green;
             return string.Format(Constants.RegisteredClient, client.Username);

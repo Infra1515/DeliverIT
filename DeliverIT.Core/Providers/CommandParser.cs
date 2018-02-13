@@ -106,7 +106,6 @@ namespace DeliverIT.Core.Providers
             commandParameters.Add(reader.ReadLine());
 
             return commandParameters;
-            
         }
 
         public IList<string> CourierInfoParseCommandParameters()

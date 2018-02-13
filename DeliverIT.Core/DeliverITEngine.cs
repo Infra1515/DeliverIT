@@ -75,6 +75,7 @@ namespace DeliverIT.Core
                             var result = command.Execute();
 
                             this.writer.WriteLine(result);
+                            Console.ResetColor();
                         }
                         catch (Exception ex)
                         {
