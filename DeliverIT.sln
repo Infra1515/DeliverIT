@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2008
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliverIT.Data", "DeliverIT\DeliverIT.Data.csproj", "{81A5FA03-CA1A-4C10-B7CA-C68C607BD5DA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliverIT.Data", "DeliverIT.Data\DeliverIT.Data.csproj", "{81A5FA03-CA1A-4C10-B7CA-C68C607BD5DA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliverIT.Core", "DeliverIT.Core\DeliverIT.Core.csproj", "{8F5E7B0C-3994-40CF-99EC-EE9ABBB940A4}"
 EndProject
@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliverIT.Program", "Delive
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliverIT.Tests", "Tests\DeliverIT.Tests.csproj", "{49914667-D793-41C6-9FE1-2057109C6646}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliverIT.Utilities", "DeliverIT.Menu\DeliverIT.Utilities.csproj", "{B08256B2-9C5E-4292-A6C5-B1A2C306D4CC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliverIT.Utilities", "DeliverIT.Utilities\DeliverIT.Utilities.csproj", "{B08256B2-9C5E-4292-A6C5-B1A2C306D4CC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,6 +1,5 @@
-﻿using DeliverIT.Contracts;
-using DeliverIT.Core.Factories;
-using DeliverIT.Core.Factories.Contracts;
+﻿using DeliverIT.Core.Factories.Contracts;
+using DeliverIT.Data.Contracts;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 

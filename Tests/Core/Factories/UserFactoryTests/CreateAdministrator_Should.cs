@@ -1,9 +1,6 @@
-﻿using DeliverIT.Common.Enums;
-using DeliverIT.Contracts;
-using DeliverIT.Core.Factories;
-using DeliverIT.Models.Users;
+﻿using DeliverIT.Core.Factories;
+using DeliverIT.Data.Models.Users;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
 
 namespace Tests.Core.Factories.UserFactoryTests
 {

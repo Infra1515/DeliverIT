@@ -1,11 +1,10 @@
 ﻿using System;
-using DeliverIT.Common;
-using DeliverIT.Common.Enums;
-using DeliverIT.Contracts;
-using DeliverIT.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Tests.Mocks;
+using DeliverIT.Data.Contracts;
+using DeliverIT.Data.Common.Enums;
+using DeliverIT.Data.Models;
 
 namespace Tests.Models.OrderTests
 {

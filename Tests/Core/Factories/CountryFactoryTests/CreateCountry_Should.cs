@@ -1,8 +1,8 @@
 ﻿using System;
-using DeliverIT.Contracts;
 using DeliverIT.Core.Factories;
-using DeliverIT.Models.Countries;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using DeliverIT.Data.Models.Countries;
+using DeliverIT.Data.Contracts;
 
 namespace Tests.Core.Factories.CountryFactoryTests
 {

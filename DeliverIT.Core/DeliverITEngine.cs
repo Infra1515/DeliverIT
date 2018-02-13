@@ -1,12 +1,11 @@
 ﻿using System;
 using DeliverIT.Core.Contracts;
 using DeliverIT.Core.Providers;
-using DeliverIT.Data;
 using DeliverIT.Core.Factories.Contracts;
 using DeliverIT.Utilities.MenuUtilities;
 using DeliverIT.Utilities.IOUtilities.Contracts;
 
-namespace DeliverIT.Core.Engine
+namespace DeliverIT.Core
 {
     public class DeliverITEngine : IEngine
     {

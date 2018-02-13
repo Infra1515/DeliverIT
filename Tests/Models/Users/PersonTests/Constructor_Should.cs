@@ -1,9 +1,9 @@
 ﻿using System;
-using DeliverIT.Common.Enums;
-using DeliverIT.Contracts;
 using DeliverIT.Models.Users.Abstract;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using DeliverIT.Data.Common.Enums;
+using DeliverIT.Data.Contracts;
 
 namespace Tests.Models.Users.PersonTests
 {

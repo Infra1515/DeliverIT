@@ -62,15 +62,6 @@
     <Compile Include="Commands\CreateCommands\CreateAddress.cs" />
     <Compile Include="Commands\CreateCommands\CreateProduct.cs" />
     <Compile Include="Commands\CreateCommands\Contracts\ICreateAddress.cs" />
-    <Compile Include="Commands\Parsers\AddressInfoCommandParser.cs" />
-    <Compile Include="Commands\Parsers\CourierInfoCommandParser.cs" />
-    <Compile Include="Commands\Parsers\OrderInfoCommandParser.cs" />
-    <Compile Include="Commands\Parsers\ProductInfoCommandParser.cs" />
-    <Compile Include="Commands\Parsers\UserInfoCommandParser.cs" />
-    <Compile Include="Commands\Providers\CommandProcessor.cs" />
-    <Compile Include="Commands\Providers\ICommandProcessor.cs" />
-    <Compile Include="Commands\Providers\IParserFactory.cs" />
-    <Compile Include="Commands\Providers\ParserFactory.cs" />
     <Compile Include="Commands\ShowAllClientsCommand.cs" />
     <Compile Include="Commands\ShowAllLocationsCommand.cs" />
     <Compile Include="Commands\ShowAllOrdersCommand.cs" />
@@ -109,15 +100,14 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DeliverIT.Menu\DeliverIT.Utilities.csproj">
-      <Project>{B08256B2-9C5E-4292-A6C5-B1A2C306D4CC}</Project>
+    <ProjectReference Include="..\DeliverIT.Utilities\DeliverIT.Utilities.csproj">
+      <Project>{b08256b2-9c5e-4292-a6c5-b1a2c306d4cc}</Project>
       <Name>DeliverIT.Utilities</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DeliverIT\DeliverIT.Data.csproj">
+    <ProjectReference Include="..\DeliverIT.Data\DeliverIT.Data.csproj">
       <Project>{81a5fa03-ca1a-4c10-b7ca-c68c607bd5da}</Project>
       <Name>DeliverIT.Data</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

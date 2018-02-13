@@ -94,9 +94,6 @@ namespace DeliverIT.Core.Providers
             commandParameters.Add(dimensions[0]);
             commandParameters.Add(dimensions[1]);
             commandParameters.Add(dimensions[2]);
-            //double x = dimensions[0];
-            //double y = dimensions[1];
-            //double z = dimensions[2];
 
             this.writer.Write("Is the product fragile?");
             commandParameters.Add(this.reader.ReadLine().ToLower().Trim());

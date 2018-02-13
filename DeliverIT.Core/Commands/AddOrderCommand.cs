@@ -1,16 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using DeliverIT.Core.Commands.CreateCommands.Contracts;
 using DeliverIT.Core.Contracts;
-using DeliverIT.Core.Engine.Providers;
 using DeliverIT.Core.Factories.Contracts;
-using DeliverIT.Core.IOUtilities.Contracts;
 using DeliverIT.Data;
 using DeliverIT.Data.Common.Enums;
 using DeliverIT.Data.Contracts;
-using DeliverIT.Utilities.IOUtilities.Contracts;
 
 namespace DeliverIT.Core.Commands
 {
@@ -30,6 +26,7 @@ namespace DeliverIT.Core.Commands
             this.dataStore = dataStore;
             this.orderFactory = orderFactory;
             this.createCommand = createCommand;
+            this.commandParser = commandParser;
         }
 
         public string Execute()

@@ -1,5 +1,5 @@
-﻿using DeliverIT.Common.Enums;
-using DeliverIT.Core.Factories;
+﻿using DeliverIT.Core.Factories;
+using DeliverIT.Data.Common.Enums;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 

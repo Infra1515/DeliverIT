@@ -4,7 +4,6 @@ using DeliverIT.Core.Contracts;
 using DeliverIT.Data;
 using DeliverIT.Core.Factories;
 using DeliverIT.Core.Commands.CreateCommands.Contracts;
-using DeliverIT.Utilities.IOUtilities.Contracts;
 using DeliverIT.Data.Common.Enums;
 using DeliverIT.Data.Common;
 
@@ -15,21 +14,20 @@ namespace DeliverIT.Core.Commands
         private readonly IUserFactory userFactory;
         private readonly IDataStore dataStore;
         private readonly ICreateAddress createAddress;
-        private readonly ICommandParser addressInfoCommandParser;
+        private readonly ICommandParser commandParser;
 
         public AddClientCommand(
             IDataStore dataStore, 
             IUserFactory userFactory,
             ICreateAddress createAddress,
-            ICommandParser addressInfoCommandParser)
+            ICommandParser commandParser)
         {
             this.dataStore = dataStore;
             this.userFactory = userFactory;
             this.createAddress = createAddress;
-            this.addressInfoCommandParser = addressInfoCommandParser;
+            this.commandParser = commandParser;
         }
 
-        }
         public string Execute()
         {
             var userParams = this.commandParser.UserInfoParseCommandParameters();

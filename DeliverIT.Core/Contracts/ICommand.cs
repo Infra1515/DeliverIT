@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace DeliverIT.Core.Contracts
+﻿namespace DeliverIT.Core.Contracts
 {
     public interface ICommand
     {

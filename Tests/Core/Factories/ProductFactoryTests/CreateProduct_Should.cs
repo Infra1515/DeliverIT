@@ -1,5 +1,5 @@
-﻿using DeliverIT.Common.Enums;
-using DeliverIT.Contracts;
+﻿using DeliverIT.Data.Common.Enums;
+using DeliverIT.Data.Contracts;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Tests.Core.Factories.ProductFactory

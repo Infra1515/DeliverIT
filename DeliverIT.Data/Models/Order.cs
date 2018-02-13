@@ -1,4 +1,5 @@
-﻿using DeliverIT.Data.Common;
+﻿using Bytes2you.Validation;
+using DeliverIT.Data.Common;
 using DeliverIT.Data.Common.Enums;
 using DeliverIT.Data.Contracts;
 using System;
@@ -27,6 +28,7 @@ namespace DeliverIT.Data.Models
             Guard.WhenArgument(sender, "sender null").IsNull().Throw();
             Guard.WhenArgument(receiver, "receiver null").IsNull().Throw();
             Guard.WhenArgument(product, "product null").IsNull().Throw();
+
             this.Id = ++id;
             this.Courier = courier;
             this.Sender = sender;

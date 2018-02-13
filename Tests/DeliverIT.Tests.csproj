@@ -114,7 +114,7 @@
       <Project>{8f5e7b0c-3994-40cf-99ec-ee9abbb940a4}</Project>
       <Name>DeliverIT.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DeliverIT.Menu\DeliverIT.Utilities.csproj">
+    <ProjectReference Include="..\DeliverIT.Utilities\DeliverIT.Utilities.csproj">
       <Project>{b08256b2-9c5e-4292-a6c5-b1a2c306d4cc}</Project>
       <Name>DeliverIT.Utilities</Name>
     </ProjectReference>
@@ -122,7 +122,7 @@
       <Project>{8ef456ee-4a8f-4dd4-8f34-c58748850fdf}</Project>
       <Name>DeliverIT.Program</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DeliverIT\DeliverIT.Data.csproj">
+    <ProjectReference Include="..\DeliverIT.Data\DeliverIT.Data.csproj">
       <Project>{81a5fa03-ca1a-4c10-b7ca-c68c607bd5da}</Project>
       <Name>DeliverIT.Data</Name>
     </ProjectReference>

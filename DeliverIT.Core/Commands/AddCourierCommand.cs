@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Linq;
 using DeliverIT.Core.Contracts;
-using DeliverIT.Core.Engine.Providers;
 using DeliverIT.Core.Factories;
-using DeliverIT.Core.IOUtilities.Contracts;
 using DeliverIT.Data;
 using DeliverIT.Core.Commands.CreateCommands.Contracts;
-using DeliverIT.Utilities.IOUtilities.Contracts;
 using DeliverIT.Data.Common.Enums;
 using DeliverIT.Data.Common;
 
@@ -20,15 +17,15 @@ namespace DeliverIT.Core.Commands
         private readonly ICommandParser commandParser;
 
         public AddCourierCommand(
-            IDataStore dataStore, 
-            IUserFactory userFactory, 
+            IDataStore dataStore,
+            IUserFactory userFactory,
             ICreateAddress createAddress,
-            ICommandParser addressInfoCommandParser)
+            ICommandParser commandParser)
         {
             this.dataStore = dataStore;
             this.userFactory = userFactory;
             this.createAddress = createAddress;
-            this.addressInfoCommandParser = addressInfoCommandParser;
+            this.commandParser = commandParser;
         }
 
         public string Execute()
@@ -47,7 +44,7 @@ namespace DeliverIT.Core.Commands
             var allowedWeight = double.Parse(courierInfo[8]);
             var allowedVolume = double.Parse(courierInfo[9]);
 
-            var userAddressInfo = this.addressInfoCommandParser.Parse();
+            var userAddressInfo = this.commandParser.AddressInfoParseCommandParameters();
             var userAddress = this.createAddress.Create(userAddressInfo);
 
             var isUserPresent = this.dataStore.Users

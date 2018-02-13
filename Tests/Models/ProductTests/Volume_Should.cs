@@ -1,7 +1,7 @@
 ﻿using System;
-using DeliverIT.Common.Enums;
-using DeliverIT.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using DeliverIT.Data.Common.Enums;
+using DeliverIT.Data.Models;
 
 namespace Tests.Models.ProductTests
 {
