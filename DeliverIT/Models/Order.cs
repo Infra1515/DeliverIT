@@ -1,4 +1,5 @@
 ﻿using System;
+using Bytes2you.Validation;
 using DeliverIT.Common;
 using DeliverIT.Contracts;
 using DeliverIT.Common.Enums;
@@ -23,6 +24,10 @@ namespace DeliverIT.Models
             IProduct product,
             int postalCode)
         {
+            Guard.WhenArgument(courier, "courier null").IsNull().Throw();
+            Guard.WhenArgument(sender, "sender null").IsNull().Throw();
+            Guard.WhenArgument(receiver, "receiver null").IsNull().Throw();
+            Guard.WhenArgument(product, "product null").IsNull().Throw();
             this.Id = ++id;
             this.Courier = courier;
             this.Sender = sender;

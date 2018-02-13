@@ -1,17 +1,10 @@
-﻿using DeliverIT.Common;
-using DeliverIT.Common.Enums;
-using DeliverIT.Contracts;
+﻿using DeliverIT.Contracts;
 using DeliverIT.Core.Factories;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using Tests.Mocks;
 
 namespace Tests.Core.Factories.AddressFactoryTests
 {
-//    public IAddress CreateAddress(ICountry country, string streetName, string streetNumber, string city)
-//    {
-//    return new Address(country, streetName, streetNumber, city);
-//}
 
     [TestClass]
     public class CreateAddress_Should
