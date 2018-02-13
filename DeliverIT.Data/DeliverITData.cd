@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="DeliverIT.Data.Common.Constants" Collapsed="true">
+    <Position X="11.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QGRAKAAAAQgAAAAAAQBAUZBAAIARAIBAADAgAQBAIAA=</HashCode>
+      <FileName>Common\Constants.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DeliverIT.Data.DataStore" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="13.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAEAACAhAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>DataStore.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DeliverIT.Data.Models.Address" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="10" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAACMAAAICAAAAAIAAAACAAAIAAAAAIA=</HashCode>
+      <FileName>Models\Address.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DeliverIT.Data.Models.Order" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="10" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAQIAAAAACAEIAAkACAAAAAEAAIAAAgAAAAIIgA=</HashCode>
+      <FileName>Models\Order.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DeliverIT.Data.Models.Product" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAYAAAAAAAEAAAAAAYAACAAAAAAAAIAAAACAgA=</HashCode>
+      <FileName>Models\Product.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DeliverIT.Data.Models.Countries.Bulgaria" Collapsed="true">
+    <Position X="7.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Countries\Bulgaria.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DeliverIT.Data.Models.Countries.Country" Collapsed="true">
+    <Position X="5.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAACAAAIgAAAAIAAAAAQAAAQAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Countries\Country.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DeliverIT.Data.Models.Countries.Russia" Collapsed="true">
+    <Position X="3" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Countries\Russia.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DeliverIT.Data.Models.Countries.Serbia" Collapsed="true">
+    <Position X="5.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Countries\Serbia.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DeliverIT.Models.Users.Abstract.Person" Collapsed="true">
+    <Position X="4" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAQACECEAIwAAAAEIAAIACAQAIAAAAAAA=</HashCode>
+      <FileName>Models\Users\Abstract\Person.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DeliverIT.Models.Users.Abstract.User" Collapsed="true">
+    <Position X="5.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAACBAAAAkEQAAAAEAAAAAAAACAAAACgAAAAg=</HashCode>
+      <FileName>Models\Users\Abstract\User.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DeliverIT.Data.Models.Users.Administrator" Collapsed="true">
+    <Position X="7.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Users\Administrator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DeliverIT.Data.Models.Users.Client" Collapsed="true">
+    <Position X="5.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAECAEAAAAABAAAFAAMAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Models\Users\Client.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DeliverIT.Data.Models.Users.Courier" Collapsed="true">
+    <Position X="3" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAEAAAAAAAAAAAAAIAAAACAIQAAAgE=</HashCode>
+      <FileName>Models\Users\Courier.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Struct Name="DeliverIT.Data.Models.Dimensions" Collapsed="true">
+    <Position X="10" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAABgAQAAYAE=</HashCode>
+      <FileName>Models\Dimensions.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Interface Name="DeliverIT.Data.Contracts.IAddress" Collapsed="true">
+    <Position X="10" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAACIAAAIAAAAAAIAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Contracts\IAddress.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DeliverIT.Data.Contracts.IClient" Collapsed="true">
+    <Position X="3.5" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAECAEAAAAABAAABAAIAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Contracts\IClient.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DeliverIT.Data.Contracts.ICountry" Collapsed="true">
+    <Position X="11.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAACAAAIgAAAAIAAAAAQAAAQAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Contracts\ICountry.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DeliverIT.Data.Contracts.ICourier" Collapsed="true">
+    <Position X="5.75" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAIAAAAAE=</HashCode>
+      <FileName>Contracts\ICourier.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DeliverIT.Data.Contracts.IOrder" Collapsed="true">
+    <Position X="10" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAQIAAAAACAAIAAEAAAAAAAEAAIAAAgAAAAIAAA=</HashCode>
+      <FileName>Contracts\IOrder.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DeliverIT.Data.Contracts.IPerson" Collapsed="true">
+    <Position X="4.75" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAACAAEAIQAAAAAAAAAACAQAAAAAAAAA=</HashCode>
+      <FileName>Contracts\IPerson.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DeliverIT.Data.Contracts.IProduct" Collapsed="true">
+    <Position X="11.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAQAAAAAAAAAAAAAAYAACAAAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>Contracts\IProduct.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DeliverIT.Data.Contracts.IUser" Collapsed="true">
+    <Position X="4.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAACAAAAAAEQAAAAAAAAAAAAACAAAAAAAAAAg=</HashCode>
+      <FileName>Contracts\IUser.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DeliverIT.Data.IDataStore" Collapsed="true">
+    <Position X="13.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAACAgAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>IDataStore.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="DeliverIT.Data.Common.Enums.ClientType" Collapsed="true">
+    <Position X="10" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAIAAQ=</HashCode>
+      <FileName>Common\Enums\ClientType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="DeliverIT.Data.Common.Enums.CountryType" Collapsed="true">
+    <Position X="11.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAAAAAAAgAAAAAACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\Enums\CountryType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="DeliverIT.Data.Common.Enums.DeliveryType" Collapsed="true">
+    <Position X="13.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\Enums\DeliveryType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="DeliverIT.Data.Common.Enums.GenderType" Collapsed="true">
+    <Position X="10" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAACA=</HashCode>
+      <FileName>Common\Enums\GenderType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="DeliverIT.Data.Common.Enums.OrderState" Collapsed="true">
+    <Position X="11.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAAAAIAAAAIAAAIABEAAAA=</HashCode>
+      <FileName>Common\Enums\OrderState.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="DeliverIT.Data.Common.Enums.ProductType" Collapsed="true">
+    <Position X="13.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAACAAAAAAAAAAIAAAAAAAAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>Common\Enums\ProductType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="DeliverIT.Data.Common.Enums.UserRole" Collapsed="true">
+    <Position X="10" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAEIAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>Common\Enums\UserRole.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
